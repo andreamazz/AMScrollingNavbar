@@ -3,9 +3,12 @@ AMScrollingNavbar
 
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.png)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
 
-
 Scrollable UINavigationBar that follows the scrolling of a UIScrollView. 
 It works like the navigation bar in Chrome or Facebook's app for iOS7.
+
+Screenshot
+--------------------
+![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbar.gif)
 
 Setup with Cocoapods
 --------------------
