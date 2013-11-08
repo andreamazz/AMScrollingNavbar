@@ -1,4 +1,4 @@
 language: objective-c
 install:
 - cd ScrollingNavbarDemo
-script: xctool -project ScrollingNavbarDemo.xcodeproj -scheme 'ScrollingNavbarDemo' -configuration Release -sdk iphonesimulator -arch i386 build
+script: xctool -project ScrollingNavbarDemo.xcodeproj -scheme 'ScrollingNavbarDemo' -configuration Release -sdk iphonesimulator7.0 -arch i386 build
