@@ -3,7 +3,7 @@ AMScrollingNavbar
 
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.png)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
 
-Scrollable UINavigationBar that follows the scrolling of a UIScrollView. 
+Scrollable UINavigationBar that follows the scrolling of a UIScrollView or similar view (e.g. UITableView or UIWebView). 
 It works like the navigation bar in Chrome or Facebook's app for iOS7.
 
 Screenshot
@@ -28,7 +28,7 @@ Setup without Cocoapods
 
 Enable the scrolling
 --------------------
-To enable the scrolling effect you simply need to call followScrollView: providing the UIScrollView's instance that will be tracked, like this:
+To enable the scrolling effect you simply need to call followScrollView: providing the UIView's instance that will be tracked, like this:
 ```objc
 [self followScrollView:self.scrollView];
 ```
