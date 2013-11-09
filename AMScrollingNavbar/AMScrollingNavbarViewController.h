@@ -10,6 +10,6 @@
 
 @interface AMScrollingNavbarViewController : UIViewController
 
-- (void)followScrollView:(UIScrollView*)scrollView;
+- (void)followScrollView:(UIView*)scrollView;
 
 @end

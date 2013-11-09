@@ -33,10 +33,18 @@ To enable the scrolling effect you simply need to call followScrollView: providi
 [self followScrollView:self.scrollView];
 ```
 
-Make sure to have a barTintColor for your UINavigationBar, or you won't see the fade-in and fade-out effects.
+Make sure to have a ```barTintColor``` for your ```UINavigationBar```, or you won't see the fade-in and fade-out effects.
+Also make sure that you are not using a translucent navigation bar. E.g., in your controller:
+```objc
+[self.navigationController.navigationBar setTranslucent:NO];
+```
 
 Changelog 
 ==================
+
+0.2
+--------------------
+- Added support for generic UIViews
 
 0.1
 --------------------
@@ -44,7 +52,7 @@ Changelog
 
 TODO
 --------------------
-* Check compatibility with UITableView and other scroll view based components.
+* Needs testing
 
 MIT License
 --------------------

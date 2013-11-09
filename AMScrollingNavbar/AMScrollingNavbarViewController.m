@@ -10,7 +10,7 @@
 
 @interface AMScrollingNavbarViewController () <UIGestureRecognizerDelegate>
 
-@property (nonatomic, weak) UIScrollView* scrollView;
+@property (nonatomic, weak) UIView* scrollableView;
 @property (assign, nonatomic) float lastContentOffset;
 @property (strong, nonatomic) UIPanGestureRecognizer* panGesture;
 @property (strong, nonatomic) UIView* overlay;
@@ -21,18 +21,16 @@
 
 @implementation AMScrollingNavbarViewController
 
-- (void)followScrollView:(UIScrollView*)scrollView
+- (void)followScrollView:(UIView*)scrollView
 {
-	self.scrollView = scrollView;
+	self.scrollableView = scrollView;
 	
 	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 	[self.panGesture setMaximumNumberOfTouches:1];
 	
 	[self.panGesture setDelegate:self];
-	[self.scrollView addGestureRecognizer:self.panGesture];
-	
-	[self.navigationController.navigationBar setTranslucent:NO];
-	
+	[self.scrollableView addGestureRecognizer:self.panGesture];
+
 	CGRect frame = self.navigationController.navigationBar.frame;
 	frame.origin = CGPointZero;
 	self.overlay = [[UIView alloc] initWithFrame:frame];
@@ -52,7 +50,7 @@
 
 - (void)handlePan:(UIPanGestureRecognizer*)gesture
 {
-	CGPoint translation = [gesture translationInView:[self.scrollView superview]];
+	CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
 	
 	float delta = self.lastContentOffset - translation.y;
 	self.lastContentOffset = translation.y;
@@ -81,7 +79,9 @@
 		[self updateSizingWithDelta:delta];
 		
 		// Keeps the view's scroll position steady until the navbar is gone
-		[self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y - delta)];
+		if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
+			[(UIScrollView*)self.scrollableView setContentOffset:CGPointMake(((UIScrollView*)self.scrollableView).contentOffset.x, ((UIScrollView*)self.scrollableView).contentOffset.y - delta)];
+		}
 	}
 	
 	if (delta < 0) {
@@ -156,15 +156,17 @@
 	
 	float alpha = (frame.origin.y + 24) / frame.size.height;
 	[self.overlay setAlpha:1 - alpha];
-
-	frame = self.scrollView.superview.frame;
+	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
+	
+	frame = self.scrollableView.superview.frame;
 	frame.origin.y = self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height;
 	frame.size.height = frame.size.height + delta;
-	self.scrollView.superview.frame = frame;
+	self.scrollableView.superview.frame = frame;
 	
-	frame = self.scrollView.frame;
+	// Changing the layer's frame avoids UIWebView's glitchiness
+	frame = self.scrollableView.layer.frame;
 	frame.size.height += delta;
-	self.scrollView.frame = frame;
+	self.scrollableView.layer.frame = frame;
 }
 
 
