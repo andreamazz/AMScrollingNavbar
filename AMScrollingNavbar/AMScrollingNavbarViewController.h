@@ -10,6 +10,17 @@
 
 @interface AMScrollingNavbarViewController : UIViewController
 
-- (void)followScrollView:(UIView*)scrollView;
+/**-----------------------------------------------------------------------------
+ * @name AMScrollingNavbarViewController
+ * -----------------------------------------------------------------------------
+ */
+
+/** Scrolling init method
+ *
+ * Enables the scrolling on a generic UIView.
+ *
+ * @param scrollableView The UIView where the scrolling is performed.
+ */
+- (void)followScrollView:(UIView*)scrollableView;
 
 @end

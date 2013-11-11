@@ -10,7 +10,7 @@
 
 @interface AMScrollingNavbarViewController () <UIGestureRecognizerDelegate>
 
-@property (nonatomic, weak) UIView* scrollableView;
+@property (nonatomic, weak)	UIView* scrollableView;
 @property (assign, nonatomic) float lastContentOffset;
 @property (strong, nonatomic) UIPanGestureRecognizer* panGesture;
 @property (strong, nonatomic) UIView* overlay;
@@ -21,9 +21,9 @@
 
 @implementation AMScrollingNavbarViewController
 
-- (void)followScrollView:(UIView*)scrollView
+- (void)followScrollView:(UIView*)scrollableView
 {
-	self.scrollableView = scrollView;
+	self.scrollableView = scrollableView;
 	
 	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 	[self.panGesture setMaximumNumberOfTouches:1];
@@ -31,6 +31,8 @@
 	[self.panGesture setDelegate:self];
 	[self.scrollableView addGestureRecognizer:self.panGesture];
 
+	/* The navbar fadeout is achieved using an overlay view with the same barTintColor.
+	 this might be improved by adjusting the alpha component of every navbar child */
 	CGRect frame = self.navigationController.navigationBar.frame;
 	frame.origin = CGPointZero;
 	self.overlay = [[UIView alloc] initWithFrame:frame];
@@ -168,6 +170,5 @@
 	frame.size.height += delta;
 	self.scrollableView.layer.frame = frame;
 }
-
 
 @end
