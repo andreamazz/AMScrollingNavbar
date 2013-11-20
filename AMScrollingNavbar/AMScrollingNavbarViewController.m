@@ -45,6 +45,14 @@
 	[self.overlay setAlpha:0];
 }
 
+- (void)showNavbar
+{
+	[UIView animateWithDuration:0.2 animations:^{
+		self.lastContentOffset = 0;
+		[self scrollWithDelta:-100];
+	}];
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
 	return YES;
@@ -57,6 +65,17 @@
 	float delta = self.lastContentOffset - translation.y;
 	self.lastContentOffset = translation.y;
 	
+	[self scrollWithDelta:delta];
+	
+	if ([gesture state] == UIGestureRecognizerStateEnded) {
+		// Reset the nav bar if the scroll is partial
+		self.lastContentOffset = 0;
+		[self checkForPartialScroll];
+	}
+}
+
+- (void)scrollWithDelta:(CGFloat)delta
+{
 	CGRect frame;
 	
 	if (delta > 0) {
@@ -105,12 +124,6 @@
 		}
 		
 		[self updateSizingWithDelta:delta];
-	}
-	
-	if ([gesture state] == UIGestureRecognizerStateEnded) {
-		// Reset the nav bar if the scroll is partial
-		self.lastContentOffset = 0;
-		[self checkForPartialScroll];
 	}
 }
 

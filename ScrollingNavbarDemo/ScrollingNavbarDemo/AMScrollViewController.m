@@ -8,7 +8,7 @@
 
 #import "AMScrollViewController.h"
 
-@interface AMScrollViewController ()
+@interface AMScrollViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -40,6 +40,16 @@
 	
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.scrollView];
+	
+	[self.scrollView setDelegate:self];
+}
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
+{
+	// This enables the user to scroll down the navbar by tapping the status bar.
+	[self showNavbar];
+	
+	return YES;
 }
 
 @end

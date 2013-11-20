@@ -23,4 +23,10 @@
  */
 - (void)followScrollView:(UIView*)scrollableView;
 
+/** NAvbar slide down
+ *
+ * Manually show the navbar
+ */
+- (void)showNavbar;
+
 @end
