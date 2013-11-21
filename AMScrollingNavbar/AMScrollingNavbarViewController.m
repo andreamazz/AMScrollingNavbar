@@ -30,7 +30,7 @@
 	
 	[self.panGesture setDelegate:self];
 	[self.scrollableView addGestureRecognizer:self.panGesture];
-
+	
 	/* The navbar fadeout is achieved using an overlay view with the same barTintColor.
 	 this might be improved by adjusting the alpha component of every navbar child */
 	CGRect frame = self.navigationController.navigationBar.frame;
@@ -45,12 +45,23 @@
 	[self.overlay setAlpha:0];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[self showNavbar];
+}
+
 - (void)showNavbar
 {
-	[UIView animateWithDuration:0.2 animations:^{
-		self.lastContentOffset = 0;
-		[self scrollWithDelta:-100];
-	}];
+	if (self.isCollapsed) {
+		CGRect rect = self.scrollableView.frame;
+		rect.origin.y = -64; // The magic number (navbar standard size + statusbar)
+		self.scrollableView.frame = rect;
+		[UIView animateWithDuration:0.2 animations:^{
+			self.lastContentOffset = 0;
+			[self scrollWithDelta:-64];
+		}];
+	}
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
