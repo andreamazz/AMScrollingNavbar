@@ -42,6 +42,9 @@
 	[self followScrollView:self.scrollView];
 	
 	[self.scrollView setDelegate:self];
+	
+	self.navigationItem.rightBarButtonItem =
+	[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView

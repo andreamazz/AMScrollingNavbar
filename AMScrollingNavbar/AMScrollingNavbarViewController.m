@@ -41,6 +41,7 @@
 	}
 	[self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
 	[self.overlay setUserInteractionEnabled:NO];
+	[self.overlay setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
 	[self.navigationController.navigationBar addSubview:self.overlay];
 	[self.overlay setAlpha:0];
 }
