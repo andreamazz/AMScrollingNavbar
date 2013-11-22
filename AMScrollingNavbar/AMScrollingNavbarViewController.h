@@ -23,10 +23,16 @@
  */
 - (void)followScrollView:(UIView*)scrollableView;
 
-/** NAvbar slide down
+/** Navbar slide down
  *
  * Manually show the navbar
  */
 - (void)showNavbar;
+
+/** Navbar refresh
+ *
+ * Use this method when you manually change the navbar items to re-enable the fadeout
+ */
+- (void)refreshNavbar;
 
 @end

@@ -196,4 +196,9 @@
 	self.scrollableView.layer.frame = frame;
 }
 
+- (void)refreshNavbar
+{
+	[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+}
+
 @end
