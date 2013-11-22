@@ -39,6 +39,10 @@ Also make sure that you are not using a translucent navigation bar. E.g., in you
 [self.navigationController.navigationBar setTranslucent:NO];
 ```
 
+Update the navbar fadeout
+--------------------
+Call ```[self refreshNavbar]``` whenever you change your navbar items, or they won't fadeout.
+
 Changelog 
 ==================
 
