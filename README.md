@@ -46,6 +46,11 @@ Call ```[self refreshNavbar]``` whenever you change your navbar items, or they w
 Changelog 
 ==================
 
+0.3
+--------------------
+- Added ```showNavbar```
+- Fixes
+
 0.2
 --------------------
 - Added support for generic UIViews
