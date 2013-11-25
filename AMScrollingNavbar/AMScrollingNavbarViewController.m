@@ -183,6 +183,12 @@
 	
 	float alpha = (frame.origin.y + 24) / frame.size.height;
 	[self.overlay setAlpha:1 - alpha];
+	[self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
+		obj.customView.alpha = alpha;
+	}];
+	[self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
+		obj.customView.alpha = alpha;
+	}];
 	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
 	
 	frame = self.scrollableView.superview.frame;
