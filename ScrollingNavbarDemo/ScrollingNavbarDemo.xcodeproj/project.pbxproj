@@ -22,6 +22,7 @@
 		652B4499182D376600D01F5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 652B4497182D376600D01F5C /* InfoPlist.strings */; };
 		652B449B182D376600D01F5C /* ScrollingNavbarDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 652B449A182D376600D01F5C /* ScrollingNavbarDemoTests.m */; };
 		652B44AA182D48DE00D01F5C /* AMScrollingNavbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652B44A9182D48DE00D01F5C /* AMScrollingNavbarViewController.m */; };
+		654CDD2B184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CDD2A184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.m */; };
 		65BF9E69182E5AB70092BF7F /* AMScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF9E68182E5AB70092BF7F /* AMScrollViewController.m */; };
 		65BF9E6C182E5AC70092BF7F /* AMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF9E6B182E5AC70092BF7F /* AMWebViewController.m */; };
 		65BF9E6F182E5AD40092BF7F /* AMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF9E6E182E5AD40092BF7F /* AMTableViewController.m */; };
@@ -59,6 +60,8 @@
 		652B449A182D376600D01F5C /* ScrollingNavbarDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollingNavbarDemoTests.m; sourceTree = "<group>"; };
 		652B44A8182D48DE00D01F5C /* AMScrollingNavbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbarViewController.h; sourceTree = "<group>"; };
 		652B44A9182D48DE00D01F5C /* AMScrollingNavbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMScrollingNavbarViewController.m; sourceTree = "<group>"; };
+		654CDD29184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbarTableViewController.h; sourceTree = "<group>"; };
+		654CDD2A184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMScrollingNavbarTableViewController.m; sourceTree = "<group>"; };
 		65BF9E67182E5AB70092BF7F /* AMScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollViewController.h; sourceTree = "<group>"; };
 		65BF9E68182E5AB70092BF7F /* AMScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMScrollViewController.m; sourceTree = "<group>"; };
 		65BF9E6A182E5AC70092BF7F /* AMWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMWebViewController.h; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 			children = (
 				652B44A8182D48DE00D01F5C /* AMScrollingNavbarViewController.h */,
 				652B44A9182D48DE00D01F5C /* AMScrollingNavbarViewController.m */,
+				654CDD29184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.h */,
+				654CDD2A184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.m */,
 			);
 			name = AMScrollingNavbar;
 			path = ../../AMScrollingNavbar;
@@ -292,6 +297,7 @@
 				65BF9E6C182E5AC70092BF7F /* AMWebViewController.m in Sources */,
 				652B44AA182D48DE00D01F5C /* AMScrollingNavbarViewController.m in Sources */,
 				65BF9E69182E5AB70092BF7F /* AMScrollViewController.m in Sources */,
+				654CDD2B184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.m in Sources */,
 				652B4486182D376600D01F5C /* AMViewController.m in Sources */,
 				652B447C182D376600D01F5C /* main.m in Sources */,
 			);
