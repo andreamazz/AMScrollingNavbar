@@ -8,7 +8,7 @@ It works like the navigation bar in Chrome or Facebook's app for iOS7.
 
 Screenshot
 --------------------
-![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbar.gif)
+![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbar2.gif)
 
 Setup with Cocoapods
 --------------------
