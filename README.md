@@ -46,6 +46,10 @@ Call ```[self refreshNavbar]``` whenever you change your navbar items, or they w
 Changelog 
 ==================
 
+0.4
+--------------------
+- Added iOS5+ support. Thanks to [xzenon](https://github.com/xzenon)
+
 0.3
 --------------------
 - Added ```showNavbar```
