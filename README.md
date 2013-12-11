@@ -9,7 +9,7 @@ It works like the navigation bar in Chrome or Facebook's app for iOS7.
 
 Screenshot
 --------------------
-![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbar.gif)
+![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbar2.gif)
 
 Setup with Cocoapods
 --------------------
@@ -46,6 +46,10 @@ Call ```[self refreshNavbar]``` whenever you change your navbar items, or they w
 
 Changelog 
 ==================
+
+0.4
+--------------------
+- Added iOS5+ support. Thanks to [xzenon](https://github.com/xzenon)
 
 0.3
 --------------------

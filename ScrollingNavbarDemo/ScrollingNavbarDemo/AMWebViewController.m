@@ -30,7 +30,9 @@
 	
 	[self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 
-	[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
+    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:66.0/255.0 green:155.0/255.0 blue:255.0/255.0 alpha:1]];
+    }
 
 	[self followScrollView:self.webView];
 }
