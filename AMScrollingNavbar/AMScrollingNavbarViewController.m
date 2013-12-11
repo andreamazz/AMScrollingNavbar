@@ -48,10 +48,8 @@
         if (!self.navigationController.navigationBar.barTintColor) {
             NSLog(@"[%s]: %@", __func__, @"Warning: no bar tint color set");
         }
-        
         [self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
-    }
-    else {
+    } else {
         [self.overlay setBackgroundColor:self.navigationController.navigationBar.tintColor];
     }
 	
@@ -83,8 +81,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         self.deltaLimit = 24;
         self.compatibilityHeight = 64;
-    }
-    else {
+    } else {
         self.deltaLimit = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
         self.compatibilityHeight = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
     }
