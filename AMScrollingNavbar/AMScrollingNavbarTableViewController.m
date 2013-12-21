@@ -189,6 +189,7 @@
 	[self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
 		obj.customView.alpha = alpha;
 	}];
+	self.navigationItem.titleView.alpha = alpha;
 	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
 	
 	frame = self.scrollableView.superview.frame;
