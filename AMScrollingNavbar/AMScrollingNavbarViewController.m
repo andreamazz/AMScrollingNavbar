@@ -228,7 +228,7 @@
 	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
 	
 	frame = self.scrollableView.superview.frame;
-    frame.origin.y = self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height - (self.isCompatibilityMode ? self.compatibilityHeight : 0);
+    frame.origin.y = self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height - (self.isCompatibilityMode ? self.compatibilityHeight : 0) -  self.scrollableView.frame.origin.y;
 	frame.size.height = frame.size.height + delta;
 	self.scrollableView.superview.frame = frame;
 	
