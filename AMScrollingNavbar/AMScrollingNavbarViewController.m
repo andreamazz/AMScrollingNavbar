@@ -233,9 +233,16 @@
 	self.scrollableView.superview.frame = frame;
 	
 	// Changing the layer's frame avoids UIWebView's glitchiness
-	frame = self.scrollableView.layer.frame;
-	frame.size.height += delta;
-	self.scrollableView.layer.frame = frame;
+	// if do not use delta * 2, sometimes the blank area will comes out blow the webview.
+	// so there are 2 options:
+	// option 1
+	//frame = self.scrollableView.layer.frame;
+	//frame.size.height += delta * 2;
+	//self.scrollableView.layer.frame = frame;
+	// option 2
+    	frame = self.scrollableView.frame;
+    	frame.size.height += delta;
+    	self.scrollableView.frame = frame;
 }
 
 - (void)refreshNavbar
