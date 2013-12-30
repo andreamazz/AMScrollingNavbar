@@ -234,7 +234,7 @@
 	
 	// Changing the layer's frame avoids UIWebView's glitchiness
 	frame = self.scrollableView.layer.frame;
-	frame.size.height += delta;
+	frame.size.height += delta * 2;
 	self.scrollableView.layer.frame = frame;
 }
 
