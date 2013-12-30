@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		632963A6186E579D005CBEA8 /* AMSrcollingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632963A5186E579D005CBEA8 /* AMSrcollingCollectionViewController.m */; };
+		632963A9186E5834005CBEA8 /* AMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632963A8186E5834005CBEA8 /* AMCollectionViewController.m */; };
 		652B4470182D376600D01F5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652B446F182D376600D01F5C /* Foundation.framework */; };
 		652B4472182D376600D01F5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652B4471182D376600D01F5C /* CoreGraphics.framework */; };
 		652B4474182D376600D01F5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652B4473182D376600D01F5C /* UIKit.framework */; };
@@ -39,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		632963A4186E579D005CBEA8 /* AMScrollingCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingCollectionViewController.h; sourceTree = "<group>"; };
+		632963A5186E579D005CBEA8 /* AMSrcollingCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSrcollingCollectionViewController.m; sourceTree = "<group>"; };
+		632963A7186E5834005CBEA8 /* AMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCollectionViewController.h; sourceTree = "<group>"; };
+		632963A8186E5834005CBEA8 /* AMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCollectionViewController.m; sourceTree = "<group>"; };
 		652B446C182D376600D01F5C /* ScrollingNavbarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollingNavbarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		652B446F182D376600D01F5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		652B4471182D376600D01F5C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -175,6 +181,8 @@
 				652B44A9182D48DE00D01F5C /* AMScrollingNavbarViewController.m */,
 				654CDD29184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.h */,
 				654CDD2A184F2D7D006A4C09 /* AMScrollingNavbarTableViewController.m */,
+				632963A4186E579D005CBEA8 /* AMScrollingCollectionViewController.h */,
+				632963A5186E579D005CBEA8 /* AMSrcollingCollectionViewController.m */,
 			);
 			name = AMScrollingNavbar;
 			path = ../../AMScrollingNavbar;
@@ -191,6 +199,8 @@
 				65BF9E6B182E5AC70092BF7F /* AMWebViewController.m */,
 				65BF9E6D182E5AD40092BF7F /* AMTableViewController.h */,
 				65BF9E6E182E5AD40092BF7F /* AMTableViewController.m */,
+				632963A7186E5834005CBEA8 /* AMCollectionViewController.h */,
+				632963A8186E5834005CBEA8 /* AMCollectionViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -293,6 +303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				632963A9186E5834005CBEA8 /* AMCollectionViewController.m in Sources */,
+				632963A6186E579D005CBEA8 /* AMSrcollingCollectionViewController.m in Sources */,
 				65BF9E6F182E5AD40092BF7F /* AMTableViewController.m in Sources */,
 				652B4480182D376600D01F5C /* AMAppDelegate.m in Sources */,
 				65BF9E6C182E5AC70092BF7F /* AMWebViewController.m in Sources */,
