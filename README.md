@@ -47,6 +47,11 @@ Call ```[self refreshNavbar]``` whenever you change your navbar items, or they w
 Changelog 
 ==================
 
+0.5
+--------------------
+- Enabled UIWebView support
+- Minor fixes
+
 0.4
 --------------------
 - Added iOS5+ support. Thanks to [xzenon](https://github.com/xzenon)
