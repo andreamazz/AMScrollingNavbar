@@ -238,8 +238,13 @@
 	// Changing the layer's frame avoids UIWebView's glitchiness
 	frame = self.scrollableView.frame;
 	frame.size.height = self.scrollableView.superview.frame.size.height - frame.origin.y;
-	self.scrollableView.layer.frame = frame;
-	self.scrollableView.frame = frame;
+
+	// if the scrolling view is a UIWebView, we need to adjust its scrollview's frame.
+	if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+		((UIWebView*)self.scrollableView).scrollView.frame = frame;
+	} else {
+		self.scrollableView.frame = frame;
+	}
 }
 
 - (void)refreshNavbar

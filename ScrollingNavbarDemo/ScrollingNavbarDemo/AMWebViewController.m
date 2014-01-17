@@ -19,8 +19,8 @@
 - (void)viewDidLoad
 {
 	[self setTitle:@"Web View"];
-//	[self.webView setBackgroundColor:[UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]];
-//	[self.view setBackgroundColor:[UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]];
+	[self.webView setBackgroundColor:[UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]];
+	[self.view setBackgroundColor:[UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]];
 	NSMutableString* html = [@"<html><head></head><body style='background-color:#eee'>" mutableCopy];
 	
 	[html appendString:@"<h1>The content</h1><p>Long content here</p><p>Some other content here</p>"];
