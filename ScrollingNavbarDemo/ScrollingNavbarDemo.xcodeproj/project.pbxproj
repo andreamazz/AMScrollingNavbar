@@ -55,7 +55,6 @@
 		652B447D182D376600D01F5C /* ScrollingNavbarDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrollingNavbarDemo-Prefix.pch"; sourceTree = "<group>"; };
 		652B447E182D376600D01F5C /* AMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMAppDelegate.h; sourceTree = "<group>"; };
 		652B447F182D376600D01F5C /* AMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMAppDelegate.m; sourceTree = "<group>"; };
-		652B4482182D376600D01F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		652B4484182D376600D01F5C /* AMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMViewController.h; sourceTree = "<group>"; };
 		652B4485182D376600D01F5C /* AMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMViewController.m; sourceTree = "<group>"; };
 		652B4487182D376600D01F5C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -346,7 +345,6 @@
 		652B4481182D376600D01F5C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				652B4482182D376600D01F5C /* Base */,
 				8489AA7F1845642D00C862B1 /* en */,
 			);
 			name = Main.storyboard;

@@ -20,6 +20,10 @@
 	[self.navigationController.navigationBar setTranslucent:NO];
     [self setTitle:@"Demo"];
 	
+	if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
+    }
+	
     // For better behavior set statusbar style to opaque on iOS < 7.0
     if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending)) {
 // Silence depracation warnings

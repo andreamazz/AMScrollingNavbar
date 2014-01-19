@@ -24,14 +24,7 @@
 	
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
-		
-	// Set the barTintColor (if available). This will determine the overlay that fades in and out upon scrolling.
-    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:60.0/255.0 green:1 blue:150.0/255.0 alpha:1]];
-    }
-	
-	[self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-	
+
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView];
 }
