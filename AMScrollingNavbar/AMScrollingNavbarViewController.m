@@ -143,13 +143,8 @@
 			self.isCollapsed = YES;
 			self.isExpanded = NO;
 		}
-		
+
 		[self updateSizingWithDelta:delta];
-		
-		// Keeps the view's scroll position steady until the navbar is gone
-		if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
-			[(UIScrollView*)self.scrollableView setContentOffset:CGPointMake(((UIScrollView*)self.scrollableView).contentOffset.x, ((UIScrollView*)self.scrollableView).contentOffset.y - delta)];
-		}
 	}
 	
 	if (delta < 0) {
@@ -244,6 +239,13 @@
 		((UIWebView*)self.scrollableView).scrollView.frame = frame;
 	} else {
 		self.scrollableView.frame = frame;
+	}
+	
+	// Keeps the view's scroll position steady until the navbar is gone
+	if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
+		[(UIScrollView*)self.scrollableView setContentOffset:CGPointMake(((UIScrollView*)self.scrollableView).contentOffset.x, ((UIScrollView*)self.scrollableView).contentOffset.y - delta)];
+	} else if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+		[((UIWebView*)self.scrollableView).scrollView setContentOffset:CGPointMake(((UIWebView*)self.scrollableView).scrollView.contentOffset.x, ((UIWebView*)self.scrollableView).scrollView.contentOffset.y - delta)];
 	}
 }
 
