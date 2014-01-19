@@ -18,7 +18,8 @@
 {
 	// Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
-    
+    [self setTitle:@"Demo"];
+	
     // For better behavior set statusbar style to opaque on iOS < 7.0
     if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending)) {
 // Silence depracation warnings
