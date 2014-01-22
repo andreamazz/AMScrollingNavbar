@@ -18,6 +18,7 @@
 @property (assign, nonatomic) BOOL isExpanded;
 @property (assign, nonatomic) BOOL isCompatibilityMode;
 @property (assign, nonatomic) CGFloat deltaLimit;
+@property (assign, nonatomic) CGFloat statusBar;
 @property (assign, nonatomic) CGFloat compatibilityHeight;
 
 @end
@@ -85,11 +86,25 @@
 {
     // Set different values for iPad/iPhone
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.deltaLimit = 24;
-        self.compatibilityHeight = 64;
+		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
+			self.deltaLimit = 44;
+			self.compatibilityHeight = 44;
+			self.statusBar = 0;
+		} else {
+			self.deltaLimit = 24;
+			self.compatibilityHeight = 64;
+			self.statusBar = 20;
+		}
     } else {
-        self.deltaLimit = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
-        self.compatibilityHeight = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
+		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
+			self.deltaLimit = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);;
+			self.compatibilityHeight = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
+			self.statusBar = 0;
+		} else {
+			self.deltaLimit = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
+			self.compatibilityHeight = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
+			self.statusBar = 20;
+		}
     }
 }
 
@@ -169,13 +184,13 @@
 		
 		frame = self.navigationController.navigationBar.frame;
 		
-		if (frame.origin.y - delta > 20) {
-			delta = frame.origin.y - 20;
+		if (frame.origin.y - delta > self.statusBar) {
+			delta = frame.origin.y - self.statusBar;
 		}
 		frame.origin.y = MIN(20, frame.origin.y - delta);
 		self.navigationController.navigationBar.frame = frame;
 		
-		if (frame.origin.y == 20) {
+		if (frame.origin.y == self.statusBar) {
 			self.isExpanded = YES;
 			self.isCollapsed = NO;
 		}
@@ -193,7 +208,7 @@
 		[UIView animateWithDuration:0.2 animations:^{
 			CGRect frame;
 			frame = self.navigationController.navigationBar.frame;
-			CGFloat delta = frame.origin.y - 20;
+			CGFloat delta = frame.origin.y - self.statusBar;
 			frame.origin.y = MIN(20, frame.origin.y - delta);
 			self.navigationController.navigationBar.frame = frame;
 			
@@ -210,7 +225,7 @@
 		[UIView animateWithDuration:0.2 animations:^{
 			CGRect frame;
 			frame = self.navigationController.navigationBar.frame;
-			CGFloat delta = frame.origin.y + 24;
+			CGFloat delta = frame.origin.y + self.deltaLimit;
 			frame.origin.y = MAX(-self.deltaLimit, frame.origin.y - delta);
 			self.navigationController.navigationBar.frame = frame;
 			
