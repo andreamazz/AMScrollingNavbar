@@ -31,6 +31,8 @@
     
 	self.scrollableView = scrollableView;
 	
+	self.scrollingEnabled = YES;
+	
 	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 	[self.panGesture setMaximumNumberOfTouches:1];
 	
@@ -109,8 +111,17 @@
 	return YES;
 }
 
+- (void)setScrollingEnabled:(BOOL)scrollingEnabled
+{
+	_scrollingEnabled = scrollingEnabled;
+	[self showNavbar];
+}
+
 - (void)handlePan:(UIPanGestureRecognizer*)gesture
 {
+	if (self.scrollingEnabled == NO) {
+		return;
+	}
 	CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
 	
 	float delta = self.lastContentOffset - translation.y;

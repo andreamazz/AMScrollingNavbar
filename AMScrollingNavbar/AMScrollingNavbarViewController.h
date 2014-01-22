@@ -35,4 +35,15 @@
  */
 - (void)refreshNavbar;
 
+/**-----------------------------------------------------------------------------
+ * @name AMScrollingNavbarViewController Properties
+ * -----------------------------------------------------------------------------
+ */
+
+/** Enable or disable the scrolling
+ *
+ * Set this property to NO to disable the scrolling of the navbar.
+ */
+@property (nonatomic, assign) BOOL scrollingEnabled;
+
 @end
