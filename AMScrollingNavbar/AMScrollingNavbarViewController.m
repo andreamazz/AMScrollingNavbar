@@ -64,12 +64,29 @@
 	[self.overlay setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
 	[self.navigationController.navigationBar addSubview:self.overlay];
 	[self.overlay setAlpha:0];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(didBecomeActive:)
+												 name:UIApplicationDidBecomeActiveNotification
+											   object:nil];
+}
+
+- (void)didBecomeActive:(id)sender
+{
+	[self showNavbar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	[self showNavbar];
+		NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -110,6 +127,7 @@
 
 - (void)showNavbar
 {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 	if (self.isCollapsed) {
 		CGRect rect = self.scrollableView.frame;
 		rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
