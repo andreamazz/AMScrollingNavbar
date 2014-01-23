@@ -126,12 +126,6 @@
 	return YES;
 }
 
-- (void)setScrollingEnabled:(BOOL)scrollingEnabled
-{
-	_scrollingEnabled = scrollingEnabled;
-	[self showNavbar];
-}
-
 - (void)handlePan:(UIPanGestureRecognizer*)gesture
 {
 	if (self.scrollingEnabled == NO) {
