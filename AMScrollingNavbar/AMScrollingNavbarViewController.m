@@ -80,13 +80,11 @@
 {
 	[super viewWillDisappear:animated];
 	[self showNavbar];
-		NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -127,11 +125,19 @@
 
 - (void)showNavbar
 {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
 	if (self.isCollapsed) {
-		CGRect rect = self.scrollableView.frame;
+		CGRect rect;
+		if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+			rect = ((UIWebView*)self.scrollableView).scrollView.frame;
+		} else {
+			rect = self.scrollableView.frame;
+		}
 		rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
-		self.scrollableView.frame = rect;
+		if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+			((UIWebView*)self.scrollableView).scrollView.frame = rect;
+		} else {
+			self.scrollableView.frame = rect;
+		}
 		[UIView animateWithDuration:0.2 animations:^{
 			self.lastContentOffset = 0;
 			[self scrollWithDelta:-self.compatibilityHeight];

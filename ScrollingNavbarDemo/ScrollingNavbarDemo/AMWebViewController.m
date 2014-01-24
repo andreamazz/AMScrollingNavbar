@@ -8,7 +8,7 @@
 
 #import "AMWebViewController.h"
 
-@interface AMWebViewController ()
+@interface AMWebViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
@@ -33,6 +33,9 @@
 	[self.webView loadHTMLString:html baseURL:nil];
 	
 	[self followScrollView:self.webView];
+	
+	// We need to set self as delegate of the inner scrollview of the webview to override scrollViewShouldScrollToTop 
+	self.webView.scrollView.delegate = self;
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
