@@ -57,12 +57,28 @@
 	[self.overlay setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
 	[self.navigationController.navigationBar addSubview:self.overlay];
 	[self.overlay setAlpha:0];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(didBecomeActive:)
+												 name:UIApplicationDidBecomeActiveNotification
+											   object:nil];
+}
+
+- (void)didBecomeActive:(id)sender
+{
+	[self showNavbar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	[self showNavbar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self refreshNavbar];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

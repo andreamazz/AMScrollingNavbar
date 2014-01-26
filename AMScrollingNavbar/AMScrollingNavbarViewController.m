@@ -64,12 +64,28 @@
 	[self.overlay setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
 	[self.navigationController.navigationBar addSubview:self.overlay];
 	[self.overlay setAlpha:0];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(didBecomeActive:)
+												 name:UIApplicationDidBecomeActiveNotification
+											   object:nil];
+}
+
+- (void)didBecomeActive:(id)sender
+{
+	[self showNavbar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	[self showNavbar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self refreshNavbar];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -111,9 +127,18 @@
 - (void)showNavbar
 {
 	if (self.isCollapsed) {
-		CGRect rect = self.scrollableView.frame;
+		CGRect rect;
+		if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+			rect = ((UIWebView*)self.scrollableView).scrollView.frame;
+		} else {
+			rect = self.scrollableView.frame;
+		}
 		rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
-		self.scrollableView.frame = rect;
+		if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+			((UIWebView*)self.scrollableView).scrollView.frame = rect;
+		} else {
+			self.scrollableView.frame = rect;
+		}
 		[UIView animateWithDuration:0.2 animations:^{
 			self.lastContentOffset = 0;
 			[self scrollWithDelta:-self.compatibilityHeight];
@@ -126,12 +151,6 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
 	return YES;
-}
-
-- (void)setScrollingEnabled:(BOOL)scrollingEnabled
-{
-	_scrollingEnabled = scrollingEnabled;
-	[self showNavbar];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer*)gesture
