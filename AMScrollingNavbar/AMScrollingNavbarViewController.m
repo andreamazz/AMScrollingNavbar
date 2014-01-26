@@ -270,7 +270,7 @@
     frame.origin.y -= delta;
 	frame.size.height += delta;
 	self.scrollableView.superview.frame = frame;
-		
+
 	// Changing the layer's frame avoids UIWebView's glitchiness
 	frame = self.scrollableView.frame;
 	frame.size.height = self.scrollableView.superview.frame.size.height - frame.origin.y;
@@ -281,7 +281,7 @@
 	} else {
 		self.scrollableView.frame = frame;
 	}
-	
+
 	// Keeps the view's scroll position steady until the navbar is gone
 	if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
 		[(UIScrollView*)self.scrollableView setContentOffset:CGPointMake(((UIScrollView*)self.scrollableView).contentOffset.x, ((UIScrollView*)self.scrollableView).contentOffset.y - delta)];
