@@ -8,9 +8,10 @@
 
 #import "AMTableViewController.h"
 
-@interface AMTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AMTableViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray* data;
 
 @end
 
@@ -22,11 +23,20 @@
 	
 	[self setTitle:@"Table View"];
 	
+	self.data = @[@"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"];
+	
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
+	self.edgesForExtendedLayout = UIRectEdgeNone;
 
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+	// Call this after a small delay, or it won't work
+	[self performSelector:@selector(showNavbar) withObject:nil afterDelay:0.2];
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
@@ -42,9 +52,14 @@
     return YES;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"AMWebViewController"] animated:YES];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 20;
+	return [self.data count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,7 +69,7 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Identifier"];
 	}
 	
-	cell.textLabel.text = @[@"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"][arc4random()%4];
+	cell.textLabel.text = self.data[indexPath.row];
 	
 	return cell;
 }

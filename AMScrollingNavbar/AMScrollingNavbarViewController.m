@@ -118,6 +118,8 @@
 			self.lastContentOffset = 0;
 			[self scrollWithDelta:-self.compatibilityHeight];
 		}];
+	} else {
+		[self updateNavbarAlpha:self.compatibilityHeight];
 	}
 }
 
@@ -241,19 +243,9 @@
 {
 	// At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
 	CGRect frame = self.navigationController.navigationBar.frame;
-	
-	// Change the alpha channel of every item on the navbr. The overlay will appear, while the other objects will disappear, and vice versa
-	float alpha = (frame.origin.y + self.deltaLimit) / frame.size.height;
-	[self.overlay setAlpha:1 - alpha];
-	[self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
-		obj.customView.alpha = alpha;
-	}];
-	[self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
-		obj.customView.alpha = alpha;
-	}];
-	self.navigationItem.titleView.alpha = alpha;
-	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
-	
+
+	[self updateNavbarAlpha:delta];
+
 	// Move and expand (or shrink) the superview of the given scrollview
 	frame = self.scrollableView.superview.frame;
     frame.origin.y -= delta;
@@ -277,6 +269,23 @@
 	} else if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
 		[((UIWebView*)self.scrollableView).scrollView setContentOffset:CGPointMake(((UIWebView*)self.scrollableView).scrollView.contentOffset.x, ((UIWebView*)self.scrollableView).scrollView.contentOffset.y - delta)];
 	}
+}
+
+- (void)updateNavbarAlpha:(CGFloat)delta
+{
+	CGRect frame = self.navigationController.navigationBar.frame;
+	
+	// Change the alpha channel of every item on the navbr. The overlay will appear, while the other objects will disappear, and vice versa
+	float alpha = (frame.origin.y + self.deltaLimit) / frame.size.height;
+	[self.overlay setAlpha:1 - alpha];
+	[self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
+		obj.customView.alpha = alpha;
+	}];
+	[self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
+		obj.customView.alpha = alpha;
+	}];
+	self.navigationItem.titleView.alpha = alpha;
+	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
 }
 
 - (void)refreshNavbar
