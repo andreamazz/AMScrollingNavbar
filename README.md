@@ -5,7 +5,9 @@ AMScrollingNavbar
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMScrollingNavbar/badge.png)](http://beta.cocoapods.org/?q=amscrollingnavbar)
 
 Scrollable UINavigationBar that follows the scrolling of a UIScrollView or similar view (e.g. UITableView or UIWebView). 
-It works like the navigation bar in Chrome or Facebook's app for iOS7.
+It works like the navigation bar in Chrome or Facebook's app for iOS7.  
+
+I also wrote about this control in [this article](http://andreamazz.github.io/blog/2014/02/01/amscrollingnavbar-creating-a-cocoapod/)
 
 Screenshot
 --------------------
