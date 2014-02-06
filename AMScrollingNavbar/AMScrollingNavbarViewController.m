@@ -126,25 +126,27 @@
 
 - (void)showNavbar
 {
-	if (self.isCollapsed) {
-		CGRect rect;
-		if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
-			rect = ((UIWebView*)self.scrollableView).scrollView.frame;
+	if (self.scrollableView != nil) {
+		if (self.isCollapsed) {
+			CGRect rect;
+			if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+				rect = ((UIWebView*)self.scrollableView).scrollView.frame;
+			} else {
+				rect = self.scrollableView.frame;
+			}
+			rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
+			if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+				((UIWebView*)self.scrollableView).scrollView.frame = rect;
+			} else {
+				self.scrollableView.frame = rect;
+			}
+			[UIView animateWithDuration:0.2 animations:^{
+				self.lastContentOffset = 0;
+				[self scrollWithDelta:-self.compatibilityHeight];
+			}];
 		} else {
-			rect = self.scrollableView.frame;
+			[self updateNavbarAlpha:self.compatibilityHeight];
 		}
-		rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
-		if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
-			((UIWebView*)self.scrollableView).scrollView.frame = rect;
-		} else {
-			self.scrollableView.frame = rect;
-		}
-		[UIView animateWithDuration:0.2 animations:^{
-			self.lastContentOffset = 0;
-			[self scrollWithDelta:-self.compatibilityHeight];
-		}];
-	} else {
-		[self updateNavbarAlpha:self.compatibilityHeight];
 	}
 }
 
@@ -194,7 +196,7 @@
 			self.isCollapsed = YES;
 			self.isExpanded = NO;
 		}
-
+		
 		[self updateSizingWithDelta:delta];
 	}
 	
@@ -235,7 +237,7 @@
 			
 			self.isExpanded = YES;
 			self.isCollapsed = NO;
-
+			
 			[self updateSizingWithDelta:delta];
 			
 			// This line needs tweaking
@@ -262,26 +264,26 @@
 {
 	// At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
 	CGRect frame = self.navigationController.navigationBar.frame;
-
+	
 	[self updateNavbarAlpha:delta];
-
+	
 	// Move and expand (or shrink) the superview of the given scrollview
 	frame = self.scrollableView.superview.frame;
     frame.origin.y -= delta;
 	frame.size.height += delta;
 	self.scrollableView.superview.frame = frame;
-
+	
 	// Changing the layer's frame avoids UIWebView's glitchiness
 	frame = self.scrollableView.frame;
 	frame.size.height = self.scrollableView.superview.frame.size.height - frame.origin.y;
-
+	
 	// if the scrolling view is a UIWebView, we need to adjust its scrollview's frame.
 	if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
 		((UIWebView*)self.scrollableView).scrollView.frame = frame;
 	} else {
 		self.scrollableView.frame = frame;
 	}
-
+	
 	// Keeps the view's scroll position steady until the navbar is gone
 	if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
 		[(UIScrollView*)self.scrollableView setContentOffset:CGPointMake(((UIScrollView*)self.scrollableView).contentOffset.x, ((UIScrollView*)self.scrollableView).contentOffset.y - delta)];
@@ -309,7 +311,9 @@
 
 - (void)refreshNavbar
 {
-	[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+	if (self.scrollableView != nil) {
+		[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+	}
 }
 
 @end
