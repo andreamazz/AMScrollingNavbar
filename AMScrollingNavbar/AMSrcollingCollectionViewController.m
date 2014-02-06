@@ -105,14 +105,16 @@
 
 - (void)showNavbar
 {
-	if (self.isCollapsed) {
-		CGRect rect = self.scrollableView.frame;
-		rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
-		self.scrollableView.frame = rect;
-		[UIView animateWithDuration:0.2 animations:^{
-			self.lastContentOffset = 0;
-			[self scrollWithDelta:-self.compatibilityHeight];
-		}];
+	if (self.scrollableView != nil) {
+		if (self.isCollapsed) {
+			CGRect rect = self.scrollableView.frame;
+			rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
+			self.scrollableView.frame = rect;
+			[UIView animateWithDuration:0.2 animations:^{
+				self.lastContentOffset = 0;
+				[self scrollWithDelta:-self.compatibilityHeight];
+			}];
+		}
 	}
 }
 
@@ -267,7 +269,9 @@
 
 - (void)refreshNavbar
 {
-	[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+	if (self.scrollableView != nil) {
+		[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+	}
 }
 
 #pragma mark - Collection View data source
