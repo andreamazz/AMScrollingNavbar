@@ -10,8 +10,8 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="AMViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="m9K-Jb-Vlp"/>
-                        <viewControllerLayoutGuide type="bottom" id="A2j-Cf-7Tq"/>
+                        <viewControllerLayoutGuide type="top" id="eWu-oR-Ily"/>
+                        <viewControllerLayoutGuide type="bottom" id="411-wf-bXf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -84,8 +84,8 @@
             <objects>
                 <viewController storyboardIdentifier="AMWebViewController" id="O1y-Qm-vls" customClass="AMWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0h7-tP-emO"/>
-                        <viewControllerLayoutGuide type="bottom" id="xYt-yH-0rx"/>
+                        <viewControllerLayoutGuide type="top" id="pwj-hu-BmS"/>
+                        <viewControllerLayoutGuide type="bottom" id="M1g-wm-WRM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WIv-95-XZ8">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -162,14 +162,14 @@
             <objects>
                 <viewController id="HF4-Yc-LRs" customClass="AMTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LrJ-3P-L8E"/>
-                        <viewControllerLayoutGuide type="bottom" id="PjD-Xt-Ozn"/>
+                        <viewControllerLayoutGuide type="top" id="4v4-jr-kc5"/>
+                        <viewControllerLayoutGuide type="bottom" id="L3f-aS-gHk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DDw-IU-eFA">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="lln-rf-2it">
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lln-rf-2it">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -177,7 +177,7 @@
                                     <outlet property="delegate" destination="HF4-Yc-LRs" id="ibW-LM-cvM"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5DA-Q0-AzK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5DA-Q0-AzK">
                                 <rect key="frame" x="0.0" y="44" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,16 +188,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="PjD-Xt-Ozn" firstAttribute="top" secondItem="5DA-Q0-AzK" secondAttribute="bottom" id="0IS-Mk-2UT"/>
-                            <constraint firstItem="5DA-Q0-AzK" firstAttribute="top" secondItem="lln-rf-2it" secondAttribute="bottom" id="2Cn-4Q-ji4"/>
-                            <constraint firstAttribute="trailing" secondItem="5DA-Q0-AzK" secondAttribute="trailing" id="6sg-jV-u4W"/>
-                            <constraint firstItem="5DA-Q0-AzK" firstAttribute="top" secondItem="lln-rf-2it" secondAttribute="bottom" id="PNg-9h-GeC"/>
-                            <constraint firstAttribute="trailing" secondItem="lln-rf-2it" secondAttribute="trailing" id="WJI-lM-ZdT"/>
-                            <constraint firstItem="lln-rf-2it" firstAttribute="top" secondItem="LrJ-3P-L8E" secondAttribute="bottom" id="e18-Mx-bHQ"/>
-                            <constraint firstItem="5DA-Q0-AzK" firstAttribute="leading" secondItem="DDw-IU-eFA" secondAttribute="leading" id="e51-ay-67i"/>
-                            <constraint firstItem="lln-rf-2it" firstAttribute="leading" secondItem="DDw-IU-eFA" secondAttribute="leading" id="r7c-zj-POC"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W3E-ai-Jk1"/>
                     <connections>
@@ -231,8 +221,8 @@
             <objects>
                 <viewController id="GdZ-en-WlL" customClass="AMScrollViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oHt-vX-cVC"/>
-                        <viewControllerLayoutGuide type="bottom" id="PdF-Eb-wbT"/>
+                        <viewControllerLayoutGuide type="top" id="a87-w3-xMC"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Cv-yy-Inq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QYB-eA-EY5">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>

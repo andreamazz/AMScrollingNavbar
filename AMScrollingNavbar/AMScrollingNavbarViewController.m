@@ -134,7 +134,7 @@
 			} else {
 				rect = self.scrollableView.frame;
 			}
-			rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
+			rect.origin.y = 0;
 			if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
 				((UIWebView*)self.scrollableView).scrollView.frame = rect;
 			} else {

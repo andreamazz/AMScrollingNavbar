@@ -108,7 +108,7 @@
 	if (self.scrollableView != nil) {
 		if (self.isCollapsed) {
 			CGRect rect = self.scrollableView.frame;
-			rect.origin.y = -self.compatibilityHeight; // The magic number (navbar standard size + statusbar)
+			rect.origin.y = 0;
 			self.scrollableView.frame = rect;
 			[UIView animateWithDuration:0.2 animations:^{
 				self.lastContentOffset = 0;
