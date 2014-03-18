@@ -183,6 +183,10 @@
 			return;
 		}
 		
+		if (self.isExpanded) {
+            self.isExpanded = NO;
+        }
+		
 		frame = self.navigationController.navigationBar.frame;
 		
 		if (frame.origin.y - delta < -self.deltaLimit) {
@@ -204,6 +208,10 @@
 		if (self.isExpanded) {
 			return;
 		}
+		
+		if (self.isCollapsed) {
+            self.isCollapsed = NO;
+        }
 		
 		frame = self.navigationController.navigationBar.frame;
 		

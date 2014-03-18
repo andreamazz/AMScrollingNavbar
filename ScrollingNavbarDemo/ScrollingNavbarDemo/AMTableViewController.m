@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray* data;
+@property (strong, nonatomic) UIView *topView;
 
 @end
 
@@ -52,11 +53,6 @@
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	[self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"AMWebViewController"] animated:YES];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return [self.data count];
@@ -72,6 +68,28 @@
 	cell.textLabel.text = self.data[indexPath.row];
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.topView = [[UIView alloc] initWithFrame:self.view.frame];
+	
+    UIButton *dismiss = [[UIButton alloc]initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+    [dismiss setTitle:@"dismiss" forState:UIControlStateNormal];
+    [dismiss addTarget:self
+                action:@selector(doSomething)
+      forControlEvents:UIControlEventTouchUpInside];
+	[dismiss setTintColor:[UIColor blackColor]];
+    [self.topView addSubview:dismiss];
+	[self showNavbar];
+    [self.navigationController.view addSubview:self.topView];
+	
+    [self.topView setAlpha:0.3];
+}
+
+- (void)doSomething
+{
+    [self.topView removeFromSuperview];
 }
 
 @end
