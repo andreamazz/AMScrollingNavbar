@@ -22,19 +22,15 @@ Setup with Cocoapods
 * Import ```AMScrollingNavbar.h``` in your controller's header file
 * Subclass ```AMScrollingNavbar``` in your controller
 
-Setup without Cocoapods
---------------------
-* Clone this repo
-* Add the ```AMScrollingNavbar``` folder to your project
-* Import ```AMScrollingNavbar.h``` in your controller's header file
-* Subclass ```AMScrollingNavbar``` in your controller
-* Start using Cocoapods ;)
-
 Enable the scrolling
 --------------------
 To enable the scrolling effect you simply need to call followScrollView: providing the UIView's instance that will be tracked, like this:
 ```objc
 [self followScrollView:self.scrollView];
+```
+You can also set a delay (in points) for the gesture that reveals the navigation bar.
+```objc
+[self followScrollView:self.scrollView withDelay:60];
 ```
 
 Make sure to have a ```barTintColor``` for your ```UINavigationBar```, or you won't see the fade-in and fade-out effects.
