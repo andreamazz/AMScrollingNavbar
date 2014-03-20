@@ -32,6 +32,8 @@
 
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView];
+	
+	[self refreshNavbar];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar

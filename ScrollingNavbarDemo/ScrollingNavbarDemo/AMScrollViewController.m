@@ -41,7 +41,7 @@
     }
 	
 	// Just call this line to enable the scrolling navbar
-	[self followScrollView:self.scrollView];
+	[self followScrollView:self.scrollView withDelay:60];
 	
 	[self.scrollView setDelegate:self];
 	

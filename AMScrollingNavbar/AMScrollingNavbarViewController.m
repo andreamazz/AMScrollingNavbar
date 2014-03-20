@@ -20,12 +20,19 @@
 @property (assign, nonatomic) CGFloat deltaLimit;
 @property (assign, nonatomic) CGFloat statusBar;
 @property (assign, nonatomic) CGFloat compatibilityHeight;
+@property (nonatomic, assign) float maxDelay;
+@property (nonatomic, assign) float delayDistance;
 
 @end
 
 @implementation AMScrollingNavbarViewController
 
 - (void)followScrollView:(UIView*)scrollableView
+{
+	[self followScrollView:scrollableView withDelay:0];
+}
+
+- (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay
 {
     self.isCompatibilityMode = ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending);
     [self calculateConstants];
@@ -49,7 +56,7 @@
     // Use tintColor instead of barTintColor on iOS < 7
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
         if (!self.navigationController.navigationBar.barTintColor) {
-            NSLog(@"[%s]: %@", __func__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
+            NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
         }
         [self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
     } else {
@@ -57,7 +64,7 @@
     }
 	
 	if ([self.navigationController.navigationBar isTranslucent]) {
-		NSLog(@"[%s]: %@", __func__, @"[AMScrollingNavbarViewController] Warning: the navigation bar should not be translucent");
+		NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: the navigation bar should not be translucent");
 	}
 	
 	[self.overlay setUserInteractionEnabled:NO];
@@ -69,6 +76,9 @@
 											 selector:@selector(didBecomeActive:)
 												 name:UIApplicationDidBecomeActiveNotification
 											   object:nil];
+	
+	self.maxDelay = delay;
+	self.delayDistance = delay;
 }
 
 - (void)didBecomeActive:(id)sender
@@ -160,6 +170,7 @@
 	if (self.scrollingEnabled == NO) {
 		return;
 	}
+
 	CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
 	
 	float delta = self.lastContentOffset - translation.y;
@@ -199,6 +210,7 @@
 		if (frame.origin.y == -self.deltaLimit) {
 			self.isCollapsed = YES;
 			self.isExpanded = NO;
+			self.delayDistance = self.maxDelay;
 		}
 		
 		[self updateSizingWithDelta:delta];
@@ -212,6 +224,12 @@
 		if (self.isCollapsed) {
             self.isCollapsed = NO;
         }
+		
+		self.delayDistance += delta;
+
+		if (self.delayDistance > 0) {
+			return;
+		}
 		
 		frame = self.navigationController.navigationBar.frame;
 		
@@ -247,9 +265,6 @@
 			self.isCollapsed = NO;
 			
 			[self updateSizingWithDelta:delta];
-			
-			// This line needs tweaking
-			// [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y - delta) animated:YES];
 		}];
 	} else {
 		// And back up
@@ -262,6 +277,7 @@
 			
 			self.isExpanded = NO;
 			self.isCollapsed = YES;
+			self.delayDistance = self.maxDelay;
 			
 			[self updateSizingWithDelta:delta];
 		}];
@@ -270,15 +286,15 @@
 
 - (void)updateSizingWithDelta:(CGFloat)delta
 {
-	// At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
-	CGRect frame = self.navigationController.navigationBar.frame;
-	
 	[self updateNavbarAlpha:delta];
 	
+	// At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
+	CGRect frameNav = self.navigationController.navigationBar.frame;
+	
 	// Move and expand (or shrink) the superview of the given scrollview
-	frame = self.scrollableView.superview.frame;
-    frame.origin.y -= delta;
-	frame.size.height += delta;
+	CGRect frame = self.scrollableView.superview.frame;
+    frame.origin.y = frameNav.origin.y + frameNav.size.height;
+	frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
 	self.scrollableView.superview.frame = frame;
 	
 	// Changing the layer's frame avoids UIWebView's glitchiness
