@@ -134,8 +134,9 @@
     }
 }
 
-- (void)showNavbar
+- (void)showNavBarAnimated:(BOOL)animated
 {
+	NSTimeInterval interval = animated ? 0.2 : 0;
 	if (self.scrollableView != nil) {
 		if (self.isCollapsed) {
 			CGRect rect;
@@ -150,7 +151,7 @@
 			} else {
 				self.scrollableView.frame = rect;
 			}
-			[UIView animateWithDuration:0.2 animations:^{
+			[UIView animateWithDuration:interval animations:^{
 				self.lastContentOffset = 0;
 				[self scrollWithDelta:-self.compatibilityHeight];
 			}];
@@ -158,6 +159,11 @@
 			[self updateNavbarAlpha:self.compatibilityHeight];
 		}
 	}
+}
+
+- (void)showNavbar
+{
+	[self showNavBarAnimated:YES];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer

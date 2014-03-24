@@ -37,6 +37,14 @@
  */
 - (void)showNavbar;
 
+/** Navbar slide down
+ *
+ * Manually show the navbar
+ *
+ * @param animated Animates the navbar scrolling
+ */
+- (void)showNavBarAnimated:(BOOL)animated;
+
 /** Navbar refresh
  *
  * Use this method when you manually change the navbar items to re-enable the fadeout
