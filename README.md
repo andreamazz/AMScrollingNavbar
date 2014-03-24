@@ -73,6 +73,10 @@ Call ```[self refreshNavbar]``` whenever you change your navbar items, or they w
 Changelog 
 ==================
 
+0.7
+--------------------
+- Added UIViewController's category. The support for the subclassed version will be dropped in future releases.
+
 0.6
 --------------------
 - Full autolayout support
