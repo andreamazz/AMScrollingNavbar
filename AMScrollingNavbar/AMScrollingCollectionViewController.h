@@ -15,6 +15,16 @@
  */
 
 /** Scrolling init method
+*
+* Enables the scrolling on a generic UIView.
+* Also sets the value (in points) that needs to scroll through beofre the navbar is moved back into scene
+*
+* @param scrollableView The UIView where the scrolling is performed.
+* @param delay The delay of the downward scroll gesture
+*/
+- (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay;
+
+/** Scrolling init method
  *
  * Enables the scrolling on a generic UIView.
  *
@@ -33,4 +43,16 @@
  * Use this method when you manually change the navbar items to re-enable the fadeout
  */
 - (void)refreshNavbar;
+
+/**-----------------------------------------------------------------------------
+ * @name AMScrollingNavbarTableViewController Properties
+ * -----------------------------------------------------------------------------
+ */
+
+/** Enable or disable the scrolling
+ *
+ * Set this property to NO to disable the scrolling of the navbar.
+ */
+@property (nonatomic, assign) BOOL scrollingEnabled;
+
 @end
