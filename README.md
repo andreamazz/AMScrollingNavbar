@@ -19,8 +19,29 @@ Setup with Cocoapods
 * Add ```pod 'AMScrollingNavbar'``` to your Podfile
 * Run ```pod install```
 * Run ```open App.xcworkspace```
+
+Setup as a subclass
+--------------------
 * Import ```AMScrollingNavbar.h``` in your controller's header file
 * Subclass ```AMScrollingNavbar``` in your controller
+
+Setup as a category
+--------------------
+* Import ```UIViewController+ScrollingNavbar.h``` in your controller
+* Implement the two following methods:
+```objc
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[self showNavbar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self refreshNavbar];
+}
+```
 
 Enable the scrolling
 --------------------
