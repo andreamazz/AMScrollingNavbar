@@ -1,31 +1,39 @@
 //
-//  AMScrollingNavbarViewController.m
-//  AMScrollingNavbar
+//  UIViewController+ScrollingNavbar.m
+//  ScrollingNavbarDemo
 //
-//  Created by Andrea on 08/11/13.
-//  Copyright (c) 2013 Andrea Mazzini. All rights reserved.
+//  Created by Andrea on 24/03/14.
+//  Copyright (c) 2014 Andrea Mazzini. All rights reserved.
 //
 
-#import "AMScrollingNavbarViewController.h"
+#import "UIViewController+ScrollingNavbar.h"
+#import <objc/runtime.h>
 
-@interface AMScrollingNavbarViewController () <UIGestureRecognizerDelegate>
+@implementation UIViewController (ScrollingNavbar)
 
-@property (nonatomic, weak)	UIView* scrollableView;
-@property (assign, nonatomic) float lastContentOffset;
-@property (strong, nonatomic) UIPanGestureRecognizer* panGesture;
-@property (strong, nonatomic) UIView* overlay;
-@property (assign, nonatomic) BOOL isCollapsed;
-@property (assign, nonatomic) BOOL isExpanded;
-@property (assign, nonatomic) BOOL isCompatibilityMode;
-@property (assign, nonatomic) CGFloat deltaLimit;
-@property (assign, nonatomic) CGFloat statusBar;
-@property (assign, nonatomic) CGFloat compatibilityHeight;
-@property (nonatomic, assign) float maxDelay;
-@property (nonatomic, assign) float delayDistance;
+- (void)setPanGesture:(UIPanGestureRecognizer*)panGesture {	objc_setAssociatedObject(self, @selector(panGesture), panGesture, OBJC_ASSOCIATION_RETAIN); }
+- (UIPanGestureRecognizer*)panGesture {	return objc_getAssociatedObject(self, @selector(panGesture)); }
 
-@end
+- (void)setScrollableView:(UIView*)scrollableView {	objc_setAssociatedObject(self, @selector(scrollableView), scrollableView, OBJC_ASSOCIATION_RETAIN); }
+- (UIView*)scrollableView {	return objc_getAssociatedObject(self, @selector(scrollableView)); }
 
-@implementation AMScrollingNavbarViewController
+- (void)setOverlay:(UIView*)overlay { objc_setAssociatedObject(self, @selector(overlay), overlay, OBJC_ASSOCIATION_RETAIN); }
+- (UIView*)overlay { return objc_getAssociatedObject(self, @selector(overlay)); }
+
+- (void)setCollapsed:(BOOL)collapsed { objc_setAssociatedObject(self, @selector(collapsed), [NSNumber numberWithBool:collapsed], OBJC_ASSOCIATION_RETAIN); }
+- (BOOL)collapsed {	return [objc_getAssociatedObject(self, @selector(collapsed)) boolValue]; }
+
+- (void)setExpanded:(BOOL)expanded { objc_setAssociatedObject(self, @selector(expanded), [NSNumber numberWithBool:expanded], OBJC_ASSOCIATION_RETAIN); }
+- (BOOL)expanded {	return [objc_getAssociatedObject(self, @selector(expanded)) boolValue]; }
+
+- (void)setLastContentOffset:(float)lastContentOffset { objc_setAssociatedObject(self, @selector(lastContentOffset), [NSNumber numberWithFloat:lastContentOffset], OBJC_ASSOCIATION_RETAIN); }
+- (float)lastContentOffset { return [objc_getAssociatedObject(self, @selector(lastContentOffset)) floatValue]; }
+
+- (void)setMaxDelay:(float)maxDelay { objc_setAssociatedObject(self, @selector(maxDelay), [NSNumber numberWithFloat:maxDelay], OBJC_ASSOCIATION_RETAIN); }
+- (float)maxDelay { return [objc_getAssociatedObject(self, @selector(maxDelay)) floatValue]; }
+
+- (void)setDelayDistance:(float)delayDistance { objc_setAssociatedObject(self, @selector(delayDistance), [NSNumber numberWithFloat:delayDistance], OBJC_ASSOCIATION_RETAIN); }
+- (float)delayDistance { return [objc_getAssociatedObject(self, @selector(delayDistance)) floatValue]; }
 
 - (void)followScrollView:(UIView*)scrollableView
 {
@@ -34,12 +42,7 @@
 
 - (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay
 {
-    self.isCompatibilityMode = ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending);
-    [self calculateConstants];
-    
 	self.scrollableView = scrollableView;
-	
-	self.scrollingEnabled = YES;
 	
 	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 	[self.panGesture setMaximumNumberOfTouches:1];
@@ -86,17 +89,18 @@
 	[self showNavbar];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-	[self showNavbar];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-	[self refreshNavbar];
-}
+// NOTE: you should implement this in your view controller's instance when using this category
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//	[super viewWillDisappear:animated];
+//	[self showNavbar];
+//}
+//
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//	[super viewWillAppear:animated];
+//	[self refreshNavbar];
+//}
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
@@ -104,32 +108,36 @@
 	frame.size.height = self.navigationController.navigationBar.frame.size.height;
 	self.overlay.frame = frame;
     
-    [self calculateConstants]; // Update values depending on orientation
     [self updateSizingWithDelta:0]; // Refresh sizes on rotation
 }
 
-- (void)calculateConstants
+- (float)deltaLimit
 {
-    // Set different values for iPad/iPhone
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-			self.deltaLimit = 44;
-			self.compatibilityHeight = 44;
-			self.statusBar = 0;
-		} else {
-			self.deltaLimit = 24;
-			self.compatibilityHeight = 64;
-			self.statusBar = 20;
-		}
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 24;
     } else {
 		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-			self.deltaLimit = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);;
-			self.compatibilityHeight = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
-			self.statusBar = 0;
+			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
 		} else {
-			self.deltaLimit = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
-			self.compatibilityHeight = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
-			self.statusBar = 20;
+			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
+		}
+    }
+}
+
+- (float)statusBar
+{
+	return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
+}
+
+- (float)compatibilityHeight
+{
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 64;
+    } else {
+		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
+			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
+		} else {
+			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
 		}
     }
 }
@@ -138,7 +146,7 @@
 {
 	NSTimeInterval interval = animated ? 0.2 : 0;
 	if (self.scrollableView != nil) {
-		if (self.isCollapsed) {
+		if (self.collapsed) {
 			CGRect rect;
 			if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
 				rect = ((UIWebView*)self.scrollableView).scrollView.frame;
@@ -171,12 +179,13 @@
 	return YES;
 }
 
+- (void)setScrollingEnabled:(BOOL)enabled
+{
+	self.panGesture.enabled = enabled;
+}
+
 - (void)handlePan:(UIPanGestureRecognizer*)gesture
 {
-	if (self.scrollingEnabled == NO) {
-		return;
-	}
-    
 	CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
 	
 	float delta = self.lastContentOffset - translation.y;
@@ -196,12 +205,12 @@
 	CGRect frame;
 	
 	if (delta > 0) {
-		if (self.isCollapsed) {
+		if (self.collapsed) {
 			return;
 		}
 		
-		if (self.isExpanded) {
-            self.isExpanded = NO;
+		if (self.expanded) {
+            self.expanded = NO;
         }
 		
 		frame = self.navigationController.navigationBar.frame;
@@ -214,8 +223,8 @@
 		self.navigationController.navigationBar.frame = frame;
 		
 		if (frame.origin.y == -self.deltaLimit) {
-			self.isCollapsed = YES;
-			self.isExpanded = NO;
+			self.collapsed = YES;
+			self.expanded = NO;
 			self.delayDistance = self.maxDelay;
 		}
 		
@@ -223,16 +232,16 @@
 	}
 	
 	if (delta < 0) {
-		if (self.isExpanded) {
+		if (self.expanded) {
 			return;
 		}
 		
-		if (self.isCollapsed) {
-            self.isCollapsed = NO;
+		if (self.collapsed) {
+            self.collapsed = NO;
         }
 		
 		self.delayDistance += delta;
-        
+		
 		if (self.delayDistance > 0) {
 			return;
 		}
@@ -246,8 +255,8 @@
 		self.navigationController.navigationBar.frame = frame;
 		
 		if (frame.origin.y == self.statusBar) {
-			self.isExpanded = YES;
-			self.isCollapsed = NO;
+			self.expanded = YES;
+			self.collapsed = NO;
 		}
 		
 		[self updateSizingWithDelta:delta];
@@ -267,8 +276,8 @@
 			frame.origin.y = MIN(20, frame.origin.y - delta);
 			self.navigationController.navigationBar.frame = frame;
 			
-			self.isExpanded = YES;
-			self.isCollapsed = NO;
+			self.expanded = YES;
+			self.collapsed = NO;
 			
 			[self updateSizingWithDelta:delta];
 		}];
@@ -281,8 +290,8 @@
 			frame.origin.y = MAX(-self.deltaLimit, frame.origin.y - delta);
 			self.navigationController.navigationBar.frame = frame;
 			
-			self.isExpanded = NO;
-			self.isCollapsed = YES;
+			self.expanded = NO;
+			self.collapsed = YES;
 			self.delayDistance = self.maxDelay;
 			
 			[self updateSizingWithDelta:delta];

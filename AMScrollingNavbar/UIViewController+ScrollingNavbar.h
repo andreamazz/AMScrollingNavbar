@@ -1,16 +1,15 @@
 //
-//  AMScollingCollectionViewController.h
+//  UIViewController+ScrollingNavbar.h
 //  ScrollingNavbarDemo
 //
-//  Created by David on 28/12/2013.
-//  Copyright (c) 2013 Andrea Mazzini. All rights reserved.
+//  Created by Andrea on 24/03/14.
+//  Copyright (c) 2014 Andrea Mazzini. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@interface UIViewController (ScrollingNavbar) <UIGestureRecognizerDelegate>
 
-@interface AMScrollingCollectionViewController : UICollectionViewController
 /**-----------------------------------------------------------------------------
- * @name AMScrollingNavbarTableViewController
+ * @name UIViewController+ScrollingNavbar
  * -----------------------------------------------------------------------------
  */
 
@@ -52,15 +51,10 @@
  */
 - (void)refreshNavbar;
 
-/**-----------------------------------------------------------------------------
- * @name AMScrollingNavbarTableViewController Properties
- * -----------------------------------------------------------------------------
- */
-
 /** Enable or disable the scrolling
  *
  * Set this property to NO to disable the scrolling of the navbar.
  */
-@property (nonatomic, assign) BOOL scrollingEnabled;
+- (void)setScrollingEnabled:(BOOL)enabled;
 
 @end

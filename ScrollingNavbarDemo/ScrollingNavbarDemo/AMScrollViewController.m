@@ -7,6 +7,7 @@
 //
 
 #import "AMScrollViewController.h"
+#import "UIViewController+ScrollingNavbar.h"
 
 @interface AMScrollViewController () <UIScrollViewDelegate>
 
@@ -47,6 +48,18 @@
 	
 	self.navigationItem.rightBarButtonItem =
 	[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[self showNavbar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self refreshNavbar];
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView

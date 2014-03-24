@@ -16,13 +16,13 @@
  */
 
 /** Scrolling init method
-*
-* Enables the scrolling on a generic UIView.
-* Also sets the value (in points) that needs to scroll through beofre the navbar is moved back into scene
-*
-* @param scrollableView The UIView where the scrolling is performed.
-* @param delay The delay of the downward scroll gesture
-*/
+ *
+ * Enables the scrolling on a generic UIView.
+ * Also sets the value (in points) that needs to scroll through beofre the navbar is moved back into scene
+ *
+ * @param scrollableView The UIView where the scrolling is performed.
+ * @param delay The delay of the downward scroll gesture
+ */
 - (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay;
 
 /** Scrolling init method
