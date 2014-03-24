@@ -39,12 +39,22 @@ Also make sure that you are not using a translucent navigation bar. E.g., in you
 [self.navigationController.navigationBar setTranslucent:NO];
 ```
 
+Set the view constraints
+--------------------
+Make sure to set your scrollview's constraint properly. Please note that the library changes the scrollview's superview frame.
+
+![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbarLayout.png)
+
 Update the navbar fadeout
 --------------------
 Call ```[self refreshNavbar]``` whenever you change your navbar items, or they won't fadeout.
 
 Changelog 
 ==================
+
+0.6
+--------------------
+- Full autolayout support
 
 0.5
 --------------------
