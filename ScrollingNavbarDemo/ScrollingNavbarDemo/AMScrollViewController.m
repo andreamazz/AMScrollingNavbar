@@ -53,7 +53,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-	[self showNavbar];
+	[self showNavBarAnimated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
