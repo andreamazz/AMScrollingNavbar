@@ -7,6 +7,7 @@
 //
 
 #import "AMTableViewController.h"
+#import "UIViewController+ScrollingNavbar.h"
 
 @interface AMTableViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -34,6 +35,13 @@
 	[self followScrollView:self.tableView];
 	
 	[self refreshNavbar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+    NSLog(@"aas");
+	[self showNavBarAnimated:NO];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
