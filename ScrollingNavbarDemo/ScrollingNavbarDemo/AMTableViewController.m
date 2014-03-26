@@ -30,7 +30,7 @@
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
 	self.edgesForExtendedLayout = UIRectEdgeNone;
-
+    
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView];
 	
@@ -40,7 +40,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-    NSLog(@"aas");
 	[self showNavBarAnimated:NO];
 }
 
