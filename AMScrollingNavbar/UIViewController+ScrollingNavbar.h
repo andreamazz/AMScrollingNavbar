@@ -17,6 +17,7 @@
  *
  * Enables the scrolling on a generic UIView.
  * Also sets the value (in points) that needs to scroll through beofre the navbar is moved back into scene
+ * Remember to call showNavbar or showNavBarAnimated: in your viewWillDisappear and refreshNavbar in viewWillAppear.
  *
  * @param scrollableView The UIView where the scrolling is performed.
  * @param delay The delay of the downward scroll gesture
@@ -26,6 +27,7 @@
 /** Scrolling init method
  *
  * Enables the scrolling on a generic UIView.
+ * Remember to call showNavbar or showNavBarAnimated: in your viewWillDisappear and refreshNavbar in viewWillAppear.
  *
  * @param scrollableView The UIView where the scrolling is performed.
  */
@@ -58,3 +60,4 @@
 - (void)setScrollingEnabled:(BOOL)enabled;
 
 @end
+

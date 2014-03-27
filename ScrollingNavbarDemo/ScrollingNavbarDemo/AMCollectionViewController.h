@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AMScrollingCollectionViewController.h"
 
-@interface AMCollectionViewController : AMScrollingCollectionViewController
+@interface AMCollectionViewController : UICollectionViewController
 
 @end

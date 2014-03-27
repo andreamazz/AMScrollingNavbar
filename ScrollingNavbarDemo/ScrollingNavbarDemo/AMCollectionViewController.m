@@ -7,6 +7,7 @@
 //
 
 #import "AMCollectionViewController.h"
+#import "UIViewController+ScrollingNavbar.h"
 
 @interface AMCollectionViewController ()
 
@@ -30,7 +31,14 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-	[super viewWillDisappear:NO];
+	[super viewWillDisappear:animated];
+	[self showNavBarAnimated:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self refreshNavbar];
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView

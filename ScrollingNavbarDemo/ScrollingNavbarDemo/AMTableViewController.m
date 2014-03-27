@@ -43,6 +43,12 @@
 	[self showNavBarAnimated:NO];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self refreshNavbar];
+}
+
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
 	// Call this after a small delay, or it won't work

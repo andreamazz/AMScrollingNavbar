@@ -9,6 +9,8 @@
 #import "UIViewController+ScrollingNavbar.h"
 #import <objc/runtime.h>
 
+#define IOS7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
 @implementation UIViewController (ScrollingNavbar)
 
 - (void)setPanGesture:(UIPanGestureRecognizer*)panGesture {	objc_setAssociatedObject(self, @selector(panGesture), panGesture, OBJC_ASSOCIATION_RETAIN); }
@@ -57,7 +59,7 @@
 	self.overlay = [[UIView alloc] initWithFrame:frame];
     
     // Use tintColor instead of barTintColor on iOS < 7
-    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+    if (IOS7_OR_LATER) {
         if (!self.navigationController.navigationBar.barTintColor) {
             NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
         }
@@ -89,26 +91,13 @@
 	[self showNavbar];
 }
 
-// NOTE: you should implement this in your view controller's instance when using this category
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//	[super viewWillDisappear:animated];
-//	[self showNavbar];
-//}
-//
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//	[super viewWillAppear:animated];
-//	[self refreshNavbar];
-//}
-
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     CGRect frame = self.overlay.frame;
 	frame.size.height = self.navigationController.navigationBar.frame.size.height;
 	self.overlay.frame = frame;
     
-    [self updateSizingWithDelta:0]; // Refresh sizes on rotation
+    [self updateSizingWithDelta:0];
 }
 
 - (float)deltaLimit
@@ -119,17 +108,25 @@
 		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
 			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
 		} else {
-			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
+            if (IOS7_OR_LATER) {
+                return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
+            } else {
+                return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 12);
+            }
 		}
     }
 }
 
 - (float)statusBar
 {
-	return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
+    if (IOS7_OR_LATER) {
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
+    } else {
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 0;
+    }
 }
 
-- (float)compatibilityHeight
+- (float)navbarHeight
 {
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 64;
@@ -161,10 +158,10 @@
 			}
 			[UIView animateWithDuration:interval animations:^{
 				self.lastContentOffset = 0;
-				[self scrollWithDelta:-self.compatibilityHeight];
+				[self scrollWithDelta:-self.navbarHeight];
 			}];
 		} else {
-			[self updateNavbarAlpha:self.compatibilityHeight];
+			[self updateNavbarAlpha:self.navbarHeight];
 		}
 	}
 }
@@ -308,7 +305,11 @@
 	
 	// Move and expand (or shrink) the superview of the given scrollview
 	CGRect frame = self.scrollableView.superview.frame;
-    frame.origin.y = frameNav.origin.y + frameNav.size.height;
+    if (IOS7_OR_LATER) {
+        frame.origin.y = frameNav.origin.y + frameNav.size.height;
+    } else {
+        frame.origin.y = frameNav.origin.y;
+    }
 	frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
 	self.scrollableView.superview.frame = frame;
 }

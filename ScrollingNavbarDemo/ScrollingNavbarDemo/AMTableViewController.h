@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AMScrollingNavbarViewController.h"
 
 @interface AMTableViewController : UIViewController
 
