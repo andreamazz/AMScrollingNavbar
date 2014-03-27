@@ -14,26 +14,21 @@ Screenshot
 --------------------
 ![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbar3.gif)
 
-Setup with Cocoapods
+Getting Started
+=================
+
+Setup
 --------------------
-* Add ```pod 'AMScrollingNavbar'``` to your Podfile
+* Add ```pod 'AMScrollingNavbar'``` to your [Podfile](http://cocoapods.org/)
 * Run ```pod install```
 * Run ```open App.xcworkspace```
-
-Setup as a subclass
---------------------
-* Import ```AMScrollingNavbar.h``` in your controller's header file
-* Subclass ```AMScrollingNavbar``` in your controller
-
-Setup as a category
---------------------
 * Import ```UIViewController+ScrollingNavbar.h``` in your controller
 * Implement the two following methods:
 ```objc
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-	[self showNavbar];
+	[self showNavBarAnimated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,6 +67,12 @@ Call ```[self refreshNavbar]``` whenever you change your navbar items, or they w
 
 Changelog 
 ==================
+
+1.0
+--------------------
+- Dropped support to the subclass implementation
+- Improved iOS6 compatibility
+- Added `stopFollowingScrollView`
 
 0.7
 --------------------

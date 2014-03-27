@@ -53,6 +53,12 @@
  */
 - (void)refreshNavbar;
 
+/** Remove the scrollview tracking
+ *
+ * Use this method to stop following the navbar
+ */
+- (void)stopFollowingScrollView;
+
 /** Enable or disable the scrolling
  *
  * Set this property to NO to disable the scrolling of the navbar.

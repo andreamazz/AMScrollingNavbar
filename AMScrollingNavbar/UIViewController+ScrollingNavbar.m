@@ -86,6 +86,16 @@
 	self.delayDistance = delay;
 }
 
+- (void)stopFollowingScrollView
+{
+    [self showNavBarAnimated:NO];
+    [self.scrollableView removeGestureRecognizer:self.panGesture];
+    [self.overlay removeFromSuperview];
+    self.overlay = nil;
+    self.scrollableView = nil;
+    self.panGesture = nil;
+}
+
 - (void)didBecomeActive:(id)sender
 {
 	[self showNavbar];
