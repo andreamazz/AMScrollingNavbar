@@ -45,12 +45,6 @@
 	[self showNavBarAnimated:NO];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-	[self refreshNavbar];
-}
-
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
 	// This enables the user to scroll down the navbar by tapping the status bar.

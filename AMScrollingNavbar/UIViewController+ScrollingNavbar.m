@@ -37,6 +37,7 @@
 - (void)setDelayDistance:(float)delayDistance { objc_setAssociatedObject(self, @selector(delayDistance), [NSNumber numberWithFloat:delayDistance], OBJC_ASSOCIATION_RETAIN); }
 - (float)delayDistance { return [objc_getAssociatedObject(self, @selector(delayDistance)) floatValue]; }
 
+
 - (void)followScrollView:(UIView*)scrollableView
 {
 	[self followScrollView:scrollableView withDelay:0];
@@ -209,19 +210,20 @@
 
 - (void)scrollWithDelta:(CGFloat)delta
 {
-	CGRect frame;
+	CGRect frame = self.navigationController.navigationBar.frame;
 	
 	if (delta > 0) {
 		if (self.collapsed) {
 			return;
 		}
-		
+        // Prevents the navbar from moving during the 'rubberband' scroll
+        if ([self contentoffset].y < 0) {
+            return;
+        }
 		if (self.expanded) {
             self.expanded = NO;
         }
-		
-		frame = self.navigationController.navigationBar.frame;
-		
+
 		if (frame.origin.y - delta < -self.deltaLimit) {
 			delta = frame.origin.y + self.deltaLimit;
 		}
@@ -234,27 +236,28 @@
 			self.expanded = NO;
 			self.delayDistance = self.maxDelay;
 		}
-		
-		[self updateSizingWithDelta:delta];
+        
+        [self updateSizingWithDelta:delta];
+        [self restoreContentoffset:delta];
 	}
 	
 	if (delta < 0) {
 		if (self.expanded) {
 			return;
 		}
-		
+        // Prevents the navbar from moving during the 'rubberband' scroll
+        if ([self contentoffset].y + self.scrollableView.frame.size.height > [self contentSize].height) {
+            return;
+        }
 		if (self.collapsed) {
             self.collapsed = NO;
         }
 		
 		self.delayDistance += delta;
-		
 		if (self.delayDistance > 0) {
 			return;
 		}
-		
-		frame = self.navigationController.navigationBar.frame;
-		
+				
 		if (frame.origin.y - delta > self.statusBar) {
 			delta = frame.origin.y - self.statusBar;
 		}
@@ -265,9 +268,38 @@
 			self.expanded = YES;
 			self.collapsed = NO;
 		}
-		
-		[self updateSizingWithDelta:delta];
+        
+        [self updateSizingWithDelta:delta];
+        [self restoreContentoffset:delta];
 	}
+}
+
+- (UIScrollView*)scrollView
+{
+    UIScrollView* scroll;
+    if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
+        scroll = [(UIWebView*)self.scrollableView scrollView];
+    } else if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
+        scroll = (UIScrollView*)self.scrollableView;
+    }
+    return scroll;
+}
+
+- (void)restoreContentoffset:(float)delta
+{
+    // Hold the scroll steady until the navbar appears/disappears
+    CGPoint offset = [[self scrollView] contentOffset];
+    [[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta}];
+}
+
+- (CGPoint)contentoffset
+{
+    return [[self scrollView] contentOffset];
+}
+
+- (CGSize)contentSize
+{
+    return [[self scrollView] contentSize];
 }
 
 - (void)checkForPartialScroll
@@ -309,7 +341,7 @@
 - (void)updateSizingWithDelta:(CGFloat)delta
 {
 	[self updateNavbarAlpha:delta];
-	
+
 	// At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
 	CGRect frameNav = self.navigationController.navigationBar.frame;
 	
@@ -328,6 +360,10 @@
 {
 	CGRect frame = self.navigationController.navigationBar.frame;
 	
+    if (self.scrollableView != nil) {
+		[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+	}
+    
 	// Change the alpha channel of every item on the navbr. The overlay will appear, while the other objects will disappear, and vice versa
 	float alpha = (frame.origin.y + self.deltaLimit) / frame.size.height;
 	[self.overlay setAlpha:1 - alpha];
@@ -339,13 +375,6 @@
 	}];
 	self.navigationItem.titleView.alpha = alpha;
 	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
-}
-
-- (void)refreshNavbar
-{
-	if (self.scrollableView != nil) {
-		[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
-	}
 }
 
 @end

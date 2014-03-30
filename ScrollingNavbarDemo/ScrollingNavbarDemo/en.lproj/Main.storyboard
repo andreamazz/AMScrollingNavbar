@@ -187,6 +187,9 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Iqn-LP-PSU"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="HF4-Yc-LRs" id="RMS-aL-2pX"/>
                                     <outlet property="delegate" destination="HF4-Yc-LRs" id="Ry6-eF-kDX"/>

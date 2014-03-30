@@ -47,12 +47,6 @@
  */
 - (void)showNavBarAnimated:(BOOL)animated;
 
-/** Navbar refresh
- *
- * Use this method when you manually change the navbar items to re-enable the fadeout
- */
-- (void)refreshNavbar;
-
 /** Remove the scrollview tracking
  *
  * Use this method to stop following the navbar

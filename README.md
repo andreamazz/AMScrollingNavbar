@@ -31,11 +31,6 @@ Setup
 	[self showNavBarAnimated:NO];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-	[self refreshNavbar];
-}
 ```
 
 Enable the scrolling
@@ -61,9 +56,6 @@ Make sure to set your scrollview's constraint properly. Please note that the lib
 
 ![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbarLayout.png)
 
-Update the navbar fadeout
---------------------
-Call ```[self refreshNavbar]``` whenever you change your navbar items, or they won't fadeout.
 
 Changelog 
 ==================
@@ -73,6 +65,7 @@ Changelog
 - Dropped support to the subclass implementation
 - Improved iOS6 compatibility
 - Added `stopFollowingScrollView`
+- Removed `refreshNavbar`
 
 0.7
 --------------------
