@@ -370,9 +370,11 @@
 	[self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
 		obj.customView.alpha = alpha;
 	}];
+    self.navigationItem.leftBarButtonItem.customView.alpha = alpha;
 	[self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
 		obj.customView.alpha = alpha;
 	}];
+    self.navigationItem.rightBarButtonItem.customView.alpha = alpha;
 	self.navigationItem.titleView.alpha = alpha;
 	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
 }
