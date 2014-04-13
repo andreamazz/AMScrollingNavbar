@@ -214,8 +214,10 @@
 	
 	if (delta > 0) {
 		if (self.collapsed) {
+            [[self scrollView] setShowsVerticalScrollIndicator:YES];
 			return;
 		}
+        
         // Prevents the navbar from moving during the 'rubberband' scroll
         if ([self contentoffset].y < 0) {
             return;
@@ -237,12 +239,15 @@
 			self.delayDistance = self.maxDelay;
 		}
         
+        [[self scrollView] setShowsVerticalScrollIndicator:NO];
+        
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
 	}
 	
 	if (delta < 0) {
 		if (self.expanded) {
+            [[self scrollView] setShowsVerticalScrollIndicator:YES];
 			return;
 		}
         // Prevents the navbar from moving during the 'rubberband' scroll
@@ -268,6 +273,8 @@
 			self.expanded = YES;
 			self.collapsed = NO;
 		}
+        
+        [[self scrollView] setShowsVerticalScrollIndicator:NO];
         
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
