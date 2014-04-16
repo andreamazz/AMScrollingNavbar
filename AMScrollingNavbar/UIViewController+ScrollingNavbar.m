@@ -9,7 +9,7 @@
 #import "UIViewController+ScrollingNavbar.h"
 #import <objc/runtime.h>
 
-#define IOS7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define IOS7_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 @implementation UIViewController (ScrollingNavbar)
 
@@ -155,18 +155,9 @@
 	NSTimeInterval interval = animated ? 0.2 : 0;
 	if (self.scrollableView != nil) {
 		if (self.collapsed) {
-			CGRect rect;
-			if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
-				rect = ((UIWebView*)self.scrollableView).scrollView.frame;
-			} else {
-				rect = self.scrollableView.frame;
-			}
+			CGRect rect = [self scrollView].frame;
 			rect.origin.y = 0;
-			if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
-				((UIWebView*)self.scrollableView).scrollView.frame = rect;
-			} else {
-				self.scrollableView.frame = rect;
-			}
+            [self scrollView].frame = rect;
 			[UIView animateWithDuration:interval animations:^{
 				self.lastContentOffset = 0;
 				[self scrollWithDelta:-self.navbarHeight];
@@ -214,8 +205,10 @@
 	
 	if (delta > 0) {
 		if (self.collapsed) {
+            [[self scrollView] setShowsVerticalScrollIndicator:YES];
 			return;
 		}
+        
         // Prevents the navbar from moving during the 'rubberband' scroll
         if ([self contentoffset].y < 0) {
             return;
@@ -237,12 +230,15 @@
 			self.delayDistance = self.maxDelay;
 		}
         
+        [[self scrollView] setShowsVerticalScrollIndicator:NO];
+        
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
 	}
 	
 	if (delta < 0) {
 		if (self.expanded) {
+            [[self scrollView] setShowsVerticalScrollIndicator:YES];
 			return;
 		}
         // Prevents the navbar from moving during the 'rubberband' scroll
@@ -268,6 +264,8 @@
 			self.expanded = YES;
 			self.collapsed = NO;
 		}
+        
+        [[self scrollView] setShowsVerticalScrollIndicator:NO];
         
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];

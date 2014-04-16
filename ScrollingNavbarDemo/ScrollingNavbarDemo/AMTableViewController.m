@@ -32,11 +32,13 @@
     
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView];
+	
+	[self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 44, 0)];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-	[super viewWillDisappear:animated];
+	[super viewDidDisappear:animated];
 	[self showNavBarAnimated:NO];
 }
 
@@ -49,7 +51,7 @@
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
 	// This enables the user to scroll down the navbar by tapping the status bar.
-	[self showNavbar];
+	[self performSelector:@selector(showNavbar) withObject:nil afterDelay:0.1];
 	
 	return YES;
 }
