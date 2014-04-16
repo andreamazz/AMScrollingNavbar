@@ -12,7 +12,7 @@ I also wrote about this control in [this article](http://andreamazz.github.io/bl
 
 Screenshot
 --------------------
-![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbar3.gif)
+![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/screenshot.gif)
 
 Getting Started
 =================
@@ -54,7 +54,7 @@ Set the view constraints
 --------------------
 Make sure to set your scrollview's constraint properly. Please note that the library changes the scrollview's superview frame.
 
-![AMScrollingNavbar](http://www.eflatgames.com/github/AMScrollingNavbarLayout.png)
+![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/constraint.png)
 
 
 Changelog 
