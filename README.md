@@ -45,7 +45,7 @@ You can also set a delay (in points) for the gesture that reveals the navigation
 ```
 
 Make sure to have a ```barTintColor``` for your ```UINavigationBar```, or you won't see the fade-in and fade-out effects.
-Also make sure that you are cnot using a translucent navigation bar. E.g., in your controller:
+Also make sure that you are not using a translucent navigation bar. E.g., in your controller:
 ```objc
 [self.navigationController.navigationBar setTranslucent:NO];
 ```
