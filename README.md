@@ -54,7 +54,7 @@ Set the view constraints
 --------------------
 Make sure to set your scrollview's constraint properly. Please note that the library changes the scrollview's superview frame.
 
-![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/constraint.png)
+![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/constraints.png)
 
 
 Changelog 
