@@ -56,6 +56,9 @@ Make sure to set your scrollview's constraint properly. Please note that the lib
 
 ![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/constraints.png)
 
+Quick Setup Video
+--------------------
+You can find a video with the full setup [here](https://vimeo.com/92721470)
 
 Changelog 
 ==================
