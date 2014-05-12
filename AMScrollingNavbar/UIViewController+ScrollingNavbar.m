@@ -241,10 +241,7 @@
             [[self scrollView] setShowsVerticalScrollIndicator:YES];
 			return;
 		}
-        // Prevents the navbar from moving during the 'rubberband' scroll
-        if ([self contentoffset].y + self.scrollableView.frame.size.height > [self contentSize].height) {
-            return;
-        }
+
 		if (self.collapsed) {
             self.collapsed = NO;
         }
