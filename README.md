@@ -56,73 +56,32 @@ Make sure to set your scrollview's constraint properly. Please note that the lib
 
 ![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/constraints.png)
 
-
-Changelog 
-==================
-
-1.0
+Quick Setup Video
 --------------------
-- Dropped support to the subclass implementation
-- Improved iOS6 compatibility
-- Added `stopFollowingScrollView`
-- Removed `refreshNavbar`
-
-0.7
---------------------
-- Added UIViewController's category. The support for the subclassed version will be dropped in future releases.
-
-0.6
---------------------
-- Full autolayout support
-
-0.5
---------------------
-- Enabled UIWebView support
-- Minor fixes
-
-0.4
---------------------
-- Added iOS5+ support. Thanks to [xzenon](https://github.com/xzenon)
-
-0.3
---------------------
-- Added ```showNavbar```
-- Fixes
-
-0.2
---------------------
-- Added support for generic UIViews
-
-0.1
---------------------
-- Initial Version.
-
-TODO
---------------------
-* Needs testing
+You can find a video with the full setup [here](https://vimeo.com/92721470)
 
 MIT License
 --------------------
-The MIT License (MIT)
+    The MIT License (MIT)
 
-Copyright (c) 2013 Andrea Mazzini
+    Copyright (c) 2013 Andrea Mazzini
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+    Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the "Software"), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andreamazz/amscrollingnavbar/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
