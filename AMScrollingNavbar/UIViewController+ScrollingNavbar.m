@@ -278,7 +278,10 @@
 	// Hold the scroll steady until the navbar appears/disappears
 	CGPoint offset = [[self scrollView] contentOffset];
 	
-	if ([self scrollView].translatesAutoresizingMaskIntoConstraints) {
+	if (
+		[[self scrollView] respondsToSelector:@selector(translatesAutoresizingMaskIntoConstraints)] &&
+		[self scrollView].translatesAutoresizingMaskIntoConstraints
+		) {
 		[[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta}];
 	} else {
 		if (delta > 0) {
