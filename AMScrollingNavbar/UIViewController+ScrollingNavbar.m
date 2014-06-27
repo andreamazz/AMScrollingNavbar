@@ -345,6 +345,11 @@
 	// At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
 	CGRect frameNav = self.navigationController.navigationBar.frame;
 	
+	CGRect mainBounds = [[UIScreen mainScreen] bounds]; // portrait bounds
+	if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+		mainBounds.size = CGSizeMake(mainBounds.size.height, mainBounds.size.width); // landscape bounds
+	}
+	
 	// Move and expand (or shrink) the superview of the given scrollview
 	CGRect frame = self.scrollableView.superview.frame;
 	if (IOS7_OR_LATER) {
@@ -353,9 +358,9 @@
 		frame.origin.y = frameNav.origin.y - [self statusBar];
 	}
 	if (IOS7_OR_LATER) {
-		frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
+		frame.size.height = mainBounds.size.height - frame.origin.y;
 	} else {
-		frame.size.height = [UIScreen mainScreen].bounds.size.height - [self statusBar];
+		frame.size.height = mainBounds.size.height - [self statusBar];
 	}
 	self.scrollableView.superview.frame = frame;
 }
