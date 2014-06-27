@@ -18,20 +18,20 @@
 {
 	// Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
-    [self setTitle:@"Demo"];
+	[self setTitle:@"Demo"];
 	
 	if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-        [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
-    }
+		[self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
+	}
 	
-    // For better behavior set statusbar style to opaque on iOS < 7.0
-    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending)) {
-// Silence depracation warnings
+	// For better behavior set statusbar style to opaque on iOS < 7.0
+	if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending)) {
+// Silence deprecation warnings
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 #pragma clang diagnostic pop
-    }
+	}
 }
 
 @end

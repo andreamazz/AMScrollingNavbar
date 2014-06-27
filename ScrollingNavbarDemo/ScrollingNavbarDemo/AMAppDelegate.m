@@ -22,7 +22,7 @@
 		[[UINavigationBar appearance] setTitleTextAttributes:attributes];
 	}
 
-    return YES;
+	return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

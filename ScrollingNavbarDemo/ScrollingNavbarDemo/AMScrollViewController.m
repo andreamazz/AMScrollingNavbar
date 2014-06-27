@@ -37,9 +37,9 @@
 	[self.scrollView setContentSize:CGSizeMake(320, 840)];
 	
 	// Set the barTintColor (if available). This will determine the overlay that fades in and out upon scrolling.
-    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-        [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
-    }
+	if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+		[self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
+	}
 	
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.scrollView withDelay:60];

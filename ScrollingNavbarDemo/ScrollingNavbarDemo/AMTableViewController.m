@@ -28,9 +28,9 @@
 	
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+	if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+		self.edgesForExtendedLayout = UIRectEdgeNone;
+	}
 
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView];
@@ -58,7 +58,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    return YES;
+	return YES;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
