@@ -36,6 +36,11 @@
 	[self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 44, 0)];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self showNavBarAnimated:NO];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];

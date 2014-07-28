@@ -352,6 +352,8 @@
     }
 	frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
 	self.scrollableView.superview.frame = frame;
+    
+    [self.view setNeedsLayout];
 }
 
 - (void)updateNavbarAlpha:(CGFloat)delta
