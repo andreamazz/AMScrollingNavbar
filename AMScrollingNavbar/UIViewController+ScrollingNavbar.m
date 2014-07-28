@@ -119,11 +119,7 @@
 		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
 			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
 		} else {
-            if (IOS7_OR_LATER) {
-                return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
-            } else {
-                return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 12);
-            }
+            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
 		}
     }
 }
@@ -133,7 +129,7 @@
     if (IOS7_OR_LATER) {
         return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
     } else {
-        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 0;
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
     }
 }
 
@@ -205,7 +201,6 @@
 	
 	if (delta > 0) {
 		if (self.collapsed) {
-            [[self scrollView] setShowsVerticalScrollIndicator:YES];
 			return;
 		}
         
@@ -230,15 +225,12 @@
 			self.delayDistance = self.maxDelay;
 		}
         
-        [[self scrollView] setShowsVerticalScrollIndicator:NO];
-        
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
 	}
 	
 	if (delta < 0) {
 		if (self.expanded) {
-            [[self scrollView] setShowsVerticalScrollIndicator:YES];
 			return;
 		}
         // Prevents the navbar from moving during the 'rubberband' scroll
@@ -265,8 +257,6 @@
 			self.collapsed = NO;
 		}
         
-        [[self scrollView] setShowsVerticalScrollIndicator:NO];
-        
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
 	}
@@ -287,7 +277,16 @@
 {
     // Hold the scroll steady until the navbar appears/disappears
     CGPoint offset = [[self scrollView] contentOffset];
-    [[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta}];
+    
+    if ([self scrollView].translatesAutoresizingMaskIntoConstraints) {
+        [[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta}];
+    } else {
+        if (delta > 0) {
+            [[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta - 1}];
+        } else {
+            [[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta + 1}];
+        }
+    }
 }
 
 - (CGPoint)contentoffset
@@ -348,9 +347,13 @@
     if (IOS7_OR_LATER) {
         frame.origin.y = frameNav.origin.y + frameNav.size.height;
     } else {
-        frame.origin.y = frameNav.origin.y;
+        frame.origin.y = frameNav.origin.y - [self statusBar];
     }
-	frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
+    if (IOS7_OR_LATER) {
+        frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
+    } else {
+        frame.size.height = [UIScreen mainScreen].bounds.size.height - [self statusBar];
+    }
 	self.scrollableView.superview.frame = frame;
     
     [self.view setNeedsLayout];
