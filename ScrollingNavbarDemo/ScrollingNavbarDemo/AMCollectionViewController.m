@@ -17,13 +17,13 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	
 	[self setTitle:@"Table View"];
 	
 	[self.collectionView setDelegate:self];
 	[self.collectionView setDataSource:self];
-    
+	
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.collectionView];
 
@@ -45,18 +45,18 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+	return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 40;
+	return 40;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"exampleCell" forIndexPath:indexPath];
-    return cell;
+	UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"exampleCell" forIndexPath:indexPath];
+	return cell;
 }
 
 @end
