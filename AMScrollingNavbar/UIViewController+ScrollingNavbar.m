@@ -235,7 +235,9 @@
 		}
         // Prevents the navbar from moving during the 'rubberband' scroll
         if ([self contentoffset].y + self.scrollableView.frame.size.height > [self contentSize].height) {
-            return;
+            if (self.scrollableView.frame.size.height < [self contentSize].height) { // Only if the content is big enough
+                return;
+            }
         }
 		if (self.collapsed) {
             self.collapsed = NO;
