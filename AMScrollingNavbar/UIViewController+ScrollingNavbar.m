@@ -59,15 +59,18 @@
 	frame.origin = CGPointZero;
 	self.overlay = [[UIView alloc] initWithFrame:frame];
     
-    // Use tintColor instead of barTintColor on iOS < 7
-    if (IOS7_OR_LATER) {
-        if (!self.navigationController.navigationBar.barTintColor) {
-            NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
-        }
-        [self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
+  // Use tintColor instead of barTintColor on iOS < 7
+  if (IOS7_OR_LATER) {
+    if (self.navigationController.navigationBar.barTintColor) {
+      [self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
+    } else if ([UINavigationBar appearance].barTintColor) {
+      [self.overlay setBackgroundColor:[UINavigationBar appearance].barTintColor];
     } else {
-        [self.overlay setBackgroundColor:self.navigationController.navigationBar.tintColor];
+      NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
     }
+  } else {
+    [self.overlay setBackgroundColor:self.navigationController.navigationBar.tintColor];
+  }
 	
 	if ([self.navigationController.navigationBar isTranslucent]) {
 		NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: the navigation bar should not be translucent");
@@ -235,7 +238,9 @@
 		}
         // Prevents the navbar from moving during the 'rubberband' scroll
         if ([self contentoffset].y + self.scrollableView.frame.size.height > [self contentSize].height) {
-            return;
+            if (self.scrollableView.frame.size.height < [self contentSize].height) { // Only if the content is big enough
+                return;
+            }
         }
 		if (self.collapsed) {
             self.collapsed = NO;
@@ -355,7 +360,7 @@
         frame.size.height = [UIScreen mainScreen].bounds.size.height - [self statusBar];
     }
 	self.scrollableView.superview.frame = frame;
-    
+    self.scrollableView.frame = self.scrollableView.superview.bounds;
     [self.view setNeedsLayout];
 }
 
