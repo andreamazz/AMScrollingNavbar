@@ -24,7 +24,7 @@
 	
 	[self setTitle:@"Table View"];
 	
-	self.data = @[@"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"];
+    self.data = @[@"Awesome content", @"Great content"]; //, @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"];
 	
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
@@ -34,6 +34,9 @@
 
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView];
+    
+    [self setShouldScrollWhenContentFits:YES];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated

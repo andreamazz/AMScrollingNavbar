@@ -59,5 +59,12 @@
  */
 - (void)setScrollingEnabled:(BOOL)enabled;
 
+/** Enable or disable the scrolling when the content size is smaller than the bounds
+ *
+ * Set this property to YES to enable the scrolling of the navbar even when the
+ * content size of the scroll view is smaller than its height.
+ */
+- (void)setShouldScrollWhenContentFits:(BOOL)enabled;
+
 @end
 

@@ -37,6 +37,9 @@
 - (void)setDelayDistance:(float)delayDistance { objc_setAssociatedObject(self, @selector(delayDistance), [NSNumber numberWithFloat:delayDistance], OBJC_ASSOCIATION_RETAIN); }
 - (float)delayDistance { return [objc_getAssociatedObject(self, @selector(delayDistance)) floatValue]; }
 
+- (void)setShouldScrollWhenContentFits:(BOOL)shouldScrollWhenContentFits { objc_setAssociatedObject(self, @selector(shouldScrollWhenContentFits), [NSNumber numberWithBool:shouldScrollWhenContentFits], OBJC_ASSOCIATION_RETAIN); }
+- (BOOL)shouldScrollWhenContentFits {	return [objc_getAssociatedObject(self, @selector(shouldScrollWhenContentFits)) boolValue]; }
+
 
 - (void)followScrollView:(UIView*)scrollableView
 {
@@ -88,6 +91,7 @@
 	
 	self.maxDelay = delay;
 	self.delayDistance = delay;
+    self.shouldScrollWhenContentFits = NO;
 }
 
 - (void)stopFollowingScrollView
@@ -184,18 +188,43 @@
 
 - (void)handlePan:(UIPanGestureRecognizer*)gesture
 {
+    if (!self.shouldScrollWhenContentFits) {
+        if (self.scrollableView.frame.size.height >= [self contentSize].height) {
+            return;
+        }
+    }
+    
 	CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
 	
 	float delta = self.lastContentOffset - translation.y;
-	self.lastContentOffset = translation.y;
-	
-	[self scrollWithDelta:delta];
-	
-	if ([gesture state] == UIGestureRecognizerStateEnded) {
-		// Reset the nav bar if the scroll is partial
-		self.lastContentOffset = 0;
-		[self checkForPartialScroll];
-	}
+    self.lastContentOffset = translation.y;
+
+    if ([self checkRubberbanding:delta]) {
+        [self scrollWithDelta:delta];
+    }
+    
+    if ([gesture state] == UIGestureRecognizerStateEnded) {
+        // Reset the nav bar if the scroll is partial
+        [self checkForPartialScroll];
+        self.lastContentOffset = 0;
+    }
+}
+
+- (BOOL)checkRubberbanding:(CGFloat)delta
+{
+    // Prevents the navbar from moving during the 'rubberband' scroll
+    if (delta < 0) {
+        if ([self contentoffset].y + self.scrollableView.frame.size.height > [self contentSize].height) {
+            if (self.scrollableView.frame.size.height < [self contentSize].height) { // Only if the content is big enough
+                return NO;
+            }
+        }
+    } else {
+        if ([self contentoffset].y < 0) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (void)scrollWithDelta:(CGFloat)delta
@@ -207,10 +236,6 @@
 			return;
 		}
         
-        // Prevents the navbar from moving during the 'rubberband' scroll
-        if ([self contentoffset].y < 0) {
-            return;
-        }
 		if (self.expanded) {
             self.expanded = NO;
         }
@@ -236,12 +261,7 @@
 		if (self.expanded) {
 			return;
 		}
-        // Prevents the navbar from moving during the 'rubberband' scroll
-        if ([self contentoffset].y + self.scrollableView.frame.size.height > [self contentSize].height) {
-            if (self.scrollableView.frame.size.height < [self contentSize].height) { // Only if the content is big enough
-                return;
-            }
-        }
+        
 		if (self.collapsed) {
             self.collapsed = NO;
         }
@@ -307,48 +327,47 @@
 - (void)checkForPartialScroll
 {
 	CGFloat pos = self.navigationController.navigationBar.frame.origin.y;
+    __block CGRect frame = self.navigationController.navigationBar.frame;
 	
 	// Get back down
-	if (pos >= -2) {
-		[UIView animateWithDuration:0.2 animations:^{
-			CGRect frame;
-			frame = self.navigationController.navigationBar.frame;
-			CGFloat delta = frame.origin.y - self.statusBar;
-			frame.origin.y = MIN(20, frame.origin.y - delta);
+	if (pos >= (self.statusBar - frame.size.height / 2)) {
+        CGFloat delta = frame.origin.y - self.statusBar;
+        NSTimeInterval duration = ABS((delta / (frame.size.height / 2)) * 0.2);
+        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            frame.origin.y = self.statusBar;
 			self.navigationController.navigationBar.frame = frame;
 			
 			self.expanded = YES;
 			self.collapsed = NO;
-			
+
 			[self updateSizingWithDelta:delta];
-		}];
+		} completion:nil];
 	} else {
 		// And back up
-		[UIView animateWithDuration:0.2 animations:^{
-			CGRect frame;
-			frame = self.navigationController.navigationBar.frame;
-			CGFloat delta = frame.origin.y + self.deltaLimit;
-			frame.origin.y = MAX(-self.deltaLimit, frame.origin.y - delta);
+        CGFloat delta = frame.origin.y + self.deltaLimit;
+        NSTimeInterval duration = ABS((delta / (frame.size.height / 2)) * 0.2);
+        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            frame.origin.y = -self.deltaLimit;
 			self.navigationController.navigationBar.frame = frame;
-			
+
 			self.expanded = NO;
 			self.collapsed = YES;
 			self.delayDistance = self.maxDelay;
 			
 			[self updateSizingWithDelta:delta];
-		}];
+        } completion:nil];
 	}
 }
 
 - (void)updateSizingWithDelta:(CGFloat)delta
 {
-	[self updateNavbarAlpha:delta];
-
-	// At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
-	CGRect frameNav = self.navigationController.navigationBar.frame;
-	
-	// Move and expand (or shrink) the superview of the given scrollview
-	CGRect frame = self.scrollableView.superview.frame;
+    [self updateNavbarAlpha:delta];
+    
+    // At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
+    CGRect frameNav = self.navigationController.navigationBar.frame;
+    
+    // Move and expand (or shrink) the superview of the given scrollview
+    CGRect frame = self.scrollableView.superview.frame;
     if (IOS7_OR_LATER) {
         frame.origin.y = frameNav.origin.y + frameNav.size.height;
     } else {
@@ -359,7 +378,7 @@
     } else {
         frame.size.height = [UIScreen mainScreen].bounds.size.height - [self statusBar];
     }
-	self.scrollableView.superview.frame = frame;
+    self.scrollableView.superview.frame = frame;
     self.scrollableView.frame = self.scrollableView.superview.bounds;
     [self.view setNeedsLayout];
 }
