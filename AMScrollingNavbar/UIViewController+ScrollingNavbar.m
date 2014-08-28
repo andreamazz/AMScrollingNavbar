@@ -163,6 +163,7 @@
             [self scrollView].frame = rect;
 			[UIView animateWithDuration:interval animations:^{
 				self.lastContentOffset = 0;
+                self.delayDistance = -self.navbarHeight;
 				[self scrollWithDelta:-self.navbarHeight];
 			}];
 		} else {
@@ -231,6 +232,7 @@
 {
 	CGRect frame = self.navigationController.navigationBar.frame;
 	
+    // Scrolling the view up, hiding the navbar
 	if (delta > 0) {
 		if (self.collapsed) {
 			return;
@@ -257,6 +259,7 @@
         [self restoreContentoffset:delta];
 	}
 	
+    // Scrolling the view down, revealing the navbar
 	if (delta < 0) {
 		if (self.expanded) {
 			return;
