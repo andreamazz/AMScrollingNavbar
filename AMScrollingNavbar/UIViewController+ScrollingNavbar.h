@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Andrea Mazzini. All rights reserved.
 //
 
+@import Foundation;
+@import UIKit;
+
 @interface UIViewController (ScrollingNavbar) <UIGestureRecognizerDelegate>
 
 /**-----------------------------------------------------------------------------

@@ -159,7 +159,7 @@
         <!--Table View Controller-->
         <scene sceneID="WpI-CE-Up5">
             <objects>
-                <viewController id="HF4-Yc-LRs" customClass="AMTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AMTableViewController" id="HF4-Yc-LRs" customClass="AMTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4v4-jr-kc5"/>
                         <viewControllerLayoutGuide type="bottom" id="L3f-aS-gHk"/>

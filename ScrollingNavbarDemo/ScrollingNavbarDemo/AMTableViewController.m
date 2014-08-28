@@ -24,7 +24,7 @@
 	
 	[self setTitle:@"Table View"];
 	
-    self.data = @[@"Awesome content", @"Great content"]; //, @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"];
+    self.data = @[@"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"];
 	
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
@@ -37,6 +37,12 @@
     
     [self setShouldScrollWhenContentFits:YES];
 
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    [self.navigationController pushViewController:[sb instantiateViewControllerWithIdentifier:@"AMTableViewController"] animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
