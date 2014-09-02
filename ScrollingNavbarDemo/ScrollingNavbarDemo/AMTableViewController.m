@@ -32,12 +32,11 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav"]];
-
+    
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView withDelay:65];
     
     [self setShouldScrollWhenContentFits:YES];
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

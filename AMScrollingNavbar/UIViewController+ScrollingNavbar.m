@@ -102,11 +102,16 @@
     self.overlay = nil;
     self.scrollableView = nil;
     self.panGesture = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didBecomeActive:(id)sender
 {
-	[self showNavbar];
+    // This works fine in iOS8 without the ugly delay. Oh well.
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showNavbar];
+    });
+
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
