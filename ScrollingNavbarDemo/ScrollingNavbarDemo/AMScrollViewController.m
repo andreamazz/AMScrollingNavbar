@@ -47,7 +47,12 @@
 	[self.scrollView setDelegate:self];
 	
 	self.navigationItem.rightBarButtonItem =
-	[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
+	[[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopScroll)];
+}
+
+- (void)stopScroll
+{
+    [self setScrollingEnabled:NO];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
