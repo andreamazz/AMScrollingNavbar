@@ -194,7 +194,7 @@
 
 - (void)handlePan:(UIPanGestureRecognizer*)gesture
 {
-    if (!self.shouldScrollWhenContentFits) {
+    if (!self.shouldScrollWhenContentFits && !self.collapsed) {
         if (self.scrollableView.frame.size.height >= [self contentSize].height) {
             return;
         }
