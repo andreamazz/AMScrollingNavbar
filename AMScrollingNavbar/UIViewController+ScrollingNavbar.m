@@ -102,7 +102,7 @@
     self.overlay = nil;
     self.scrollableView = nil;
     self.panGesture = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)didBecomeActive:(id)sender
