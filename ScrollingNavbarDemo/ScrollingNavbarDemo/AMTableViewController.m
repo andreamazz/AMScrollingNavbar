@@ -33,11 +33,10 @@
     }
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav"]];
 
-	// Just call this line to enable the scrolling navbar
+    // Just call this line to enable the scrolling navbar
 	[self followScrollView:self.tableView withDelay:65];
     
     [self setShouldScrollWhenContentFits:YES];
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,8 +65,8 @@
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
 	// This enables the user to scroll down the navbar by tapping the status bar.
-	[self performSelector:@selector(showNavbar) withObject:nil afterDelay:0.1];
-	
+//	[self performSelector:@selector(showNavbar) withObject:nil afterDelay:0.1];  // Use a delay if needed (pre iOS8)
+    [self showNavbar];
 	return YES;
 }
 
