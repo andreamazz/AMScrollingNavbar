@@ -387,7 +387,6 @@
         frame.size.height = [UIScreen mainScreen].bounds.size.height - [self statusBar];
     }
     self.scrollableView.superview.frame = frame;
-    self.scrollableView.frame = self.scrollableView.superview.bounds;
     [self.view setNeedsLayout];
 }
 
