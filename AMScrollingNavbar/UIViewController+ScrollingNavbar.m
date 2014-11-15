@@ -9,9 +9,10 @@
 #import "UIViewController+ScrollingNavbar.h"
 #import <objc/runtime.h>
 
-#define IOS7_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
-
 @implementation UIViewController (ScrollingNavbar)
+
+- (void)setScrollableViewConstraint:(NSLayoutConstraint *)scrollableViewConstraint { objc_setAssociatedObject(self, @selector(scrollableViewConstraint), scrollableViewConstraint, OBJC_ASSOCIATION_RETAIN); }
+- (NSLayoutConstraint *)scrollableViewConstraint { return objc_getAssociatedObject(self, @selector(scrollableViewConstraint)); }
 
 - (void)setPanGesture:(UIPanGestureRecognizer*)panGesture {	objc_setAssociatedObject(self, @selector(panGesture), panGesture, OBJC_ASSOCIATION_RETAIN); }
 - (UIPanGestureRecognizer*)panGesture {	return objc_getAssociatedObject(self, @selector(panGesture)); }
@@ -48,8 +49,19 @@
 
 - (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay
 {
+    [self followScrollView:scrollableView usingTopConstraint:nil withDelay:delay];
+}
+
+- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint
+{
+    [self followScrollView:scrollableView usingTopConstraint:constraint withDelay:0];
+}
+
+- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay
+{
 	self.scrollableView = scrollableView;
-	
+    self.scrollableViewConstraint = constraint;
+    
 	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 	[self.panGesture setMaximumNumberOfTouches:1];
 	
@@ -62,18 +74,14 @@
 	frame.origin = CGPointZero;
 	self.overlay = [[UIView alloc] initWithFrame:frame];
     
-  // Use tintColor instead of barTintColor on iOS < 7
-  if (IOS7_OR_LATER) {
+    // Use tintColor instead of barTintColor on iOS < 7
     if (self.navigationController.navigationBar.barTintColor) {
-      [self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
+        [self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
     } else if ([UINavigationBar appearance].barTintColor) {
-      [self.overlay setBackgroundColor:[UINavigationBar appearance].barTintColor];
+        [self.overlay setBackgroundColor:[UINavigationBar appearance].barTintColor];
     } else {
-      NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
+        NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
     }
-  } else {
-    [self.overlay setBackgroundColor:self.navigationController.navigationBar.tintColor];
-  }
 	
 	if ([self.navigationController.navigationBar isTranslucent]) {
 		NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: the navigation bar should not be translucent");
@@ -138,11 +146,7 @@
 
 - (float)statusBar
 {
-    if (IOS7_OR_LATER) {
-        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
-    } else {
-        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
-    }
+    return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
 }
 
 - (float)navbarHeight
@@ -376,17 +380,17 @@
     
     // Move and expand (or shrink) the superview of the given scrollview
     CGRect frame = self.scrollableView.superview.frame;
-    if (IOS7_OR_LATER) {
-        frame.origin.y = frameNav.origin.y + frameNav.size.height;
-    } else {
-        frame.origin.y = frameNav.origin.y - [self statusBar];
-    }
-    if (IOS7_OR_LATER) {
+    frame.origin.y = frameNav.origin.y + frameNav.size.height;
+    
+    if (!self.scrollableViewConstraint) {
+        // Frame version
         frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
+        self.scrollableView.superview.frame = frame;
     } else {
-        frame.size.height = [UIScreen mainScreen].bounds.size.height - [self statusBar];
+        // Autolayout version
+        self.scrollableViewConstraint.constant = -1 * ([self navbarHeight] - frame.origin.y);
     }
-    self.scrollableView.superview.frame = frame;
+    
     [self.view setNeedsLayout];
 }
 

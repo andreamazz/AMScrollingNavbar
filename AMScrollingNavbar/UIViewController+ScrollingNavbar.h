@@ -27,6 +27,30 @@
  */
 - (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay;
 
+/** Scrolling init method with Autolayout
+ *
+ * Enables the scrolling on a generic UIView.
+ * It requires the top constraint of the first view below the navbar.
+ * Remember to call showNavbar or showNavBarAnimated: in your viewDidDisappear.
+ *
+ * @param scrollableView The UIView where the scrolling is performed.
+ * @param constraint The top constraint of the first view below the navbar
+ */
+- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint;
+
+/** Scrolling init method with Autolayout
+ *
+ * Enables the scrolling on a generic UIView.
+ * It requires the top constraint of the first view below the navbar.
+ * Also sets the value (in points) that needs to scroll through beofre the navbar is moved back into scene
+ * Remember to call showNavbar or showNavBarAnimated: in your viewDidDisappear.
+ *
+ * @param scrollableView The UIView where the scrolling is performed.
+ * @param constraint The top constraint of the first view below the navbar
+ * @param delay The delay of the downward scroll gesture
+ */
+- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay;
+
 /** Scrolling init method
  *
  * Enables the scrolling on a generic UIView.

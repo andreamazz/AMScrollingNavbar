@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bcL-UJ-dqI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bcL-UJ-dqI">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -206,6 +206,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="m7j-jZ-2gA" id="tmB-pt-fEM"/>
                         <outlet property="tableView" destination="5DA-Q0-AzK" id="PoD-2E-sgm"/>
+                        <outlet property="topConstraint" destination="Mih-wg-xzu" id="xzt-4a-D0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="396-ZY-MnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

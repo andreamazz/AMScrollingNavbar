@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray* data;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 @end
 
@@ -34,8 +35,7 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav"]];
 
     // Just call this line to enable the scrolling navbar
-	[self followScrollView:self.tableView withDelay:65];
-    
+	[self followScrollView:self.tableView usingTopConstraint:self.topConstraint withDelay:65];
     [self setShouldScrollWhenContentFits:YES];
 }
 
