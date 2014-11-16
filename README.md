@@ -10,15 +10,12 @@ It works like the navigation bar in Chrome or Facebook's app for iOS7.
 
 I also wrote about this control in [this article](http://andreamazz.github.io/blog/2014/02/01/amscrollingnavbar-creating-a-cocoapod/)
 
-Screenshot
---------------------
+#Screenshot
+
 ![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/screenshot.gif)
 
-Getting Started
-=================
+#Setup
 
-Setup
---------------------
 * Add ```pod 'AMScrollingNavbar'``` to your [Podfile](http://cocoapods.org/)
 * Run ```pod install```
 * Run ```open App.xcworkspace```
@@ -33,9 +30,20 @@ Setup
 
 ```
 
-Enable the scrolling
---------------------
-To enable the scrolling effect you simply need to call followScrollView: providing the UIView's instance that will be tracked, like this:
+#Enable the scrolling with Autolayout
+
+Version 1.1 introduced an Autolayout-friendly way of setting up your view, it's strongly recomended the use of this method: 
+- Setup your view using autolayout
+- Create an outlet of the top constraint of the first view sitting below the navigation bar
+- Enable the scrolling with this method:
+```objc
+[self followScrollView:self.scrollView usingTopConstraint:self.topLayoutConstraint];
+```
+Make sure to check the project sample to have a better understanding of how Autolayout constraints need to be set.
+
+#Enable the scrolling without Autolayout
+
+This version does not require autolayout, to enable the scrolling effect you simply need to call followScrollView: providing the UIView's instance that will be tracked, like this:
 ```objc
 [self followScrollView:self.scrollView];
 ```
@@ -64,7 +72,7 @@ MIT License
 --------------------
     The MIT License (MIT)
 
-    Copyright (c) 2013 Andrea Mazzini
+    Copyright (c) 2014 Andrea Mazzini
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of
     this software and associated documentation files (the "Software"), to deal in

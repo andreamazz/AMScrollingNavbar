@@ -103,6 +103,7 @@
                     <navigationItem key="navigationItem" id="fns-cg-BCf"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="topConstraint" destination="goJ-RH-ZW5" id="XII-m0-pzW"/>
                         <outlet property="webView" destination="EAg-Eb-eK5" id="OTq-u5-gkQ"/>
                     </connections>
                 </viewController>
@@ -258,6 +259,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="scrollView" destination="1kz-fZ-0sS" id="ObT-lt-5cx"/>
+                        <outlet property="topConstraint" destination="FSZ-FW-xDd" id="Csf-Nh-SY5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKG-1q-G6y" userLabel="First Responder" sceneMemberID="firstResponder"/>

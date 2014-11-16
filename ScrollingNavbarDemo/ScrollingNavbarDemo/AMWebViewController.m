@@ -12,6 +12,7 @@
 @interface AMWebViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 @end
 
@@ -33,9 +34,9 @@
 
 	[self.webView loadHTMLString:html baseURL:nil];
 	
-	[self followScrollView:self.webView];
+    [self followScrollView:self.webView usingTopConstraint:self.topConstraint];
 	
-	// We need to set self as delegate of the inner scrollview of the webview to override scrollViewShouldScrollToTop 
+	// We need to set self as delegate of the inner scrollview of the webview to override scrollViewShouldScrollToTop
 	self.webView.scrollView.delegate = self;
 }
 
