@@ -279,6 +279,7 @@
         }
 		
 		self.delayDistance += delta;
+        NSLog(@"%f", self.delayDistance);
 		if (self.delayDistance > 0) {
 			return;
 		}
@@ -364,7 +365,6 @@
 
 			self.expanded = NO;
 			self.collapsed = YES;
-			self.delayDistance = self.maxDelay;
 			
 			[self updateSizingWithDelta:delta];
         } completion:nil];
