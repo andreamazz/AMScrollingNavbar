@@ -279,8 +279,8 @@
         }
 		
 		self.delayDistance += delta;
-        NSLog(@"%f", self.delayDistance);
-		if (self.delayDistance > 0) {
+
+		if (self.delayDistance > 0 && self.maxDelay < [self scrollView].contentOffset.y) {
 			return;
 		}
 				
