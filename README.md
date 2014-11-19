@@ -2,7 +2,7 @@ AMScrollingNavbar
 =================
 
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.png)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
-[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMScrollingNavbar/badge.png)](http://beta.cocoapods.org/?q=amscrollingnavbar)
+[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMScrollingNavbar/badge.png)](http://www.cocoapods.org/?q=amscrollingnavbar)
 [![Analytics](https://ga-beacon.appspot.com/UA-42282237-8/AMScrollingNavbar/README)](https://github.com/igrigorik/ga-beacon)
 
 Scrollable UINavigationBar that follows the scrolling of a UIScrollView or similar view (e.g. UITableView or UIWebView). 
