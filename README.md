@@ -32,7 +32,7 @@ I also wrote about this control in [this article](http://andreamazz.github.io/bl
 
 #Enable the scrolling with Autolayout
 
-Version 1.1 introduced an Autolayout-friendly way of setting up your view, it's strongly recomended the use of this method: 
+Version 1.1 introduced an Autolayout-friendly way of setting up your view, it's strongly recommended the use of this method: 
 - Setup your view using autolayout
 - Create an outlet of the top constraint of the first view sitting below the navigation bar
 - Enable the scrolling with this method:
