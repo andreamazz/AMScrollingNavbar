@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bcL-UJ-dqI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bcL-UJ-dqI">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -170,13 +170,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="lln-rf-2it">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="HF4-Yc-LRs" id="ibW-LM-cvM"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5DA-Q0-AzK">
                                 <rect key="frame" x="0.0" y="44" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,6 +181,13 @@
                                     <outlet property="delegate" destination="HF4-Yc-LRs" id="Ry6-eF-kDX"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="lln-rf-2it">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HF4-Yc-LRs" id="ibW-LM-cvM"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -196,7 +196,6 @@
                             <constraint firstAttribute="trailing" secondItem="lln-rf-2it" secondAttribute="trailing" id="DME-a3-sym"/>
                             <constraint firstItem="lln-rf-2it" firstAttribute="top" secondItem="4v4-jr-kc5" secondAttribute="bottom" id="Mih-wg-xzu"/>
                             <constraint firstItem="5DA-Q0-AzK" firstAttribute="top" secondItem="lln-rf-2it" secondAttribute="bottom" id="V6u-JY-phg"/>
-                            <constraint firstItem="5DA-Q0-AzK" firstAttribute="top" secondItem="lln-rf-2it" secondAttribute="bottom" id="Zb2-1Y-C2O"/>
                             <constraint firstItem="lln-rf-2it" firstAttribute="leading" secondItem="DDw-IU-eFA" secondAttribute="leading" id="bl2-ou-kIS"/>
                             <constraint firstItem="5DA-Q0-AzK" firstAttribute="leading" secondItem="DDw-IU-eFA" secondAttribute="leading" id="cLZ-Tw-aKH"/>
                         </constraints>

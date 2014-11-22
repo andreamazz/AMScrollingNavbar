@@ -164,13 +164,15 @@
 
 - (void)showNavBarAnimated:(BOOL)animated
 {
-	NSTimeInterval interval = animated ? 0.2 : 0;
 	if (self.scrollableView != nil) {
 		if (self.collapsed) {
-			CGRect rect = [self scrollView].frame;
-			rect.origin.y = 0;
-            [self scrollView].frame = rect;
-			[UIView animateWithDuration:interval animations:^{
+            if (!self.scrollableViewConstraint) {
+                // Frame version
+                CGRect rect = [self scrollView].frame;
+                rect.origin.y = 0;
+                [self scrollView].frame = rect;
+            }
+			[UIView animateWithDuration:0 animations:^{
 				self.lastContentOffset = 0;
                 self.delayDistance = -self.navbarHeight;
 				[self scrollWithDelta:-self.navbarHeight];

@@ -39,8 +39,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    [self.navigationController pushViewController:[sb instantiateViewControllerWithIdentifier:@"AMTableViewController"] animated:YES];
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AMTableViewController"] animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -52,6 +51,11 @@
 {
 	[super viewDidDisappear:animated];
 	[self showNavBarAnimated:NO];
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    return YES;
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
