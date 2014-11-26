@@ -29,10 +29,10 @@
 
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-	[super viewDidDisappear:animated];
-	[self showNavBarAnimated:NO];
+    [super viewWillDisappear:animated];
+    [self showNavBarAnimated:NO];
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
