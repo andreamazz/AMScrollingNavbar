@@ -384,12 +384,11 @@
     CGRect frame = self.scrollableView.superview.frame;
     frame.origin.y = frameNav.origin.y + frameNav.size.height;
     
-    frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
-    self.scrollableView.superview.frame = frame;
-    if (!self.scrollableViewConstraint) {
-        // Autolayout version
+    if (self.scrollableViewConstraint) {
         self.scrollableViewConstraint.constant = -1 * ([self navbarHeight] - frame.origin.y);
-
+    } else {
+        frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
+        self.scrollableView.superview.frame = frame;
     }
     
     [self.view setNeedsLayout];
