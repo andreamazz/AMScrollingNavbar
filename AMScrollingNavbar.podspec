@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "AMScrollingNavbar"
-  s.version      = "1.1.3"
+  s.version      = "1.1.4"
   s.summary      = "Scrollable UINavigationBar that follows the scrolling of a UIScrollView. Similiar to Chrome for iOS7"
   s.homepage     = "https://github.com/andreamazz/AMScrollingNavbar"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Andrea Mazzini" => "andrea.mazzini@gmail.com" }
-  s.source       = { :git => "https://github.com/andreamazz/AMScrollingNavbar.git", :tag => '1.1.3' }
+  s.source       = { :git => "https://github.com/andreamazz/AMScrollingNavbar.git", :tag => '1.1.4' }
   s.platform     = :ios, '7.0'
   s.source_files = 'AMScrollingNavbar', '*.{h,m}'
   s.requires_arc = true
