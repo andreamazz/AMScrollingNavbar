@@ -25,7 +25,7 @@
  * @param scrollableView The UIView where the scrolling is performed.
  * @param delay The delay of the downward scroll gesture
  */
-- (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay;
+- (void)followScrollView:(UIView *)scrollableView withDelay:(float)delay;
 
 /** Scrolling init method with Autolayout
  *
@@ -36,7 +36,7 @@
  * @param scrollableView The UIView where the scrolling is performed.
  * @param constraint The top constraint of the first view below the navbar
  */
-- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint;
+- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint;
 
 /** Scrolling init method with Autolayout
  *
@@ -49,7 +49,7 @@
  * @param constraint The top constraint of the first view below the navbar
  * @param delay The delay of the downward scroll gesture
  */
-- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay;
+- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay;
 
 /** Scrolling init method
  *
@@ -58,7 +58,7 @@
  *
  * @param scrollableView The UIView where the scrolling is performed.
  */
-- (void)followScrollView:(UIView*)scrollableView;
+- (void)followScrollView:(UIView *)scrollableView;
 
 /** Navbar slide down
  *

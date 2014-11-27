@@ -14,14 +14,14 @@
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)scrollableViewConstraint { objc_setAssociatedObject(self, @selector(scrollableViewConstraint), scrollableViewConstraint, OBJC_ASSOCIATION_RETAIN); }
 - (NSLayoutConstraint *)scrollableViewConstraint { return objc_getAssociatedObject(self, @selector(scrollableViewConstraint)); }
 
-- (void)setPanGesture:(UIPanGestureRecognizer*)panGesture {	objc_setAssociatedObject(self, @selector(panGesture), panGesture, OBJC_ASSOCIATION_RETAIN); }
+- (void)setPanGesture:(UIPanGestureRecognizer *)panGesture { objc_setAssociatedObject(self, @selector(panGesture), panGesture, OBJC_ASSOCIATION_RETAIN); }
 - (UIPanGestureRecognizer*)panGesture {	return objc_getAssociatedObject(self, @selector(panGesture)); }
 
-- (void)setScrollableView:(UIView*)scrollableView {	objc_setAssociatedObject(self, @selector(scrollableView), scrollableView, OBJC_ASSOCIATION_RETAIN); }
-- (UIView*)scrollableView {	return objc_getAssociatedObject(self, @selector(scrollableView)); }
+- (void)setScrollableView:(UIView *)scrollableView { objc_setAssociatedObject(self, @selector(scrollableView), scrollableView, OBJC_ASSOCIATION_RETAIN); }
+- (UIView *)scrollableView { return objc_getAssociatedObject(self, @selector(scrollableView)); }
 
-- (void)setOverlay:(UIView*)overlay { objc_setAssociatedObject(self, @selector(overlay), overlay, OBJC_ASSOCIATION_RETAIN); }
-- (UIView*)overlay { return objc_getAssociatedObject(self, @selector(overlay)); }
+- (void)setOverlay:(UIView *)overlay { objc_setAssociatedObject(self, @selector(overlay), overlay, OBJC_ASSOCIATION_RETAIN); }
+- (UIView *)overlay { return objc_getAssociatedObject(self, @selector(overlay)); }
 
 - (void)setCollapsed:(BOOL)collapsed { objc_setAssociatedObject(self, @selector(collapsed), [NSNumber numberWithBool:collapsed], OBJC_ASSOCIATION_RETAIN); }
 - (BOOL)collapsed {	return [objc_getAssociatedObject(self, @selector(collapsed)) boolValue]; }
@@ -42,37 +42,37 @@
 - (BOOL)shouldScrollWhenContentFits {	return [objc_getAssociatedObject(self, @selector(shouldScrollWhenContentFits)) boolValue]; }
 
 
-- (void)followScrollView:(UIView*)scrollableView
+- (void)followScrollView:(UIView *)scrollableView
 {
-	[self followScrollView:scrollableView withDelay:0];
+    [self followScrollView:scrollableView withDelay:0];
 }
 
-- (void)followScrollView:(UIView*)scrollableView withDelay:(float)delay
+- (void)followScrollView:(UIView *)scrollableView withDelay:(float)delay
 {
     [self followScrollView:scrollableView usingTopConstraint:nil withDelay:delay];
 }
 
-- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint
+- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint
 {
     [self followScrollView:scrollableView usingTopConstraint:constraint withDelay:0];
 }
 
-- (void)followScrollView:(UIView*)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay
+- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay
 {
-	self.scrollableView = scrollableView;
+    self.scrollableView = scrollableView;
     self.scrollableViewConstraint = constraint;
     
-	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-	[self.panGesture setMaximumNumberOfTouches:1];
-	
-	[self.panGesture setDelegate:self];
-	[self.scrollableView addGestureRecognizer:self.panGesture];
-	
-	/* The navbar fadeout is achieved using an overlay view with the same barTintColor.
-	 this might be improved by adjusting the alpha component of every navbar child */
-	CGRect frame = self.navigationController.navigationBar.frame;
-	frame.origin = CGPointZero;
-	self.overlay = [[UIView alloc] initWithFrame:frame];
+    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self.panGesture setMaximumNumberOfTouches:1];
+    
+    [self.panGesture setDelegate:self];
+    [self.scrollableView addGestureRecognizer:self.panGesture];
+    
+    /* The navbar fadeout is achieved using an overlay view with the same barTintColor.
+     this might be improved by adjusting the alpha component of every navbar child */
+    CGRect frame = self.navigationController.navigationBar.frame;
+    frame.origin = CGPointZero;
+    self.overlay = [[UIView alloc] initWithFrame:frame];
     
     // Use tintColor instead of barTintColor on iOS < 7
     if (self.navigationController.navigationBar.barTintColor) {
@@ -82,23 +82,23 @@
     } else {
         NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: no bar tint color set");
     }
-	
-	if ([self.navigationController.navigationBar isTranslucent]) {
-		NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: the navigation bar should not be translucent");
-	}
-	
-	[self.overlay setUserInteractionEnabled:NO];
-	[self.overlay setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-	[self.navigationController.navigationBar addSubview:self.overlay];
-	[self.overlay setAlpha:0];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(didBecomeActive:)
-												 name:UIApplicationDidBecomeActiveNotification
-											   object:nil];
-	
-	self.maxDelay = delay;
-	self.delayDistance = delay;
+    
+    if ([self.navigationController.navigationBar isTranslucent]) {
+        NSLog(@"[%s]: %@", __PRETTY_FUNCTION__, @"[AMScrollingNavbarViewController] Warning: the navigation bar should not be translucent");
+    }
+    
+    [self.overlay setUserInteractionEnabled:NO];
+    [self.overlay setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    [self.navigationController.navigationBar addSubview:self.overlay];
+    [self.overlay setAlpha:0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+    
+    self.maxDelay = delay;
+    self.delayDistance = delay;
     self.shouldScrollWhenContentFits = NO;
 }
 
@@ -119,28 +119,28 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self showNavbar];
     });
-
+    
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     CGRect frame = self.overlay.frame;
-	frame.size.height = self.navigationController.navigationBar.frame.size.height;
-	self.overlay.frame = frame;
+    frame.size.height = self.navigationController.navigationBar.frame.size.height;
+    self.overlay.frame = frame;
     
     [self updateSizingWithDelta:0];
 }
 
 - (float)deltaLimit
 {
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 24;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 24;
     } else {
-		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
-		} else {
+        if ([[UIApplication sharedApplication] isStatusBarHidden]) {
+            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
+        } else {
             return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
-		}
+        }
     }
 }
 
@@ -151,54 +151,54 @@
 
 - (float)navbarHeight
 {
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 64;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 64;
     } else {
-		if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
-		} else {
-			return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
-		}
+        if ([[UIApplication sharedApplication] isStatusBarHidden]) {
+            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
+        } else {
+            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
+        }
     }
 }
 
 - (void)showNavBarAnimated:(BOOL)animated
 {
-	if (self.scrollableView != nil) {
-		if (self.collapsed) {
+    if (self.scrollableView != nil) {
+        if (self.collapsed) {
             if (!self.scrollableViewConstraint) {
                 // Frame version
                 CGRect rect = [self scrollView].frame;
                 rect.origin.y = 0;
                 [self scrollView].frame = rect;
             }
-			[UIView animateWithDuration:0 animations:^{
-				self.lastContentOffset = 0;
+            [UIView animateWithDuration:0 animations:^{
+                self.lastContentOffset = 0;
                 self.delayDistance = -self.navbarHeight;
-				[self scrollWithDelta:-self.navbarHeight];
-			}];
-		} else {
-			[self updateNavbarAlpha:self.navbarHeight];
-		}
-	}
+                [self scrollWithDelta:-self.navbarHeight];
+            }];
+        } else {
+            [self updateNavbarAlpha:self.navbarHeight];
+        }
+    }
 }
 
 - (void)showNavbar
 {
-	[self showNavBarAnimated:YES];
+    [self showNavBarAnimated:YES];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-	return YES;
+    return YES;
 }
 
 - (void)setScrollingEnabled:(BOOL)enabled
 {
-	self.panGesture.enabled = enabled;
+    self.panGesture.enabled = enabled;
 }
 
-- (void)handlePan:(UIPanGestureRecognizer*)gesture
+- (void)handlePan:(UIPanGestureRecognizer *)gesture
 {
     if (!self.shouldScrollWhenContentFits && !self.collapsed) {
         if (self.scrollableView.frame.size.height >= [self contentSize].height) {
@@ -206,11 +206,11 @@
         }
     }
     
-	CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
-	
-	float delta = self.lastContentOffset - translation.y;
+    CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
+    
+    float delta = self.lastContentOffset - translation.y;
     self.lastContentOffset = translation.y;
-
+    
     if ([self checkRubberbanding:delta]) {
         [self scrollWithDelta:delta];
     }
@@ -241,74 +241,74 @@
 
 - (void)scrollWithDelta:(CGFloat)delta
 {
-	CGRect frame = self.navigationController.navigationBar.frame;
-	
+    CGRect frame = self.navigationController.navigationBar.frame;
+    
     // Scrolling the view up, hiding the navbar
-	if (delta > 0) {
-		if (self.collapsed) {
-			return;
-		}
+    if (delta > 0) {
+        if (self.collapsed) {
+            return;
+        }
         
-		if (self.expanded) {
+        if (self.expanded) {
             self.expanded = NO;
         }
-
-		if (frame.origin.y - delta < -self.deltaLimit) {
-			delta = frame.origin.y + self.deltaLimit;
-		}
-		
-		frame.origin.y = MAX(-self.deltaLimit, frame.origin.y - delta);
-		self.navigationController.navigationBar.frame = frame;
-		
-		if (frame.origin.y == -self.deltaLimit) {
-			self.collapsed = YES;
-			self.expanded = NO;
-			self.delayDistance = self.maxDelay;
-		}
+        
+        if (frame.origin.y - delta < -self.deltaLimit) {
+            delta = frame.origin.y + self.deltaLimit;
+        }
+        
+        frame.origin.y = MAX(-self.deltaLimit, frame.origin.y - delta);
+        self.navigationController.navigationBar.frame = frame;
+        
+        if (frame.origin.y == -self.deltaLimit) {
+            self.collapsed = YES;
+            self.expanded = NO;
+            self.delayDistance = self.maxDelay;
+        }
         
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
-	}
-	
+    }
+    
     // Scrolling the view down, revealing the navbar
-	if (delta < 0) {
-		if (self.expanded) {
-			return;
-		}
+    if (delta < 0) {
+        if (self.expanded) {
+            return;
+        }
         
-		if (self.collapsed) {
+        if (self.collapsed) {
             self.collapsed = NO;
         }
-		
-		self.delayDistance += delta;
-
-		if (self.delayDistance > 0 && self.maxDelay < [self scrollView].contentOffset.y) {
-			return;
-		}
-				
-		if (frame.origin.y - delta > self.statusBar) {
-			delta = frame.origin.y - self.statusBar;
-		}
-		frame.origin.y = MIN(20, frame.origin.y - delta);
-		self.navigationController.navigationBar.frame = frame;
-		
-		if (frame.origin.y == self.statusBar) {
-			self.expanded = YES;
-			self.collapsed = NO;
-		}
+        
+        self.delayDistance += delta;
+        
+        if (self.delayDistance > 0 && self.maxDelay < [self scrollView].contentOffset.y) {
+            return;
+        }
+        
+        if (frame.origin.y - delta > self.statusBar) {
+            delta = frame.origin.y - self.statusBar;
+        }
+        frame.origin.y = MIN(20, frame.origin.y - delta);
+        self.navigationController.navigationBar.frame = frame;
+        
+        if (frame.origin.y == self.statusBar) {
+            self.expanded = YES;
+            self.collapsed = NO;
+        }
         
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
-	}
+    }
 }
 
-- (UIScrollView*)scrollView
+- (UIScrollView *)scrollView
 {
-    UIScrollView* scroll;
+    UIScrollView *scroll;
     if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
-        scroll = [(UIWebView*)self.scrollableView scrollView];
+        scroll = [(UIWebView *)self.scrollableView scrollView];
     } else if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
-        scroll = (UIScrollView*)self.scrollableView;
+        scroll = (UIScrollView *)self.scrollableView;
     }
     return scroll;
 }
@@ -318,7 +318,7 @@
     // Hold the scroll steady until the navbar appears/disappears
     CGPoint offset = [[self scrollView] contentOffset];
     
-    if ([self scrollView].translatesAutoresizingMaskIntoConstraints) {
+    if ([[self scrollView] respondsToSelector:@selector(translatesAutoresizingMaskIntoConstraints)] && [self scrollView].translatesAutoresizingMaskIntoConstraints) {
         [[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta}];
     } else {
         if (delta > 0) {
@@ -341,36 +341,36 @@
 
 - (void)checkForPartialScroll
 {
-	CGFloat pos = self.navigationController.navigationBar.frame.origin.y;
+    CGFloat pos = self.navigationController.navigationBar.frame.origin.y;
     __block CGRect frame = self.navigationController.navigationBar.frame;
-	
-	// Get back down
-	if (pos >= (self.statusBar - frame.size.height / 2)) {
+    
+    // Get back down
+    if (pos >= (self.statusBar - frame.size.height / 2)) {
         CGFloat delta = frame.origin.y - self.statusBar;
         NSTimeInterval duration = ABS((delta / (frame.size.height / 2)) * 0.2);
         [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             frame.origin.y = self.statusBar;
-			self.navigationController.navigationBar.frame = frame;
-			
-			self.expanded = YES;
-			self.collapsed = NO;
-
-			[self updateSizingWithDelta:delta];
-		} completion:nil];
-	} else {
-		// And back up
+            self.navigationController.navigationBar.frame = frame;
+            
+            self.expanded = YES;
+            self.collapsed = NO;
+            
+            [self updateSizingWithDelta:delta];
+        } completion:nil];
+    } else {
+        // And back up
         CGFloat delta = frame.origin.y + self.deltaLimit;
         NSTimeInterval duration = ABS((delta / (frame.size.height / 2)) * 0.2);
         [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             frame.origin.y = -self.deltaLimit;
-			self.navigationController.navigationBar.frame = frame;
-
-			self.expanded = NO;
-			self.collapsed = YES;
-			
-			[self updateSizingWithDelta:delta];
+            self.navigationController.navigationBar.frame = frame;
+            
+            self.expanded = NO;
+            self.collapsed = YES;
+            
+            [self updateSizingWithDelta:delta];
         } completion:nil];
-	}
+    }
 }
 
 - (void)updateSizingWithDelta:(CGFloat)delta
@@ -396,25 +396,25 @@
 
 - (void)updateNavbarAlpha:(CGFloat)delta
 {
-	CGRect frame = self.navigationController.navigationBar.frame;
-	
-    if (self.scrollableView != nil) {
-		[self.navigationController.navigationBar bringSubviewToFront:self.overlay];
-	}
+    CGRect frame = self.navigationController.navigationBar.frame;
     
-	// Change the alpha channel of every item on the navbr. The overlay will appear, while the other objects will disappear, and vice versa
-	float alpha = (frame.origin.y + self.deltaLimit) / frame.size.height;
-	[self.overlay setAlpha:1 - alpha];
-	[self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
-		obj.customView.alpha = alpha;
-	}];
+    if (self.scrollableView != nil) {
+        [self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+    }
+    
+    // Change the alpha channel of every item on the navbr. The overlay will appear, while the other objects will disappear, and vice versa
+    float alpha = (frame.origin.y + self.deltaLimit) / frame.size.height;
+    [self.overlay setAlpha:1 - alpha];
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem *obj, NSUInteger idx, BOOL *stop) {
+        obj.customView.alpha = alpha;
+    }];
     self.navigationItem.leftBarButtonItem.customView.alpha = alpha;
-	[self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem* obj, NSUInteger idx, BOOL *stop) {
-		obj.customView.alpha = alpha;
-	}];
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem *obj, NSUInteger idx, BOOL *stop) {
+        obj.customView.alpha = alpha;
+    }];
     self.navigationItem.rightBarButtonItem.customView.alpha = alpha;
-	self.navigationItem.titleView.alpha = alpha;
-	self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
+    self.navigationItem.titleView.alpha = alpha;
+    self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
 }
 
 @end
