@@ -22,6 +22,7 @@
 		652B4491182D376600D01F5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652B4473182D376600D01F5C /* UIKit.framework */; };
 		652B4499182D376600D01F5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 652B4497182D376600D01F5C /* InfoPlist.strings */; };
 		652B449B182D376600D01F5C /* ScrollingNavbarDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 652B449A182D376600D01F5C /* ScrollingNavbarDemoTests.m */; };
+		657678BE1A2A025700AE279B /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657678BD1A2A025700AE279B /* Launch Screen.xib */; };
 		65BB5A7B18E06AA7007D4E86 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BB5A7A18E06AA7007D4E86 /* UIViewController+ScrollingNavbar.m */; };
 		65BF9E69182E5AB70092BF7F /* AMScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF9E68182E5AB70092BF7F /* AMScrollViewController.m */; };
 		65BF9E6C182E5AC70092BF7F /* AMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF9E6B182E5AC70092BF7F /* AMWebViewController.m */; };
@@ -59,6 +60,7 @@
 		652B4496182D376600D01F5C /* ScrollingNavbarDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScrollingNavbarDemoTests-Info.plist"; sourceTree = "<group>"; };
 		652B4498182D376600D01F5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		652B449A182D376600D01F5C /* ScrollingNavbarDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollingNavbarDemoTests.m; sourceTree = "<group>"; };
+		657678BD1A2A025700AE279B /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		65BB5A7918E06AA7007D4E86 /* UIViewController+ScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingNavbar.h"; sourceTree = "<group>"; usesTabs = 0; };
 		65BB5A7A18E06AA7007D4E86 /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; usesTabs = 0; };
 		65BF9E67182E5AB70092BF7F /* AMScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollViewController.h; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				652B447E182D376600D01F5C /* AMAppDelegate.h */,
 				652B447F182D376600D01F5C /* AMAppDelegate.m */,
 				652B4481182D376600D01F5C /* Main.storyboard */,
+				657678BD1A2A025700AE279B /* Launch Screen.xib */,
 				65BF9E66182E5A9C0092BF7F /* ViewControllers */,
 				652B4487182D376600D01F5C /* Images.xcassets */,
 				652B4476182D376600D01F5C /* Supporting Files */,
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				652B4488182D376600D01F5C /* Images.xcassets in Resources */,
+				657678BE1A2A025700AE279B /* Launch Screen.xib in Resources */,
 				652B447A182D376600D01F5C /* InfoPlist.strings in Resources */,
 				652B4483182D376600D01F5C /* Main.storyboard in Resources */,
 			);
@@ -429,7 +433,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScrollingNavbarDemo/ScrollingNavbarDemo-Prefix.pch";
 				INFOPLIST_FILE = "ScrollingNavbarDemo/ScrollingNavbarDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";
@@ -445,7 +449,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScrollingNavbarDemo/ScrollingNavbarDemo-Prefix.pch";
 				INFOPLIST_FILE = "ScrollingNavbarDemo/ScrollingNavbarDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";
