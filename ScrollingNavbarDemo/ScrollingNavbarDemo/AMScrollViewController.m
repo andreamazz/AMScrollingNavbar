@@ -12,7 +12,7 @@
 @interface AMScrollViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerConstraint;
 
 @end
 
@@ -41,7 +41,8 @@
     [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
 	
 	// Just call this line to enable the scrolling navbar
-	[self followScrollView:self.scrollView usingTopConstraint:self.topConstraint withDelay:60];
+	[self followScrollView:self.scrollView withDelay:60];
+    [self setScrollableViewConstraint:self.headerConstraint withOffset:60];
 	
 	[self.scrollView setDelegate:self];
 	

@@ -14,6 +14,12 @@
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)scrollableViewConstraint { objc_setAssociatedObject(self, @selector(scrollableViewConstraint), scrollableViewConstraint, OBJC_ASSOCIATION_RETAIN); }
 - (NSLayoutConstraint *)scrollableViewConstraint { return objc_getAssociatedObject(self, @selector(scrollableViewConstraint)); }
 
+- (void)setScrollableHeaderConstraint:(NSLayoutConstraint *)scrollableHeaderConstraint { objc_setAssociatedObject(self, @selector(scrollableHeaderConstraint), scrollableHeaderConstraint, OBJC_ASSOCIATION_RETAIN); }
+- (NSLayoutConstraint *)scrollableHeaderConstraint { return objc_getAssociatedObject(self, @selector(scrollableHeaderConstraint)); }
+
+- (void)setScrollableHeaderOffset:(float)scrollableHeaderOffset { objc_setAssociatedObject(self, @selector(scrollableHeaderOffset), [NSNumber numberWithFloat:scrollableHeaderOffset], OBJC_ASSOCIATION_RETAIN); }
+- (float)scrollableHeaderOffset { return [objc_getAssociatedObject(self, @selector(scrollableHeaderOffset)) floatValue]; }
+
 - (void)setPanGesture:(UIPanGestureRecognizer *)panGesture { objc_setAssociatedObject(self, @selector(panGesture), panGesture, OBJC_ASSOCIATION_RETAIN); }
 - (UIPanGestureRecognizer*)panGesture {	return objc_getAssociatedObject(self, @selector(panGesture)); }
 
@@ -41,6 +47,11 @@
 - (void)setShouldScrollWhenContentFits:(BOOL)shouldScrollWhenContentFits { objc_setAssociatedObject(self, @selector(shouldScrollWhenContentFits), [NSNumber numberWithBool:shouldScrollWhenContentFits], OBJC_ASSOCIATION_RETAIN); }
 - (BOOL)shouldScrollWhenContentFits {	return [objc_getAssociatedObject(self, @selector(shouldScrollWhenContentFits)) boolValue]; }
 
+- (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset
+{
+    self.scrollableHeaderConstraint = constraint;
+    self.scrollableHeaderOffset = offset;
+}
 
 - (void)followScrollView:(UIView *)scrollableView
 {
@@ -246,6 +257,13 @@
     // Scrolling the view up, hiding the navbar
     if (delta > 0) {
         if (self.collapsed) {
+            if (self.scrollableHeaderConstraint.constant > -self.scrollableHeaderOffset) {
+                self.scrollableHeaderConstraint.constant -= delta;
+                if (self.scrollableHeaderConstraint.constant < -self.scrollableHeaderOffset) {
+                    self.scrollableHeaderConstraint.constant = -self.scrollableHeaderOffset;
+                }
+                [self.view setNeedsLayout];
+            }
             return;
         }
         
@@ -273,6 +291,13 @@
     // Scrolling the view down, revealing the navbar
     if (delta < 0) {
         if (self.expanded) {
+            if (self.scrollableHeaderConstraint.constant < 0) {
+                self.scrollableHeaderConstraint.constant -= delta;
+                if (self.scrollableHeaderConstraint.constant > 0) {
+                    self.scrollableHeaderConstraint.constant = 0;
+                }
+                [self.view setNeedsLayout];
+            }
             return;
         }
         

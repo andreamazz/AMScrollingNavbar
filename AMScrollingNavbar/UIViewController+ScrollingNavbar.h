@@ -93,5 +93,7 @@
  */
 - (void)setShouldScrollWhenContentFits:(BOOL)enabled;
 
+- (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset;
+
 @end
 
