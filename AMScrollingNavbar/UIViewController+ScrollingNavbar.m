@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Andrea Mazzini. All rights reserved.
 //
 
+#define IS_IPHONE_6_PLUS [UIScreen mainScreen].scale == 3
+
 #import "UIViewController+ScrollingNavbar.h"
 #import <objc/runtime.h>
 
@@ -144,7 +146,7 @@
 
 - (float)deltaLimit
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || IS_IPHONE_6_PLUS) {
         return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 24;
     } else {
         if ([[UIApplication sharedApplication] isStatusBarHidden]) {
@@ -162,7 +164,7 @@
 
 - (float)navbarHeight
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || IS_IPHONE_6_PLUS) {
         return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 64;
     } else {
         if ([[UIApplication sharedApplication] isStatusBarHidden]) {

@@ -43,6 +43,12 @@
 	return YES;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat side = [UIScreen mainScreen].bounds.size.width / 2 - 8;
+    return (CGSize){ side, side };
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;

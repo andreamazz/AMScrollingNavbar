@@ -1,4 +1,6 @@
 language: objective-c
-install:
-- cd ScrollingNavbarDemo
-script: xctool -project ScrollingNavbarDemo.xcodeproj -scheme 'ScrollingNavbarDemo' -configuration Release -sdk iphonesimulator7.0 -arch i386 build
+before_install:
+  - export LANG=en_US.UTF-8
+  - gem install cocoapods --no-ri --no-rdoc
+  - gem install xcpretty --no-ri --no-rdoc
+script: rake test
