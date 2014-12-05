@@ -14,14 +14,14 @@
 {
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	
-	if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending) {
-		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-		[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-		NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Futura" size:18],
-									  NSForegroundColorAttributeName: [UIColor whiteColor]};
-		[[UINavigationBar appearance] setTitleTextAttributes:attributes];
-	}
+    [[UINavigationBar appearance] setTranslucent:NO];
 
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Futura" size:18],
+                                  NSForegroundColorAttributeName: [UIColor whiteColor]};
+    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    
     return YES;
 }
 							

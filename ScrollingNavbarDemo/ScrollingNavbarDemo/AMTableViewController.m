@@ -23,13 +23,21 @@
 {
 	[super viewDidLoad];
 	
+    [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
+    
 	[self setTitle:@"Table View"];
 	
     self.data = @[@"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"];
 	
+    if (self.tabBarController) {
+        [self.tabBarController.tabBar setHidden:YES];
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -44, 0);
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, -44, 0);
+    }
+    
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav"]];
 
     // Just call this line to enable the scrolling navbar
