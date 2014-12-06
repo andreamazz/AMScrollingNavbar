@@ -231,6 +231,7 @@
     if ([gesture state] == UIGestureRecognizerStateEnded) {
         // Reset the nav bar if the scroll is partial
         [self checkForPartialScroll];
+        [self checkForHeaderPartialScroll];
         self.lastContentOffset = 0;
     }
 }
@@ -364,6 +365,21 @@
 - (CGSize)contentSize
 {
     return [[self scrollView] contentSize];
+}
+
+- (void)checkForHeaderPartialScroll
+{
+    CGFloat offset = 0;
+    if (self.scrollableHeaderConstraint.constant <= -self.scrollableHeaderOffset / 2) {
+        offset = -self.scrollableHeaderOffset;
+    } else {
+        offset = 0;
+    }
+    NSTimeInterval duration = ABS((self.scrollableHeaderConstraint.constant - self.scrollableHeaderOffset) * 0.2);
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.scrollableHeaderConstraint.constant = offset;
+        [self.view setNeedsLayout];
+    } completion:nil];
 }
 
 - (void)checkForPartialScroll
