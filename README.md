@@ -2,9 +2,6 @@
   <img src="assets/logo.png"/>
 </p>
 
-AMScrollingNavbar
-=================
-
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMScrollingNavbar/badge.png)](http://www.cocoapods.org/?q=amscrollingnavbar)
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.png)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
 [![Analytics](https://ga-beacon.appspot.com/UA-42282237-8/AMScrollingNavbar/README)](https://github.com/igrigorik/ga-beacon)
