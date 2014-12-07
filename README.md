@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png"/>
+</p>
+
 AMScrollingNavbar
 =================
 
@@ -12,7 +16,7 @@ I also wrote about this control in [this article](http://andreamazz.github.io/bl
 
 #Screenshot
 
-![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/screenshot.gif)
+![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/assets/screenshot.gif)
 
 #Setup
 
@@ -62,7 +66,7 @@ Set the view constraints
 --------------------
 Make sure to set your scrollview's constraint properly. Please note that the library changes the scrollview's superview frame.
 
-![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/constraints.png)
+![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/assets/constraints.png)
 
 Quick Setup Video
 --------------------
