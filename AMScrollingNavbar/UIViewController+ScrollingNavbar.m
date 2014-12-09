@@ -186,9 +186,11 @@
                 [self scrollView].frame = rect;
             }
             [UIView animateWithDuration:0 animations:^{
+                self.scrollableHeaderConstraint.constant = 0;
                 self.lastContentOffset = 0;
                 self.delayDistance = -self.navbarHeight;
                 [self scrollWithDelta:-self.navbarHeight];
+                [self.view setNeedsLayout];
             }];
         } else {
             [self updateNavbarAlpha:self.navbarHeight];
