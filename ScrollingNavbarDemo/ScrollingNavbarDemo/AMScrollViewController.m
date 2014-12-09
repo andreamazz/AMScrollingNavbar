@@ -24,7 +24,7 @@
 	
 	[self setTitle:@"Scroll View"];
 	
-	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, 320, 40)];
+	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, [UIScreen mainScreen].bounds.size.width, 40)];
 	[label setText:@"My content"];
 	[label setTextAlignment:NSTextAlignmentCenter];
 	[label setFont:[UIFont fontWithName:@"Futura" size:24]];
@@ -35,7 +35,7 @@
 	[self.scrollView setBackgroundColor:UIColorFromRGB(0x08245d)];
 	
 	// Let's fake some content
-	[self.scrollView setContentSize:CGSizeMake(320, 840)];
+	[self.scrollView setContentSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, 800)];
 	
 	// Set the barTintColor. This will determine the overlay that fades in and out upon scrolling.
     [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
@@ -43,7 +43,8 @@
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.scrollView withDelay:60];
     [self setScrollableViewConstraint:self.headerConstraint withOffset:60];
-	
+    [self setShouldScrollWhenContentFits:NO];
+
 	[self.scrollView setDelegate:self];
 	
 	self.navigationItem.rightBarButtonItem =

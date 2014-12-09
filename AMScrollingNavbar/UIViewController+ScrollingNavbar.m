@@ -215,12 +215,6 @@
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture
 {
-    if (!self.shouldScrollWhenContentFits && !self.collapsed) {
-        if (self.scrollableView.frame.size.height >= [self contentSize].height) {
-            return;
-        }
-    }
-    
     CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
     
     float delta = self.lastContentOffset - translation.y;
@@ -261,6 +255,11 @@
     
     // Scrolling the view up, hiding the navbar
     if (delta > 0) {
+        if (!self.shouldScrollWhenContentFits && !self.collapsed) {
+            if (self.scrollableView.frame.size.height >= [self contentSize].height) {
+                return;
+            }
+        }
         if (self.collapsed) {
             if (self.scrollableHeaderConstraint.constant > -self.scrollableHeaderOffset) {
                 self.scrollableHeaderConstraint.constant -= delta;
