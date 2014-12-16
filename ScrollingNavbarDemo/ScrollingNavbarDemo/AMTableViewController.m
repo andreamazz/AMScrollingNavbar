@@ -28,12 +28,12 @@
 	[self setTitle:@"Table View"];
 	
     self.data = @[@"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content", @"Awesome content", @"Great content", @"Amazing content", @"Ludicrous content"];
-	
-    if (self.tabBarController) {
-        [self.tabBarController.tabBar setHidden:YES];
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -44, 0);
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, -44, 0);
-    }
+//	
+//    if (self.tabBarController) {
+//        [self.tabBarController.tabBar setHidden:YES];
+//        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -44, 0);
+//        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, -44, 0);
+//    }
     
 	[self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
@@ -41,7 +41,8 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav"]];
 
     // Just call this line to enable the scrolling navbar
-	[self followScrollView:self.tableView usingTopConstraint:self.topConstraint withDelay:65];
+//	[self followScrollView:self.tableView usingTopConstraint:self.topConstraint withDelay:65];
+    [self followScrollView:self.tableView withDelay:44];
     [self setShouldScrollWhenContentFits:YES];
 }
 
