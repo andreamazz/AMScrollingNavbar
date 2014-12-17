@@ -87,7 +87,6 @@
     frame.origin = CGPointZero;
     self.overlay = [[UIView alloc] initWithFrame:frame];
     
-    // Use tintColor instead of barTintColor on iOS < 7
     if (self.navigationController.navigationBar.barTintColor) {
         [self.overlay setBackgroundColor:self.navigationController.navigationBar.barTintColor];
     } else if ([UINavigationBar appearance].barTintColor) {
