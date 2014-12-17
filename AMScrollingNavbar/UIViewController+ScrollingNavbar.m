@@ -422,11 +422,10 @@
     [self updateNavbarAlpha:delta];
     
     // At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
-    CGRect frameNav = self.navigationController.navigationBar.frame;
     
     // Move and expand (or shrink) the superview of the given scrollview
     CGRect frame = self.scrollableView.superview.frame;
-    frame.origin.y = frameNav.origin.y + frameNav.size.height;
+    frame.origin.y = frame.origin.y - delta;
     
     if (self.scrollableViewConstraint) {
         self.scrollableViewConstraint.constant = -1 * ([self navbarHeight] - frame.origin.y);
