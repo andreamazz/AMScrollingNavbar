@@ -333,8 +333,8 @@
 - (UIScrollView *)scrollView
 {
     UIScrollView *scroll;
-    if ([self.scrollableView isKindOfClass:[UIWebView class]]) {
-        scroll = [(UIWebView *)self.scrollableView scrollView];
+    if ([self.scrollableView respondsToSelector:@selector(scrollView)]) {
+        scroll = [self.scrollableView performSelector:@selector(scrollView)];
     } else if ([self.scrollableView isKindOfClass:[UIScrollView class]]) {
         scroll = (UIScrollView *)self.scrollableView;
     }
