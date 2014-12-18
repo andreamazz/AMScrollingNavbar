@@ -93,6 +93,14 @@
  */
 - (void)setShouldScrollWhenContentFits:(BOOL)enabled;
 
+/** Add scrolling to a custom view
+ *
+ * Enables the scrolling of a generic UIView placed underneath the navbar (e.g.: a custom header)
+ * It requires the top constraint of the first view below the navbar.
+ *
+ * @param constraint The top constraint of the first view below the navbar
+ * @param delay The height of the custom view
+ */
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset;
 
 @end
