@@ -103,5 +103,8 @@
  */
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset;
 
+- (void)hideNavbar;
+- (void)hideNavbarAnimated:(BOOL)animated;
+
 @end
 

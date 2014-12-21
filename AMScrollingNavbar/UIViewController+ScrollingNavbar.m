@@ -7,6 +7,7 @@
 //
 
 #define IS_IPHONE_6_PLUS [UIScreen mainScreen].scale == 3
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 #import "UIViewController+ScrollingNavbar.h"
 #import <objc/runtime.h>
@@ -81,6 +82,8 @@
     [self.panGesture setDelegate:self];
     [self.scrollableView addGestureRecognizer:self.panGesture];
     
+    self.expanded = YES;
+    
     /* The navbar fadeout is achieved using an overlay view with the same barTintColor.
      this might be improved by adjusting the alpha component of every navbar child */
     CGRect frame = self.navigationController.navigationBar.frame;
@@ -128,10 +131,16 @@
 - (void)didBecomeActive:(id)sender
 {
     // This works fine in iOS8 without the ugly delay. Oh well.
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self showNavbar];
+    NSTimeInterval time = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0") ? 0 : 0.1;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.expanded) {
+            [self showNavbar];
+        } else if (self.collapsed) {
+            self.collapsed = NO;
+            self.expanded = YES;
+            [self hideNavbarAnimated:NO];
+        }
     });
-    
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -174,6 +183,32 @@
     }
 }
 
+- (void)hideNavbar
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self hideNavbarAnimated:YES];
+}
+
+- (void)hideNavbarAnimated:(BOOL)animated
+{
+    if (self.scrollableView != nil) {
+        if (self.expanded) {
+            if (!self.scrollableViewConstraint) {
+                // Frame version
+                CGRect rect = [self scrollView].frame;
+                rect.origin.y = self.navbarHeight;
+                [self scrollView].frame = rect;
+            }
+            [UIView animateWithDuration:animated ? 0.1 : 0 animations:^{
+                [self scrollWithDelta:self.navbarHeight];
+                [self.view setNeedsLayout];
+            }];
+        } else {
+            [self updateNavbarAlpha:self.navbarHeight];
+        }
+    }
+}
+
 - (void)showNavBarAnimated:(BOOL)animated
 {
     if (self.scrollableView != nil) {
@@ -184,7 +219,7 @@
                 rect.origin.y = 0;
                 [self scrollView].frame = rect;
             }
-            [UIView animateWithDuration:0 animations:^{
+            [UIView animateWithDuration:animated ? 0.1 : 0 animations:^{
                 self.scrollableHeaderConstraint.constant = 0;
                 self.lastContentOffset = 0;
                 self.delayDistance = -self.navbarHeight;
