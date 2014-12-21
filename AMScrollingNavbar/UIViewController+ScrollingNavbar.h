@@ -74,6 +74,20 @@
  */
 - (void)showNavBarAnimated:(BOOL)animated;
 
+/** Navbar slide down
+ *
+ * Manually show the navbar
+ */
+- (void)hideNavbar;
+
+/** Navbar slide up
+ *
+ * Manually hide the navbar
+ *
+ * @param animated Animates the navbar scrolling
+ */
+- (void)hideNavbarAnimated:(BOOL)animated;
+
 /** Remove the scrollview tracking
  *
  * Use this method to stop following the navbar
@@ -102,9 +116,6 @@
  * @param delay The height of the custom view
  */
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset;
-
-- (void)hideNavbar;
-- (void)hideNavbarAnimated:(BOOL)animated;
 
 @end
 
