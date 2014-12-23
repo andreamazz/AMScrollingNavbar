@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
 	[self setTitle:@"Web View"];
 	[self.webView setBackgroundColor:[UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]];
 	[self.view setBackgroundColor:[UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:1]];
