@@ -106,7 +106,9 @@
 				652B446E182D376600D01F5C /* Frameworks */,
 				652B446D182D376600D01F5C /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		652B446D182D376600D01F5C /* Products */ = {
 			isa = PBXGroup;

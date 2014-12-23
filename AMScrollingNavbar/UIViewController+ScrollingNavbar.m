@@ -212,7 +212,9 @@
 - (void)showNavBarAnimated:(BOOL)animated
 {
     if (self.scrollableView != nil) {
-        if (self.collapsed) {
+        BOOL isTracking = self.panGesture.state == UIGestureRecognizerStateBegan || self.panGesture.state == UIGestureRecognizerStateChanged;
+        if (self.collapsed || isTracking) {
+            self.panGesture.enabled = NO;
             if (!self.scrollableViewConstraint) {
                 // Frame version
                 CGRect rect = [self scrollView].frame;
@@ -225,6 +227,8 @@
                 self.delayDistance = -self.navbarHeight;
                 [self scrollWithDelta:-self.navbarHeight];
                 [self.view setNeedsLayout];
+            } completion:^(BOOL finished) {
+                self.panGesture.enabled = YES;
             }];
         } else {
             [self updateNavbarAlpha:self.navbarHeight];
