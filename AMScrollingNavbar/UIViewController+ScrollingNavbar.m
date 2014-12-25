@@ -12,6 +12,27 @@
 #import "UIViewController+ScrollingNavbar.h"
 #import <objc/runtime.h>
 
+@interface AMScrollingNavbarWeakContainer : NSObject
+
+@property (nonatomic, weak) id <AMScrollingNavbarDelegate> scrollingNavbarDelegate;
+
+- (id)initWithScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate;
+
+@end
+
+@implementation AMScrollingNavbarWeakContainer
+
+- (id)initWithScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate
+{
+    self = [super init];
+    if (self) {
+        self.scrollingNavbarDelegate = scrollingNavbarDelegate;
+    }
+    return self;
+}
+
+@end
+
 @implementation UIViewController (ScrollingNavbar)
 
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)scrollableViewConstraint { objc_setAssociatedObject(self, @selector(scrollableViewConstraint), scrollableViewConstraint, OBJC_ASSOCIATION_RETAIN); }
@@ -35,7 +56,15 @@
 - (void)setCollapsed:(BOOL)collapsed { objc_setAssociatedObject(self, @selector(collapsed), [NSNumber numberWithBool:collapsed], OBJC_ASSOCIATION_RETAIN); }
 - (BOOL)collapsed {	return [objc_getAssociatedObject(self, @selector(collapsed)) boolValue]; }
 
-- (void)setExpanded:(BOOL)expanded { objc_setAssociatedObject(self, @selector(expanded), [NSNumber numberWithBool:expanded], OBJC_ASSOCIATION_RETAIN); }
+- (void)setExpanded:(BOOL)expanded
+{
+    if (expanded != self.expanded) {
+        if ([self.scrollingNavbarDelegate respondsToSelector:@selector(navigationBarExpandedDidChange:)]) {
+            [self.scrollingNavbarDelegate navigationBarExpandedDidChange:expanded];
+        }
+    }
+    objc_setAssociatedObject(self, @selector(expanded), [NSNumber numberWithBool:expanded], OBJC_ASSOCIATION_RETAIN);
+}
 - (BOOL)expanded {	return [objc_getAssociatedObject(self, @selector(expanded)) boolValue]; }
 
 - (void)setLastContentOffset:(float)lastContentOffset { objc_setAssociatedObject(self, @selector(lastContentOffset), [NSNumber numberWithFloat:lastContentOffset], OBJC_ASSOCIATION_RETAIN); }
@@ -54,6 +83,18 @@
 {
     self.scrollableHeaderConstraint = constraint;
     self.scrollableHeaderOffset = offset;
+}
+
+- (void)setScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate
+{
+    AMScrollingNavbarWeakContainer *container = [[AMScrollingNavbarWeakContainer alloc] initWithScrollingNavbarDelegate:scrollingNavbarDelegate];
+    objc_setAssociatedObject(self, @selector(scrollingNavbarDelegate), container, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate
+{
+    AMScrollingNavbarWeakContainer *container = objc_getAssociatedObject(self, _cmd);
+    return container.scrollingNavbarDelegate;
 }
 
 - (void)followScrollView:(UIView *)scrollableView
