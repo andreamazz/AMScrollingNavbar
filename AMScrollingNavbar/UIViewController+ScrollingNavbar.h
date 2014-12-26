@@ -9,10 +9,24 @@
 @import Foundation;
 @import UIKit;
 
+/**-----------------------------------------------------------------------------
+ * @name AMScrollingNavbarDelegate
+ * -----------------------------------------------------------------------------
+ */
+
 @protocol AMScrollingNavbarDelegate <NSObject>
 @optional
 
+/** Navbar collapsed
+ *
+ * Called when the navbar change its state to collapsed
+ */
 - (void)navigationBarDidChangeToCollapsed:(BOOL)collapsed;
+
+/** Navbar expanded
+ *
+ * Called when the navbar change its state to expanded
+ */
 - (void)navigationBarDidChangeToExpanded:(BOOL)expanded;
 
 @end
@@ -125,6 +139,12 @@
  */
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset;
 
+/** AMScrollingNavbarDelegate setter
+ *
+ * Sets the AMScrollingNavbarDelegate
+ *
+ * @param scrollingNavbarDelegate The delegate
+ */
 - (void)setScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate;
 
 @end
