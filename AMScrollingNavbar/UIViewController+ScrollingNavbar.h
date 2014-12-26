@@ -9,6 +9,14 @@
 @import Foundation;
 @import UIKit;
 
+@protocol AMScrollingNavbarDelegate <NSObject>
+@optional
+
+- (void)navigationBarDidChangeToCollapsed:(BOOL)collapsed;
+- (void)navigationBarDidChangeToExpanded:(BOOL)expanded;
+
+@end
+
 @interface UIViewController (ScrollingNavbar) <UIGestureRecognizerDelegate>
 
 /**-----------------------------------------------------------------------------
@@ -116,6 +124,8 @@
  * @param delay The height of the custom view
  */
 - (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset;
+
+- (void)setScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate;
 
 @end
 

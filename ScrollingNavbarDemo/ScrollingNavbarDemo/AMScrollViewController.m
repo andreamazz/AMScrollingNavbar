@@ -9,7 +9,7 @@
 #import "AMScrollViewController.h"
 #import "UIViewController+ScrollingNavbar.h"
 
-@interface AMScrollViewController () <UIScrollViewDelegate>
+@interface AMScrollViewController () <UIScrollViewDelegate, AMScrollingNavbarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerConstraint;
@@ -49,6 +49,22 @@
 	
 	self.navigationItem.rightBarButtonItem =
 	[[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopScroll)];
+    
+    [self setScrollingNavbarDelegate:self];
+}
+
+- (void)navigationBarDidChangeToExpanded:(BOOL)expanded
+{
+    if (expanded) {
+        NSLog(@"Nav changed to expanded");
+    }
+}
+
+- (void)navigationBarDidChangeToCollapsed:(BOOL)collapsed
+{
+    if (collapsed) {
+        NSLog(@"Nav changed to collapsed");
+    }
 }
 
 - (void)stopScroll
