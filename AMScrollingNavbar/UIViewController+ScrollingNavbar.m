@@ -14,6 +14,9 @@
 
 @implementation UIViewController (ScrollingNavbar)
 
+- (void)setUseSuperview:(BOOL)useSuperview { objc_setAssociatedObject(self, @selector(useSuperview), [NSNumber numberWithBool:useSuperview], OBJC_ASSOCIATION_RETAIN);}
+- (BOOL)useSuperview { return [objc_getAssociatedObject(self, @selector(useSuperview)) boolValue]; }
+
 - (void)setScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate { objc_setAssociatedObject(self, @selector(scrollingNavbarDelegate), scrollingNavbarDelegate, OBJC_ASSOCIATION_ASSIGN); }
 - (id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate { return objc_getAssociatedObject(self, @selector(scrollingNavbarDelegate)); }
 
@@ -482,14 +485,18 @@
     CGRect frameNav = self.navigationController.navigationBar.frame;
     
     // Move and expand (or shrink) the superview of the given scrollview
-    CGRect frame = self.scrollableView.superview.frame;
+    CGRect frame = self.useSuperview ? self.scrollableView.superview.frame : self.scrollableView.frame;
     frame.origin.y = frameNav.origin.y + frameNav.size.height;
     
     if (self.scrollableViewConstraint) {
         self.scrollableViewConstraint.constant = -1 * ([self navbarHeight] - frame.origin.y);
     } else {
         frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
-        self.scrollableView.superview.frame = frame;
+        if (self.useSuperview) {
+            self.scrollableView.superview.frame = frame;
+        } else {
+            self.scrollableView.frame = frame;
+        }
     }
     
     [self.view setNeedsLayout];

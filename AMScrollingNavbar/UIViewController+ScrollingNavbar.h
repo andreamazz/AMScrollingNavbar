@@ -147,5 +147,14 @@
  */
 - (void)setScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate;
 
+/** Use superview as container view
+ *
+ * Set the scrollable view's superview as main container. 
+ * Default to YES, set it to NO when using a UITableViewController or a UICollectionViewController
+ *
+ * @param useSuperview The BOOL flag.
+ */
+- (void)setUseSuperview:(BOOL)useSuperview;
+
 @end
 
