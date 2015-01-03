@@ -26,7 +26,7 @@
     
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.collectionView];
-
+    [self setUseSuperview:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
