@@ -42,6 +42,7 @@
 	
 	// Just call this line to enable the scrolling navbar
 	[self followScrollView:self.scrollView withDelay:60];
+    [self setUseSuperview:YES];
     [self setScrollableViewConstraint:self.headerConstraint withOffset:60];
     [self setShouldScrollWhenContentFits:NO];
 
@@ -51,6 +52,11 @@
 	[[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopScroll)];
     
     [self setScrollingNavbarDelegate:self];
+}
+
+- (float)deltaLimit
+{
+    return 40;
 }
 
 - (void)navigationBarDidChangeToExpanded:(BOOL)expanded
