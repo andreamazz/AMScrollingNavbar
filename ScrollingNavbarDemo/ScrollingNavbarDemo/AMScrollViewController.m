@@ -54,11 +54,6 @@
     [self setScrollingNavbarDelegate:self];
 }
 
-- (float)deltaLimit
-{
-    return 40;
-}
-
 - (void)navigationBarDidChangeToExpanded:(BOOL)expanded
 {
     if (expanded) {
