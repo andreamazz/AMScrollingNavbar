@@ -73,7 +73,7 @@ Using it with UITableViewController or UICollectionViewController
 --------------------
 If you are not using a plain `UIViewController` you have to enable this property:
 ```objc
-[self setUseSuperview:YES];
+[self setUseSuperview:NO];
 ```
 
 Delegate
