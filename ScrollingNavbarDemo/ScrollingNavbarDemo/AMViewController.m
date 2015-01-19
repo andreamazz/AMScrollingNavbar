@@ -18,10 +18,10 @@
 {
     [super viewDidLoad];
     
-	// Remember to set the navigation bar to be NOT translucent
-	[self.navigationController.navigationBar setTranslucent:NO];
+    // Remember to set the navigation bar to be NOT translucent
+    [self.navigationController.navigationBar setTranslucent:NO];
     [self setTitle:@"Demo"];
-	
+    
     [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
 }
 

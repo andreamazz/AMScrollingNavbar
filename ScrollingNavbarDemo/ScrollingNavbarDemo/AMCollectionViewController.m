@@ -18,14 +18,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	[self setTitle:@"Table View"];
-	
-	[self.collectionView setDelegate:self];
-	[self.collectionView setDataSource:self];
     
-	// Just call this line to enable the scrolling navbar
-	[self followScrollView:self.collectionView];
+    [self setTitle:@"Table View"];
+    
+    [self.collectionView setDelegate:self];
+    [self.collectionView setDataSource:self];
+    
+    // Just call this line to enable the scrolling navbar
+    [self followScrollView:self.collectionView];
     [self setUseSuperview:YES];
 }
 
@@ -37,10 +37,10 @@
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
-	// This enables the user to scroll down the navbar by tapping the status bar.
-	[self showNavbar];
-	
-	return YES;
+    // This enables the user to scroll down the navbar by tapping the status bar.
+    [self showNavbar];
+    
+    return YES;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
