@@ -171,19 +171,18 @@
     frame.size.height = self.navigationController.navigationBar.frame.size.height;
     self.overlay.frame = frame;
     
-    [self updateSizingWithDelta:0];
+    if (!CGRectIsEmpty(self.navigationController.navigationBar.frame)) {
+        [self updateSizingWithDelta:0];
+    }
 }
 
 - (float)deltaLimit
 {
+    CGRect frame = self.navigationController.navigationBar.frame;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || IS_IPHONE_6_PLUS) {
         return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 24;
     } else {
-        if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
-        } else {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
-        }
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? frame.size.height : frame.size.height - 20;
     }
 }
 
@@ -194,14 +193,11 @@
 
 - (float)navbarHeight
 {
+    CGRect frame = self.navigationController.navigationBar.frame;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || IS_IPHONE_6_PLUS) {
-        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 64;
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 24;
     } else {
-        if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
-        } else {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
-        }
+        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? frame.size.height : frame.size.height + 20;
     }
 }
 
@@ -445,15 +441,16 @@
 
 - (void)checkForPartialScroll
 {
-    CGFloat pos = self.navigationController.navigationBar.frame.origin.y;
     __block CGRect frame = self.navigationController.navigationBar.frame;
+    CGAffineTransform transform = self.navigationController.navigationBar.transform; // considering UIView transformation for custom UINavigationBar height and placement
+    CGFloat pos = frame.origin.y - transform.ty; // Actual Y position after applying transform
     
     // Get back down
-    if (pos >= (self.statusBar - frame.size.height / 2)) {
-        CGFloat delta = frame.origin.y - self.statusBar;
+    if (pos >= (self.statusBar - frame.size.height / 2)) { // Flip position can be tweaked further
+        CGFloat delta = pos - self.statusBar;
         NSTimeInterval duration = ABS((delta / (frame.size.height / 2)) * 0.2);
         [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            frame.origin.y = self.statusBar;
+            frame.origin.y = self.statusBar + transform.ty;
             self.navigationController.navigationBar.frame = frame;
             
             self.expanded = YES;
@@ -483,10 +480,11 @@
     
     // At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
     CGRect frameNav = self.navigationController.navigationBar.frame;
+    CGAffineTransform transform = self.navigationController.navigationBar.transform; // considering UIView transformation for custom UINavigationBar height and placement
     
     // Move and expand (or shrink) the superview of the given scrollview
     CGRect frame = self.useSuperview ? self.scrollableView.superview.frame : self.scrollableView.frame;
-    frame.origin.y = frameNav.origin.y + frameNav.size.height;
+    frame.origin.y = frameNav.origin.y - transform.ty + frameNav.size.height;
     
     if (self.scrollableViewConstraint) {
         self.scrollableViewConstraint.constant = -1 * ([self navbarHeight] - frame.origin.y);
@@ -505,13 +503,13 @@
 - (void)updateNavbarAlpha:(CGFloat)delta
 {
     CGRect frame = self.navigationController.navigationBar.frame;
-    
+    CGAffineTransform transform = self.navigationController.navigationBar.transform; // considering UIView transformation for custom UINavigationBar height and placement
     if (self.scrollableView != nil) {
         [self.navigationController.navigationBar bringSubviewToFront:self.overlay];
     }
     
     // Change the alpha channel of every item on the navbr. The overlay will appear, while the other objects will disappear, and vice versa
-    float alpha = (frame.origin.y + self.deltaLimit) / frame.size.height;
+    float alpha = (frame.origin.y + self.deltaLimit) / (frame.size.height + transform.ty);
     [self.overlay setAlpha:1 - alpha];
     [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem *obj, NSUInteger idx, BOOL *stop) {
         obj.customView.alpha = alpha;
