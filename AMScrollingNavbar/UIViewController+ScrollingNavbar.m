@@ -284,7 +284,7 @@
         [self scrollWithDelta:delta];
     }
     
-    if ([gesture state] == UIGestureRecognizerStateEnded) {
+    if ([gesture state] == UIGestureRecognizerStateEnded || [gesture state] == UIGestureRecognizerStateCancelled) {
         // Reset the nav bar if the scroll is partial
         [self checkForPartialScroll];
         [self checkForHeaderPartialScroll];
