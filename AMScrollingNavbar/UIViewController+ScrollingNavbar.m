@@ -248,7 +248,7 @@
                 self.lastContentOffset = 0;
                 self.delayDistance = -self.navbarHeight;
                 [self scrollWithDelta:-self.navbarHeight];
-                [self.view setNeedsLayout];
+                [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 self.panGesture.enabled = YES;
             }];
