@@ -489,7 +489,14 @@
     frame.origin.y = frameNav.origin.y + frameNav.size.height;
     
     if (self.scrollableViewConstraint) {
-        self.scrollableViewConstraint.constant = -1 * ([self navbarHeight] - frame.origin.y);
+        // properly handle constraint commutativity
+        // (when programmatically constraining the topLayoutGuide, it may be either the first or second view in the relation)
+        CGFloat directionMultiplier = -1;
+        if ([self.scrollableViewConstraint.firstItem conformsToProtocol:@protocol(UILayoutSupport)]) {
+            directionMultiplier = 1;
+        }
+
+        self.scrollableViewConstraint.constant = directionMultiplier * ([self navbarHeight] - frame.origin.y);
     } else {
         frame.size.height = [UIScreen mainScreen].bounds.size.height - frame.origin.y;
         if (self.useSuperview) {
