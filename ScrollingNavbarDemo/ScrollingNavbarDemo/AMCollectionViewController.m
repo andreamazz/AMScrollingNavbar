@@ -65,4 +65,8 @@
     return cell;
 }
 
+- (void)dealloc {
+    [self stopFollowingScrollView];
+}
+
 @end

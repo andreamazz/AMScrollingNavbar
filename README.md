@@ -29,6 +29,13 @@ I also wrote about this control in [this article](http://andreamazz.github.io/bl
 }
 
 ```
+* Make sure to stop the scrolling on `dealloc`:
+```objc
+- (void)dealloc 
+{
+      [self stopFollowingScrollView];
+}
+```
 
 #Enable the scrolling with Autolayout
 

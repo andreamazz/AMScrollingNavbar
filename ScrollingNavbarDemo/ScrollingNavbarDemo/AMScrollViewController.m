@@ -87,4 +87,8 @@
     return YES;
 }
 
+- (void)dealloc {
+    [self stopFollowingScrollView];
+}
+
 @end
