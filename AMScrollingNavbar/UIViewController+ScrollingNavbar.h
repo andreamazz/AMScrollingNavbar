@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Andrea Mazzini. All rights reserved.
 //
 
-@import Foundation;
-@import UIKit;
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**-----------------------------------------------------------------------------
  * @name AMScrollingNavbarDelegate
