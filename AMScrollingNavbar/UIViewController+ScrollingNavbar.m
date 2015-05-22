@@ -442,7 +442,7 @@
     NSTimeInterval duration = ABS((self.scrollableHeaderConstraint.constant - self.scrollableHeaderOffset) * 0.2);
     [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.scrollableHeaderConstraint.constant = offset;
-        [self.view layoutIfNeeded];
+        [self.view setNeedsLayout];
     } completion:nil];
 }
 
