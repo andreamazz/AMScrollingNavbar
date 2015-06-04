@@ -38,8 +38,7 @@
 - (void)setOverlay:(UIView *)overlay { objc_setAssociatedObject(self, @selector(overlay), overlay, OBJC_ASSOCIATION_RETAIN); }
 - (UIView *)overlay { return objc_getAssociatedObject(self, @selector(overlay)); }
 
-- (void)setCollapsed:(BOOL)collapsed
-{
+- (void)setCollapsed:(BOOL)collapsed {
     if (collapsed != self.collapsed) {
         if ([self.scrollingNavbarDelegate respondsToSelector:@selector(navigationBarDidChangeToCollapsed:)]) {
             [self.scrollingNavbarDelegate navigationBarDidChangeToCollapsed:collapsed];
@@ -49,8 +48,7 @@
 }
 - (BOOL)collapsed {	return [objc_getAssociatedObject(self, @selector(collapsed)) boolValue]; }
 
-- (void)setExpanded:(BOOL)expanded
-{
+- (void)setExpanded:(BOOL)expanded {
     if (expanded != self.expanded) {
         if ([self.scrollingNavbarDelegate respondsToSelector:@selector(navigationBarDidChangeToExpanded:)]) {
             [self.scrollingNavbarDelegate navigationBarDidChangeToExpanded:expanded];
@@ -72,43 +70,39 @@
 - (void)setShouldScrollWhenContentFits:(BOOL)shouldScrollWhenContentFits { objc_setAssociatedObject(self, @selector(shouldScrollWhenContentFits), [NSNumber numberWithBool:shouldScrollWhenContentFits], OBJC_ASSOCIATION_RETAIN); }
 - (BOOL)shouldScrollWhenContentFits {	return [objc_getAssociatedObject(self, @selector(shouldScrollWhenContentFits)) boolValue]; }
 
-- (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset
-{
+- (void)setScrollableViewConstraint:(NSLayoutConstraint *)constraint withOffset:(CGFloat)offset {
     self.scrollableHeaderConstraint = constraint;
     self.scrollableHeaderOffset = offset;
 }
 
-- (void)followScrollView:(UIView *)scrollableView
-{
+- (void)followScrollView:(UIView *)scrollableView {
     [self followScrollView:scrollableView withDelay:0];
 }
 
-- (void)followScrollView:(UIView *)scrollableView withDelay:(float)delay
-{
+- (void)followScrollView:(UIView *)scrollableView withDelay:(float)delay {
     [self followScrollView:scrollableView usingTopConstraint:nil withDelay:delay];
 }
 
-- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint
-{
+- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint {
     [self followScrollView:scrollableView usingTopConstraint:constraint withDelay:0];
 }
 
-- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay
-{
+- (void)followScrollView:(UIView *)scrollableView usingTopConstraint:(NSLayoutConstraint *)constraint withDelay:(float)delay {
     self.scrollableView = scrollableView;
     self.scrollableViewConstraint = constraint;
-    
+
     self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [self.panGesture setMaximumNumberOfTouches:1];
-    
+
     [self.panGesture setDelegate:self];
     [self.scrollableView addGestureRecognizer:self.panGesture];
-    
+
     self.expanded = YES;
-    
+
     /* The navbar fadeout is achieved using an overlay view with the same barTintColor.
      this might be improved by adjusting the alpha component of every navbar child */
     CGRect frame = self.navigationController.navigationBar.frame;
+    frame.size = CGSizeMake(frame.size.width, [self navbarHeight] - [self statusBar]);
     frame.origin = CGPointZero;
 
     if (!self.overlay) {
@@ -136,14 +130,13 @@
                                              selector:@selector(didBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-    
+
     self.maxDelay = delay;
     self.delayDistance = delay;
     self.shouldScrollWhenContentFits = NO;
 }
 
-- (void)stopFollowingScrollView
-{
+- (void)stopFollowingScrollView {
     [self showNavBarAnimated:NO];
     [self.scrollableView removeGestureRecognizer:self.panGesture];
     [self.overlay removeFromSuperview];
@@ -153,8 +146,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
-- (void)didBecomeActive:(id)sender
-{
+- (void)didBecomeActive:(id)sender {
     // This works fine in iOS8 without the ugly delay. Oh well.
     NSTimeInterval time = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0") ? 0 : 0.1;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -168,54 +160,51 @@
     });
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     CGRect frame = self.overlay.frame;
     frame.size.height = self.navigationController.navigationBar.frame.size.height;
     self.overlay.frame = frame;
-    
+
     [self updateSizingWithDelta:0];
 }
 
-- (float)deltaLimit
-{
+- (float)deltaLimit {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || IS_IPHONE_6_PLUS) {
-        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 24;
+        return [self portraitNavbar] - [self statusBar];
     } else {
-        if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
-        } else {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 24 : 12);
-        }
+        return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ?
+                [self portraitNavbar] - [self statusBar]:
+                [self landscapeNavbar] - [self statusBar]);
     }
 }
 
-- (float)statusBar
-{
+- (float)portraitNavbar {
+    return 44 + ((self.navigationItem.prompt != nil) ? 30 : 0);
+}
+
+- (float)landscapeNavbar {
+    return 32 + ((self.navigationItem.prompt != nil) ? 22 : 0);
+}
+
+- (float)statusBar {
     return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 0 : 20;
 }
 
-- (float)navbarHeight
-{
+- (float)navbarHeight {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || IS_IPHONE_6_PLUS) {
-        return ([[UIApplication sharedApplication] isStatusBarHidden]) ? 44 : 64;
+        return [self portraitNavbar] + [self statusBar];
     } else {
-        if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 44 : 32);
-        } else {
-            return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ? 64 : 52);
-        }
+        return (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ?
+                [self portraitNavbar] + [self statusBar] :
+                [self landscapeNavbar] + [self statusBar]);
     }
 }
 
-- (void)hideNavbar
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+- (void)hideNavbar {
     [self hideNavbarAnimated:YES];
 }
 
-- (void)hideNavbarAnimated:(BOOL)animated
-{
+- (void)hideNavbarAnimated:(BOOL)animated {
     if (self.scrollableView != nil) {
         if (self.expanded) {
             if (!self.scrollableViewConstraint) {
@@ -234,10 +223,10 @@
     }
 }
 
-- (void)showNavBarAnimated:(BOOL)animated
-{
+- (void)showNavBarAnimated:(BOOL)animated {
     if (self.scrollableView != nil) {
-        BOOL isTracking = self.panGesture.state == UIGestureRecognizerStateBegan || self.panGesture.state == UIGestureRecognizerStateChanged;
+        BOOL isTracking = (self.panGesture.state == UIGestureRecognizerStateBegan ||
+                           self.panGesture.state == UIGestureRecognizerStateChanged);
         if (self.collapsed || isTracking) {
             self.panGesture.enabled = NO;
             if (!self.scrollableViewConstraint) {
@@ -261,32 +250,31 @@
     }
 }
 
-- (void)showNavbar
-{
+- (void)showNavbar {
     [self showNavBarAnimated:YES];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 
-- (void)setScrollingEnabled:(BOOL)enabled
-{
+- (void)setScrollingEnabled:(BOOL)enabled {
     self.panGesture.enabled = enabled;
 }
 
-- (void)handlePan:(UIPanGestureRecognizer *)gesture
-{
+- (void)handlePan:(UIPanGestureRecognizer *)gesture {
+    if (self.scrollableView != nil) {
+        [self.navigationController.navigationBar bringSubviewToFront:self.overlay];
+    }
+
     CGPoint translation = [gesture translationInView:[self.scrollableView superview]];
-    
     float delta = self.lastContentOffset - translation.y;
     self.lastContentOffset = translation.y;
-    
+
     if ([self checkRubberbanding:delta]) {
         [self scrollWithDelta:delta];
     }
-    
+
     if ([gesture state] == UIGestureRecognizerStateEnded || [gesture state] == UIGestureRecognizerStateCancelled) {
         // Reset the nav bar if the scroll is partial
         [self checkForPartialScroll];
@@ -295,8 +283,7 @@
     }
 }
 
-- (BOOL)checkRubberbanding:(CGFloat)delta
-{
+- (BOOL)checkRubberbanding:(CGFloat)delta {
     // Prevents the navbar from moving during the 'rubberband' scroll
     if (delta < 0) {
         if ([self contentoffset].y + self.scrollableView.frame.size.height > [self contentSize].height) {
@@ -315,7 +302,7 @@
 - (void)scrollWithDelta:(CGFloat)delta
 {
     CGRect frame = self.navigationController.navigationBar.frame;
-    
+
     // Scrolling the view up, hiding the navbar
     if (delta > 0) {
         if (!self.shouldScrollWhenContentFits && !self.collapsed) {
@@ -333,28 +320,28 @@
             }
             return;
         }
-        
+
         if (self.expanded) {
             self.expanded = NO;
         }
-        
+
         if (frame.origin.y - delta < -self.deltaLimit) {
             delta = frame.origin.y + self.deltaLimit;
         }
-        
+
         frame.origin.y = MAX(-self.deltaLimit, frame.origin.y - delta);
         self.navigationController.navigationBar.frame = frame;
-        
+
         if (frame.origin.y == -self.deltaLimit) {
             self.collapsed = YES;
             self.expanded = NO;
             self.delayDistance = self.maxDelay;
         }
-        
+
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
     }
-    
+
     // Scrolling the view down, revealing the navbar
     if (delta < 0) {
         if (self.expanded) {
@@ -367,35 +354,34 @@
             }
             return;
         }
-        
+
         if (self.collapsed) {
             self.collapsed = NO;
         }
-        
+
         self.delayDistance += delta;
-        
+
         if (self.delayDistance > 0 && self.maxDelay < [self scrollView].contentOffset.y) {
             return;
         }
-        
+
         if (frame.origin.y - delta > self.statusBar) {
             delta = frame.origin.y - self.statusBar;
         }
         frame.origin.y = MIN(20, frame.origin.y - delta);
         self.navigationController.navigationBar.frame = frame;
-        
+
         if (frame.origin.y == self.statusBar) {
             self.expanded = YES;
             self.collapsed = NO;
         }
-        
+
         [self updateSizingWithDelta:delta];
         [self restoreContentoffset:delta];
     }
 }
 
-- (UIScrollView *)scrollView
-{
+- (UIScrollView *)scrollView {
     UIScrollView *scroll;
     if ([self.scrollableView respondsToSelector:@selector(scrollView)]) {
         scroll = [self.scrollableView performSelector:@selector(scrollView)];
@@ -405,11 +391,10 @@
     return scroll;
 }
 
-- (void)restoreContentoffset:(float)delta
-{
+- (void)restoreContentoffset:(float)delta {
     // Hold the scroll steady until the navbar appears/disappears
     CGPoint offset = [[self scrollView] contentOffset];
-    
+
     if ([[self scrollView] respondsToSelector:@selector(translatesAutoresizingMaskIntoConstraints)] && [self scrollView].translatesAutoresizingMaskIntoConstraints) {
         [[self scrollView] setContentOffset:(CGPoint){offset.x, offset.y - delta}];
     } else {
@@ -421,18 +406,15 @@
     }
 }
 
-- (CGPoint)contentoffset
-{
+- (CGPoint)contentoffset {
     return [[self scrollView] contentOffset];
 }
 
-- (CGSize)contentSize
-{
+- (CGSize)contentSize {
     return [[self scrollView] contentSize];
 }
 
-- (void)checkForHeaderPartialScroll
-{
+- (void)checkForHeaderPartialScroll {
     CGFloat offset = 0;
     if (self.scrollableHeaderConstraint.constant <= -self.scrollableHeaderOffset / 2) {
         offset = -self.scrollableHeaderOffset;
@@ -446,11 +428,10 @@
     } completion:nil];
 }
 
-- (void)checkForPartialScroll
-{
+- (void)checkForPartialScroll {
     CGFloat pos = self.navigationController.navigationBar.frame.origin.y;
     __block CGRect frame = self.navigationController.navigationBar.frame;
-    
+
     // Get back down
     if (pos >= (self.statusBar - frame.size.height / 2)) {
         CGFloat delta = frame.origin.y - self.statusBar;
@@ -458,10 +439,10 @@
         [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             frame.origin.y = self.statusBar;
             self.navigationController.navigationBar.frame = frame;
-            
+
             self.expanded = YES;
             self.collapsed = NO;
-            
+
             [self updateSizingWithDelta:delta];
         } completion:nil];
     } else {
@@ -471,26 +452,25 @@
         [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             frame.origin.y = -self.deltaLimit;
             self.navigationController.navigationBar.frame = frame;
-            
+
             self.expanded = NO;
             self.collapsed = YES;
-            
+
             [self updateSizingWithDelta:delta];
         } completion:nil];
     }
 }
 
-- (void)updateSizingWithDelta:(CGFloat)delta
-{
+- (void)updateSizingWithDelta:(CGFloat)delta {
     [self updateNavbarAlpha:delta];
-    
+
     // At this point the navigation bar is already been placed in the right position, it'll be the reference point for the other views'sizing
     CGRect frameNav = self.navigationController.navigationBar.frame;
-    
+
     // Move and expand (or shrink) the superview of the given scrollview
     CGRect frame = self.useSuperview ? self.scrollableView.superview.frame : self.scrollableView.frame;
     frame.origin.y = frameNav.origin.y + frameNav.size.height;
-    
+
     if (self.scrollableViewConstraint) {
         // properly handle constraint commutativity
         // (when programmatically constraining the topLayoutGuide, it may be either the first or second view in the relation)
@@ -508,18 +488,13 @@
             self.scrollableView.frame = frame;
         }
     }
-    
+
     [self.view setNeedsLayout];
 }
 
-- (void)updateNavbarAlpha:(CGFloat)delta
-{
+- (void)updateNavbarAlpha:(CGFloat)delta {
     CGRect frame = self.navigationController.navigationBar.frame;
-    
-    if (self.scrollableView != nil) {
-        [self.navigationController.navigationBar bringSubviewToFront:self.overlay];
-    }
-    
+
     // Change the alpha channel of every item on the navbr. The overlay will appear, while the other objects will disappear, and vice versa
     float alpha = (frame.origin.y + self.deltaLimit) / frame.size.height;
     [self.overlay setAlpha:1 - alpha];

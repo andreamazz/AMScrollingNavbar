@@ -18,8 +18,7 @@
 
 @implementation AMScrollViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setTitle:@"Scroll View"];
@@ -39,7 +38,9 @@
     
     // Set the barTintColor. This will determine the overlay that fades in and out upon scrolling.
     [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
-    
+
+//    self.navigationItem.prompt = @"Prompt text";
+
     // Just call this line to enable the scrolling navbar
     [self followScrollView:self.scrollView withDelay:60];
     [self setUseSuperview:YES];
@@ -50,37 +51,32 @@
     
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopScroll)];
-    
+
     [self setScrollingNavbarDelegate:self];
 }
 
-- (void)navigationBarDidChangeToExpanded:(BOOL)expanded
-{
+- (void)navigationBarDidChangeToExpanded:(BOOL)expanded {
     if (expanded) {
         NSLog(@"Nav changed to expanded");
     }
 }
 
-- (void)navigationBarDidChangeToCollapsed:(BOOL)collapsed
-{
+- (void)navigationBarDidChangeToCollapsed:(BOOL)collapsed {
     if (collapsed) {
         NSLog(@"Nav changed to collapsed");
     }
 }
 
-- (void)stopScroll
-{
+- (void)stopScroll {
     [self setScrollingEnabled:NO];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self showNavBarAnimated:NO];
 }
 
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
-{
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
     // This enables the user to scroll down the navbar by tapping the status bar.
     [self showNavbar];
     
