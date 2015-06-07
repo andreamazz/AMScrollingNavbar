@@ -34,7 +34,7 @@
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -44, 0);
         self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, -44, 0);
     }
-    
+
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     
