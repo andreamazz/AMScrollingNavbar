@@ -16,6 +16,10 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
+*.xcscmblueprint
 
 #CocoaPods
 Pods
+
+# Carthage
+Carthage/Build
