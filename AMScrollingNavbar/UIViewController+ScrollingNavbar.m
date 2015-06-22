@@ -17,6 +17,9 @@
 - (void)setUseSuperview:(BOOL)useSuperview { objc_setAssociatedObject(self, @selector(useSuperview), [NSNumber numberWithBool:useSuperview], OBJC_ASSOCIATION_RETAIN);}
 - (BOOL)useSuperview { return [objc_getAssociatedObject(self, @selector(useSuperview)) boolValue]; }
 
+- (void)setExpandOnActive:(BOOL)expandOnActive { objc_setAssociatedObject(self, @selector(expandOnActive), [NSNumber numberWithBool:expandOnActive], OBJC_ASSOCIATION_RETAIN);}
+- (BOOL)expandOnActive { return [objc_getAssociatedObject(self, @selector(expandOnActive)) boolValue]; }
+
 - (void)setScrollingNavbarDelegate:(id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate { objc_setAssociatedObject(self, @selector(scrollingNavbarDelegate), scrollingNavbarDelegate, OBJC_ASSOCIATION_ASSIGN); }
 - (id <AMScrollingNavbarDelegate>)scrollingNavbarDelegate { return objc_getAssociatedObject(self, @selector(scrollingNavbarDelegate)); }
 
@@ -99,6 +102,8 @@
 
     self.expanded = YES;
 
+    self.expandOnActive = YES;
+
     /* The navbar fadeout is achieved using an overlay view with the same barTintColor.
      this might be improved by adjusting the alpha component of every navbar child */
     CGRect frame = self.navigationController.navigationBar.frame;
@@ -150,11 +155,7 @@
     // This works fine in iOS8 without the ugly delay. Oh well.
     NSTimeInterval time = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0") ? 0 : 0.1;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (self.expanded) {
-            self.collapsed = NO;
-            self.expanded = YES;
-            [self hideNavbarAnimated:NO];
-        } else if (self.collapsed) {
+        if (self.expandOnActive) {
             [self showNavbar];
         }
     });

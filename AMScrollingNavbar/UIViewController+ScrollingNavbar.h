@@ -156,5 +156,14 @@
  */
 - (void)setUseSuperview:(BOOL)useSuperview;
 
+/** Expand on active
+ *
+ * Determines if the navbar should expand when the app becomes active (e.g. after being sent to background)
+ * Default to YES
+ *
+ * @param expandOnActive The BOOL flag.
+ */
+- (void)setExpandOnActive:(BOOL)expandOnActive;
+
 @end
 
