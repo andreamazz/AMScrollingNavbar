@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E33b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="weN-sg-AqG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E36b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bcL-UJ-dqI">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -73,6 +73,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="wgo-OD-JGg" kind="push" id="wWU-qX-ZVc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -139,7 +142,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="wgo-OD-JGg" customClass="AMCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="RfZ-ue-zL1">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.22768095273231542" green="0.32033780531321543" blue="0.42626953125" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="2" id="0nd-hv-mlp">
@@ -174,9 +177,6 @@
                                     <constraint firstItem="rlr-1Q-OM4" firstAttribute="top" secondItem="qrz-H4-AbC" secondAttribute="top" constant="20" id="yPE-9n-ULN"/>
                                 </constraints>
                                 <size key="customSize" width="154" height="154"/>
-                                <connections>
-                                    <segue destination="wgo-OD-JGg" kind="push" id="K1P-Pp-e99"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -332,31 +332,10 @@
             </objects>
             <point key="canvasLocation" x="47" y="138"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="pK6-ve-csC">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="weN-sg-AqG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1n1-Ex-3yS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="wgo-OD-JGg" kind="relationship" relationship="rootViewController" id="aks-6j-mPz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vb7-o7-XAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1028" y="1536"/>
-        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="aks-6j-mPz"/>
-    </inferredMetricsTieBreakers>
 </document>
