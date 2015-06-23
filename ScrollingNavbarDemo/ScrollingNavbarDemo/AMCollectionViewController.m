@@ -23,10 +23,19 @@
     
     [self.collectionView setDelegate:self];
     [self.collectionView setDataSource:self];
-    
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self setTitle:@"Demo"];
+
+    [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
     // Just call this line to enable the scrolling navbar
-    [self followScrollView:self.collectionView];
     [self setUseSuperview:YES];
+
+
+}
+
+- (void)viewDidLayoutSubviews {
+    [self followScrollView:self.collectionView];
+    [self.collectionView scrollsToTop];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
