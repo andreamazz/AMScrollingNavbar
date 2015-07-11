@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AMScrollingNavbar"
-  s.version      = "1.5"
+  s.version      = "1.5.1"
   s.summary      = "Scrollable UINavigationBar that follows the scrolling of a UIScrollView. Similiar to Chrome for iOS7"
   s.homepage     = "https://github.com/andreamazz/AMScrollingNavbar"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
