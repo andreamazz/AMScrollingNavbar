@@ -64,8 +64,19 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             frame = visibleViewController.view.frame
             frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
             frame.size = CGSize(width: frame.size.width, height: frame.size.height + delta)
+            visibleViewController.view.frame = frame
         }
-        visibleViewController.view.frame = frame
+
+        updateNavbar(alpha: delta)
+    }
+
+    func updateNavbar(#alpha: CGFloat) {
+        let frame = navigationBar.frame
+
+        // Change the alpha channel of every item on the navbr
+        let alpha = (frame.origin.y + deltaLimit()) / frame.size.height
+        navigationItem.titleView?.alpha = alpha
+        navigationBar.tintColor = navigationBar.tintColor.colorWithAlphaComponent(alpha)
     }
 
     func deltaLimit() -> CGFloat {

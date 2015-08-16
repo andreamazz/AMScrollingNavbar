@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        UINavigationBar.appearance().translucent = false
+//        UINavigationBar.appearance().translucent = false
+        
         return true
     }
 

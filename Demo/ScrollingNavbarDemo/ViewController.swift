@@ -18,6 +18,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let navigationController = self.navigationController as? ScrollingNavigationController {
             navigationController.followScrollView(tableView)
         }
+
+        title = "Table"
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "left", style: .Plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "left", style: .Plain, target: nil, action: nil)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
