@@ -3,6 +3,11 @@ import UIKit
 
 public class ScrollingNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
+    public private(set) var collapsed = false
+    public private(set) var expanded = true
+    public var shouldScrollWhenContentFits = false
+    var delayDistance: CGFloat = 0
+    var maxDelay: CGFloat = 0
     var gestureRecognizer: UIPanGestureRecognizer?
     var scrollableView: UIView?
     var lastContentOffset = CGFloat(0.0)
@@ -14,6 +19,18 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         gestureRecognizer?.maximumNumberOfTouches = 1
         gestureRecognizer?.delegate = self
         scrollableView.addGestureRecognizer(gestureRecognizer!)
+    }
+
+    public func hideNavbar(animated: Bool = true) {
+        if let scrollableView = self.scrollableView {
+
+        }
+    }
+
+    public func showNavbar(animated: Bool = true) {
+        if let scrollableView = self.scrollableView {
+
+        }
     }
 
     func handlePan(gesture: UIPanGestureRecognizer) {
@@ -44,14 +61,46 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
         // View scrolling up, hide the navbar
         if delta > 0 {
+            // No need to scroll if the content fits
+            if !shouldScrollWhenContentFits && !collapsed {
+                if scrollableView?.frame.size.height >= contentSize().height {
+                    return
+                }
+            }
+
+            expanded = false
+
+            // Compute the bar position
             if frame.origin.y - delta < -deltaLimit() {
                 delta = frame.origin.y + deltaLimit()
+            }
+
+            // Detect when the bar is completely collapsed
+            if frame.origin.y == deltaLimit() {
+                collapsed = true
+                delayDistance = maxDelay
             }
         }
 
         if delta < 0 {
+            collapsed = false
+
+            // Update the delay
+            delayDistance += delta
+
+            // Skip if the delay is not over yet
+            if delayDistance > 0 && self.maxDelay < contentOffset().y {
+                return
+            }
+
+            // Compute the bar position
             if frame.origin.y - delta > statusBar() {
                 delta = frame.origin.y - statusBar()
+            }
+
+            // Detect when the bar is completely expanded
+            if frame.origin.y == statusBar() {
+                expanded = true
             }
         }
 
@@ -75,12 +124,26 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
         // Change the alpha channel of every item on the navbr
         let alpha = (frame.origin.y + deltaLimit()) / frame.size.height
+
+        // Hide all the possible titles
         navigationItem.titleView?.alpha = alpha
         navigationBar.tintColor = navigationBar.tintColor.colorWithAlphaComponent(alpha)
         if let titleColor = navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
             navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: titleColor.colorWithAlphaComponent(alpha)]
         } else {
             navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor().colorWithAlphaComponent(alpha)]
+        }
+
+        // Hide the left items
+        visibleViewController.navigationItem.leftBarButtonItem?.customView?.alpha = alpha
+        if let leftItems = visibleViewController.navigationItem.leftBarButtonItems as? [UIBarButtonItem] {
+            leftItems.map({ $0.customView?.alpha = alpha })
+        }
+
+        // Hide the right items
+        visibleViewController.navigationItem.rightBarButtonItem?.customView?.alpha = alpha
+        if let leftItems = visibleViewController.navigationItem.rightBarButtonItems as? [UIBarButtonItem] {
+            leftItems.map({ $0.customView?.alpha = alpha })
         }
     }
 
@@ -92,6 +155,30 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
                 portraitNavbar() - statusBar() :
                 landscapeNavbar() - statusBar())
         }
+    }
+
+    // MARK: - Utilities
+
+    func scrollView() -> UIScrollView? {
+        if let webView = self.scrollableView as? UIWebView {
+            return webView.scrollView
+        } else {
+            return scrollableView as? UIScrollView
+        }
+    }
+
+    func contentOffset() -> CGPoint {
+        if let scrollView = scrollView() {
+            return scrollView.contentOffset
+        }
+        return CGPointZero
+    }
+
+    func contentSize() -> CGSize {
+        if let scrollView = scrollView() {
+            return scrollView.contentSize
+        }
+        return CGSizeZero
     }
 
     // MARK: - View sizing
