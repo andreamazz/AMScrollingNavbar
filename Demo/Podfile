@@ -1,0 +1,10 @@
+use_frameworks!
+
+target 'ScrollingNavbarDemo' do
+  pod 'AMScrollingNavbar', path: '../'
+end
+
+target 'ScrollingNavbarDemoTests' do
+
+end
+

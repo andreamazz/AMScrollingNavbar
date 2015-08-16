@@ -1,0 +1,14 @@
+PODS:
+  - AMScrollingNavbar (2.0.0)
+
+DEPENDENCIES:
+  - AMScrollingNavbar (from `../`)
+
+EXTERNAL SOURCES:
+  AMScrollingNavbar:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AMScrollingNavbar: 6665f3b340efdf56fec9a870952b0a44db9dac57
+
+COCOAPODS: 0.38.1

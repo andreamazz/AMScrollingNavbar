@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2D31B62805C00DE75C7 /* AppDelegate.swift */; };
+		652BE2D61B62805C00DE75C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2D51B62805C00DE75C7 /* ViewController.swift */; };
+		652BE2D91B62805C00DE75C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2D71B62805C00DE75C7 /* Main.storyboard */; };
+		652BE2DB1B62805C00DE75C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2DA1B62805C00DE75C7 /* Images.xcassets */; };
+		652BE2DE1B62805C00DE75C7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2DC1B62805C00DE75C7 /* LaunchScreen.xib */; };
+		652BE2EA1B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2E91B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift */; };
+		C70C6CCD6CF910D9EA38A854 /* Pods_ScrollingNavbarDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		652BE2E41B62805D00DE75C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652BE2C61B62805C00DE75C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 652BE2CD1B62805C00DE75C7;
+			remoteInfo = ScrollingNavbarDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.release.xcconfig"; sourceTree = "<group>"; };
+		652BE2CE1B62805C00DE75C7 /* ScrollingNavbarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollingNavbarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		652BE2D21B62805C00DE75C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652BE2D31B62805C00DE75C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		652BE2D51B62805C00DE75C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		652BE2D81B62805C00DE75C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		652BE2DA1B62805C00DE75C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		652BE2DD1B62805C00DE75C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		652BE2E31B62805D00DE75C7 /* ScrollingNavbarDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrollingNavbarDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		652BE2E81B62805D00DE75C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652BE2E91B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingNavbarDemoTests.swift; sourceTree = "<group>"; };
+		6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		652BE2CB1B62805C00DE75C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C70C6CCD6CF910D9EA38A854 /* Pods_ScrollingNavbarDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652BE2E01B62805D00DE75C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6370F94D2E8338EAAECDDBEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		652BE2C51B62805C00DE75C7 = {
+			isa = PBXGroup;
+			children = (
+				652BE2D01B62805C00DE75C7 /* ScrollingNavbarDemo */,
+				652BE2E61B62805D00DE75C7 /* ScrollingNavbarDemoTests */,
+				652BE2CF1B62805C00DE75C7 /* Products */,
+				E34D1C265FEB2D387453D391 /* Pods */,
+				6370F94D2E8338EAAECDDBEE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		652BE2CF1B62805C00DE75C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				652BE2CE1B62805C00DE75C7 /* ScrollingNavbarDemo.app */,
+				652BE2E31B62805D00DE75C7 /* ScrollingNavbarDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		652BE2D01B62805C00DE75C7 /* ScrollingNavbarDemo */ = {
+			isa = PBXGroup;
+			children = (
+				652BE2D31B62805C00DE75C7 /* AppDelegate.swift */,
+				652BE2D51B62805C00DE75C7 /* ViewController.swift */,
+				652BE2D71B62805C00DE75C7 /* Main.storyboard */,
+				652BE2DA1B62805C00DE75C7 /* Images.xcassets */,
+				652BE2DC1B62805C00DE75C7 /* LaunchScreen.xib */,
+				652BE2D11B62805C00DE75C7 /* Supporting Files */,
+			);
+			path = ScrollingNavbarDemo;
+			sourceTree = "<group>";
+		};
+		652BE2D11B62805C00DE75C7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				652BE2D21B62805C00DE75C7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		652BE2E61B62805D00DE75C7 /* ScrollingNavbarDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				652BE2E91B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift */,
+				652BE2E71B62805D00DE75C7 /* Supporting Files */,
+			);
+			path = ScrollingNavbarDemoTests;
+			sourceTree = "<group>";
+		};
+		652BE2E71B62805D00DE75C7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				652BE2E81B62805D00DE75C7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E34D1C265FEB2D387453D391 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */,
+				3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		652BE2CD1B62805C00DE75C7 /* ScrollingNavbarDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652BE2ED1B62805D00DE75C7 /* Build configuration list for PBXNativeTarget "ScrollingNavbarDemo" */;
+			buildPhases = (
+				909AAAF78174CAF394B4A14A /* Check Pods Manifest.lock */,
+				652BE2CA1B62805C00DE75C7 /* Sources */,
+				652BE2CB1B62805C00DE75C7 /* Frameworks */,
+				652BE2CC1B62805C00DE75C7 /* Resources */,
+				40F2E747CD162BB4537EE320 /* Embed Pods Frameworks */,
+				9EC844B7168BC290A730CE8A /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScrollingNavbarDemo;
+			productName = ScrollingNavbarDemo;
+			productReference = 652BE2CE1B62805C00DE75C7 /* ScrollingNavbarDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		652BE2E21B62805D00DE75C7 /* ScrollingNavbarDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652BE2F01B62805D00DE75C7 /* Build configuration list for PBXNativeTarget "ScrollingNavbarDemoTests" */;
+			buildPhases = (
+				652BE2DF1B62805D00DE75C7 /* Sources */,
+				652BE2E01B62805D00DE75C7 /* Frameworks */,
+				652BE2E11B62805D00DE75C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				652BE2E51B62805D00DE75C7 /* PBXTargetDependency */,
+			);
+			name = ScrollingNavbarDemoTests;
+			productName = ScrollingNavbarDemoTests;
+			productReference = 652BE2E31B62805D00DE75C7 /* ScrollingNavbarDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		652BE2C61B62805C00DE75C7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Fancy Pixel";
+				TargetAttributes = {
+					652BE2CD1B62805C00DE75C7 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					652BE2E21B62805D00DE75C7 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 652BE2CD1B62805C00DE75C7;
+					};
+				};
+			};
+			buildConfigurationList = 652BE2C91B62805C00DE75C7 /* Build configuration list for PBXProject "ScrollingNavbarDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 652BE2C51B62805C00DE75C7;
+			productRefGroup = 652BE2CF1B62805C00DE75C7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				652BE2CD1B62805C00DE75C7 /* ScrollingNavbarDemo */,
+				652BE2E21B62805D00DE75C7 /* ScrollingNavbarDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		652BE2CC1B62805C00DE75C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652BE2D91B62805C00DE75C7 /* Main.storyboard in Resources */,
+				652BE2DE1B62805C00DE75C7 /* LaunchScreen.xib in Resources */,
+				652BE2DB1B62805C00DE75C7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652BE2E11B62805D00DE75C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40F2E747CD162BB4537EE320 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		909AAAF78174CAF394B4A14A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9EC844B7168BC290A730CE8A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		652BE2CA1B62805C00DE75C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652BE2D61B62805C00DE75C7 /* ViewController.swift in Sources */,
+				652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652BE2DF1B62805D00DE75C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652BE2EA1B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		652BE2E51B62805D00DE75C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 652BE2CD1B62805C00DE75C7 /* ScrollingNavbarDemo */;
+			targetProxy = 652BE2E41B62805D00DE75C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		652BE2D71B62805C00DE75C7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652BE2D81B62805C00DE75C7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		652BE2DC1B62805C00DE75C7 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652BE2DD1B62805C00DE75C7 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		652BE2EB1B62805D00DE75C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		652BE2EC1B62805D00DE75C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		652BE2EE1B62805D00DE75C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		652BE2EF1B62805D00DE75C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		652BE2F11B62805D00DE75C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScrollingNavbarDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrollingNavbarDemo.app/ScrollingNavbarDemo";
+			};
+			name = Debug;
+		};
+		652BE2F21B62805D00DE75C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScrollingNavbarDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrollingNavbarDemo.app/ScrollingNavbarDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		652BE2C91B62805C00DE75C7 /* Build configuration list for PBXProject "ScrollingNavbarDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652BE2EB1B62805D00DE75C7 /* Debug */,
+				652BE2EC1B62805D00DE75C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		652BE2ED1B62805D00DE75C7 /* Build configuration list for PBXNativeTarget "ScrollingNavbarDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652BE2EE1B62805D00DE75C7 /* Debug */,
+				652BE2EF1B62805D00DE75C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		652BE2F01B62805D00DE75C7 /* Build configuration list for PBXNativeTarget "ScrollingNavbarDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652BE2F11B62805D00DE75C7 /* Debug */,
+				652BE2F21B62805D00DE75C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 652BE2C61B62805C00DE75C7 /* Project object */;
+}
