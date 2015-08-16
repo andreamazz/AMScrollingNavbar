@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "left", style: .Plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "left", style: .Plain, target: nil, action: nil)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -77,6 +77,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         let alpha = (frame.origin.y + deltaLimit()) / frame.size.height
         navigationItem.titleView?.alpha = alpha
         navigationBar.tintColor = navigationBar.tintColor.colorWithAlphaComponent(alpha)
+        if let titleColor = navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
+            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: titleColor.colorWithAlphaComponent(alpha)]
+        } else {
+            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor().colorWithAlphaComponent(alpha)]
+        }
     }
 
     func deltaLimit() -> CGFloat {
@@ -85,7 +90,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         } else {
             return (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) ?
                 portraitNavbar() - statusBar() :
-                landscapeNavbar() - statusBar());
+                landscapeNavbar() - statusBar())
         }
     }
 
