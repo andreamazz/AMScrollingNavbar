@@ -108,8 +108,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     */
     public func showNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
-            let tracking = gestureRecognizer?.state == .Began || gestureRecognizer?.state == .Changed
-            if collapsed || tracking {
+            if collapsed {
                 gestureRecognizer?.enabled = false
                 UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
                     self.lastContentOffset = 0;
