@@ -45,6 +45,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     */
     public var shouldScrollWhenContentFits = false
 
+    /**
+    Determines if the scrollbar should expand once the application becomes active after entering background
+    Defaults to true
+    */
+    public var expandOnActive = true
+
     var delayDistance: CGFloat = 0
     var maxDelay: CGFloat = 0
     var gestureRecognizer: UIPanGestureRecognizer?
@@ -66,6 +72,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         gestureRecognizer?.maximumNumberOfTouches = 1
         gestureRecognizer?.delegate = self
         scrollableView.addGestureRecognizer(gestureRecognizer!)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
 
         maxDelay = CGFloat(delay)
         delayDistance = CGFloat(delay)
@@ -121,6 +129,21 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
     }
 
+    /**
+    Stop observing the view and reset the navigation bar
+    */
+    public func stopFollowingScrollView() {
+        showNavbar(animated: false)
+        if let gesture = gestureRecognizer {
+            scrollableView?.removeGestureRecognizer(gesture)
+        }
+        scrollableView = .None
+        gestureRecognizer = .None
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
+    }
+
+    // MARK: - Gesture recognizer
+
     func handlePan(gesture: UIPanGestureRecognizer) {
         if let scrollableView = scrollableView, let superview = scrollableView.superview {
             let translation = gesture.translationInView(superview)
@@ -137,6 +160,16 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             lastContentOffset = 0
         }
     }
+
+    // MARK: - Notification handler
+
+    func didBecomeActive(notification: NSNotification) {
+        if expandOnActive {
+            showNavbar(animated: false)
+        }
+    }
+
+    // MARK: - Scrolling functions
 
     func shouldScrollWithDelta(delta: CGFloat) -> Bool {
         // Check for rubberbanding
