@@ -12,18 +12,32 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     var scrollableView: UIView?
     var lastContentOffset = CGFloat(0.0)
 
-    public func followScrollView(scrollableView: UIView) {
+    public func followScrollView(scrollableView: UIView, delay: Double = 0) {
         self.scrollableView = scrollableView
 
         gestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("handlePan:"))
         gestureRecognizer?.maximumNumberOfTouches = 1
         gestureRecognizer?.delegate = self
         scrollableView.addGestureRecognizer(gestureRecognizer!)
+
+        maxDelay = CGFloat(delay)
+        delayDistance = CGFloat(delay)
     }
 
     public func hideNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
-
+            if expanded {
+                UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
+                    self.scrollWithDelta(self.navbarHeight())
+                    self.visibleViewController.view.setNeedsLayout()
+                })
+                if navigationBar.translucent {
+                    let currentOffset = contentOffset()
+                    scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight() - statusBar())
+                }
+            } else {
+                updateNavbarAlpha()
+            }
         }
     }
 
@@ -45,14 +59,13 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
 
         if gesture.state == .Ended || gesture.state == .Cancelled {
-            // checkForPartialScroll()
-            // checkForHeaderPartialScroll()
+            checkForPartialScroll()
             lastContentOffset = 0
         }
     }
 
     func shouldScrollWithDelta(delta: CGFloat) -> Bool {
-        // TODO: implement
+        // Check for rubberbanding
         return true
     }
 
@@ -90,6 +103,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
             // Skip if the delay is not over yet
             if delayDistance > 0 && self.maxDelay < contentOffset().y {
+                // TODO: delay works only if the navbar is opaque
                 return
             }
 
@@ -116,10 +130,19 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             visibleViewController.view.frame = frame
         }
 
-        updateNavbar(alpha: delta)
+        updateNavbarAlpha()
+        restoreContentOffset(delta)
     }
 
-    func updateNavbar(#alpha: CGFloat) {
+    func restoreContentOffset(delta: CGFloat) {
+
+    }
+
+    func checkForPartialScroll() {
+
+    }
+
+    func updateNavbarAlpha() {
         let frame = navigationBar.frame
 
         // Change the alpha channel of every item on the navbr
@@ -182,6 +205,16 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     // MARK: - View sizing
+
+    func navbarHeight() -> CGFloat {
+        if UI_USER_INTERFACE_IDIOM() == .Pad || UIScreen.mainScreen().scale == 3 {
+            return portraitNavbar() + statusBar()
+        } else {
+            return (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) ?
+                portraitNavbar() + statusBar() :
+                landscapeNavbar() + statusBar());
+        }
+    }
 
     func portraitNavbar() -> CGFloat {
          return 44 + ((self.topViewController.navigationItem.prompt != nil) ? 30 : 0)

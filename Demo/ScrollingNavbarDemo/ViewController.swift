@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(tableView)
+            navigationController.followScrollView(tableView, delay: 100.0)
         }
 
         title = "Table"
@@ -24,6 +24,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "left", style: .Plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "left", style: .Plain, target: nil, action: nil)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+            if let navigationController = self.navigationController as? ScrollingNavigationController {
+                println("asd")
+                navigationController.hideNavbar(animated: true)
+            }
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
