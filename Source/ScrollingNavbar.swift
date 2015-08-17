@@ -134,7 +134,6 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
             // Skip if the delay is not over yet
             if delayDistance > 0 && self.maxDelay < contentOffset().y {
-                // TODO: delay works only if the navbar is opaque
                 return
             }
 
@@ -166,7 +165,23 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func restoreContentOffset(delta: CGFloat) {
-
+        if navigationBar.translucent {
+            return
+        }
+        
+        // Hold the scroll steady until the navbar appears/disappears
+        let offset = contentOffset()
+        if let scrollView = scrollView() {
+            if scrollView.translatesAutoresizingMaskIntoConstraints() {
+                scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta), animated: false)
+            } else {
+                if delta > 0 {
+                    scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta - 1), animated: false)
+                } else {
+                    scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta + 1), animated: false)
+                }
+            }
+        }
     }
 
     func checkForPartialScroll() {
