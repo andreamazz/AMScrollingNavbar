@@ -28,13 +28,13 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         if let scrollableView = self.scrollableView {
             if expanded {
                 UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
-                    self.scrollWithDelta(self.navbarHeight())
+                    self.scrollWithDelta(self.fullNavbarHeight())
                     self.visibleViewController.view.setNeedsLayout()
+                    if self.navigationBar.translucent {
+                        let currentOffset = self.contentOffset()
+                        self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight())
+                    }
                 })
-                if navigationBar.translucent {
-                    let currentOffset = contentOffset()
-                    scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight() - statusBar())
-                }
             } else {
                 updateNavbarAlpha()
             }
@@ -43,7 +43,24 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
     public func showNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
-
+            let tracking = gestureRecognizer?.state == .Began || gestureRecognizer?.state == .Changed
+            if collapsed || tracking {
+                gestureRecognizer?.enabled = false
+                UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
+                    self.lastContentOffset = 0;
+                    self.delayDistance = -self.fullNavbarHeight()
+                    self.scrollWithDelta(-self.fullNavbarHeight())
+                    self.visibleViewController.view.setNeedsLayout()
+                    if self.navigationBar.translucent {
+                        let currentOffset = self.contentOffset()
+                        self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight())
+                    }
+                    }) { _ in
+                        gestureRecognizer?.enabled = true
+                }
+            } else {
+                updateNavbarAlpha()
+            }
         }
     }
 
@@ -89,7 +106,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
 
             // Detect when the bar is completely collapsed
-            if frame.origin.y == deltaLimit() {
+            if frame.origin.y == -deltaLimit() {
                 collapsed = true
                 delayDistance = maxDelay
             }
@@ -206,13 +223,17 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
     // MARK: - View sizing
 
+    func fullNavbarHeight() -> CGFloat {
+        return navbarHeight() + statusBar()
+    }
+
     func navbarHeight() -> CGFloat {
         if UI_USER_INTERFACE_IDIOM() == .Pad || UIScreen.mainScreen().scale == 3 {
-            return portraitNavbar() + statusBar()
+            return portraitNavbar()
         } else {
             return (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) ?
-                portraitNavbar() + statusBar() :
-                landscapeNavbar() + statusBar());
+                portraitNavbar() :
+                landscapeNavbar());
         }
     }
 
