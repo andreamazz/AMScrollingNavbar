@@ -7,96 +7,60 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Join the chat at https://gitter.im/andreamazz/AMScrollingNavbar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andreamazz/AMScrollingNavbar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Scrollable UINavigationBar that follows the scrolling of a UIScrollView or similar view (e.g. UITableView or UIWebView). 
-It works like the navigation bar in Chrome or Facebook's app for iOS7.  
+A custom UINavigationController that enables the scrolling of the navigation bar alongside the
+scrolling of an observed content view  
 
-I also wrote about this control in [this article](http://andreamazz.github.io/blog/2014/02/01/amscrollingnavbar-creating-a-cocoapod/)
+Version `2.x` is written as a subclass of `UINavigationController`, in Swift. 
+If you are looking for the category implementation in Objective-C, make sure to checkout version `1.x` and prior, although the `2.x` is recomended.
 
 #Screenshot
 
 ![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/assets/screenshot.gif)
 
-#Setup
+#Setup with Cocoapods
 
-* Add ```pod 'AMScrollingNavbar'``` to your [Podfile](http://cocoapods.org/)
-* Run ```pod install```
-* Run ```open App.xcworkspace```
-* Import ```UIViewController+ScrollingNavbar.h``` in your controller
-* Implement the two following methods:
-```objc
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-	[self showNavBarAnimated:NO];
+```
+pod 'AMScrollingNavbar', `~> 2.0.0`
+
+use_frameworks!
+```
+
+#Setup with Carthage
+
+```
+github "andreamazz/AMScrollingNavbar"
+```
+
+##Usage
+
+Make sure to use a subclass of `ScrollingNavigationController` for your `UINavigationController`.
+
+Use `followScrollView(_: delay:)` to start following the scrolling of a scrollable view (e.g.: a `UIScrollView` or `UITableView`).
+```swift
+override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+
+    if let navigationController = self.navigationController as? ScrollingNavigationController {
+        navigationController.followScrollView(tableView, delay: 50.0)
+    }
 }
-
 ```
-* Make sure to stop the scrolling on `dealloc`:
-```objc
-- (void)dealloc 
-{
-      [self stopFollowingScrollView];
+
+Use `stopFollowingScrollview()` to stop the behaviour. Remember to call this function on disappear:
+```swift
+override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+
+    if let navigationController = self.navigationController as? ScrollingNavigationController {
+        navigationController.stopFollowingScrollView()
+    }
 }
 ```
 
-#Enable the scrolling with Autolayout
-
-Version 1.1 introduced an Autolayout-friendly way of setting up your view, it's strongly recommended the use of this method: 
-- Setup your view using autolayout
-- Create an outlet of the top constraint of the first view sitting below the navigation bar
-- Enable the scrolling with this method:
-```objc
-[self followScrollView:self.scrollView usingTopConstraint:self.topLayoutConstraint];
-```
-Make sure to check the project sample to have a better understanding of how Autolayout constraints need to be set.
-
-#Enable the scrolling without Autolayout
-
-This version does not require autolayout, to enable the scrolling effect you simply need to call followScrollView: providing the UIView's instance that will be tracked, like this:
-```objc
-[self followScrollView:self.scrollView];
-```
-You can also set a delay (in points) for the gesture that reveals the navigation bar.
-```objc
-[self followScrollView:self.scrollView withDelay:60];
-```
-
-Make sure to have a ```barTintColor``` for your ```UINavigationBar```, or you won't see the fade-in and fade-out effects.
-Also make sure that you are not using a translucent navigation bar. E.g., in your controller:
-```objc
-[self.navigationController.navigationBar setTranslucent:NO];
-```
-
-Set the view constraints
---------------------
-Make sure to set your scrollview's constraint properly. Please note that the library changes the scrollview's superview frame.
-
-![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/assets/constraints.png)
-
-Quick Setup Video
---------------------
-You can find a video with the full setup [here](https://vimeo.com/92721470)
-
-Using it with UITableViewController or UICollectionViewController
---------------------
-If you are not using a plain `UIViewController` you have to enable this property:
-```objc
-[self setUseSuperview:NO];
-```
-
-Delegate
---------------------
-You can implement the `AMScrollingNavbarDelegate` protocol to receive these messages:
-```objc
-- (void)navigationBarDidChangeToCollapsed:(BOOL)collapsed;
-- (void)navigationBarDidChangeToExpanded:(BOOL)expanded;
-```
-
-MIT License
---------------------
+#MIT License
     The MIT License (MIT)
 
-    Copyright (c) 2014 Andrea Mazzini
+    Copyright (c) 2015 Andrea Mazzini
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of
     this software and associated documentation files (the "Software"), to deal in
