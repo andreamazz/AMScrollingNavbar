@@ -101,7 +101,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func scrollWithDelta(var delta: CGFloat) {
-        var frame = navigationBar.frame
+        let frame = navigationBar.frame
 
         // View scrolling up, hide the navbar
         if delta > 0 {
@@ -148,6 +148,14 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
         }
 
+        updateSizing(delta)
+        updateNavbarAlpha()
+        restoreContentOffset(delta)
+    }
+
+    func updateSizing(delta: CGFloat) {
+        var frame = navigationBar.frame
+
         // Move the navigation bar
         frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
         navigationBar.frame = frame
@@ -159,16 +167,13 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             frame.size = CGSize(width: frame.size.width, height: frame.size.height + delta)
             visibleViewController.view.frame = frame
         }
-
-        updateNavbarAlpha()
-        restoreContentOffset(delta)
     }
 
     func restoreContentOffset(delta: CGFloat) {
         if navigationBar.translucent {
             return
         }
-        
+
         // Hold the scroll steady until the navbar appears/disappears
         let offset = contentOffset()
         if let scrollView = scrollView() {
@@ -185,7 +190,34 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func checkForPartialScroll() {
+        let position = navigationBar.frame.origin.y
+        var frame = navigationBar.frame
 
+        // Scroll back down
+        if position >= (statusBar() - (frame.size.height / 2)) {
+            let delta = frame.origin.y - statusBar()
+            let duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
+
+            UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+                self.expanded = true
+                self.collapsed = false
+
+                self.updateSizing(delta)
+                self.updateNavbarAlpha()
+            }, completion: nil)
+        } else {
+            // Scroll up
+            let delta = frame.origin.y + deltaLimit()
+            let duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
+
+            UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+                self.expanded = false
+                self.collapsed = true
+
+                self.updateSizing(delta)
+                self.updateNavbarAlpha()
+                }, completion: nil)
+        }
     }
 
     func updateNavbarAlpha() {
