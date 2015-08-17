@@ -21,6 +21,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: nil)
     }
 
+    // MARK: - ScrollView config
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -51,6 +53,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return true
     }
+
+    // MARK: - UITableView data source
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
