@@ -24,30 +24,30 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import UIKit
 
 /**
-A custom UINavigationController that enables the scrolling of the navigation bar alongside the
-scrolling of an observed content view
+    A custom `UINavigationController` that enables the scrolling of the navigation bar alongside the
+    scrolling of an observed content view
 */
 public class ScrollingNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
     /**
-    Returns true if the navbar is fully collapsed
+        Returns true if the navbar is fully collapsed
     */
     public private(set) var collapsed = false
 
     /**
-    Returns true if the navbar is fully expanded
+        Returns true if the navbar is fully expanded
     */
     public private(set) var expanded = true
 
     /**
-    Determines wether the scrollbar should scroll when the content inside the scrollview fits
-    the view's size. Defaults to false
+        Determines wether the scrollbar should scroll when the content inside the scrollview fits
+        the view's size. Defaults to `false`
     */
     public var shouldScrollWhenContentFits = false
 
     /**
-    Determines if the scrollbar should expand once the application becomes active after entering background
-    Defaults to true
+        Determines if the scrollbar should expand once the application becomes active after entering background
+        Defaults to `true`
     */
     public var expandOnActive = true
 
@@ -58,12 +58,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     var lastContentOffset = CGFloat(0.0)
 
     /**
-    Start scrolling
+        Start scrolling
     
-    Enables the scrolling by observing a view
+        Enables the scrolling by observing a view
 
-    @param scrollableView The view with the scrolling content that will be observed
-    @param delay The delay expressed in points that determines the scrolling resistance. Defaults to 0
+        :param: scrollableView The view with the scrolling content that will be observed
+        :param: delay The delay expressed in points that determines the scrolling resistance. Defaults to `0`
     */
     public func followScrollView(scrollableView: UIView, delay: Double = 0) {
         self.scrollableView = scrollableView
@@ -80,9 +80,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-    Hide the navigation bar
+        Hide the navigation bar
 
-    @param animated If true the scrolling is animated. Defaults to true
+        :param: animated If true the scrolling is animated. Defaults to `true`
     */
     public func hideNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
@@ -102,9 +102,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-    Show the navigation bar
+        Show the navigation bar
 
-    @param animated If true the scrolling is animated. Defaults to true
+        :param: animated If true the scrolling is animated. Defaults to `true`
     */
     public func showNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
@@ -252,9 +252,10 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
         // Resize the view if the navigation bar is not translucent
         if !navigationBar.translucent {
+            let navBarY = navigationBar.frame.origin.y + navigationBar.frame.size.height
             frame = visibleViewController.view.frame
-            frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
-            frame.size = CGSize(width: frame.size.width, height: frame.size.height + delta)
+            frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
+            frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY))
             visibleViewController.view.frame = frame
         }
     }
