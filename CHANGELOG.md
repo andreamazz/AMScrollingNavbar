@@ -2,10 +2,15 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
-- `2.0.x` Releases - [2.0.0-beta1](#200beta1)
+- `2.0.x` Beta Releases - [2.0.0-beta1](#200beta1) | [2.0.0-beta2](#200beta2)
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [2.0.0-beta1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta1)
+
+###Fixed
+- Issue with interactive gesture
 
 ## [2.0.0-beta1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta1)
 
