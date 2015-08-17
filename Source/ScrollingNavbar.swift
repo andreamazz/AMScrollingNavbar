@@ -83,6 +83,20 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
     func shouldScrollWithDelta(delta: CGFloat) -> Bool {
         // Check for rubberbanding
+        if delta < 0 {
+            if let scrollableView = scrollableView {
+                if contentOffset().y + scrollableView.frame.size.height > contentSize().height {
+                    if scrollableView.frame.size.height < contentSize().height {
+                        // Only if the content is big enough
+                        return false
+                    }
+                }
+            }
+        } else {
+            if contentOffset().y < 0 {
+                return false
+            }
+        }
         return true
     }
 
