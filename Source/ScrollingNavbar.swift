@@ -1,17 +1,64 @@
+/*
+The MIT License (MIT)
+
+Copyright (c) 2015 Andrea Mazzini
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 import UIKit
 
+/**
+A custom UINavigationController that enables the scrolling of the navigation bar alongside the
+scrolling of an observed content view
+*/
 public class ScrollingNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
+    /**
+    Returns true if the navbar is fully collapsed
+    */
     public private(set) var collapsed = false
+
+    /**
+    Returns true if the navbar is fully expanded
+    */
     public private(set) var expanded = true
+
+    /**
+    Determines wether the scrollbar should scroll when the content inside the scrollview fits
+    the view's size. Defaults to false
+    */
     public var shouldScrollWhenContentFits = false
+
     var delayDistance: CGFloat = 0
     var maxDelay: CGFloat = 0
     var gestureRecognizer: UIPanGestureRecognizer?
     var scrollableView: UIView?
     var lastContentOffset = CGFloat(0.0)
 
+    /**
+    Start scrolling
+    
+    Enables the scrolling by observing a view
+
+    @param scrollableView The view with the scrolling content that will be observed
+    @param delay The delay expressed in points that determines the scrolling resistance. Defaults to 0
+    */
     public func followScrollView(scrollableView: UIView, delay: Double = 0) {
         self.scrollableView = scrollableView
 
@@ -24,6 +71,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         delayDistance = CGFloat(delay)
     }
 
+    /**
+    Hide the navigation bar
+
+    @param animated If true the scrolling is animated. Defaults to true
+    */
     public func hideNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
             if expanded {
@@ -41,6 +93,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
     }
 
+    /**
+    Show the navigation bar
+
+    @param animated If true the scrolling is animated. Defaults to true
+    */
     public func showNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
             let tracking = gestureRecognizer?.state == .Began || gestureRecognizer?.state == .Changed
