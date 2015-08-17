@@ -48,8 +48,8 @@ override func viewWillAppear(animated: Bool) {
 
 Use `stopFollowingScrollview()` to stop the behaviour. Remember to call this function on disappear:
 ```swift
-override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(animated)
+override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
         navigationController.stopFollowingScrollView()
