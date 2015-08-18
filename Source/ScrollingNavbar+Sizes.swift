@@ -4,11 +4,14 @@
 //
 //  Created by Andrea Mazzini on 17/08/15.
 //
-//
 
 import Foundation
 
+/**
+    Implements the main functions providing constants values and computed ones
+*/
 extension ScrollingNavigationController {
+
     // MARK: - View sizing
 
     func fullNavbarHeight() -> CGFloat {
