@@ -2,12 +2,20 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
-- `2.0.x` Beta Releases - [2.0.0-beta1](#200beta1) | [2.0.0-beta2](#200beta2)
+- `2.0.x` Beta Releases - [2.0.0-beta1](#200beta1) | [2.0.0-beta2](#200beta2) | [2.0.0-beta3](#200beta3)
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
 
-## [2.0.0-beta1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta1)
+## [2.0.0-beta3](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta3)
+
+###Fixed
+- Carthage support restored  
+
+###Added
+- Utility class `ScrollingNavigationViewController´  
+
+## [2.0.0-beta2](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta2)
 
 ###Fixed
 - Issue with interactive gesture
