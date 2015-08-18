@@ -57,6 +57,20 @@ override func viewDidDisappear(animated: Bool) {
 }
 ```
 
+##ScrollingNavigationViewController
+To DRY things up you can let your view controller subclass `ScrollingNavigationViewController`, which provides the base setup implementation. You will just need to call `followScrollView(_: delay:)`:
+```swift
+override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+
+    if let navigationController = self.navigationController as? ScrollingNavigationController {
+        navigationController.followScrollView(tableView, delay: 50.0)
+    }
+}
+```
+
+Check out the sample project for more details.
+
 #MIT License
     The MIT License (MIT)
 
