@@ -13,6 +13,9 @@
 		652BE2DB1B62805C00DE75C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2DA1B62805C00DE75C7 /* Images.xcassets */; };
 		652BE2DE1B62805C00DE75C7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2DC1B62805C00DE75C7 /* LaunchScreen.xib */; };
 		652BE2EA1B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2E91B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift */; };
+		658FA1721B836D9C00EB32A4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */; };
+		658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1771B837C6100EB32A4 /* TableViewController.swift */; };
+		658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1791B8386EB00EB32A4 /* WebViewController.swift */; };
 		C70C6CCD6CF910D9EA38A854 /* Pods_ScrollingNavbarDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		652BE2E31B62805D00DE75C7 /* ScrollingNavbarDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrollingNavbarDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		652BE2E81B62805D00DE75C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652BE2E91B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingNavbarDemoTests.swift; sourceTree = "<group>"; };
+		658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		658FA1771B837C6100EB32A4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		658FA1791B8386EB00EB32A4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -92,6 +98,7 @@
 		652BE2D01B62805C00DE75C7 /* ScrollingNavbarDemo */ = {
 			isa = PBXGroup;
 			children = (
+				658FA1701B836D9100EB32A4 /* ViewControllers */,
 				652BE2D31B62805C00DE75C7 /* AppDelegate.swift */,
 				652BE2D51B62805C00DE75C7 /* ViewController.swift */,
 				652BE2D71B62805C00DE75C7 /* Main.storyboard */,
@@ -125,6 +132,16 @@
 				652BE2E81B62805D00DE75C7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		658FA1701B836D9100EB32A4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */,
+				658FA1771B837C6100EB32A4 /* TableViewController.swift */,
+				658FA1791B8386EB00EB32A4 /* WebViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E34D1C265FEB2D387453D391 /* Pods */ = {
@@ -288,7 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				652BE2D61B62805C00DE75C7 /* ViewController.swift in Sources */,
+				658FA1721B836D9C00EB32A4 /* ScrollViewController.swift in Sources */,
 				652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */,
+				658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */,
+				658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

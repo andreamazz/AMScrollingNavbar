@@ -1,6 +1,6 @@
 //
 //  ScrollingNavbar+Sizes.swift
-//  Pods
+//  AMScrollingNavbar
 //
 //  Created by Andrea Mazzini on 17/08/15.
 //
