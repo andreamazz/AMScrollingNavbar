@@ -257,34 +257,27 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func checkForPartialScroll() {
-        let position = navigationBar.frame.origin.y
         var frame = navigationBar.frame
+        var duration = NSTimeInterval(0)
+        var delta = CGFloat(0.0)
 
         // Scroll back down
-        if position >= (statusBar() - (frame.size.height / 2)) {
-            let delta = frame.origin.y - statusBar()
-            let duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
-
-            UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.expanded = true
-                self.collapsed = false
-
-                self.updateSizing(delta)
-                self.updateNavbarAlpha()
-            }, completion: nil)
+        if navigationBar.frame.origin.y >= (statusBar() - (frame.size.height / 2)) {
+            delta = frame.origin.y - statusBar()
+            duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
+            self.expanded = true
+            self.collapsed = false
         } else {
             // Scroll up
-            let delta = frame.origin.y + deltaLimit()
-            let duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
-
-            UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-                self.expanded = false
-                self.collapsed = true
-
-                self.updateSizing(delta)
-                self.updateNavbarAlpha()
-                }, completion: nil)
+            delta = frame.origin.y + deltaLimit()
+            duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
+            self.expanded = false
+            self.collapsed = true
         }
+        UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
+            self.updateSizing(delta)
+            self.updateNavbarAlpha()
+            }, completion: nil)
     }
 
     func updateNavbarAlpha() {
@@ -316,15 +309,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func deltaLimit() -> CGFloat {
-        let isAiPad = UIDevice().userInterfaceIdiom == .Pad
-        let isAiPhone6Plus = UIScreen.mainScreen().scale == 3
-
-        if isAiPad || isAiPhone6Plus {
+        let isPortrait = UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation)
+        if UIDevice().userInterfaceIdiom == .Pad || UIScreen.mainScreen().scale == 3 {
             return portraitNavbar() - statusBar()
         } else {
-            return (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) ?
-                portraitNavbar() - statusBar() :
-                landscapeNavbar() - statusBar())
+            return (isPortrait ? portraitNavbar() - statusBar() : landscapeNavbar() - statusBar())
         }
     }
 

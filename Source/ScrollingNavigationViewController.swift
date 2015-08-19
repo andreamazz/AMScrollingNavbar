@@ -1,11 +1,3 @@
-//
-//  ScrollingNavigationViewController.swift
-//  AMScrollingNavbar
-//
-//  Created by Andrea Mazzini on 18/08/15.
-//
-//
-
 import UIKit
 
 /**

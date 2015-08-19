@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		656662181B84EE6A004C5D31 /* ScrollingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656662171B84EE6A004C5D31 /* ScrollingNavigationController.swift */; };
 		658FA18B1B83943000EB32A4 /* AMScrollingNavbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 658FA18A1B83943000EB32A4 /* AMScrollingNavbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		658FA1A51B83951E00EB32A4 /* ScrollingNavbar+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1A21B83951E00EB32A4 /* ScrollingNavbar+Sizes.swift */; };
-		658FA1A61B83951E00EB32A4 /* ScrollingNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1A31B83951E00EB32A4 /* ScrollingNavbar.swift */; };
 		658FA1A71B83951E00EB32A4 /* ScrollingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1A41B83951E00EB32A4 /* ScrollingNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		656662171B84EE6A004C5D31 /* ScrollingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingNavigationController.swift; sourceTree = "<group>"; };
 		658FA1851B83943000EB32A4 /* AMScrollingNavbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AMScrollingNavbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		658FA1891B83943000EB32A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		658FA18A1B83943000EB32A4 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
 		658FA1A21B83951E00EB32A4 /* ScrollingNavbar+Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollingNavbar+Sizes.swift"; sourceTree = "<group>"; };
-		658FA1A31B83951E00EB32A4 /* ScrollingNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingNavbar.swift; sourceTree = "<group>"; };
 		658FA1A41B83951E00EB32A4 /* ScrollingNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,8 +70,8 @@
 		658FA1A11B83951E00EB32A4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				656662171B84EE6A004C5D31 /* ScrollingNavigationController.swift */,
 				658FA1A21B83951E00EB32A4 /* ScrollingNavbar+Sizes.swift */,
-				658FA1A31B83951E00EB32A4 /* ScrollingNavbar.swift */,
 				658FA1A41B83951E00EB32A4 /* ScrollingNavigationViewController.swift */,
 			);
 			path = Source;
@@ -156,8 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				658FA1A51B83951E00EB32A4 /* ScrollingNavbar+Sizes.swift in Sources */,
+				656662181B84EE6A004C5D31 /* ScrollingNavigationController.swift in Sources */,
 				658FA1A71B83951E00EB32A4 /* ScrollingNavigationViewController.swift in Sources */,
-				658FA1A61B83951E00EB32A4 /* ScrollingNavbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

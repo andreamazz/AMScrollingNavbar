@@ -1,10 +1,3 @@
-//
-//  ScrollingNavbar+Sizes.swift
-//  AMScrollingNavbar
-//
-//  Created by Andrea Mazzini on 17/08/15.
-//
-
 import Foundation
 
 /**
