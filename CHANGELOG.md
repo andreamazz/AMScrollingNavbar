@@ -2,10 +2,17 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
-- `2.0.x` Beta Releases - [2.0.0-beta1](#200beta1) | [2.0.0-beta2](#200beta2) | [2.0.0-beta3](#200beta3)
+- `2.0.x` Beta Releases - [2.0.0-beta1](#200-beta1) | [2.0.0-beta2](#200-beta2) | [2.0.0-beta3](#200-beta3) | [2.0.0-beta4](#200-beta4)
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [2.0.0-beta4](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta4)
+
+###Fixed
+- Minor refactoring
+- Changed filename for `ScrollingNavigationController`
+- Fixed Carthage build. Thanks to [Nicholas T.](https://github.com/NicholasTD07)  
 
 ## [2.0.0-beta3](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta3)
 
