@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5735C31E37D9A69C10E478E3 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2D31B62805C00DE75C7 /* AppDelegate.swift */; };
 		652BE2D61B62805C00DE75C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2D51B62805C00DE75C7 /* ViewController.swift */; };
 		652BE2D91B62805C00DE75C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2D71B62805C00DE75C7 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.release.xcconfig"; sourceTree = "<group>"; };
 		652BE2CE1B62805C00DE75C7 /* ScrollingNavbarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollingNavbarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		652BE2D21B62805C00DE75C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,7 +47,9 @@
 		658FA1771B837C6100EB32A4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		658FA1791B8386EB00EB32A4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		A1895BB1DB631269355E107E /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56F698401CCE6EE45681E89 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5735C31E37D9A69C10E478E3 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */,
+				16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,6 +155,8 @@
 			children = (
 				6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */,
 				3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */,
+				A1895BB1DB631269355E107E /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */,
+				E56F698401CCE6EE45681E89 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -180,9 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 652BE2F01B62805D00DE75C7 /* Build configuration list for PBXNativeTarget "ScrollingNavbarDemoTests" */;
 			buildPhases = (
+				82D0056589D6A1CD841059FC /* Check Pods Manifest.lock */,
 				652BE2DF1B62805D00DE75C7 /* Sources */,
 				652BE2E01B62805D00DE75C7 /* Frameworks */,
 				652BE2E11B62805D00DE75C7 /* Resources */,
+				1448ACC2247D82F6C121083D /* Embed Pods Frameworks */,
+				CF55AD954DF8A3A5D9C57263 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +263,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1448ACC2247D82F6C121083D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		40F2E747CD162BB4537EE320 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +291,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82D0056589D6A1CD841059FC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		909AAAF78174CAF394B4A14A /* Check Pods Manifest.lock */ = {
@@ -295,6 +336,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF55AD954DF8A3A5D9C57263 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -455,6 +511,7 @@
 		};
 		652BE2F11B62805D00DE75C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1895BB1DB631269355E107E /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -474,6 +531,7 @@
 		};
 		652BE2F21B62805D00DE75C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E56F698401CCE6EE45681E89 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

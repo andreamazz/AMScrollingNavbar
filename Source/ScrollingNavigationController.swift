@@ -309,12 +309,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func deltaLimit() -> CGFloat {
-        let isPortrait = UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation)
-        if UIDevice().userInterfaceIdiom == .Pad || UIScreen.mainScreen().scale == 3 {
-            return portraitNavbar() - statusBar()
-        } else {
-            return (isPortrait ? portraitNavbar() - statusBar() : landscapeNavbar() - statusBar())
-        }
+        return navbarHeight() - statusBar()
     }
 
     // MARK: - Utilities

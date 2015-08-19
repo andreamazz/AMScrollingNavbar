@@ -12,12 +12,11 @@ extension ScrollingNavigationController {
     }
 
     func navbarHeight() -> CGFloat {
-        if UI_USER_INTERFACE_IDIOM() == .Pad || UIScreen.mainScreen().scale == 3 {
+        let isPortrait = UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation)
+        if UIDevice().userInterfaceIdiom == .Pad || UIScreen.mainScreen().scale == 3 {
             return portraitNavbar()
         } else {
-            return (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) ?
-                portraitNavbar() :
-                landscapeNavbar());
+            return (isPortrait ? portraitNavbar() : landscapeNavbar())
         }
     }
 

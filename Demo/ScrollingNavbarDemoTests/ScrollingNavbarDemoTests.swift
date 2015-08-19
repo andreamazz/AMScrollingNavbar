@@ -1,36 +1,66 @@
-//
-//  ScrollingNavbarDemoTests.swift
-//  ScrollingNavbarDemoTests
-//
-//  Created by Andrea Mazzini on 24/07/15.
-//  Copyright (c) 2015 Fancy Pixel. All rights reserved.
-//
-
 import UIKit
-import XCTest
+import Quick
+import Nimble
+import Nimble_Snapshots
 
-class ScrollingNavbarDemoTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+import AMScrollingNavbar
+
+extension UIViewController {
+    func preloadView() {
+        let _ = self.view
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+}
+
+class DataSource: NSObject, UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? UITableViewCell {
+            cell.textLabel?.text = "Row \(indexPath.row)"
+            if indexPath.row % 2 == 0 {
+                cell.backgroundColor = UIColor(white: 0.8, alpha: 1)
+            } else {
+                cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
+            }
+            return cell
+        }
+        return UITableViewCell()
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+}
+
+class ScrollingNavbarDemoTests: QuickSpec {
+    override func spec() {
+
+        var subject: ScrollingNavigationController!
+        let dataSource = DataSource()
+
+        beforeEach {
+            let tableViewController = UITableViewController(style: .Plain)
+            tableViewController.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
+            tableViewController.tableView.dataSource = dataSource
+            subject = ScrollingNavigationController(rootViewController: tableViewController)
+            UIApplication.sharedApplication().keyWindow!.rootViewController = subject
+            subject.preloadView()
+            tableViewController.tableView.reloadData()
+            subject.followScrollView(tableViewController.tableView, delay: 0)
+        }
+
+        describe("hideNavbar") {
+            it("should hide the navigation bar") {
+                subject.hideNavbar(animated: false)
+                expect(subject.view).to(haveValidSnapshot())
+            }
+        }
+
+        describe("showNavbar") {
+            it("should show the navigation bar") {
+                subject.hideNavbar(animated: false)
+                subject.showNavbar(animated: false)
+                expect(subject.view).toEventually(haveValidSnapshot(), timeout: 2, pollInterval: 1)
+            }
         }
     }
-    
+
 }
