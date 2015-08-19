@@ -316,7 +316,10 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func deltaLimit() -> CGFloat {
-        if UI_USER_INTERFACE_IDIOM() == .Pad || UIScreen.mainScreen().scale == 3 {
+        let isAiPad = UIDevice().userInterfaceIdiom == .Pad
+        let isAiPhone6Plus = UIScreen.mainScreen().scale == 3
+
+        if isAiPad || isAiPhone6Plus {
             return portraitNavbar() - statusBar()
         } else {
             return (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) ?
