@@ -237,22 +237,14 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func restoreContentOffset(delta: CGFloat) {
-        if navigationBar.translucent {
+        if navigationBar.translucent || delta == 0 {
             return
         }
 
         // Hold the scroll steady until the navbar appears/disappears
         let offset = contentOffset()
         if let scrollView = scrollView() {
-            if scrollView.translatesAutoresizingMaskIntoConstraints() {
-                scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta), animated: false)
-            } else {
-                if delta > 0 {
-                    scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta - 1), animated: false)
-                } else {
-                    scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta + 1), animated: false)
-                }
-            }
+            scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta), animated: false)
         }
     }
 
@@ -339,7 +331,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     // MARK: - UIGestureRecognizerDelegate
 
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return gestureRecognizer == self.gestureRecognizer
+        return true
     }
 
 }
