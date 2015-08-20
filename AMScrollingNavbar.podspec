@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AMScrollingNavbar"
-  s.version      = "2.0.0-beta1"
+  s.version      = "2.1.0-beta4"
   s.summary      = "A custom UINavigationController that enables the scrolling of the navigation bar alongside the scrolling of an observed content view"
   s.homepage     = "https://github.com/andreamazz/AMScrollingNavbar"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

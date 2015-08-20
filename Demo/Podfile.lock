@@ -1,14 +1,28 @@
 PODS:
-  - AMScrollingNavbar (2.0.0)
+  - AMScrollingNavbar (2.1.0-beta4)
+  - FBSnapshotTestCase (1.8.1)
+  - Nimble (0.4.2)
+  - Nimble-Snapshots (0.4.0):
+    - FBSnapshotTestCase (~> 1.7)
+    - Nimble (~> 0.4)
+    - Quick (~> 0.3)
+  - Quick (0.3.1)
 
 DEPENDENCIES:
   - AMScrollingNavbar (from `../`)
+  - Nimble (~> 0.4.0)
+  - Nimble-Snapshots (~> 0.4.0)
+  - Quick (~> 0.3.1)
 
 EXTERNAL SOURCES:
   AMScrollingNavbar:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: 6665f3b340efdf56fec9a870952b0a44db9dac57
+  AMScrollingNavbar: a905a610f1d6541a0988c98456a68a2b354868d7
+  FBSnapshotTestCase: 3dc3899168747a0319c5278f5b3445c13a6532dd
+  Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
+  Nimble-Snapshots: 216ae8c0ea3f4105be1606749fe15d8b2138af40
+  Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
 
-COCOAPODS: 0.38.1
+COCOAPODS: 0.38.2
