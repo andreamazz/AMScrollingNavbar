@@ -7,14 +7,16 @@ import UIKit
 public class ScrollingNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
     /**
-        Returns true if the navbar is fully collapsed
+        The state of the navigation bar
     */
-    public private(set) var collapsed = false
+    @objc public enum NavigationBarState: Int {
+        case Collapsed, Expanded, Scrolling
+    }
 
     /**
-        Returns true if the navbar is fully expanded
+        Returns the `NavigationBarState` of the navigation bar
     */
-    public private(set) var expanded = true
+    public private(set) var state: NavigationBarState = .Expanded
 
     /**
         Determines wether the scrollbar should scroll when the content inside the scrollview fits
@@ -63,7 +65,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     */
     public func hideNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
-            if expanded {
+            if state == .Expanded {
                 UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
                     self.scrollWithDelta(self.fullNavbarHeight())
                     self.visibleViewController.view.setNeedsLayout()
@@ -85,7 +87,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     */
     public func showNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
-            if collapsed {
+            if state == .Collapsed {
                 gestureRecognizer?.enabled = false
                 UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
                     self.lastContentOffset = 0;
@@ -172,13 +174,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         // View scrolling up, hide the navbar
         if delta > 0 {
             // No need to scroll if the content fits
-            if !shouldScrollWhenContentFits && !collapsed {
+            if !shouldScrollWhenContentFits && state != .Collapsed {
                 if scrollableView?.frame.size.height >= contentSize().height {
                     return
                 }
             }
-
-            expanded = false
 
             // Compute the bar position
             if frame.origin.y - delta < -deltaLimit() {
@@ -187,14 +187,14 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
             // Detect when the bar is completely collapsed
             if frame.origin.y == -deltaLimit() {
-                collapsed = true
+                state = .Collapsed
                 delayDistance = maxDelay
+            } else {
+                state = .Scrolling
             }
         }
 
         if delta < 0 {
-            collapsed = false
-
             // Update the delay
             delayDistance += delta
 
@@ -210,7 +210,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
             // Detect when the bar is completely expanded
             if frame.origin.y == statusBar() {
-                expanded = true
+                state = .Expanded
+            } else {
+                state = .Scrolling
             }
         }
 
@@ -257,14 +259,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         if navigationBar.frame.origin.y >= (statusBar() - (frame.size.height / 2)) {
             delta = frame.origin.y - statusBar()
             duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
-            self.expanded = true
-            self.collapsed = false
+            state = .Expanded
         } else {
             // Scroll up
             delta = frame.origin.y + deltaLimit()
             duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
-            self.expanded = false
-            self.collapsed = true
+            state = .Collapsed
         }
         UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
             self.updateSizing(delta)
