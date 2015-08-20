@@ -9,7 +9,7 @@
 import UIKit
 import AMScrollingNavbar
 
-class ScrollViewController: ScrollingNavigationViewController {
+class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigationControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -38,12 +38,24 @@ class ScrollViewController: ScrollingNavigationViewController {
         scrollView.delegate = self
     }
 
+    func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
+        switch state {
+        case .Collapsed:
+            println("navbar collapsed")
+        case .Expanded:
+            println("navbar expanded")
+        case .Scrolling:
+            println("navbar is moving")
+        }
+    }
+
     // Enable the navbar scrolling
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
         if let navigationController = self.navigationController as? ScrollingNavigationController {
             navigationController.followScrollView(scrollView, delay: 100.0)
+            navigationController.scrollingNavbarDelegate = self
         }
     }
 

@@ -1,34 +1,55 @@
 import UIKit
 
 /**
-    A custom `UINavigationController` that enables the scrolling of the navigation bar alongside the
-    scrolling of an observed content view
+Scrolling Navigation Bar delegate protocol
+*/
+@objc public protocol ScrollingNavigationControllerDelegate: NSObjectProtocol {
+    /**
+    Called when the state of the navigation bar changes
+    */
+    optional func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState)
+}
+
+/**
+The state of the navigation bar
+*/
+@objc public enum NavigationBarState: Int {
+    case Collapsed, Expanded, Scrolling
+}
+
+/**
+A custom `UINavigationController` that enables the scrolling of the navigation bar alongside the
+scrolling of an observed content view
 */
 public class ScrollingNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
     /**
-        The state of the navigation bar
+    Returns the `NavigationBarState` of the navigation bar
     */
-    @objc public enum NavigationBarState: Int {
-        case Collapsed, Expanded, Scrolling
+    public private(set) var state: NavigationBarState = .Expanded {
+        didSet {
+            if state != oldValue {
+                scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: state)
+            }
+        }
     }
 
     /**
-        Returns the `NavigationBarState` of the navigation bar
-    */
-    public private(set) var state: NavigationBarState = .Expanded
-
-    /**
-        Determines wether the scrollbar should scroll when the content inside the scrollview fits
-        the view's size. Defaults to `false`
+    Determines wether the scrollbar should scroll when the content inside the scrollview fits
+    the view's size. Defaults to `false`
     */
     public var shouldScrollWhenContentFits = false
 
     /**
-        Determines if the scrollbar should expand once the application becomes active after entering background
-        Defaults to `true`
+    Determines if the scrollbar should expand once the application becomes active after entering background
+    Defaults to `true`
     */
     public var expandOnActive = true
+
+    /**
+    The delegate for the scrolling navbar controller
+    */
+    public var scrollingNavbarDelegate: ScrollingNavigationControllerDelegate?
 
     var delayDistance: CGFloat = 0
     var maxDelay: CGFloat = 0
@@ -37,12 +58,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     var lastContentOffset = CGFloat(0.0)
 
     /**
-        Start scrolling
-    
-        Enables the scrolling by observing a view
+    Start scrolling
 
-        :param: scrollableView The view with the scrolling content that will be observed
-        :param: delay The delay expressed in points that determines the scrolling resistance. Defaults to `0`
+    Enables the scrolling by observing a view
+
+    :param: scrollableView The view with the scrolling content that will be observed
+    :param: delay The delay expressed in points that determines the scrolling resistance. Defaults to `0`
     */
     public func followScrollView(scrollableView: UIView, delay: Double = 0) {
         self.scrollableView = scrollableView
@@ -59,9 +80,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-        Hide the navigation bar
+    Hide the navigation bar
 
-        :param: animated If true the scrolling is animated. Defaults to `true`
+    :param: animated If true the scrolling is animated. Defaults to `true`
     */
     public func hideNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
@@ -81,9 +102,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-        Show the navigation bar
+    Show the navigation bar
 
-        :param: animated If true the scrolling is animated. Defaults to `true`
+    :param: animated If true the scrolling is animated. Defaults to `true`
     */
     public func showNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
@@ -108,7 +129,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-        Stop observing the view and reset the navigation bar
+    Stop observing the view and reset the navigation bar
     */
     public func stopFollowingScrollView() {
         showNavbar(animated: false)
@@ -117,6 +138,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
         scrollableView = .None
         gestureRecognizer = .None
+        scrollingNavbarDelegate = .None
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
 
@@ -329,9 +351,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     // MARK: - UIGestureRecognizerDelegate
-
+    
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-
+    
 }
