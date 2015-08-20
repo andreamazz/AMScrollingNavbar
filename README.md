@@ -69,6 +69,28 @@ override func viewWillAppear(animated: Bool) {
 }
 ```
 
+##ScrollingNavigationControllerDelegate
+You can set a delegate to receive a call when the state of the navigation bar changes:
+```swift
+if let navigationController = self.navigationController as? ScrollingNavigationController {
+    navigationController.scrollingNavbarDelegate = self
+}
+```
+
+Delegate function:
+```swift
+func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
+    switch state {
+    case .Collapsed:
+        println("navbar collapsed")
+    case .Expanded:
+        println("navbar expanded")
+    case .Scrolling:
+        println("navbar is moving")
+    }
+}
+```
+
 Check out the sample project for more details.
 
 #MIT License
