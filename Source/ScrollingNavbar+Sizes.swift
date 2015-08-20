@@ -21,11 +21,11 @@ extension ScrollingNavigationController {
     }
 
     func portraitNavbar() -> CGFloat {
-        return 44 + ((self.topViewController.navigationItem.prompt != nil) ? 30 : 0)
+        return 44 + ((self.topViewController?.navigationItem.prompt != nil) ? 30 : 0)
     }
 
     func landscapeNavbar() -> CGFloat {
-        return 32 + ((self.topViewController.navigationItem.prompt != nil) ? 22 : 0)
+        return 32 + ((self.topViewController?.navigationItem.prompt != nil) ? 22 : 0)
     }
 
     func statusBar() -> CGFloat {

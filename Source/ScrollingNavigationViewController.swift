@@ -14,7 +14,7 @@ public class ScrollingNavigationViewController: UIViewController, UIScrollViewDe
         super.viewWillDisappear(animated)
 
         if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.showNavbar(animated: true)
+            navigationController.showNavbar(true)
         }
     }
 
@@ -34,7 +34,7 @@ public class ScrollingNavigationViewController: UIViewController, UIScrollViewDe
     */
     public func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
         if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.showNavbar(animated: true)
+            navigationController.showNavbar(true)
         }
         return true
     }
