@@ -93,6 +93,9 @@ func scrollingNavigationController(controller: ScrollingNavigationController, di
 
 Check out the sample project for more details.
 
+#Author
+[Andrea Mazzini](https://twitter.com/theandreamazz)
+
 #MIT License
     The MIT License (MIT)
 
