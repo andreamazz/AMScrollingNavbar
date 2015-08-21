@@ -11,6 +11,16 @@ extension UIViewController {
     }
 }
 
+class TableController: UITableViewController, ScrollingNavigationControllerDelegate {
+    var called = false
+    var status = NavigationBarState.Expanded
+
+    func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
+        called = true
+        status = state
+    }
+}
+
 class DataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
@@ -31,20 +41,23 @@ class DataSource: NSObject, UITableViewDataSource {
 }
 
 class ScrollingNavbarDemoTests: QuickSpec {
+
     override func spec() {
 
         var subject: ScrollingNavigationController!
         let dataSource = DataSource()
+        var tableController: TableController?
 
         beforeEach {
-            let tableViewController = UITableViewController(style: .Plain)
-            tableViewController.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
-            tableViewController.tableView.dataSource = dataSource
-            subject = ScrollingNavigationController(rootViewController: tableViewController)
+            tableController = TableController(style: .Plain)
+            tableController?.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
+            tableController?.tableView.dataSource = dataSource
+            subject = ScrollingNavigationController(rootViewController: tableController!)
+            subject.scrollingNavbarDelegate = tableController
             UIApplication.sharedApplication().keyWindow!.rootViewController = subject
             subject.preloadView()
-            tableViewController.tableView.reloadData()
-            subject.followScrollView(tableViewController.tableView, delay: 0)
+            tableController?.tableView.reloadData()
+            subject.followScrollView(tableController!.tableView, delay: 0)
         }
 
         describe("hideNavbar") {
@@ -59,6 +72,15 @@ class ScrollingNavbarDemoTests: QuickSpec {
                 subject.hideNavbar(animated: false)
                 subject.showNavbar(animated: false)
                 expect(subject.view).toEventually(haveValidSnapshot(), timeout: 2, pollInterval: 1)
+            }
+        }
+
+        describe("ScrollingNavigationControllerDelegate") {
+            it("should call the delegate with the new state of scroll") {
+                subject.hideNavbar(animated: false)
+                expect(tableController?.called).to(beTrue())
+                expect(tableController?.status).to(equal(NavigationBarState.Scrolling))
+                expect(tableController?.status).toEventually(equal(NavigationBarState.Collapsed), timeout: 2, pollInterval: 1)
             }
         }
     }

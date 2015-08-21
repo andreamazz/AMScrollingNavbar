@@ -3,7 +3,7 @@ import UIKit
 /**
 Scrolling Navigation Bar delegate protocol
 */
-@objc public protocol ScrollingNavigationControllerDelegate: NSObjectProtocol {
+@objc public protocol ScrollingNavigationControllerDelegate {
     /**
     Called when the state of the navigation bar changes
     */
@@ -87,6 +87,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     public func hideNavbar(animated: Bool = true) {
         if let scrollableView = self.scrollableView {
             if state == .Expanded {
+                self.state = .Scrolling
                 UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
                     self.scrollWithDelta(self.fullNavbarHeight())
                     self.visibleViewController.view.setNeedsLayout()
@@ -94,7 +95,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
                         let currentOffset = self.contentOffset()
                         self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight())
                     }
-                })
+                    }) { _ in
+                        self.state = .Collapsed
+                }
             } else {
                 updateNavbarAlpha()
             }
@@ -110,7 +113,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         if let scrollableView = self.scrollableView {
             if state == .Collapsed {
                 gestureRecognizer?.enabled = false
-                UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
+                self.state = .Scrolling
+                UIView.animateWithDuration(animated ? 0.1 : 0, animations: {
                     self.lastContentOffset = 0;
                     self.delayDistance = -self.fullNavbarHeight()
                     self.scrollWithDelta(-self.fullNavbarHeight())
@@ -120,7 +124,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
                         self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight())
                     }
                     }) { _ in
-                        gestureRecognizer?.enabled = true
+                        self.state = .Expanded
+                        self.gestureRecognizer?.enabled = true
                 }
             } else {
                 updateNavbarAlpha()
