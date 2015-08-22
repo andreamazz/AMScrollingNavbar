@@ -2,10 +2,16 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
-- `2.0.x` Beta Releases - [2.0.0-beta1](#200-beta1) | [2.0.0-beta2](#200-beta2) | [2.0.0-beta3](#200-beta3) | [2.0.0-beta4](#200-beta4) | [2.0.0-beta5](#200-beta5)
+- `2.0.x` Beta Releases - [2.0.0-beta1](#200-beta1) | [2.0.0-beta2](#200-beta2) | [2.0.0-beta3](#200-beta3) | [2.0.0-beta4](#200-beta4) | [2.0.0-beta5](#200-beta5) | [2.0.0-beta6](#200-beta6)
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [2.0.0-beta6](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta6)
+
+###Fixed
+- Delegate function gets called after `hideNavbar` and `showNavbar` finish.  
+- Fixes title attributes being overridden. Thanks to [Jianghua Kuai](https://github.com/joshuakuai)  
 
 ## [2.0.0-beta5](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta5)
 
