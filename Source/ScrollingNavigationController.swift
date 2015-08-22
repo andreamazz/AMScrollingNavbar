@@ -309,9 +309,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         navigationItem.titleView?.alpha = alpha
         navigationBar.tintColor = navigationBar.tintColor.colorWithAlphaComponent(alpha)
         if let titleColor = navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
-            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: titleColor.colorWithAlphaComponent(alpha)]
+            navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = titleColor.colorWithAlphaComponent(alpha)
         } else {
-            navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor().colorWithAlphaComponent(alpha)]
+            navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = UIColor.blackColor().colorWithAlphaComponent(alpha)
         }
 
         // Hide the left items
