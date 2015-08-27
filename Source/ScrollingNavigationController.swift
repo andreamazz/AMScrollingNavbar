@@ -314,6 +314,15 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = UIColor.blackColor().colorWithAlphaComponent(alpha)
         }
 
+        // Hide all possible button items and navigation items
+        for item in navigationBar.subviews {
+            if let view = item as? UIView {
+                if view.classForCoder.description() == "UINavigationButton" || view.classForCoder.description() == "UINavigationItemView" {
+                    view.alpha = alpha
+                }
+            }
+        }
+
         // Hide the left items
         visibleViewController.navigationItem.leftBarButtonItem?.customView?.alpha = alpha
         if let leftItems = visibleViewController.navigationItem.leftBarButtonItems as? [UIBarButtonItem] {
