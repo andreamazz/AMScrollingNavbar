@@ -512,6 +512,12 @@
     self.navigationItem.rightBarButtonItem.customView.alpha = alpha;
     self.navigationItem.titleView.alpha = alpha;
     self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
+    
+    for (UIView *item in self.navigationController.navigationBar.subviews) {
+        if ([[item.classForCoder description] isEqualToString:@"UINavigationButton"] || [[item.classForCoder description] isEqualToString:@"UINavigationItemView"]) {
+            item.alpha = alpha;
+        }
+    }
 }
 
 @end
