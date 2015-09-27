@@ -41,11 +41,11 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
     func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
         switch state {
         case .Collapsed:
-            println("navbar collapsed")
+            print("navbar collapsed")
         case .Expanded:
-            println("navbar expanded")
+            print("navbar expanded")
         case .Scrolling:
-            println("navbar is moving")
+            print("navbar is moving")
         }
     }
 

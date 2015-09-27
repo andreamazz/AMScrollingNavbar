@@ -6,8 +6,8 @@ end
 
 target 'ScrollingNavbarDemoTests' do
   pod 'AMScrollingNavbar', path: '../'
-  pod 'Nimble', '~> 0.4.0'
-  pod 'Quick', '~> 0.3.1'
-  pod 'Nimble-Snapshots', '~> 0.4.0'
+  pod 'Nimble', '~> 2.0.0-rc.3'
+  pod 'Quick', '~> 0.6.0'
+  pod 'Nimble-Snapshots'
 end
 

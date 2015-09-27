@@ -9,7 +9,7 @@
 import UIKit
 import AMScrollingNavbar
 
-class ViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
