@@ -27,16 +27,14 @@ class DataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? UITableViewCell {
-            cell.textLabel?.text = "Row \(indexPath.row)"
-            if indexPath.row % 2 == 0 {
-                cell.backgroundColor = UIColor(white: 0.8, alpha: 1)
-            } else {
-                cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
-            }
-            return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        cell.textLabel?.text = "Row \(indexPath.row)"
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor(white: 0.8, alpha: 1)
+        } else {
+            cell.backgroundColor = UIColor(white: 0.9, alpha: 1)
         }
-        return UITableViewCell()
+        return cell
     }
 }
 
