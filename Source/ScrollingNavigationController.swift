@@ -318,7 +318,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         let alpha = (frame.origin.y + deltaLimit()) / frame.size.height
 
         // Hide all the possible titles
-        navigationItem.titleView?.alpha = alpha
+        visibleViewController.navigationItem.titleView?.alpha = alpha
         navigationBar.tintColor = navigationBar.tintColor.colorWithAlphaComponent(alpha)
         if let titleColor = navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
             navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = titleColor.colorWithAlphaComponent(alpha)
