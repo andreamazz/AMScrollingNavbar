@@ -35,6 +35,6 @@ extension ScrollingNavigationController {
     }
 
     func statusBar() -> CGFloat {
-        return UIApplication.sharedApplication().statusBarHidden ? 0 : 20
+        return UIApplication.sharedApplication().statusBarFrame.size.height
     }
 }
