@@ -21,7 +21,7 @@ If you are looking for the category implementation in Objective-C, make sure to 
 #Setup with Cocoapods
 
 ```
-pod 'AMScrollingNavbar', `~> 2.0.0`
+pod 'AMScrollingNavbar', '~> 2.0.1'
 
 use_frameworks!
 ```
