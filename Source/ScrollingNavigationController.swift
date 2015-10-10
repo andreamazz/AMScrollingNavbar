@@ -74,6 +74,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         scrollableView.addGestureRecognizer(gestureRecognizer!)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didRotate:"), name: UIDeviceOrientationDidChangeNotification, object: nil)
 
         maxDelay = CGFloat(delay)
         delayDistance = CGFloat(delay)
@@ -168,6 +169,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             checkForPartialScroll()
             lastContentOffset = 0
         }
+    }
+
+    // MARK: - Rotation handler
+
+    func didRotate(notification: NSNotification) {
+        showNavbar()
     }
 
     // MARK: - Notification handler
@@ -381,5 +388,5 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
+
 }

@@ -18,6 +18,8 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
 
         title = "ScrollView"
 
+//        navigationItem.prompt = "Prompt"
+
         navigationController?.navigationBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
 
         scrollView.backgroundColor = UIColor(red:0.13, green:0.5, blue:0.73, alpha:1)
