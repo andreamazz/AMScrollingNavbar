@@ -2,11 +2,17 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
-- `2.0.0` Releases - [2.0.0](#200) | [2.0.1](#201)  
+- `2.0.0` Releases - [2.0.0](#200) | [2.0.1](#201) | [2.0.2](#202)  
 - `2.0.x` Beta Releases - [2.0.0-beta1](#200-beta1) | [2.0.0-beta2](#200-beta2) | [2.0.0-beta3](#200-beta3) | [2.0.0-beta4](#200-beta4) | [2.0.0-beta5](#200-beta5) | [2.0.0-beta6](#200-beta6) | [2.0.0-beta7](#200-beta7)
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [2.0.2](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.2)
+
+###Fixed
+
+- Fix bug causing titleView alpha property to not update when navbar alpha changes. Thanks to [Erik Ackermann](https://github.com/erikackermann)  
 
 ## [2.0.1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.1)
 
