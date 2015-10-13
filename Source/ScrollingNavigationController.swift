@@ -337,6 +337,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         for view in navigationBar.subviews {
             if view.classForCoder.description() == "UINavigationButton" ||
                 view.classForCoder.description() == "UINavigationItemView" ||
+                view.classForCoder.description() == "UIImageView" ||
                 view.classForCoder.description() == "UISegmentedControl" {
                 view.alpha = alpha
             }
