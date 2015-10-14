@@ -242,12 +242,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
 
             // Compute the bar position
-            if frame.origin.y - delta > statusBar() {
-                delta = frame.origin.y - statusBar()
+            if frame.origin.y - delta > statusBarHeight() {
+                delta = frame.origin.y - statusBarHeight()
             }
 
             // Detect when the bar is completely expanded
-            if frame.origin.y == statusBar() {
+            if frame.origin.y == statusBarHeight() {
                 state = .Expanded
             } else {
                 state = .Scrolling
@@ -298,8 +298,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         var delta = CGFloat(0.0)
 
         // Scroll back down
-        if navigationBar.frame.origin.y >= (statusBar() - (frame.size.height / 2)) {
-            delta = frame.origin.y - statusBar()
+        if navigationBar.frame.origin.y >= (statusBarHeight() - (frame.size.height / 2)) {
+            delta = frame.origin.y - statusBarHeight()
             duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
             state = .Expanded
         } else {
@@ -315,7 +315,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func updateNavbarAlpha() {
-        guard let visibleViewController = self.visibleViewController else {
+        guard let navigationItem = visibleViewController?.navigationItem else {
             return
         }
 
@@ -325,7 +325,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         let alpha = (frame.origin.y + deltaLimit()) / frame.size.height
 
         // Hide all the possible titles
-        visibleViewController.navigationItem.titleView?.alpha = alpha
+        navigationItem.titleView?.alpha = alpha
         navigationBar.tintColor = navigationBar.tintColor.colorWithAlphaComponent(alpha)
         if let titleColor = navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor {
             navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] = titleColor.colorWithAlphaComponent(alpha)
@@ -334,30 +334,32 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
 
         // Hide all possible button items and navigation items
-        for view in navigationBar.subviews {
-            if view.classForCoder.description() == "UINavigationButton" ||
-                view.classForCoder.description() == "UINavigationItemView" ||
-                view.classForCoder.description() == "UIImageView" ||
-                view.classForCoder.description() == "UISegmentedControl" {
-                view.alpha = alpha
-            }
+        func shouldHideView(view: UIView) -> Bool {
+            let className = view.classForCoder.description()
+            return className == "UINavigationButton" ||
+                className == "UINavigationItemView" ||
+                className == "UIImageView" ||
+                className == "UISegmentedControl"
         }
+        navigationBar.subviews
+            .filter(shouldHideView)
+            .forEach { $0.alpha = alpha }
 
         // Hide the left items
-        visibleViewController.navigationItem.leftBarButtonItem?.customView?.alpha = alpha
-        if let leftItems = visibleViewController.navigationItem.leftBarButtonItems {
-            _ = leftItems.map({ $0.customView?.alpha = alpha })
+        navigationItem.leftBarButtonItem?.customView?.alpha = alpha
+        if let leftItems = navigationItem.leftBarButtonItems {
+            leftItems.forEach { $0.customView?.alpha = alpha }
         }
 
         // Hide the right items
-        visibleViewController.navigationItem.rightBarButtonItem?.customView?.alpha = alpha
-        if let leftItems = visibleViewController.navigationItem.rightBarButtonItems {
-            _ = leftItems.map({ $0.customView?.alpha = alpha })
+        navigationItem.rightBarButtonItem?.customView?.alpha = alpha
+        if let leftItems = navigationItem.rightBarButtonItems {
+            leftItems.forEach { $0.customView?.alpha = alpha }
         }
     }
 
     func deltaLimit() -> CGFloat {
-        return navbarHeight() - statusBar()
+        return navbarHeight() - statusBarHeight()
     }
 
     // MARK: - Utilities
@@ -371,17 +373,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func contentOffset() -> CGPoint {
-        if let scrollView = scrollView() {
-            return scrollView.contentOffset
-        }
-        return CGPointZero
+        return scrollView()?.contentOffset ?? CGPointZero
     }
 
     func contentSize() -> CGSize {
-        if let scrollView = scrollView() {
-            return scrollView.contentSize
-        }
-        return CGSizeZero
+        return scrollView()?.contentSize ?? CGSizeZero
     }
 
     // MARK: - UIGestureRecognizerDelegate
