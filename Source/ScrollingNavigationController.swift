@@ -371,17 +371,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func contentOffset() -> CGPoint {
-        if let scrollView = scrollView() {
-            return scrollView.contentOffset
-        }
-        return CGPointZero
+        return scrollView()?.contentOffset ?? CGPointZero
     }
 
     func contentSize() -> CGSize {
-        if let scrollView = scrollView() {
-            return scrollView.contentSize
-        }
-        return CGSizeZero
+        return scrollView()?.contentSize ?? CGSizeZero
     }
 
     // MARK: - UIGestureRecognizerDelegate
