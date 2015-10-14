@@ -242,12 +242,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
 
             // Compute the bar position
-            if frame.origin.y - delta > statusBar() {
-                delta = frame.origin.y - statusBar()
+            if frame.origin.y - delta > statusBarHeight() {
+                delta = frame.origin.y - statusBarHeight()
             }
 
             // Detect when the bar is completely expanded
-            if frame.origin.y == statusBar() {
+            if frame.origin.y == statusBarHeight() {
                 state = .Expanded
             } else {
                 state = .Scrolling
@@ -298,8 +298,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         var delta = CGFloat(0.0)
 
         // Scroll back down
-        if navigationBar.frame.origin.y >= (statusBar() - (frame.size.height / 2)) {
-            delta = frame.origin.y - statusBar()
+        if navigationBar.frame.origin.y >= (statusBarHeight() - (frame.size.height / 2)) {
+            delta = frame.origin.y - statusBarHeight()
             duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
             state = .Expanded
         } else {
@@ -357,7 +357,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func deltaLimit() -> CGFloat {
-        return navbarHeight() - statusBar()
+        return navbarHeight() - statusBarHeight()
     }
 
     // MARK: - Utilities

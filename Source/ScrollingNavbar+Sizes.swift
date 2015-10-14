@@ -8,14 +8,14 @@ extension ScrollingNavigationController {
     // MARK: - View sizing
 
     func fullNavbarHeight() -> CGFloat {
-        return navbarHeight() + statusBar()
+        return navbarHeight() + statusBarHeight()
     }
 
     func navbarHeight() -> CGFloat {
         return navigationBar.frame.size.height
     }
 
-    func statusBar() -> CGFloat {
+    func statusBarHeight() -> CGFloat {
         return UIApplication.sharedApplication().statusBarFrame.size.height
     }
 }
