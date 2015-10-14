@@ -334,13 +334,15 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
 
         // Hide all possible button items and navigation items
-        for view in navigationBar.subviews {
-            if view.classForCoder.description() == "UINavigationButton" ||
-                view.classForCoder.description() == "UINavigationItemView" ||
-                view.classForCoder.description() == "UIImageView" ||
-                view.classForCoder.description() == "UISegmentedControl" {
-                view.alpha = alpha
-            }
+        func shouldHideView(view: UIView) -> Bool {
+            let className = view.classForCoder.description()
+            return className == "UINavigationButton" ||
+                className == "UINavigationItemView" ||
+                className == "UIImageView" ||
+                className == "UISegmentedControl"
+        }
+        for view in navigationBar.subviews where shouldHideView(view) {
+            view.alpha = alpha
         }
 
         // Hide the left items
