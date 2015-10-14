@@ -341,9 +341,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
                 className == "UIImageView" ||
                 className == "UISegmentedControl"
         }
-        for view in navigationBar.subviews where shouldHideView(view) {
-            view.alpha = alpha
-        }
+        navigationBar.subviews
+            .filter(shouldHideView)
+            .forEach { $0.alpha = alpha }
 
         // Hide the left items
         navigationItem.leftBarButtonItem?.customView?.alpha = alpha
