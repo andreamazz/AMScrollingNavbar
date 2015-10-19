@@ -93,11 +93,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         if state == .Expanded {
             self.state = .Scrolling
             UIView.animateWithDuration(animated ? 0.1 : 0, animations: { () -> Void in
-                self.scrollWithDelta(self.fullNavbarHeight())
+                self.scrollWithDelta(self.fullNavbarHeight)
                 visibleViewController.view.setNeedsLayout()
                 if self.navigationBar.translucent {
                     let currentOffset = self.contentOffset()
-                    self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight())
+                    self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight)
                 }
                 }) { _ in
                     self.state = .Collapsed
@@ -122,12 +122,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             self.state = .Scrolling
             UIView.animateWithDuration(animated ? 0.1 : 0, animations: {
                 self.lastContentOffset = 0;
-                self.delayDistance = -self.fullNavbarHeight()
-                self.scrollWithDelta(-self.fullNavbarHeight())
+                self.delayDistance = -self.fullNavbarHeight
+                self.scrollWithDelta(-self.fullNavbarHeight)
                 visibleViewController.view.setNeedsLayout()
                 if self.navigationBar.translucent {
                     let currentOffset = self.contentOffset()
-                    self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight())
+                    self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
                 }
                 }) { _ in
                     self.state = .Expanded
@@ -245,12 +245,12 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
 
             // Compute the bar position
-            if frame.origin.y - delta > statusBarHeight() {
-                delta = frame.origin.y - statusBarHeight()
+            if frame.origin.y - delta > statusBarHeight {
+                delta = frame.origin.y - statusBarHeight
             }
 
             // Detect when the bar is completely expanded
-            if frame.origin.y == statusBarHeight() {
+            if frame.origin.y == statusBarHeight {
                 state = .Expanded
             } else {
                 state = .Scrolling
@@ -278,7 +278,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             let navBarY = navigationBar.frame.origin.y + navigationBar.frame.size.height
             frame = visibleViewController.view.frame
             frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
-            frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset())
+            frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
             visibleViewController.view.frame = frame
         }
     }
@@ -301,8 +301,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         var delta = CGFloat(0.0)
 
         // Scroll back down
-        if navigationBar.frame.origin.y >= (statusBarHeight() - (frame.size.height / 2)) {
-            delta = frame.origin.y - statusBarHeight()
+        if navigationBar.frame.origin.y >= (statusBarHeight - (frame.size.height / 2)) {
+            delta = frame.origin.y - statusBarHeight
             duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
             state = .Expanded
         } else {
@@ -362,7 +362,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     func deltaLimit() -> CGFloat {
-        return navbarHeight() - statusBarHeight()
+        return navbarHeight - statusBarHeight
     }
 
     // MARK: - Utilities
