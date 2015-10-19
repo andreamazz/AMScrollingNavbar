@@ -149,7 +149,10 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         scrollableView = .None
         gestureRecognizer = .None
         scrollingNavbarDelegate = .None
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
+
+        let center = NSNotificationCenter.defaultCenter()
+        center.removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
+        center.removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
 
     // MARK: - Gesture recognizer
