@@ -158,7 +158,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     // MARK: - Gesture recognizer
 
     func handlePan(gesture: UIPanGestureRecognizer) {
-        if let scrollableView = scrollableView, let superview = scrollableView.superview {
+        if let superview = scrollableView?.superview {
             let translation = gesture.translationInView(superview)
             let delta = lastContentOffset - translation.y
             lastContentOffset = translation.y
