@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="640" height="240" src="assets/logo.png"/>
+  <img width="420" height="240" src="assets/logo.png"/>
 </p>
 
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMScrollingNavbar/badge.svg)](http://www.cocoapods.org/?q=amscrollingnavbar)
