@@ -7,6 +7,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Join the chat at https://gitter.im/andreamazz/AMScrollingNavbar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andreamazz/AMScrollingNavbar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+[Try the demo app live](https://appetize.io/app/31qahv9v4477ja36k8dn93wr8m)  
+
 A custom UINavigationController that enables the scrolling of the navigation bar alongside the
 scrolling of an observed content view  
 
