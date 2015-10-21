@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.svg)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Join the chat at https://gitter.im/andreamazz/AMScrollingNavbar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andreamazz/AMScrollingNavbar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Swift 2.0](https://img.shields.io/badge/swift-2.0-orange.svg)]
+![Swift 2.0](https://img.shields.io/badge/swift-2.0-orange.svg)
 
 A custom UINavigationController that enables the scrolling of the navigation bar alongside the
 scrolling of an observed content view  
