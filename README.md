@@ -13,7 +13,7 @@ scrolling of an observed content view
 
 <p align="center">
   <a href='https://appetize.io/app/31qahv9v4477ja36k8dn93wr8m' alt='Live demo'>
-    <img width="30" height="36" src="assets/demo.png"/>
+    <img width="50" height="60" src="assets/demo.png"/>
   </a>
 </p>
 
