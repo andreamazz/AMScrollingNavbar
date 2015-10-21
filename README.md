@@ -111,8 +111,10 @@ Check out the sample project for more details.
 
 #Author
 [Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me. 
+Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️ via [Paypal](https://www.paypal.me/andreamazzini).  
 
-Contributors: [Syo Ikeda](https://github.com/ikesyo) and [everyone](https://github.com/andreamazz/AMScrollingNavbar/graphs/contributors) kind enough to submit a pull request. 
+#Contributors
+[Syo Ikeda](https://github.com/ikesyo) and [everyone](https://github.com/andreamazz/AMScrollingNavbar/graphs/contributors) kind enough to submit a pull request. 
 
 #MIT License
     The MIT License (MIT)
