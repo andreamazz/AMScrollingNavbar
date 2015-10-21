@@ -11,7 +11,11 @@
 A custom UINavigationController that enables the scrolling of the navigation bar alongside the
 scrolling of an observed content view  
 
-[![Try the demo app live](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/assets/demo.png)](https://appetize.io/app/31qahv9v4477ja36k8dn93wr8m)  
+<p align="center">
+  <a href='https://appetize.io/app/31qahv9v4477ja36k8dn93wr8m' alt='Live demo'>
+    <img width="30" height="36" src="assets/demo.png"/>
+  </a>
+</p>
 
 ### Versioning notes
 
