@@ -25,7 +25,9 @@ If you are looking for the category implementation in Objective-C, make sure to 
 
 #Screenshot
 
-![AMScrollingNavbar](https://raw.githubusercontent.com/andreamazz/AMScrollingNavbar/master/assets/screenshot.gif)
+<p align="center">
+  <img width="520" height="536" src="assets/screenshot.gif"/>
+</p>
 
 #Setup with Cocoapods
 
