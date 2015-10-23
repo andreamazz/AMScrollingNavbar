@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'ScrollingNavbarDemo' do
   pod 'AMScrollingNavbar', path: '../'
+  pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 end
 
 target 'ScrollingNavbarDemoTests' do

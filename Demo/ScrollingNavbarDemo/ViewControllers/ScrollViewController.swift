@@ -31,7 +31,7 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
         scrollView.addSubview(label)
 
         // Fake some content
-        label.text = lyrics[Int(arc4random()) % lyrics.count]
+        label.text = lyrics.first
         label.numberOfLines = 0
         label.textColor = .whiteColor()
         label.sizeToFit()

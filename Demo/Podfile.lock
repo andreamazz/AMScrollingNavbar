@@ -7,12 +7,14 @@ PODS:
     - Nimble (~> 2.0.0-rc.2)
     - Quick (~> 0.5)
   - Quick (0.7.0)
+  - Reveal-iOS-SDK (1.6.1)
 
 DEPENDENCIES:
   - AMScrollingNavbar (from `../`)
   - Nimble (from `https://github.com/Quick/Nimble.git`, branch `xcode7.1`)
   - Nimble-Snapshots
   - Quick (from `https://github.com/andreamazz/Quick.git`, branch `xcode7.1`)
+  - Reveal-iOS-SDK
 
 EXTERNAL SOURCES:
   AMScrollingNavbar:
@@ -38,5 +40,6 @@ SPEC CHECKSUMS:
   Nimble: 1b4a306f27b2355c8c789087e092decb1a226238
   Nimble-Snapshots: c16dd279a4840ec06288198fafd53f3c17750ff3
   Quick: c99021edb599f0aae3319455778ce36d00be140b
+  Reveal-iOS-SDK: ceae964076cebe3efe63e5e9abe3152efce46aa8
 
 COCOAPODS: 0.39.0

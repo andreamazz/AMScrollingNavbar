@@ -188,6 +188,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         showNavbar()
     }
 
+    public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        showNavbar()
+    }
+
     // MARK: - Notification handler
 
     func didBecomeActive(notification: NSNotification) {
@@ -248,7 +253,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             delayDistance += delta
 
             // Skip if the delay is not over yet
-            if delayDistance > 0 && self.maxDelay < contentOffset().y {
+            if delayDistance > 0 && maxDelay < contentOffset().y {
                 return
             }
 
@@ -280,7 +285,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         // Move the navigation bar
         frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
         navigationBar.frame = frame
-
+        
         // Resize the view if the navigation bar is not translucent
         if !navigationBar.translucent {
             let navBarY = navigationBar.frame.origin.y + navigationBar.frame.size.height
