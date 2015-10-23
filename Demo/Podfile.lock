@@ -1,28 +1,42 @@
 PODS:
-  - AMScrollingNavbar (2.0.0-beta7)
+  - AMScrollingNavbar (2.0.6)
   - FBSnapshotTestCase (1.8.1)
-  - Nimble (2.0.0-rc.3)
+  - Nimble (2.0.0)
   - Nimble-Snapshots (1.0.0):
     - FBSnapshotTestCase (~> 1.7)
     - Nimble (~> 2.0.0-rc.2)
     - Quick (~> 0.5)
-  - Quick (0.6.0)
+  - Quick (0.7.0)
 
 DEPENDENCIES:
   - AMScrollingNavbar (from `../`)
-  - Nimble (~> 2.0.0-rc.3)
+  - Nimble (from `https://github.com/Quick/Nimble.git`, branch `xcode7.1`)
   - Nimble-Snapshots
-  - Quick (~> 0.6.0)
+  - Quick (from `https://github.com/andreamazz/Quick.git`, branch `xcode7.1`)
 
 EXTERNAL SOURCES:
   AMScrollingNavbar:
     :path: "../"
+  Nimble:
+    :branch: xcode7.1
+    :git: https://github.com/Quick/Nimble.git
+  Quick:
+    :branch: xcode7.1
+    :git: https://github.com/andreamazz/Quick.git
+
+CHECKOUT OPTIONS:
+  Nimble:
+    :commit: dd3652d3788f1dd4e9838140399f774dcea56ec2
+    :git: https://github.com/Quick/Nimble.git
+  Quick:
+    :commit: afd459b94c41ef65290a43e932c6610c8d1d00a2
+    :git: https://github.com/andreamazz/Quick.git
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: b43d0c7576a7d676ad37e0d182414415ab046175
+  AMScrollingNavbar: 5feb35476990fcbe1134cec6a9dcd1ece2d1aa21
   FBSnapshotTestCase: 3dc3899168747a0319c5278f5b3445c13a6532dd
-  Nimble: 9dff98ee195ffe7351d3b2fb01d3a1420fd97948
+  Nimble: 1b4a306f27b2355c8c789087e092decb1a226238
   Nimble-Snapshots: c16dd279a4840ec06288198fafd53f3c17750ff3
-  Quick: 563686dbcf0ae0f9f7401ac9cd2d786ee1b7f3d7
+  Quick: c99021edb599f0aae3319455778ce36d00be140b
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
