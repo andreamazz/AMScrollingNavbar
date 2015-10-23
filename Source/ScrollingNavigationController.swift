@@ -35,16 +35,22 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-    Determines wether the scrollbar should scroll when the content inside the scrollview fits
+    Determines wether the navbar should scroll when the content inside the scrollview fits
     the view's size. Defaults to `false`
     */
     public var shouldScrollWhenContentFits = false
 
     /**
-    Determines if the scrollbar should expand once the application becomes active after entering background
+    Determines if the navbar should expand once the application becomes active after entering background
     Defaults to `true`
-    */
+     */
     public var expandOnActive = true
+
+    /**
+     Determines if the navbar scrolling is enabled.
+     Defaults to `true`
+     */
+    public var scrollingEnabled = true
 
     /**
     The delegate for the scrolling navbar controller
@@ -78,6 +84,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
         maxDelay = CGFloat(delay)
         delayDistance = CGFloat(delay)
+        scrollingEnabled = true
     }
 
     /**
@@ -149,6 +156,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         scrollableView = .None
         gestureRecognizer = .None
         scrollingNavbarDelegate = .None
+        scrollingEnabled = false
 
         let center = NSNotificationCenter.defaultCenter()
         center.removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
@@ -386,7 +394,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     // MARK: - UIGestureRecognizerDelegate
     
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+        return scrollingEnabled
     }
 
 }
