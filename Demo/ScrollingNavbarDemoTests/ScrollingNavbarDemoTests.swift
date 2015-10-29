@@ -5,6 +5,10 @@ import Nimble_Snapshots
 
 import AMScrollingNavbar
 
+func isRecording() -> Bool {
+    return false
+}
+
 extension UIViewController {
     func preloadView() {
         let _ = self.view
@@ -61,7 +65,11 @@ class ScrollingNavbarDemoTests: QuickSpec {
         describe("hideNavbar") {
             it("should hide the navigation bar") {
                 subject.hideNavbar(animated: false)
-                expect(subject.view).to(haveValidSnapshot())
+                if isRecording() {
+                    expect(subject.view).to(recordSnapshot())
+                } else {
+                    expect(subject.view).to(haveValidSnapshot())
+                }
             }
         }
 
@@ -69,7 +77,11 @@ class ScrollingNavbarDemoTests: QuickSpec {
             it("should show the navigation bar") {
                 subject.hideNavbar(animated: false)
                 subject.showNavbar(animated: false)
-                expect(subject.view).toEventually(haveValidSnapshot(), timeout: 2, pollInterval: 1)
+                if isRecording() {
+                    expect(subject.view).toEventually(recordSnapshot(), timeout: 2, pollInterval: 1)
+                } else {
+                    expect(subject.view).toEventually(haveValidSnapshot(), timeout: 2, pollInterval: 1)
+                }
             }
         }
 

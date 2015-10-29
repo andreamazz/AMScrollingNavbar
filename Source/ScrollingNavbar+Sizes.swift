@@ -26,4 +26,24 @@ extension ScrollingNavigationController {
         }
         return 0
     }
+
+    func scrollView() -> UIScrollView? {
+        if let webView = self.scrollableView as? UIWebView {
+            return webView.scrollView
+        } else {
+            return scrollableView as? UIScrollView
+        }
+    }
+
+    var contentOffset: CGPoint {
+        return scrollView()?.contentOffset ?? CGPointZero
+    }
+
+    var contentSize: CGSize {
+        return scrollView()?.contentSize ?? CGSizeZero
+    }
+
+    var deltaLimit: CGFloat {
+        return navbarHeight - statusBarHeight
+    }
 }

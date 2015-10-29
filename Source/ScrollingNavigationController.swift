@@ -12,6 +12,10 @@ Scrolling Navigation Bar delegate protocol
 
 /**
 The state of the navigation bar
+
+ - Collapsed: the navigation bar is fully collapsed
+ - Expanded: the navigation bar is fully visible
+ - Scrolling: the navigation bar is transitioning to either `Collapsed` or `Scrolling`
 */
 @objc public enum NavigationBarState: Int {
     case Collapsed, Expanded, Scrolling
@@ -68,8 +72,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
     Enables the scrolling by observing a view
 
-    :param: scrollableView The view with the scrolling content that will be observed
-    :param: delay The delay expressed in points that determines the scrolling resistance. Defaults to `0`
+     - parameter scrollableView: The view with the scrolling content that will be observed
+     - parameter delay: The delay expressed in points that determines the scrolling resistance. Defaults to `0`
     */
     public func followScrollView(scrollableView: UIView, delay: Double = 0) {
         self.scrollableView = scrollableView
@@ -90,7 +94,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     /**
     Hide the navigation bar
 
-    :param: animated If true the scrolling is animated. Defaults to `true`
+     - parameter animated: If true the scrolling is animated. Defaults to `true`
     */
     public func hideNavbar(animated animated: Bool = true) {
         guard let _ = self.scrollableView, visibleViewController = self.visibleViewController else {
@@ -103,7 +107,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
                 self.scrollWithDelta(self.fullNavbarHeight)
                 visibleViewController.view.setNeedsLayout()
                 if self.navigationBar.translucent {
-                    let currentOffset = self.contentOffset()
+                    let currentOffset = self.contentOffset
                     self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight)
                 }
                 }) { _ in
@@ -117,7 +121,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     /**
     Show the navigation bar
 
-    :param: animated If true the scrolling is animated. Defaults to `true`
+     - parameter animated: If true the scrolling is animated. Defaults to `true`
     */
     public func showNavbar(animated animated: Bool = true) {
         guard let _ = self.scrollableView, visibleViewController = self.visibleViewController else {
@@ -133,7 +137,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
                 self.scrollWithDelta(-self.fullNavbarHeight)
                 visibleViewController.view.setNeedsLayout()
                 if self.navigationBar.translucent {
-                    let currentOffset = self.contentOffset()
+                    let currentOffset = self.contentOffset
                     self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
                 }
                 }) { _ in
@@ -188,6 +192,10 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         showNavbar()
     }
 
+    /** 
+     UIContentContainer protocol method. 
+     Will show the navigation bar upon rotation or changes in the trait sizes.
+     */
     public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         showNavbar()
@@ -203,44 +211,44 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
     // MARK: - Scrolling functions
 
-    func shouldScrollWithDelta(delta: CGFloat) -> Bool {
+    private func shouldScrollWithDelta(delta: CGFloat) -> Bool {
         // Check for rubberbanding
         if delta < 0 {
             if let scrollableView = scrollableView {
-                if contentOffset().y + scrollableView.frame.size.height > contentSize().height {
-                    if scrollableView.frame.size.height < contentSize().height {
+                if contentOffset.y + scrollableView.frame.size.height > contentSize.height {
+                    if scrollableView.frame.size.height < contentSize.height {
                         // Only if the content is big enough
                         return false
                     }
                 }
             }
         } else {
-            if contentOffset().y < 0 {
+            if contentOffset.y < 0 {
                 return false
             }
         }
         return true
     }
 
-    func scrollWithDelta(var delta: CGFloat) {
+    private func scrollWithDelta(var delta: CGFloat) {
         let frame = navigationBar.frame
 
         // View scrolling up, hide the navbar
         if delta > 0 {
             // No need to scroll if the content fits
             if !shouldScrollWhenContentFits && state != .Collapsed {
-                if scrollableView?.frame.size.height >= contentSize().height {
+                if scrollableView?.frame.size.height >= contentSize.height {
                     return
                 }
             }
 
             // Compute the bar position
-            if frame.origin.y - delta < -deltaLimit() {
-                delta = frame.origin.y + deltaLimit()
+            if frame.origin.y - delta < -deltaLimit {
+                delta = frame.origin.y + deltaLimit
             }
 
             // Detect when the bar is completely collapsed
-            if frame.origin.y == -deltaLimit() {
+            if frame.origin.y == -deltaLimit {
                 state = .Collapsed
                 delayDistance = maxDelay
             } else {
@@ -253,7 +261,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             delayDistance += delta
 
             // Skip if the delay is not over yet
-            if delayDistance > 0 && maxDelay < contentOffset().y {
+            if delayDistance > 0 && maxDelay < contentOffset.y {
                 return
             }
 
@@ -275,7 +283,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         restoreContentOffset(delta)
     }
 
-    func updateSizing(delta: CGFloat) {
+    private func updateSizing(delta: CGFloat) {
         guard let visibleViewController = self.visibleViewController else {
             return
         }
@@ -296,19 +304,18 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
     }
 
-    func restoreContentOffset(delta: CGFloat) {
+    private func restoreContentOffset(delta: CGFloat) {
         if navigationBar.translucent || delta == 0 {
             return
         }
 
         // Hold the scroll steady until the navbar appears/disappears
-        let offset = contentOffset()
         if let scrollView = scrollView() {
-            scrollView.setContentOffset(CGPoint(x: offset.x, y: offset.y - delta), animated: false)
+            scrollView.setContentOffset(CGPoint(x: contentOffset.x, y: contentOffset.y - delta), animated: false)
         }
     }
 
-    func checkForPartialScroll() {
+    private func checkForPartialScroll() {
         let frame = navigationBar.frame
         var duration = NSTimeInterval(0)
         var delta = CGFloat(0.0)
@@ -320,7 +327,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             state = .Expanded
         } else {
             // Scroll up
-            delta = frame.origin.y + deltaLimit()
+            delta = frame.origin.y + deltaLimit
             duration = NSTimeInterval(abs((delta / (frame.size.height / 2)) * 0.2))
             state = .Collapsed
         }
@@ -330,7 +337,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }, completion: nil)
     }
 
-    func updateNavbarAlpha() {
+    private func updateNavbarAlpha() {
         guard let navigationItem = visibleViewController?.navigationItem else {
             return
         }
@@ -338,7 +345,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         let frame = navigationBar.frame
 
         // Change the alpha channel of every item on the navbr
-        let alpha = (frame.origin.y + deltaLimit()) / frame.size.height
+        let alpha = (frame.origin.y + deltaLimit) / frame.size.height
 
         // Hide all the possible titles
         navigationItem.titleView?.alpha = alpha
@@ -374,30 +381,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         }
     }
 
-    func deltaLimit() -> CGFloat {
-        return navbarHeight - statusBarHeight
-    }
-
-    // MARK: - Utilities
-
-    func scrollView() -> UIScrollView? {
-        if let webView = self.scrollableView as? UIWebView {
-            return webView.scrollView
-        } else {
-            return scrollableView as? UIScrollView
-        }
-    }
-
-    func contentOffset() -> CGPoint {
-        return scrollView()?.contentOffset ?? CGPointZero
-    }
-
-    func contentSize() -> CGSize {
-        return scrollView()?.contentSize ?? CGSizeZero
-    }
-
     // MARK: - UIGestureRecognizerDelegate
-    
+
+    /** 
+    UIGestureRecognizerDelegate funcion. Enables the scrolling of both the content and the navigation bar
+    */
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return scrollingEnabled
     }

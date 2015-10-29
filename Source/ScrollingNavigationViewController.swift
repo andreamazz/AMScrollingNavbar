@@ -1,14 +1,14 @@
 import UIKit
 
 /**
-    A custom `UIViewController` that implements the base configuration.
-*/
+ A custom `UIViewController` that implements the base configuration.
+ */
 public class ScrollingNavigationViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - ScrollView config
 
     /**
-        On appear calls `showNavbar()` by default
+    On appear calls `showNavbar()` by default
     */
     override public func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -19,8 +19,8 @@ public class ScrollingNavigationViewController: UIViewController, UIScrollViewDe
     }
 
     /**
-        On disappear calls `stopFollowingScrollView()` to stop observing the current scroll view, and perform the tear down
-    */
+     On disappear calls `stopFollowingScrollView()` to stop observing the current scroll view, and perform the tear down
+     */
     override public func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
@@ -30,13 +30,13 @@ public class ScrollingNavigationViewController: UIViewController, UIScrollViewDe
     }
 
     /**
-        Calls `showNavbar()` when a `scrollToTop` is requested
-    */
+     Calls `showNavbar()` when a `scrollToTop` is requested
+     */
     public func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
         if let navigationController = self.navigationController as? ScrollingNavigationController {
             navigationController.showNavbar(animated: true)
         }
         return true
     }
-
+    
 }
