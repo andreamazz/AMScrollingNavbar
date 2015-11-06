@@ -387,6 +387,13 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
     */
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
+    /**
+     UIGestureRecognizerDelegate function. Only scrolls the navigation bar with the content when scrollingEnabled is true
+     */
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return scrollingEnabled
     }
 
