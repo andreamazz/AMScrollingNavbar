@@ -39,7 +39,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-    Determines wether the navbar should scroll when the content inside the scrollview fits
+    Determines whether the navbar should scroll when the content inside the scrollview fits
     the view's size. Defaults to `false`
     */
     public var shouldScrollWhenContentFits = false
@@ -384,9 +384,16 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     // MARK: - UIGestureRecognizerDelegate
 
     /** 
-    UIGestureRecognizerDelegate funcion. Enables the scrolling of both the content and the navigation bar
+    UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
     */
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
+    /**
+     UIGestureRecognizerDelegate function. Only scrolls the navigation bar with the content when scrollingEnabled is true
+     */
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return scrollingEnabled
     }
 
