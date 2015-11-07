@@ -391,7 +391,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     /**
-     UIGestureRecognizerDelegate function. Only scrolls the navigation bar with the content when scrollingEnabled is true
+     UIGestureRecognizerDelegate function. Only scrolls the navigation bar with the content when `scrollingEnabled` is true
      */
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return scrollingEnabled
