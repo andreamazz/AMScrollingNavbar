@@ -113,6 +113,18 @@ func scrollingNavigationController(controller: ScrollingNavigationController, di
 }
 ```
 
+##Scrolling to top
+When the user taps the status bar, by default a scrollable view scrolls to the top of its content. If you want to also show the navigation bar, make sure to include this in your controller:
+
+```swift
+public func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+    if let navigationController = self.navigationController as? ScrollingNavigationController {
+        navigationController.showNavbar(animated: true)
+    }
+    return true
+}
+```
+
 Check out the sample project for more details.
 
 #Author
