@@ -301,6 +301,15 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
             frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
             visibleViewController.view.frame = frame
+        } else {
+            adjustContentInsets()
+        }
+    }
+
+    private func adjustContentInsets() {
+        if let view = scrollView() as? UICollectionView {
+            view.contentInset.top = navigationBar.frame.origin.y + navigationBar.frame.size.height
+            view.setContentOffset(CGPoint(x: contentOffset.x, y: contentOffset.y - 0.1), animated: false)
         }
     }
 
