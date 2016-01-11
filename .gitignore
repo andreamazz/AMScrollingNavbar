@@ -18,8 +18,5 @@ DerivedData
 *.xccheckout
 *.xcscmblueprint
 
-#CocoaPods
-Pods
-
 # Carthage
 Carthage/Build

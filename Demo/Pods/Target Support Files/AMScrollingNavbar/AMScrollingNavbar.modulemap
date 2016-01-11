@@ -1,0 +1,6 @@
+framework module AMScrollingNavbar {
+  umbrella header "AMScrollingNavbar-umbrella.h"
+
+  export *
+  module * { export * }
+}
