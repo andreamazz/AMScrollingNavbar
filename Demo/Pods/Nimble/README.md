@@ -475,10 +475,6 @@ expect(actual).to(beIdenticalTo(expected));
 expect(actual).toNot(beIdenticalTo(expected));
 ```
 
-> `beIdenticalTo` only supports Objective-C objects: subclasses
-  of `NSObject`, or Swift objects bridged to Objective-C with the
-  `@objc` prefix.
-
 ## Comparisons
 
 ```swift

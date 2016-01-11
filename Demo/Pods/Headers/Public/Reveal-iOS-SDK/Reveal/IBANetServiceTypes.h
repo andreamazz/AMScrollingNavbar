@@ -1,1 +1,1 @@
-../../../../Reveal-iOS-SDK/Reveal-Framework-1.6.1/Reveal.framework/Versions/A/Headers/IBANetServiceTypes.h
+../../../../Reveal-iOS-SDK/Reveal-Framework-iOS-1.6.2/Reveal.framework/Versions/A/Headers/IBANetServiceTypes.h

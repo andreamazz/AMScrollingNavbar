@@ -1,45 +1,35 @@
 PODS:
-  - AMScrollingNavbar (2.0.6)
-  - FBSnapshotTestCase (1.8.1)
-  - Nimble (2.0.0)
-  - Nimble-Snapshots (1.0.0):
-    - FBSnapshotTestCase (~> 1.7)
-    - Nimble (~> 2.0.0-rc.2)
-    - Quick (~> 0.5)
-  - Quick (0.7.0)
-  - Reveal-iOS-SDK (1.6.1)
+  - AMScrollingNavbar (2.0.10)
+  - FBSnapshotTestCase (2.0.7):
+    - FBSnapshotTestCase/SwiftSupport (= 2.0.7)
+  - FBSnapshotTestCase/Core (2.0.7)
+  - FBSnapshotTestCase/SwiftSupport (2.0.7):
+    - FBSnapshotTestCase/Core
+  - Nimble (3.0.0)
+  - Nimble-Snapshots (3.0.0):
+    - FBSnapshotTestCase (~> 2.0.7)
+    - Nimble
+    - Quick
+  - Quick (0.8.0)
+  - Reveal-iOS-SDK (1.6.2)
 
 DEPENDENCIES:
   - AMScrollingNavbar (from `../`)
-  - Nimble (from `https://github.com/Quick/Nimble.git`, branch `xcode7.1`)
+  - Nimble (~> 3.0.0)
   - Nimble-Snapshots
-  - Quick (from `https://github.com/andreamazz/Quick.git`, branch `xcode7.1`)
+  - Quick (~> 0.8.0)
   - Reveal-iOS-SDK
 
 EXTERNAL SOURCES:
   AMScrollingNavbar:
     :path: "../"
-  Nimble:
-    :branch: xcode7.1
-    :git: https://github.com/Quick/Nimble.git
-  Quick:
-    :branch: xcode7.1
-    :git: https://github.com/andreamazz/Quick.git
-
-CHECKOUT OPTIONS:
-  Nimble:
-    :commit: dd3652d3788f1dd4e9838140399f774dcea56ec2
-    :git: https://github.com/Quick/Nimble.git
-  Quick:
-    :commit: afd459b94c41ef65290a43e932c6610c8d1d00a2
-    :git: https://github.com/andreamazz/Quick.git
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: 5feb35476990fcbe1134cec6a9dcd1ece2d1aa21
-  FBSnapshotTestCase: 3dc3899168747a0319c5278f5b3445c13a6532dd
-  Nimble: 1b4a306f27b2355c8c789087e092decb1a226238
-  Nimble-Snapshots: c16dd279a4840ec06288198fafd53f3c17750ff3
-  Quick: c99021edb599f0aae3319455778ce36d00be140b
-  Reveal-iOS-SDK: ceae964076cebe3efe63e5e9abe3152efce46aa8
+  AMScrollingNavbar: 7fa266bd11edaf53e3af19eeb867437663a5d53e
+  FBSnapshotTestCase: 7e85180d0d141a0cf472352edda7e80d7eaeb547
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  Nimble-Snapshots: ab41dd737dcd33a0b0cb005a30465fef70b7207a
+  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
 
 COCOAPODS: 0.39.0

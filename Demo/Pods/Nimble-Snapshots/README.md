@@ -1,6 +1,6 @@
 <!-- Hiding until we have Swift 2 on CI: [![Build Status](https://travis-ci.org/ashfurrow/Nimble-Snapshots.svg)](https://travis-ci.org/ashfurrow/Nimble-Snapshots) -->
 
-Nimble-Snapshots
+Nimble-Snapshots [![Build Status](https://travis-ci.org/Moya/Moya.svg?branch=master)](https://travis-ci.org/Moya/Moya)
 =============================
 
 [Nimble](https://github.com/Quick/Nimble) matchers for [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case).
@@ -74,6 +74,13 @@ handy emoji operator.
 📷(view)
 📷(view, "some custom name")
 ```
+
+By default, this pod will put the reference images inside a `ReferenceImages`
+directory; we try to put this in a place that makes sense (inside your unit
+tests directory). If we can't figure it out, or if you want to use your own 
+directory instead, call `setNimbleTestFolder()` with the name of the directory
+in your unit test's path that we should use. For example, if the tests are in 
+`App/AppTesting/`, you can call it with `AppTesting`.
 
 If you have any questions or run into any trouble, feel free to open an issue
 on this repo. 
