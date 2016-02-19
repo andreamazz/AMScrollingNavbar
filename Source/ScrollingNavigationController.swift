@@ -103,6 +103,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     
     if state == .Expanded {
       self.state = .Scrolling
+      visibleViewController.view.layoutIfNeeded()
       UIView.animateWithDuration(animated ? 0.3 : 0, animations: { () -> Void in
         self.scrollWithDelta(self.fullNavbarHeight)
         visibleViewController.view.layoutIfNeeded()
@@ -131,10 +132,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     if state == .Collapsed {
       gestureRecognizer?.enabled = false
       self.state = .Scrolling
+      visibleViewController.view.layoutIfNeeded()
       UIView.animateWithDuration(animated ? 0.3 : 0, animations: {
         self.lastContentOffset = 0;
         self.delayDistance = -self.fullNavbarHeight
-        self.scrollWithDelta(-self.fullNavbarHeight)
+        self.scrollWithDelta(-self.fullNavbarHeight, shouldRestoreContentOffset: false)
         visibleViewController.view.layoutIfNeeded()
         if self.navigationBar.translucent {
           let currentOffset = self.contentOffset
@@ -230,7 +232,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     return true
   }
   
-  private func scrollWithDelta(var delta: CGFloat) {
+  private func scrollWithDelta(var delta: CGFloat, shouldRestoreContentOffset:Bool=true) {
     let frame = navigationBar.frame
     
     // View scrolling up, hide the navbar
@@ -289,7 +291,10 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     
     updateSizing(delta)
     updateNavbarAlpha()
-    restoreContentOffset(delta)
+    
+    if shouldRestoreContentOffset {
+      restoreContentOffset(delta)
+    }
   }
   
   private func updateSizing(delta: CGFloat) {
@@ -306,7 +311,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     // Resize the view if the navigation bar is not translucent
     if !navigationBar.translucent {
       let navBarY = navigationBar.frame.origin.y + navigationBar.frame.size.height
-      frame = visibleViewController.view.frame
+      frame = visibleViewController.view.bounds
       frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
       frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
       visibleViewController.view.frame = frame
