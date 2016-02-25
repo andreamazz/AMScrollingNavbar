@@ -2,7 +2,7 @@
   <img width="420" height="240" src="assets/logo.png"/>
 </p>
 
-[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMScrollingNavbar/badge.svg)](http://www.cocoapods.org/?q=amscrollingnavbar)
+[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/AMScrollingNavbar/badge.svg)](http://www.cocoapods.org/?q=amscrollingnavbar)
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.svg)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Swift 2.0](https://img.shields.io/badge/swift-2.0-orange.svg)
@@ -29,7 +29,7 @@ If you are looking for the category implementation in Objective-C, make sure to 
   <img width="520" height="536" src="assets/screenshot.gif"/>
 </p>
 
-#Setup with Cocoapods
+#Setup with CocoaPods
 
 ```
 pod 'AMScrollingNavbar', '~> 2.0.1'
