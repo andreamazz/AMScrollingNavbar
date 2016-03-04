@@ -188,8 +188,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         showNavbar()
     }
 
-    /** 
-     UIContentContainer protocol method. 
+    /**
+     UIContentContainer protocol method.
      Will show the navigation bar upon rotation or changes in the trait sizes.
      */
     public override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -258,7 +258,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         if delta < 0 {
             // Update the delay
             delayDistance += delta
-            
+
             // Skip if the delay is not over yet
             if delayDistance > 0 && maxDelay < contentOffset.y {
                 return
@@ -291,7 +291,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         // Move the navigation bar
         frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
         navigationBar.frame = frame
-        
+
         // Resize the view if the navigation bar is not translucent
         if !navigationBar.translucent {
             let navBarY = navigationBar.frame.origin.y + navigationBar.frame.size.height
@@ -300,7 +300,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
             visibleViewController.view.frame = frame
         } else {
-            adjustContentInsets()
+            // adjustContentInsets()
         }
     }
 
@@ -393,7 +393,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
 
     // MARK: - UIGestureRecognizerDelegate
 
-    /** 
+    /**
     UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
     */
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
