@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5735C31E37D9A69C10E478E3 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */; };
+		652AA8411C80460400FDC96F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AA8401C80460400FDC96F /* CollectionViewCell.swift */; };
+		652AA8431C80468A00FDC96F /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AA8421C80468A00FDC96F /* CollectionViewController.swift */; };
 		652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2D31B62805C00DE75C7 /* AppDelegate.swift */; };
 		652BE2D61B62805C00DE75C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2D51B62805C00DE75C7 /* ViewController.swift */; };
 		652BE2D91B62805C00DE75C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2D71B62805C00DE75C7 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.release.xcconfig"; sourceTree = "<group>"; };
+		652AA8401C80460400FDC96F /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		652AA8421C80468A00FDC96F /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		652BE2CE1B62805C00DE75C7 /* ScrollingNavbarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollingNavbarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		652BE2D21B62805C00DE75C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652BE2D31B62805C00DE75C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */,
 				658FA1771B837C6100EB32A4 /* TableViewController.swift */,
 				658FA1791B8386EB00EB32A4 /* WebViewController.swift */,
+				652AA8421C80468A00FDC96F /* CollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				652BE2D71B62805C00DE75C7 /* Main.storyboard */,
 				652BE2DA1B62805C00DE75C7 /* Images.xcassets */,
 				652BE2DC1B62805C00DE75C7 /* LaunchScreen.xib */,
+				652AA8401C80460400FDC96F /* CollectionViewCell.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -371,7 +377,9 @@
 			files = (
 				652BE2D61B62805C00DE75C7 /* ViewController.swift in Sources */,
 				658FA1721B836D9C00EB32A4 /* ScrollViewController.swift in Sources */,
+				652AA8411C80460400FDC96F /* CollectionViewCell.swift in Sources */,
 				652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */,
+				652AA8431C80468A00FDC96F /* CollectionViewController.swift in Sources */,
 				658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */,
 				658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */,
 			);
@@ -503,6 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,6 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
