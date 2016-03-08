@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4A06874488C5B174AF521432'
+               BlueprintIdentifier = '0AC60111077A5D372CAE1358'
                BlueprintName = 'AMScrollingNavbar'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'AMScrollingNavbar.framework'>

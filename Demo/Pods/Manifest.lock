@@ -1,5 +1,5 @@
 PODS:
-  - AMScrollingNavbar (2.0.10)
+  - AMScrollingNavbar (2.0.12)
   - FBSnapshotTestCase (2.0.7):
     - FBSnapshotTestCase/SwiftSupport (= 2.0.7)
   - FBSnapshotTestCase/Core (2.0.7)
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: 7fa266bd11edaf53e3af19eeb867437663a5d53e
+  AMScrollingNavbar: 1d7cb90458d99c426632419f02568db1b22044a2
   FBSnapshotTestCase: 7e85180d0d141a0cf472352edda7e80d7eaeb547
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Nimble-Snapshots: ab41dd737dcd33a0b0cb005a30465fef70b7207a
