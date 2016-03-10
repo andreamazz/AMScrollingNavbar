@@ -8,6 +8,11 @@ Scrolling Navigation Bar delegate protocol
     Called when the state of the navigation bar changes
     */
     optional func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState)
+    
+    /**
+     Called when the frame of the navigation bar changes
+     */
+    optional func scrollingNavigationController(controller: ScrollingNavigationController, didChangeNavigationBarFrame frame: CGRect)
 }
 
 /**
@@ -291,6 +296,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         // Move the navigation bar
         frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
         navigationBar.frame = frame
+        
+        // Inform delegate of navigation bar frame update
+        scrollingNavbarDelegate?.scrollingNavigationController!(self, didChangeNavigationBarFrame: frame)
         
         // Resize the view if the navigation bar is not translucent
         if !navigationBar.translucent {
