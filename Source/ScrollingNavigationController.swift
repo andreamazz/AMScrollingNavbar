@@ -3,7 +3,7 @@ import UIKit
 /**
 Scrolling Navigation Bar delegate protocol
 */
-public protocol ScrollingNavigationControllerDelegate: class {
+public protocol ScrollingNavigationControllerDelegate: NSObjectProtocol {
     /**
     Called when the state of the navigation bar changes
     */
