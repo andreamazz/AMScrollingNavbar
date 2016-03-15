@@ -3,17 +3,11 @@ import UIKit
 /**
 Scrolling Navigation Bar delegate protocol
 */
-public protocol ScrollingNavigationControllerDelegate: NSObjectProtocol {
+@objc public protocol ScrollingNavigationControllerDelegate: NSObjectProtocol {
     /**
     Called when the state of the navigation bar changes
     */
-    func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState)
-    func scrollingNavigationController(controller: ScrollingNavigationController, didChangeNavigationBarFrame frame: CGRect)
-}
-
-public extension ScrollingNavigationControllerDelegate {
-    func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {}
-    func scrollingNavigationController(controller: ScrollingNavigationController, didChangeNavigationBarFrame frame: CGRect) {}
+    optional func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState)
 }
 
 /**
@@ -39,7 +33,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     public private(set) var state: NavigationBarState = .Expanded {
         didSet {
             if state != oldValue {
-                scrollingNavbarDelegate?.scrollingNavigationController(self, didChangeState: state)
+                scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: state)
             }
         }
     }
@@ -299,8 +293,6 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         // Move the navigation bar
         frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
         navigationBar.frame = frame
-
-        scrollingNavbarDelegate?.scrollingNavigationController(self, didChangeNavigationBarFrame: frame)
 
         // Resize the view if the navigation bar is not translucent
         if !navigationBar.translucent {
