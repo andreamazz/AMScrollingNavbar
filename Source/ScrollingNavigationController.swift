@@ -78,13 +78,13 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     public func followScrollView(scrollableView: UIView, delay: Double = 0) {
         self.scrollableView = scrollableView
 
-        gestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("handlePan:"))
+        gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
         gestureRecognizer?.maximumNumberOfTouches = 1
         gestureRecognizer?.delegate = self
         scrollableView.addGestureRecognizer(gestureRecognizer!)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didBecomeActive:"), name: UIApplicationDidBecomeActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didRotate:"), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScrollingNavigationController.didBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScrollingNavigationController.didRotate(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
 
         maxDelay = CGFloat(delay)
         delayDistance = CGFloat(delay)
@@ -224,13 +224,14 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         return true
     }
 
-    private func scrollWithDelta(var delta: CGFloat) {
+    private func scrollWithDelta(delta: CGFloat) {
+        var scrollDelta = delta
         let frame = navigationBar.frame
 
         // View scrolling up, hide the navbar
-        if delta > 0 {
+        if scrollDelta > 0 {
             // Update the delay
-            delayDistance -= delta
+            delayDistance -= scrollDelta
 
             // Skip if the delay is not over yet
             if delayDistance > 0 {
@@ -244,8 +245,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
 
             // Compute the bar position
-            if frame.origin.y - delta < -deltaLimit {
-                delta = frame.origin.y + deltaLimit
+            if frame.origin.y - scrollDelta < -deltaLimit {
+                scrollDelta = frame.origin.y + deltaLimit
             }
 
             // Detect when the bar is completely collapsed
@@ -257,9 +258,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
         }
 
-        if delta < 0 {
+        if scrollDelta < 0 {
             // Update the delay
-            delayDistance += delta
+            delayDistance += scrollDelta
             
             // Skip if the delay is not over yet
             if delayDistance > 0 && maxDelay < contentOffset.y {
@@ -267,8 +268,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
 
             // Compute the bar position
-            if frame.origin.y - delta > statusBarHeight {
-                delta = frame.origin.y - statusBarHeight
+            if frame.origin.y - scrollDelta > statusBarHeight {
+                scrollDelta = frame.origin.y - statusBarHeight
             }
 
             // Detect when the bar is completely expanded
@@ -280,9 +281,9 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
             }
         }
 
-        updateSizing(delta)
+        updateSizing(scrollDelta)
         updateNavbarAlpha()
-        restoreContentOffset(delta)
+        restoreContentOffset(scrollDelta)
     }
 
     private func updateSizing(delta: CGFloat) {

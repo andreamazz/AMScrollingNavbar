@@ -1,1 +1,1 @@
-../../../Quick/Quick/DSL/QCKDSL.h
+../../../Quick/Sources/Quick/DSL/QCKDSL.h

@@ -1,1 +1,1 @@
-../../../Quick/Quick/NSString+QCKSelectorName.h
+../../../Quick/Sources/Quick/NSString+QCKSelectorName.h

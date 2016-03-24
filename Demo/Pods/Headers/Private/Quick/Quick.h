@@ -1,1 +1,1 @@
-../../../Quick/Quick/Quick.h
+../../../Quick/Sources/Quick/Quick.h
