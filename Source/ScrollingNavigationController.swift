@@ -287,7 +287,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     }
 
     private func updateSizing(delta: CGFloat) {
-        guard let visibleViewController = self.visibleViewController else { return }
+        guard let topViewController = self.topViewController else { return }
 
         var frame = navigationBar.frame
 
@@ -298,10 +298,10 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         // Resize the view if the navigation bar is not translucent
         if !navigationBar.translucent {
             let navBarY = navigationBar.frame.origin.y + navigationBar.frame.size.height
-            frame = visibleViewController.view.frame
+            frame = topViewController.view.frame
             frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
             frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
-            visibleViewController.view.frame = frame
+            topViewController.view.frame = frame
         } else {
             adjustContentInsets()
         }
