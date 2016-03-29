@@ -56,7 +56,7 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
         super.viewDidAppear(animated)
 
         if let navigationController = self.navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(scrollView, delay: 100.0)
+            navigationController.followScrollView(scrollView, delay: 0.0)
             navigationController.scrollingNavbarDelegate = self
         }
     }

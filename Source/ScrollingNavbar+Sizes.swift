@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 /**
     Implements the main functions providing constants values and computed ones
