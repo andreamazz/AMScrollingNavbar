@@ -66,6 +66,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
   var gestureRecognizer: UIPanGestureRecognizer?
   var scrollableView: UIView?
   var lastContentOffset = CGFloat(0.0)
+  var allowNavExpansionAtTop: Bool = false
   
   /**
    Start scrolling
@@ -75,7 +76,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
    - parameter scrollableView: The view with the scrolling content that will be observed
    - parameter delay: The delay expressed in points that determines the scrolling resistance. Defaults to `0`
    */
-  public func followScrollView(scrollableView: UIView, delay: Double = 0) {
+  public func followScrollView(scrollableView: UIView, delay: Double = 0, allowNavExpansionAtTop: Bool = false) {
     self.scrollableView = scrollableView
     
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("handlePan:"))
@@ -89,6 +90,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
+    self.allowNavExpansionAtTop = allowNavExpansionAtTop;
+    self.interactivePopGestureRecognizer?.delegate = self;
   }
   
   /**
@@ -97,22 +100,22 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    */
   public func hideNavbar(animated animated: Bool = true) {
-    guard let _ = self.scrollableView, visibleViewController = self.visibleViewController else {
+    guard let _ = self.scrollableView, topViewController = self.topViewController else {
       return
     }
     
     if state == .Expanded {
       self.state = .Scrolling
-      visibleViewController.view.layoutIfNeeded()
+      topViewController.view.layoutIfNeeded()
       UIView.animateWithDuration(animated ? 0.3 : 0, animations: { () -> Void in
         self.scrollWithDelta(self.fullNavbarHeight)
-        visibleViewController.view.layoutIfNeeded()
+        topViewController.view.layoutIfNeeded()
         if self.navigationBar.translucent {
           let currentOffset = self.contentOffset
           self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight)
         }
-        }) { _ in
-          self.state = .Collapsed
+      }) { _ in
+        self.state = .Collapsed
       }
     } else {
       updateNavbarAlpha()
@@ -125,26 +128,26 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    */
   public func showNavbar(animated animated: Bool = true) {
-    guard let _ = self.scrollableView, visibleViewController = self.visibleViewController else {
+    guard let _ = self.scrollableView, topViewController = self.topViewController else {
       return
     }
     
     if state == .Collapsed {
       gestureRecognizer?.enabled = false
       self.state = .Scrolling
-      visibleViewController.view.layoutIfNeeded()
+      topViewController.view.layoutIfNeeded()
       UIView.animateWithDuration(animated ? 0.3 : 0, animations: {
         self.lastContentOffset = 0;
         self.delayDistance = -self.fullNavbarHeight
         self.scrollWithDelta(-self.fullNavbarHeight, shouldRestoreContentOffset: false)
-        visibleViewController.view.layoutIfNeeded()
+        topViewController.view.layoutIfNeeded()
         if self.navigationBar.translucent {
           let currentOffset = self.contentOffset
           self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
         }
-        }) { _ in
-          self.state = .Expanded
-          self.gestureRecognizer?.enabled = true
+      }) { _ in
+        self.state = .Expanded
+        self.gestureRecognizer?.enabled = true
       }
     } else {
       updateNavbarAlpha()
@@ -298,7 +301,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
   }
   
   private func updateSizing(delta: CGFloat) {
-    guard let visibleViewController = self.visibleViewController else {
+    guard let topViewController = self.topViewController else {
       return
     }
     
@@ -311,10 +314,10 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
     // Resize the view if the navigation bar is not translucent
     if !navigationBar.translucent {
       let navBarY = navigationBar.frame.origin.y + navigationBar.frame.size.height
-      frame = visibleViewController.view.bounds
+      frame = topViewController.view.bounds
       frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
       frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
-      visibleViewController.view.frame = frame
+      topViewController.view.frame = frame
     } else {
       adjustContentInsets()
     }
@@ -366,7 +369,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
   }
   
   private func updateNavbarAlpha() {
-    guard let navigationItem = visibleViewController?.navigationItem else {
+    guard let navigationItem = topViewController?.navigationItem else {
       return
     }
     
@@ -412,8 +415,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
   // MARK: - UIGestureRecognizerDelegate
   
   /**
-  UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
-  */
+   UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
+   */
   public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
     return true
   }
@@ -422,7 +425,7 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
    UIGestureRecognizerDelegate function. Only scrolls the navigation bar with the content when `scrollingEnabled` is true
    */
   public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-    return scrollingEnabled
+    return gestureRecognizer == self.gestureRecognizer ? scrollingEnabled : true;
   }
   
 }
