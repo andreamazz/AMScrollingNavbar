@@ -9,6 +9,7 @@
  */
 
 #import <FBSnapshotTestCase/UIImage+Snapshot.h>
+#import <FBSnapshotTestCase/UIApplication+StrictKeyWindow.h>
 
 @implementation UIImage (Snapshot)
 
@@ -41,21 +42,31 @@
 {
   CGRect bounds = view.bounds;
   NSAssert1(CGRectGetWidth(bounds), @"Zero width for view %@", view);
-  NSAssert1(CGRectGetHeight(bounds), @"Zero height for view %@", view);  
+  NSAssert1(CGRectGetHeight(bounds), @"Zero height for view %@", view);
 
-  UIWindow *window = view.window;
-  if (window == nil) {
-    window = [[UIWindow alloc] initWithFrame:bounds];
-    [window addSubview:view];
-    [window makeKeyAndVisible];
+  // If the input view is already a UIWindow, then just use that. Otherwise wrap in a window.
+  UIWindow *window = [view isKindOfClass:[UIWindow class]] ? (UIWindow *)view : view.window;
+  BOOL removeFromSuperview = NO;
+  if (!window) {
+    window = [[UIApplication sharedApplication] fb_strictKeyWindow];
   }
-  
+
+  if (!view.window && view != window) {
+    [window addSubview:view];
+    removeFromSuperview = YES;
+  }
+
   UIGraphicsBeginImageContextWithOptions(bounds.size, NO, 0);
   [view layoutIfNeeded];
   [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
 
   UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
+
+  if (removeFromSuperview) {
+    [view removeFromSuperview];
+  }
+
   return snapshot;
 }
 

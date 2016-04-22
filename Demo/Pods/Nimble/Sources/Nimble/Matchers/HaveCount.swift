@@ -5,7 +5,7 @@ import Foundation
 public func haveCount<T: CollectionType>(expectedValue: T.Index.Distance) -> NonNilMatcherFunc<T> {
     return NonNilMatcherFunc { actualExpression, failureMessage in
         if let actualValue = try actualExpression.evaluate() {
-            failureMessage.postfixMessage = "have \(actualValue) with count \(expectedValue)"
+            failureMessage.postfixMessage = "have \(stringify(actualValue)) with count \(stringify(expectedValue))"
             let result = expectedValue == actualValue.count
             failureMessage.actualValue = "\(actualValue.count)"
             return result
@@ -20,7 +20,7 @@ public func haveCount<T: CollectionType>(expectedValue: T.Index.Distance) -> Non
 public func haveCount(expectedValue: Int) -> MatcherFunc<NMBCollection> {
     return MatcherFunc { actualExpression, failureMessage in
         if let actualValue = try actualExpression.evaluate() {
-            failureMessage.postfixMessage = "have \(actualValue) with count \(expectedValue)"
+            failureMessage.postfixMessage = "have \(stringify(actualValue)) with count \(stringify(expectedValue))"
             let result = expectedValue == actualValue.count
             failureMessage.actualValue = "\(actualValue.count)"
             return result

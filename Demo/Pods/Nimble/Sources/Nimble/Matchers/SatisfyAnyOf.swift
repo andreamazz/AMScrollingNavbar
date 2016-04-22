@@ -30,10 +30,6 @@ public func ||<T>(left: NonNilMatcherFunc<T>, right: NonNilMatcherFunc<T>) -> No
     return satisfyAnyOf(left, right)
 }
 
-public func ||<T>(left: FullMatcherFunc<T>, right: FullMatcherFunc<T>) -> NonNilMatcherFunc<T> {
-    return satisfyAnyOf(left, right)
-}
-
 public func ||<T>(left: MatcherFunc<T>, right: MatcherFunc<T>) -> NonNilMatcherFunc<T> {
     return satisfyAnyOf(left, right)
 }

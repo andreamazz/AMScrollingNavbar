@@ -394,10 +394,10 @@ the default timeout and poll interval values. This can be done as follows:
 // Swift
 
 // Increase the global timeout to 5 seconds:
-Nimble.Defaults.AsyncTimeout = 5
+Nimble.AsyncDefaults.Timeout = 5
 
 // Slow the polling interval to 0.1 seconds:
-Nimble.Defaults.AsyncPollInterval = 0.1
+Nimble.AsyncDefaults.PollInterval = 0.1
 ```
 
 ## Objective-C Support
@@ -698,6 +698,23 @@ expect{ try somethingThatThrows() }.to(throwError(NSCocoaError.PropertyListReadC
 
 // Passes if somethingThatThrows() throws an error with a given type:
 expect{ try somethingThatThrows() }.to(throwError(errorType: MyError.self))
+```
+
+If you are working directly with `ErrorType` values, as is sometimes the case when using `Result` or `Promise` types, you can use the `matchError` matcher to check if the error is the same error is is supposed to be, without requiring explicit casting.
+
+```swift
+// Swift
+
+let actual: ErrorType = …
+
+// Passes if actual contains any error value from the MyErrorEnum type:
+expect(actual).to(matchError(MyErrorEnum))
+
+// Passes if actual contains the Timeout value from the MyErrorEnum type:
+expect(actual).to(matchError(MyErrorEnum.Timeout))
+
+// Passes if actual contains an NSError equal to the given one:
+expect(actual).to(matchError(NSError(domain: "err", code: 123, userInfo: nil)))
 ```
 
 Note: This feature is only available in Swift.
@@ -1173,7 +1190,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'YOUR_APP_NAME_HERE_Tests', :exclusive => true do
   use_frameworks!
-  pod 'Nimble', '~> 3.1.0'
+  pod 'Nimble', '~> 4.0.0'
 end
 ```
 

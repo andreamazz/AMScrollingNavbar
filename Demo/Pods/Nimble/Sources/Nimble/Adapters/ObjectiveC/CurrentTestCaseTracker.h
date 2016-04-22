@@ -7,12 +7,3 @@ SWIFT_CLASS("_TtC6Nimble22CurrentTestCaseTracker")
 @end
 
 @interface CurrentTestCaseTracker (Register) @end
-
-@implementation CurrentTestCaseTracker (Register)
-
-+ (void)load {
-    CurrentTestCaseTracker *tracker = [CurrentTestCaseTracker sharedInstance];
-    [[XCTestObservationCenter sharedTestObservationCenter] addTestObserver:tracker];
-}
-
-@end

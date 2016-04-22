@@ -1,15 +1,9 @@
 import Foundation
 
-internal func matcherWithFailureMessage<T, M: Matcher where M.ValueType == T>(matcher: M, postprocessor: (FailureMessage) -> Void) -> FullMatcherFunc<T> {
-    return FullMatcherFunc { actualExpression, failureMessage, isNegation in
-        let pass: Bool
-        if isNegation {
-            pass = try matcher.doesNotMatch(actualExpression, failureMessage: failureMessage)
-        } else {
-            pass = try matcher.matches(actualExpression, failureMessage: failureMessage)
-        }
-        postprocessor(failureMessage)
-        return pass
+internal func matcherWithFailureMessage<T>(matcher: NonNilMatcherFunc<T>, postprocessor: (FailureMessage) -> Void) -> NonNilMatcherFunc<T> {
+    return NonNilMatcherFunc { actualExpression, failureMessage in
+        defer { postprocessor(failureMessage) }
+        return try matcher.matcher(actualExpression, failureMessage)
     }
 }
 
@@ -17,7 +11,7 @@ internal func matcherWithFailureMessage<T, M: Matcher where M.ValueType == T>(ma
 
 /// A Nimble matcher that succeeds when the actual value is exactly true.
 /// This matcher will not match against nils.
-public func beTrue() -> FullMatcherFunc<Bool> {
+public func beTrue() -> NonNilMatcherFunc<Bool> {
     return matcherWithFailureMessage(equal(true)) { failureMessage in
         failureMessage.postfixMessage = "be true"
     }
@@ -25,7 +19,7 @@ public func beTrue() -> FullMatcherFunc<Bool> {
 
 /// A Nimble matcher that succeeds when the actual value is exactly false.
 /// This matcher will not match against nils.
-public func beFalse() -> FullMatcherFunc<Bool> {
+public func beFalse() -> NonNilMatcherFunc<Bool> {
     return matcherWithFailureMessage(equal(false)) { failureMessage in
         failureMessage.postfixMessage = "be false"
     }

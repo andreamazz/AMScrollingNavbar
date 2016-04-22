@@ -3,4 +3,6 @@ framework module Nimble {
 
   export *
   module * { export * }
+
+  private header "CurrentTestCaseTracker.h"
 }

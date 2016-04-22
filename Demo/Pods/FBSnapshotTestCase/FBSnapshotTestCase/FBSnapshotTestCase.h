@@ -9,6 +9,7 @@
  */
 
 #import <FBSnapshotTestCase/FBSnapshotTestCasePlatform.h>
+#import <FBSnapshotTestCase/FBSnapshotTestController.h>
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -48,7 +49,7 @@
 /**
  Similar to our much-loved XCTAssert() macros. Use this to perform your test. No need to write an explanation, though.
  @param layer The layer to snapshot
- @param identifier An optional identifier, used is there are multiple snapshot tests in a given -test method.
+ @param identifier An optional identifier, used if there are multiple snapshot tests in a given -test method.
  @param suffixes An NSOrderedSet of strings for the different suffixes
  @param tolerance The percentage of pixels that can differ and still count as an 'identical' layer
  */

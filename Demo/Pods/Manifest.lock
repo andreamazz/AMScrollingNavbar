@@ -1,23 +1,23 @@
 PODS:
-  - AMScrollingNavbar (2.0.14)
-  - FBSnapshotTestCase (2.0.7):
-    - FBSnapshotTestCase/SwiftSupport (= 2.0.7)
-  - FBSnapshotTestCase/Core (2.0.7)
-  - FBSnapshotTestCase/SwiftSupport (2.0.7):
+  - AMScrollingNavbar (2.1.1)
+  - FBSnapshotTestCase (2.1.0):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.0)
+  - FBSnapshotTestCase/Core (2.1.0)
+  - FBSnapshotTestCase/SwiftSupport (2.1.0):
     - FBSnapshotTestCase/Core
-  - Nimble (3.2.0)
-  - Nimble-Snapshots (3.0.0):
-    - FBSnapshotTestCase (~> 2.0.7)
+  - Nimble (4.0.1)
+  - Nimble-Snapshots (4.0.1):
+    - FBSnapshotTestCase (~> 2.0)
     - Nimble
     - Quick
-  - Quick (0.9.1)
+  - Quick (0.9.2)
   - Reveal-iOS-SDK (1.6.2)
 
 DEPENDENCIES:
   - AMScrollingNavbar (from `../`)
-  - Nimble (~> 3.2.0)
+  - Nimble (~> 4.0.1)
   - Nimble-Snapshots
-  - Quick (~> 0.9.1)
+  - Quick (~> 0.9.2)
   - Reveal-iOS-SDK
 
 EXTERNAL SOURCES:
@@ -25,11 +25,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: be1de69f46cea4667026400db6cb22e783f9533d
-  FBSnapshotTestCase: 7e85180d0d141a0cf472352edda7e80d7eaeb547
-  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
-  Nimble-Snapshots: ab41dd737dcd33a0b0cb005a30465fef70b7207a
-  Quick: a5221fc21788b6aeda934805e68b061839bc3165
+  AMScrollingNavbar: 22848c8c7e4893e239cf32c0b914f672cd334209
+  FBSnapshotTestCase: 366ecd378511d7716c79991cd8067d1eed23578d
+  Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
+  Nimble-Snapshots: 2d15a585b816f7d14947ed6e172218f9d0980ea8
+  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
 
 COCOAPODS: 0.39.0

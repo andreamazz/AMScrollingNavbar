@@ -18,6 +18,9 @@
 
 NSString *const FBSnapshotTestControllerErrorDomain = @"FBSnapshotTestControllerErrorDomain";
 NSString *const FBReferenceImageFilePathKey = @"FBReferenceImageFilePathKey";
+NSString *const FBReferenceImageKey = @"FBReferenceImageKey";
+NSString *const FBCapturedImageKey = @"FBCapturedImageKey";
+NSString *const FBDiffedImageKey = @"FBDiffedImageKey";
 
 typedef NS_ENUM(NSUInteger, FBTestSnapshotFileNameType) {
   FBTestSnapshotFileNameTypeReference,
@@ -126,25 +129,25 @@ typedef NS_ENUM(NSUInteger, FBTestSnapshotFileNameType) {
                     tolerance:(CGFloat)tolerance
                         error:(NSError **)errorPtr
 {
-  if (CGSizeEqualToSize(referenceImage.size, image.size)) {
-    BOOL imagesEqual = [referenceImage fb_compareWithImage:image tolerance:tolerance];
-    if (NULL != errorPtr) {
-      *errorPtr = [NSError errorWithDomain:FBSnapshotTestControllerErrorDomain
-                                      code:FBSnapshotTestControllerErrorCodeImagesDifferent
-                                  userInfo:@{
-                                             NSLocalizedDescriptionKey: @"Images different",
-                                             }];
-    }
-    return imagesEqual;
+  BOOL sameImageDimensions = CGSizeEqualToSize(referenceImage.size, image.size);
+  if (sameImageDimensions && [referenceImage fb_compareWithImage:image tolerance:tolerance]) {
+    return YES;
   }
+  
   if (NULL != errorPtr) {
+    NSString *errorDescription = sameImageDimensions ? @"Images different" : @"Images different sizes";
+    NSString *errorReason = sameImageDimensions ? [NSString stringWithFormat:@"image pixels differed by more than %.2f%% from the reference image", tolerance * 100]
+                                                : [NSString stringWithFormat:@"referenceImage:%@, image:%@", NSStringFromCGSize(referenceImage.size), NSStringFromCGSize(image.size)];
+    FBSnapshotTestControllerErrorCode errorCode = sameImageDimensions ? FBSnapshotTestControllerErrorCodeImagesDifferent : FBSnapshotTestControllerErrorCodeImagesDifferentSizes;
+    
     *errorPtr = [NSError errorWithDomain:FBSnapshotTestControllerErrorDomain
-                                    code:FBSnapshotTestControllerErrorCodeImagesDifferentSizes
+                                    code:errorCode
                                 userInfo:@{
-                                           NSLocalizedDescriptionKey: @"Images different sizes",
-                                           NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"referenceImage:%@, image:%@",
-                                                                              NSStringFromCGSize(referenceImage.size),
-                                                                              NSStringFromCGSize(image.size)],
+                                           NSLocalizedDescriptionKey: errorDescription,
+                                           NSLocalizedFailureReasonErrorKey: errorReason,
+                                           FBReferenceImageKey: referenceImage,
+                                           FBCapturedImageKey: image,
+                                           FBDiffedImageKey: [referenceImage fb_diffWithImage:image],
                                            }];
   }
   return NO;
@@ -279,11 +282,10 @@ typedef NS_ENUM(NSUInteger, FBTestSnapshotFileNameType) {
     UIImage *snapshot = [self _imageForViewOrLayer:viewOrLayer];
     BOOL imagesSame = [self compareReferenceImage:referenceImage toImage:snapshot tolerance:tolerance error:errorPtr];
     if (!imagesSame) {
-      [self saveFailedReferenceImage:referenceImage
-                           testImage:snapshot
-                            selector:selector
-                          identifier:identifier
-                               error:errorPtr];
+      NSError *saveError = nil;
+      if ([self saveFailedReferenceImage:referenceImage testImage:snapshot selector:selector identifier:identifier error:&saveError] == NO) {
+        NSLog(@"Error saving test images: %@", saveError);
+      }
     }
     return imagesSame;
   }
