@@ -127,7 +127,21 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
         if state == .Collapsed {
             gestureRecognizer?.enabled = false
             self.state = .Scrolling
-            UIView.animateWithDuration(animated ? 0.1 : 0, animations: {
+            if animated {
+                UIView.animateWithDuration(0.1, animations: {
+                    self.lastContentOffset = 0;
+                    self.delayDistance = -self.fullNavbarHeight
+                    self.scrollWithDelta(-self.fullNavbarHeight)
+                    visibleViewController.view.setNeedsLayout()
+                    if self.navigationBar.translucent {
+                        let currentOffset = self.contentOffset
+                        self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
+                    }
+                }) { _ in
+                    self.state = .Expanded
+                    self.gestureRecognizer?.enabled = true
+                }
+            } else {
                 self.lastContentOffset = 0;
                 self.delayDistance = -self.fullNavbarHeight
                 self.scrollWithDelta(-self.fullNavbarHeight)
@@ -136,9 +150,8 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
                     let currentOffset = self.contentOffset
                     self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
                 }
-                }) { _ in
-                    self.state = .Expanded
-                    self.gestureRecognizer?.enabled = true
+                self.state = .Expanded
+                self.gestureRecognizer?.enabled = true
             }
         } else {
             updateNavbarAlpha()
