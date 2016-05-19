@@ -142,7 +142,12 @@ Check out the sample project for more details.
 #Author
 [Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me. 
 
-Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️ via [Paypal](https://www.paypal.me/andreamazzini).  
+Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="46FNZD4PDVNRU">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+</form>
 
 #Contributors
 [Syo Ikeda](https://github.com/ikesyo) and [everyone](https://github.com/andreamazz/AMScrollingNavbar/graphs/contributors) kind enough to submit a pull request. 
