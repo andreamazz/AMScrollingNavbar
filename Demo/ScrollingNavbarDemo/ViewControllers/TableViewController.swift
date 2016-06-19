@@ -17,12 +17,12 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
         super.viewDidLoad()
 
         title = "TableView"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         navigationController?.navigationBar.barTintColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
     }
 
     // Enable the navbar scrolling
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if let navigationController = self.navigationController as? ScrollingNavigationController {
@@ -32,13 +32,13 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
 
     // MARK: - UITableView data source
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
-        cell.textLabel?.text = "Row \(indexPath.row + 1)"
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
+        cell.textLabel?.text = "Row \((indexPath as NSIndexPath).row + 1)"
         return cell
     }
 

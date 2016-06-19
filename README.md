@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.svg)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
 [![codecov.io](https://codecov.io/github/andreamazz/AMScrollingNavbar/coverage.svg?branch=master)](https://codecov.io/github/andreamazz/AMScrollingNavbar?branch=master)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Swift 2.2](https://img.shields.io/badge/swift-2.2-orange.svg)
+![Swift 3](https://img.shields.io/badge/swift-3-orange.svg)
 [![Join the chat at https://gitter.im/andreamazz/AMScrollingNavbar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andreamazz/AMScrollingNavbar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=46FNZD4PDVNRU)
 
@@ -34,7 +34,7 @@ If you are looking for the category implementation in Objective-C, make sure to 
 #Setup with CocoaPods
 
 ```
-pod 'AMScrollingNavbar', '~> 2.0.1'
+pod 'AMScrollingNavbar', git: 'https://github.com/andreamazz/AMScrollingNavbar', branch: 'swift-3'
 
 use_frameworks!
 ```
@@ -42,7 +42,7 @@ use_frameworks!
 #Setup with Carthage
 
 ```
-github "andreamazz/AMScrollingNavbar"
+github "andreamazz/AMScrollingNavbar" "swift-3"
 ```
 
 ##Usage
@@ -103,13 +103,13 @@ if let navigationController = self.navigationController as? ScrollingNavigationC
 
 Delegate function:
 ```swift
-func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
+func scrollingNavigationController(_ controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
     switch state {
-    case .Collapsed:
+    case .collapsed:
         print("navbar collapsed")
-    case .Expanded:
+    case .expanded:
         print("navbar expanded")
-    case .Scrolling:
+    case .scrolling:
         print("navbar is moving")
     }
 }

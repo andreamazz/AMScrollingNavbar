@@ -16,13 +16,13 @@ extension ScrollingNavigationController {
     }
 
     var statusBarHeight: CGFloat {
-        return UIApplication.sharedApplication().statusBarFrame.size.height
+        return UIApplication.shared().statusBarFrame.size.height
     }
 
     var tabBarOffset: CGFloat {
         // Only account for the tab bar if a tab bar controller is present and the bar is not translucent
         if let tabBarController = tabBarController {
-            return tabBarController.tabBar.translucent ? 0 : tabBarController.tabBar.frame.height
+            return tabBarController.tabBar.isTranslucent ? 0 : tabBarController.tabBar.frame.height
         }
         return 0
     }
@@ -36,11 +36,11 @@ extension ScrollingNavigationController {
     }
 
     var contentOffset: CGPoint {
-        return scrollView()?.contentOffset ?? CGPointZero
+        return scrollView()?.contentOffset ?? CGPoint.zero
     }
 
     var contentSize: CGSize {
-        return scrollView()?.contentSize ?? CGSizeZero
+        return scrollView()?.contentSize ?? CGSize.zero
     }
 
     var deltaLimit: CGFloat {

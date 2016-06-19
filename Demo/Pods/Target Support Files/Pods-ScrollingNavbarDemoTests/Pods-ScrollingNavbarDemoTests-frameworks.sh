@@ -85,15 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ScrollingNavbarDemoTests/AMScrollingNavbar.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/FBSnapshotTestCase.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/Nimble.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/Nimble_Snapshots.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/Quick.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ScrollingNavbarDemoTests/AMScrollingNavbar.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/FBSnapshotTestCase.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/Nimble.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/Nimble_Snapshots.framework"
-  install_framework "Pods-ScrollingNavbarDemoTests/Quick.framework"
 fi

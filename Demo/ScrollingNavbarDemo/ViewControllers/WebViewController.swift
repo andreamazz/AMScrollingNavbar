@@ -30,7 +30,7 @@ class WebViewController: ScrollingNavigationViewController, UIWebViewDelegate {
     }
 
     // Enable the navbar scrolling
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if let navigationController = self.navigationController as? ScrollingNavigationController {

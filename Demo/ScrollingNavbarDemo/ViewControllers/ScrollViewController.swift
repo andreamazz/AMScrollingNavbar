@@ -33,26 +33,26 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
         // Fake some content
         label.text = lyrics.first
         label.numberOfLines = 0
-        label.textColor = .whiteColor()
+        label.textColor = .white()
         label.sizeToFit()
 
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: label.frame.size.height)
         scrollView.delegate = self
     }
 
-    func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
+    func scrollingNavigationController(_ controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
         switch state {
-        case .Collapsed:
+        case .collapsed:
             print("navbar collapsed")
-        case .Expanded:
+        case .expanded:
             print("navbar expanded")
-        case .Scrolling:
+        case .scrolling:
             print("navbar is moving")
         }
     }
 
     // Enable the navbar scrolling
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if let navigationController = self.navigationController as? ScrollingNavigationController {
