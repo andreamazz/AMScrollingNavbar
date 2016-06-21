@@ -22,7 +22,11 @@ extension ScrollingNavigationController {
     var tabBarOffset: CGFloat {
         // Only account for the tab bar if a tab bar controller is present and the bar is not hidden
         if let tabBarController = tabBarController {
-            return tabBarController.tabBar.hidden ? 0 : tabBarController.tabBar.frame.height
+            if tabBarController.tabBar.hidden {
+                return 0
+            } else {
+                return tabBarController.tabBar.translucent ? 0 : tabBarController.tabBar.frame.height
+            }
         }
         return 0
     }
