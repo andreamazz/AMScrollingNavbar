@@ -16,7 +16,7 @@ extension ScrollingNavigationController {
     }
 
     var statusBarHeight: CGFloat {
-        return UIApplication.sharedApplication().statusBarFrame.size.height
+        return UIApplication.sharedApplication().statusBarFrame.size.height - self.view.convertRect(self.view.bounds, toView: nil).minY
     }
 
     var tabBarOffset: CGFloat {
