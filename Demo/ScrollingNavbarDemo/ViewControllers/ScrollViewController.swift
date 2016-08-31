@@ -33,7 +33,7 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
         // Fake some content
         label.text = lyrics.first
         label.numberOfLines = 0
-        label.textColor = .white()
+        label.textColor = .white
         label.sizeToFit()
 
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: label.frame.size.height)
