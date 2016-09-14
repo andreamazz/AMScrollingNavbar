@@ -101,7 +101,7 @@ if let navigationController = navigationController as? ScrollingNavigationContro
 }
 ```
 
-Delegate function:
+Delegate functions:
 ```swift
 func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {
     switch state {
@@ -111,6 +111,17 @@ func scrollingNavigationController(controller: ScrollingNavigationController, di
         print("navbar expanded")
     case .Scrolling:
         print("navbar is moving")
+    }
+}
+
+func scrollingNavigationController(controller: ScrollingNavigationController, willChangeState state: NavigationBarState) {
+    switch state {
+    case .Collapsed:
+        print("navbar will be collapsed")
+    case .Expanded:
+        print("navbar will be expanded")
+    case .Scrolling:
+        print("navbar will be moving")
     }
 }
 ```
