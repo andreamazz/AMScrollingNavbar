@@ -8,6 +8,10 @@ import UIKit
      Called when the state of the navigation bar changes
      */
     optional func scrollingNavigationController(controller: ScrollingNavigationController, didChangeState state: NavigationBarState)
+
+    /*******joaoritter*******/
+    optional func scrollingNavigationController(controller: ScrollingNavigationController, willChangeState state: NavigationBarState)
+    /************************/
 }
 
 /**
@@ -31,6 +35,11 @@ public class ScrollingNavigationController: UINavigationController, UIGestureRec
      Returns the `NavigationBarState` of the navigation bar
      */
     public private(set) var state: NavigationBarState = .Expanded {
+        willSet {
+            if state != newValue {
+                scrollingNavbarDelegate?.scrollingNavigationController?(self, willChangeState: newValue)
+            }
+        }
         didSet {
             if state != oldValue {
                 scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: state)
