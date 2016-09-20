@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5735C31E37D9A69C10E478E3 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */; };
+		3EAC714EF2EE931D67218238 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6FF01647A43FEABE04BE8C /* Pods_ScrollingNavbarDemoTests.framework */; };
 		652AA8411C80460400FDC96F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AA8401C80460400FDC96F /* CollectionViewCell.swift */; };
 		652AA8431C80468A00FDC96F /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AA8421C80468A00FDC96F /* CollectionViewController.swift */; };
 		652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2D31B62805C00DE75C7 /* AppDelegate.swift */; };
@@ -19,7 +19,7 @@
 		658FA1721B836D9C00EB32A4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */; };
 		658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1771B837C6100EB32A4 /* TableViewController.swift */; };
 		658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1791B8386EB00EB32A4 /* WebViewController.swift */; };
-		C70C6CCD6CF910D9EA38A854 /* Pods_ScrollingNavbarDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */; };
+		D9240E5EF587B34FF333320F /* Pods_ScrollingNavbarDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99C3A504E979DBB401763E0 /* Pods_ScrollingNavbarDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,8 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.release.xcconfig"; sourceTree = "<group>"; };
+		1E6B1D01D640F0DDFA6A7BC6 /* Pods-ScrollingNavbarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.release.xcconfig"; sourceTree = "<group>"; };
+		2E73B5E68EC0D0B60A270B2B /* Pods-ScrollingNavbarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		419E4C1BCB2040931AB9295F /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		652AA8401C80460400FDC96F /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		652AA8421C80468A00FDC96F /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		652BE2CE1B62805C00DE75C7 /* ScrollingNavbarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollingNavbarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,10 +51,9 @@
 		658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		658FA1771B837C6100EB32A4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		658FA1791B8386EB00EB32A4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		A1895BB1DB631269355E107E /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E56F698401CCE6EE45681E89 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		77FCB6AA06C22CA3F9E35B04 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		CB6FF01647A43FEABE04BE8C /* Pods_ScrollingNavbarDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F99C3A504E979DBB401763E0 /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C70C6CCD6CF910D9EA38A854 /* Pods_ScrollingNavbarDemo.framework in Frameworks */,
+				D9240E5EF587B34FF333320F /* Pods_ScrollingNavbarDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,30 +69,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5735C31E37D9A69C10E478E3 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */,
+				3EAC714EF2EE931D67218238 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6370F94D2E8338EAAECDDBEE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A7B4E9D2B96711325855682D /* Pods_ScrollingNavbarDemo.framework */,
-				16AAA5B02FFC5555D34B6CC3 /* Pods_ScrollingNavbarDemoTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		652BE2C51B62805C00DE75C7 = {
 			isa = PBXGroup;
 			children = (
 				652BE2D01B62805C00DE75C7 /* ScrollingNavbarDemo */,
 				652BE2E61B62805D00DE75C7 /* ScrollingNavbarDemoTests */,
 				652BE2CF1B62805C00DE75C7 /* Products */,
-				E34D1C265FEB2D387453D391 /* Pods */,
-				6370F94D2E8338EAAECDDBEE /* Frameworks */,
+				FA66D4CC6DCE1684FB61866F /* Pods */,
+				B1539338F9A059FBFFC260EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,13 +155,22 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		E34D1C265FEB2D387453D391 /* Pods */ = {
+		B1539338F9A059FBFFC260EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */,
-				3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */,
-				A1895BB1DB631269355E107E /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */,
-				E56F698401CCE6EE45681E89 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */,
+				F99C3A504E979DBB401763E0 /* Pods_ScrollingNavbarDemo.framework */,
+				CB6FF01647A43FEABE04BE8C /* Pods_ScrollingNavbarDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA66D4CC6DCE1684FB61866F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E73B5E68EC0D0B60A270B2B /* Pods-ScrollingNavbarDemo.debug.xcconfig */,
+				1E6B1D01D640F0DDFA6A7BC6 /* Pods-ScrollingNavbarDemo.release.xcconfig */,
+				419E4C1BCB2040931AB9295F /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */,
+				77FCB6AA06C22CA3F9E35B04 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -182,12 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 652BE2ED1B62805D00DE75C7 /* Build configuration list for PBXNativeTarget "ScrollingNavbarDemo" */;
 			buildPhases = (
-				909AAAF78174CAF394B4A14A /* Check Pods Manifest.lock */,
+				D88DF1C3B9382ADAF4250414 /* [CP] Check Pods Manifest.lock */,
 				652BE2CA1B62805C00DE75C7 /* Sources */,
 				652BE2CB1B62805C00DE75C7 /* Frameworks */,
 				652BE2CC1B62805C00DE75C7 /* Resources */,
-				40F2E747CD162BB4537EE320 /* Embed Pods Frameworks */,
-				9EC844B7168BC290A730CE8A /* Copy Pods Resources */,
+				2FB89EADB8F37D81E7A9CAFE /* [CP] Embed Pods Frameworks */,
+				34DD6C616510F9F8F4B5635D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,12 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 652BE2F01B62805D00DE75C7 /* Build configuration list for PBXNativeTarget "ScrollingNavbarDemoTests" */;
 			buildPhases = (
-				82D0056589D6A1CD841059FC /* Check Pods Manifest.lock */,
+				EBBC386EEC066547B2F600C8 /* [CP] Check Pods Manifest.lock */,
 				652BE2DF1B62805D00DE75C7 /* Sources */,
 				652BE2E01B62805D00DE75C7 /* Frameworks */,
 				652BE2E11B62805D00DE75C7 /* Resources */,
-				1448ACC2247D82F6C121083D /* Embed Pods Frameworks */,
-				CF55AD954DF8A3A5D9C57263 /* Copy Pods Resources */,
+				D8E41765AAB1AFA3B907BFFE /* [CP] Embed Pods Frameworks */,
+				E41701FEBF099FA56F3579D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,14 +226,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Fancy Pixel";
 				TargetAttributes = {
 					652BE2CD1B62805C00DE75C7 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 					652BE2E21B62805D00DE75C7 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 						TestTargetID = 652BE2CD1B62805C00DE75C7;
 					};
 				};
@@ -278,29 +280,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1448ACC2247D82F6C121083D /* Embed Pods Frameworks */ = {
+		2FB89EADB8F37D81E7A9CAFE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		40F2E747CD162BB4537EE320 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,44 +295,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		82D0056589D6A1CD841059FC /* Check Pods Manifest.lock */ = {
+		34DD6C616510F9F8F4B5635D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		909AAAF78174CAF394B4A14A /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9EC844B7168BC290A730CE8A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,19 +310,64 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CF55AD954DF8A3A5D9C57263 /* Copy Pods Resources */ = {
+		D88DF1C3B9382ADAF4250414 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D8E41765AAB1AFA3B907BFFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E41701FEBF099FA56F3579D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBBC386EEC066547B2F600C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -436,8 +438,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -481,8 +485,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -507,41 +513,44 @@
 		};
 		652BE2EE1B62805D00DE75C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C810B76FF07AF42C55B6B17 /* Pods-ScrollingNavbarDemo.debug.xcconfig */;
+			baseConfigurationReference = 2E73B5E68EC0D0B60A270B2B /* Pods-ScrollingNavbarDemo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		652BE2EF1B62805D00DE75C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E2071594B942BCA37776284 /* Pods-ScrollingNavbarDemo.release.xcconfig */;
+			baseConfigurationReference = 1E6B1D01D640F0DDFA6A7BC6 /* Pods-ScrollingNavbarDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		652BE2F11B62805D00DE75C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1895BB1DB631269355E107E /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */;
+			baseConfigurationReference = 419E4C1BCB2040931AB9295F /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -550,23 +559,24 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrollingNavbarDemo.app/ScrollingNavbarDemo";
 			};
 			name = Debug;
 		};
 		652BE2F21B62805D00DE75C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E56F698401CCE6EE45681E89 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */;
+			baseConfigurationReference = 77FCB6AA06C22CA3F9E35B04 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ScrollingNavbarDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScrollingNavbarDemo.app/ScrollingNavbarDemo";
 			};
 			name = Release;

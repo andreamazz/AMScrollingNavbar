@@ -1,8 +1,0 @@
-framework module Nimble {
-  umbrella header "Nimble-umbrella.h"
-
-  export *
-  module * { export * }
-
-  private header "CurrentTestCaseTracker.h"
-}
