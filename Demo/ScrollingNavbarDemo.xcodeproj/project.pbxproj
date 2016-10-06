@@ -231,7 +231,9 @@
 				TargetAttributes = {
 					652BE2CD1B62805C00DE75C7 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = H72GR44F4M;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					652BE2E21B62805D00DE75C7 = {
 						CreatedOnToolsVersion = 6.4;
@@ -517,11 +519,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H72GR44F4M;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "01dc3e20-08cf-47c5-b70a-8d645fc53db0";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -533,11 +538,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H72GR44F4M;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "01dc3e20-08cf-47c5-b70a-8d645fc53db0";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
