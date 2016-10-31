@@ -10,8 +10,8 @@ open class ScrollingNavigationViewController: UIViewController, UIScrollViewDele
   /**
    On appear calls `showNavbar()` by default
    */
-  override open func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
+  override open func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
       navigationController.showNavbar(animated: true)
@@ -21,10 +21,11 @@ open class ScrollingNavigationViewController: UIViewController, UIScrollViewDele
   /**
    On disappear calls `stopFollowingScrollView()` to stop observing the current scroll view, and perform the tear down
    */
-  override open func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
+  override open func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
+      //use func`viewDidDisappear`, below func `stopFollowingScrollView` never been executed
       navigationController.stopFollowingScrollView()
     }
   }
