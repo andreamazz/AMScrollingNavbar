@@ -106,13 +106,14 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    Hide the navigation bar
 
    - parameter animated: If true the scrolling is animated. Defaults to `true`
+   - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  public func hideNavbar(animated: Bool = true) {
+  public func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .expanded {
       self.state = .scrolling
-      UIView.animate(withDuration: animated ? 0.1 : 0, animations: { () -> Void in
+      UIView.animate(withDuration: animated ? duration : 0, animations: { () -> Void in
         self.scrollWithDelta(self.fullNavbarHeight)
         visibleViewController.view.setNeedsLayout()
         if self.navigationBar.isTranslucent {
@@ -131,14 +132,15 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    Show the navigation bar
 
    - parameter animated: If true the scrolling is animated. Defaults to `true`
+   - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  public func showNavbar(animated: Bool = true) {
+  public func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .collapsed {
       gestureRecognizer?.isEnabled = false
       self.state = .scrolling
-      UIView.animate(withDuration: animated ? 0.1 : 0, animations: {
+      UIView.animate(withDuration: animated ? duration : 0.0, animations: {
         self.lastContentOffset = 0;
         self.delayDistance = -self.fullNavbarHeight
         self.scrollWithDelta(-self.fullNavbarHeight)
