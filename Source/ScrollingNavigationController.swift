@@ -43,6 +43,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       }
     }
     didSet {
+      navigationBar.isUserInteractionEnabled = (state == .expanded)
       if state != oldValue {
         scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: state)
       }
