@@ -78,6 +78,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   var maxDelay: CGFloat = 0
   var scrollableView: UIView?
   var lastContentOffset = CGFloat(0.0)
+  var scrollSpeedFactor: CGFloat = 1
 
   /**
    Start scrolling
@@ -86,8 +87,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
    - parameter scrollableView: The view with the scrolling content that will be observed
    - parameter delay: The delay expressed in points that determines the scrolling resistance. Defaults to `0`
+   - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1) {
     self.scrollableView = scrollableView
 
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
@@ -101,6 +103,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
+    self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
   }
 
   /**
@@ -244,7 +247,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
 
   private func scrollWithDelta(_ delta: CGFloat) {
-    var scrollDelta = delta
+    var scrollDelta = delta / scrollSpeedFactor
     let frame = navigationBar.frame
 
     // View scrolling up, hide the navbar
