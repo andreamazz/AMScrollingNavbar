@@ -139,6 +139,13 @@ override func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
 }
 ```
 
+##Scroll speed
+You can control the speed of the scrolling using the `scrollSpeedFactor` optional parameter:
+
+```swift
+controller.followScrollView(view, delay: 0, scrollSpeedFactor: 2)
+```
+
 Check out the sample project for more details.
 
 #Author
