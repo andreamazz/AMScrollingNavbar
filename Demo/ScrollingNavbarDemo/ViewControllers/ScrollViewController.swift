@@ -55,6 +55,8 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
+
         if let navigationController = self.navigationController as? ScrollingNavigationController {
             navigationController.followScrollView(scrollView, delay: 0.0)
             navigationController.scrollingNavbarDelegate = self
