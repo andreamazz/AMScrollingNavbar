@@ -23,7 +23,7 @@ scrolling of an observed content view
 
 Version `2.x` is written as a subclass of `UINavigationController`, in Swift.  
 Version `2.0.0` introduce Swift 2.0 syntax.
-Version `3.0.0` introduce Swift 3.0 syntax. 
+Version `3.0.0` introduce Swift 3.0 syntax.
 If you are looking for the category implementation in Objective-C, make sure to checkout version `1.x` and prior, although the `2.x` is recomended.
 
 #Screenshot
@@ -94,6 +94,15 @@ override func viewWillAppear(animated: Bool) {
 }
 ```
 
+##Followers
+To move another view, like a toolbar, alongside the navigation bar you can provide the view or multiple views as the `followers` parameter:
+```swift
+if let navigationController = navigationController as? ScrollingNavigationController {
+    navigationController.followScrollView(tableView, delay: 50.0, followers: [toolbar])
+}
+```
+
+
 ##ScrollingNavigationControllerDelegate
 You can set a delegate to receive a call when the state of the navigation bar changes:
 ```swift
@@ -149,12 +158,12 @@ controller.followScrollView(view, delay: 0, scrollSpeedFactor: 2)
 Check out the sample project for more details.
 
 #Author
-[Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me. 
+[Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me.
 
 Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️ via [Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=46FNZD4PDVNRU).  
 
 #Contributors
-[Syo Ikeda](https://github.com/ikesyo) and [everyone](https://github.com/andreamazz/AMScrollingNavbar/graphs/contributors) kind enough to submit a pull request. 
+[Syo Ikeda](https://github.com/ikesyo) and [everyone](https://github.com/andreamazz/AMScrollingNavbar/graphs/contributors) kind enough to submit a pull request.
 
 #MIT License
     The MIT License (MIT)
@@ -177,5 +186,3 @@ Want to support the development of [these free libraries](https://cocoapods.org/
     COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
     IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-

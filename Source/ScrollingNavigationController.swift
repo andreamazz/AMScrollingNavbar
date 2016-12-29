@@ -73,6 +73,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open weak var scrollingNavbarDelegate: ScrollingNavigationControllerDelegate?
 
+  /**
+   An array of `UIView`s that will follow the navbar
+   */
+  open var followers: [UIView] = []
+
   open fileprivate(set) var gestureRecognizer: UIPanGestureRecognizer?
   var delayDistance: CGFloat = 0
   var maxDelay: CGFloat = 0
@@ -88,8 +93,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter scrollableView: The view with the scrolling content that will be observed
    - parameter delay: The delay expressed in points that determines the scrolling resistance. Defaults to `0`
    - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
+   - parameter followers: An array of `UIView`s that will follow the navbar
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, followers: [UIView] = []) {
     self.scrollableView = scrollableView
 
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
@@ -103,6 +109,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
+    self.followers = followers
     self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
   }
 
@@ -306,6 +313,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     updateSizing(scrollDelta)
     updateNavbarAlpha()
     restoreContentOffset(scrollDelta)
+    updateFollowers(scrollDelta)
+  }
+
+  private func updateFollowers(_ delta: CGFloat) {
+    followers.forEach { $0.transform = $0.transform.translatedBy(x: 0, y: -delta) }
   }
 
   private func updateSizing(_ delta: CGFloat) {
@@ -372,6 +384,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     UIView.animate(withDuration: duration, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
       self.updateSizing(delta)
+      self.updateFollowers(delta)
       self.updateNavbarAlpha()
       }, completion: nil)
   }
