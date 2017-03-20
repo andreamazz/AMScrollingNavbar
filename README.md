@@ -26,13 +26,13 @@ Version `2.0.0` introduce Swift 2.0 syntax.
 Version `3.0.0` introduce Swift 3.0 syntax.
 If you are looking for the category implementation in Objective-C, make sure to checkout version `1.x` and prior, although the `2.x` is recomended.
 
-#Screenshot
+# Screenshot
 
 <p align="center">
   <img width="520" height="536" src="assets/screenshot.gif"/>
 </p>
 
-#Setup with CocoaPods
+# Setup with CocoaPods
 
 ```
 pod 'AMScrollingNavbar'
@@ -40,18 +40,18 @@ pod 'AMScrollingNavbar'
 use_frameworks!
 ```
 
-#Setup with Carthage
+# Setup with Carthage
 
 ```
 github "andreamazz/AMScrollingNavbar"
 ```
 
-##Usage
+## Usage
 
 Make sure to use a subclass of `ScrollingNavigationController` for your `UINavigationController`. Either set the class of your `UINavigationController` in your storyboard, or create programmatically a `ScrollingNavigationController` instance in your code.
 
 Use `followScrollView(_: delay:)` to start following the scrolling of a scrollable view (e.g.: a `UIScrollView` or `UITableView`).
-####Swift
+#### Swift
 ```swift
 override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -62,7 +62,7 @@ override func viewWillAppear(animated: Bool) {
 }
 ```
 
-####Objective-C
+#### Objective-C
 ```objc
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -82,7 +82,7 @@ override func viewDidDisappear(animated: Bool) {
 }
 ```
 
-##ScrollingNavigationViewController
+## ScrollingNavigationViewController
 To DRY things up you can let your view controller subclass `ScrollingNavigationViewController`, which provides the base setup implementation. You will just need to call `followScrollView(_: delay:)`:
 ```swift
 override func viewWillAppear(animated: Bool) {
@@ -94,7 +94,7 @@ override func viewWillAppear(animated: Bool) {
 }
 ```
 
-##Followers
+## Followers
 To move another view, like a toolbar, alongside the navigation bar you can provide the view or multiple views as the `followers` parameter:
 ```swift
 if let navigationController = navigationController as? ScrollingNavigationController {
@@ -103,7 +103,7 @@ if let navigationController = navigationController as? ScrollingNavigationContro
 ```
 
 
-##ScrollingNavigationControllerDelegate
+## ScrollingNavigationControllerDelegate
 You can set a delegate to receive a call when the state of the navigation bar changes:
 ```swift
 if let navigationController = navigationController as? ScrollingNavigationController {
@@ -125,7 +125,7 @@ func scrollingNavigationController(_ controller: ScrollingNavigationController, 
 }
 ```
 
-##Handling navigation
+## Handling navigation
 If the view controller with the scroll view pushes new controllers, you should call `showNavbar(animated:)` in your `viewWillDisappear(animated:)`:
 ```swift
 override func viewWillDisappear(animated: Bool) {
@@ -136,7 +136,7 @@ override func viewWillDisappear(animated: Bool) {
 }
 ```
 
-##Scrolling to top
+## Scrolling to top
 When the user taps the status bar, by default a scrollable view scrolls to the top of its content. If you want to also show the navigation bar, make sure to include this in your controller:
 
 ```swift
@@ -148,7 +148,7 @@ override func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
 }
 ```
 
-##Scroll speed
+## Scroll speed
 You can control the speed of the scrolling using the `scrollSpeedFactor` optional parameter:
 
 ```swift
@@ -157,15 +157,15 @@ controller.followScrollView(view, delay: 0, scrollSpeedFactor: 2)
 
 Check out the sample project for more details.
 
-#Author
+# Author
 [Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me.
 
 Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️ via [Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=46FNZD4PDVNRU).  
 
-#Contributors
+# Contributors
 [Syo Ikeda](https://github.com/ikesyo) and [everyone](https://github.com/andreamazz/AMScrollingNavbar/graphs/contributors) kind enough to submit a pull request.
 
-#MIT License
+# MIT License
     The MIT License (MIT)
 
     Copyright (c) 2016 Andrea Mazzini
