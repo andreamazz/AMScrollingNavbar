@@ -168,7 +168,7 @@ Want to support the development of [these free libraries](https://cocoapods.org/
 # MIT License
     The MIT License (MIT)
 
-    Copyright (c) 2016 Andrea Mazzini
+    Copyright (c) 2017 Andrea Mazzini
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of
     this software and associated documentation files (the "Software"), to deal in
