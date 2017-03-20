@@ -53,7 +53,7 @@ Make sure to use a subclass of `ScrollingNavigationController` for your `UINavig
 Use `followScrollView(_: delay:)` to start following the scrolling of a scrollable view (e.g.: a `UIScrollView` or `UITableView`).
 #### Swift
 ```swift
-override func viewWillAppear(animated: Bool) {
+override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     if let navigationController = navigationController as? ScrollingNavigationController {
@@ -73,7 +73,7 @@ override func viewWillAppear(animated: Bool) {
 
 Use `stopFollowingScrollview()` to stop the behaviour. Remember to call this function on disappear:
 ```swift
-override func viewDidDisappear(animated: Bool) {
+override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
 
     if let navigationController = navigationController as? ScrollingNavigationController {
@@ -85,7 +85,7 @@ override func viewDidDisappear(animated: Bool) {
 ## ScrollingNavigationViewController
 To DRY things up you can let your view controller subclass `ScrollingNavigationViewController`, which provides the base setup implementation. You will just need to call `followScrollView(_: delay:)`:
 ```swift
-override func viewWillAppear(animated: Bool) {
+override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     if let navigationController = navigationController as? ScrollingNavigationController {
@@ -128,7 +128,7 @@ func scrollingNavigationController(_ controller: ScrollingNavigationController, 
 ## Handling navigation
 If the view controller with the scroll view pushes new controllers, you should call `showNavbar(animated:)` in your `viewWillDisappear(animated:)`:
 ```swift
-override func viewWillDisappear(animated: Bool) {
+override func viewWillDisappear(_ animated: Bool) {
   super.viewWillDisappear(animated)
     if let navigationController = navigationController as? ScrollingNavigationController {
       navigationController.showNavbar(animated: true)
@@ -140,7 +140,7 @@ override func viewWillDisappear(animated: Bool) {
 When the user taps the status bar, by default a scrollable view scrolls to the top of its content. If you want to also show the navigation bar, make sure to include this in your controller:
 
 ```swift
-override func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
     if let navigationController = navigationController as? ScrollingNavigationController {
         navigationController.showNavbar(animated: true)
     }
