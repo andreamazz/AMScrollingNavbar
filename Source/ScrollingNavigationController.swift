@@ -172,8 +172,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   /**
    Stop observing the view and reset the navigation bar
    */
-  public func stopFollowingScrollView() {
-    showNavbar(animated: false)
+  public func stopFollowingScrollView(show: Bool = true) {
+    if show {
+      showNavbar(animated: false)
+    }
     if let gesture = gestureRecognizer {
       scrollableView?.removeGestureRecognizer(gesture)
     }
