@@ -336,17 +336,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
       frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
       topViewController.view.frame = frame
-    } else {
-      adjustContentInsets()
-    }
-  }
-
-  private func adjustContentInsets() {
-    if let view = scrollView() as? UICollectionView {
-      view.contentInset.top = navigationBar.frame.origin.y + navigationBar.frame.size.height
-      // When this is called by `hideNavbar(_:)` or `showNavbar(_:)`, the sticky header reamins still
-      // even if the content inset changed. This triggers a fake scroll, fixing the header's position
-      view.setContentOffset(CGPoint(x: contentOffset.x, y: contentOffset.y - 0.1), animated: false)
     }
   }
 

@@ -32,4 +32,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         return collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
     }
 
+    open func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+        return true
+    }
+    
 }
