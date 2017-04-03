@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
+- `3.3.x` Releases - [3.3.0](#330)  
 - `3.2.x` Releases - [3.2.0](#320)
 - `3.1.x` Releases - [3.1.0](#310)
 - `3.0.x` Releases - [3.0.0](#300)
@@ -11,6 +12,12 @@ All notable changes to this project will be documented in this file.
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [3.3.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/3.3.0)
+
+- Fixed `expandOnActive`
+- Added `showingNavbar` optional parameter to `stopFollowingScrollView`
+- Fixed #237
 
 ## [3.2.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/3.2.0)
 
