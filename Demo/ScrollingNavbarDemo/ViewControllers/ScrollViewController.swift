@@ -38,6 +38,10 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
 
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: label.frame.size.height)
         scrollView.delegate = self
+
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.expandOnActive = false
+        }
     }
 
     func scrollingNavigationController(_ controller: ScrollingNavigationController, didChangeState state: NavigationBarState) {

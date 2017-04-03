@@ -84,6 +84,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   var scrollableView: UIView?
   var lastContentOffset = CGFloat(0.0)
   var scrollSpeedFactor: CGFloat = 1
+  var previousState: NavigationBarState = .expanded // Used to mark the state before the app goes in background
 
   /**
    Start scrolling
@@ -103,6 +104,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     gestureRecognizer?.delegate = self
     scrollableView.addGestureRecognizer(gestureRecognizer!)
 
+    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.willResignActive(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
 
@@ -228,7 +230,15 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   func didBecomeActive(_ notification: Notification) {
     if expandOnActive {
       showNavbar(animated: false)
+    } else {
+      if previousState == .collapsed {
+        hideNavbar(animated: false)
+      }
     }
+  }
+
+  func willResignActive(_ notification: Notification) {
+    previousState = state
   }
 
   /// Handles when the status bar changes
