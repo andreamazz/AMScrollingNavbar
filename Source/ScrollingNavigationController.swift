@@ -173,6 +173,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   /**
    Stop observing the view and reset the navigation bar
+   
+   - parameter showingNavbar: If true the navbar is show, otherwise it remains in its current state. Defaults to `true`
    */
   public func stopFollowingScrollView(showingNavbar: Bool = true) {
   if showingNavbar {
