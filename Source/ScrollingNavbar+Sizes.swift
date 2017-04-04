@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 
 /**
  Implements the main functions providing constants values and computed ones
@@ -30,6 +31,8 @@ extension ScrollingNavigationController {
   func scrollView() -> UIScrollView? {
     if let webView = self.scrollableView as? UIWebView {
       return webView.scrollView
+    } else if let wkWebView = self.scrollableView as? WKWebView {
+      return wkWebView.scrollView
     } else {
       return scrollableView as? UIScrollView
     }
