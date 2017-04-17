@@ -430,8 +430,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     // Hide the right items
     navigationItem.rightBarButtonItem?.customView?.alpha = alpha
-    if let leftItems = navigationItem.rightBarButtonItems {
-      leftItems.forEach { $0.customView?.alpha = alpha }
+    if let rightItems = navigationItem.rightBarButtonItems {
+      rightItems.forEach { $0.customView?.alpha = alpha }
     }
   }
 
