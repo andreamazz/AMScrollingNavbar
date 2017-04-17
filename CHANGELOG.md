@@ -49,31 +49,31 @@ Updated to Swift 2.2 syntax
 
 ## [2.0.14](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.14)
 
-###Fixed
+### Fixed
 
 - Expose the gesture recognizer #194  
 
 ## [2.0.13](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.13)
 
-###Fixed
+### Fixed
 
 - Fix Carthage build by setting the demo pod target to 8.0  
 
 ## [2.0.12](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.12)
 
-###Fixed
+### Fixed
 
 - Fix Carthage build for 8.0 targets  
 
 ## [2.0.11](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.11)
 
-###Fixed
+### Fixed
 
 - Issue #183  
 
 ## [2.0.10](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.10)
 
-###Fixed
+### Fixed
 
 - Issue #172  
 
@@ -88,20 +88,20 @@ Minor refactoring.
 
 ## [2.0.7](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.7)
 
-###Fixed
+### Fixed
 
 - Issue #135
 - Issue #165
 
 ## [2.0.6](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.6)
 
-###Fixed
+### Fixed
 
 - Refactoring. Removed screen rotation observer when appropriate. [@ikesyo](https://github.com/ikesyo)  
 
 ## [2.0.5](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.5)
 
-###Fixed
+### Fixed
 
 - Issue #156
 
@@ -109,71 +109,71 @@ Code refactoring. Thanks to [Syo Ikeda](https://github.com/ikesyo)
 
 ## [2.0.4](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.4)
 
-###Fixed
+### Fixed
 
 - Fix navbar fadeout. Thanks to [Syo Ikeda](https://github.com/ikesyo)  
 
 ## [2.0.3](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.3)
 
-###Fixed
+### Fixed
 
 - Issue #159  
 
 ## [2.0.2](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.2)
 
-###Fixed
+### Fixed
 
 - Fix bug causing titleView alpha property to not update when navbar alpha changes. Thanks to [Erik Ackermann](https://github.com/erikackermann)  
 
 ## [2.0.1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.1)
 
-###Fixed
+### Fixed
 
 - Issue #153
 
 ## [2.0.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0)
 
-###Added
+### Added
 
 - Support for Swift 2.0 syntax  
 
 ## [2.0.0-beta7](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta7)
 
-###Fixed
+### Fixed
 - Fix the fading of all possible navigation items and buttons. Thanks to [Yunus Eren Guzel](https://github.com/yunuserenguzel)  
 
 ## [2.0.0-beta6](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta6)
 
-###Fixed
+### Fixed
 - Delegate function gets called after `hideNavbar` and `showNavbar` finish.  
 - Fixes title attributes being overridden. Thanks to [Jianghua Kuai](https://github.com/joshuakuai)  
 
 ## [2.0.0-beta5](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta5)
 
-###Added
+### Added
 - ScrollingNavigationControllerDelegate protocol  
 
-###Fixed
+### Fixed
 - Issue with the scroll offset
 
 ## [2.0.0-beta4](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta4)
 
-###Fixed
+### Fixed
 - Minor refactoring
 - Changed filename for `ScrollingNavigationController`
 - Fixed Carthage build. Thanks to [Nicholas T.](https://github.com/NicholasTD07)  
 
 ## [2.0.0-beta3](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta3)
 
-###Fixed
+### Fixed
 - Carthage support restored  
 
-###Added
+### Added
 - Utility class `ScrollingNavigationViewController´  
 
 ## [2.0.0-beta2](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta2)
 
-###Fixed
+### Fixed
 - Issue with interactive gesture
 
 ## [2.0.0-beta1](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/2.0.0-beta1)
