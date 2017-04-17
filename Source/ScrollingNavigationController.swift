@@ -177,7 +177,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter showingNavbar: If true the navbar is show, otherwise it remains in its current state. Defaults to `true`
    */
   public func stopFollowingScrollView(showingNavbar: Bool = true) {
-  if showingNavbar {
+    if showingNavbar {
       showNavbar(animated: false)
     }
     if let gesture = gestureRecognizer {
@@ -253,8 +253,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Scrolling functions
 
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
+    let scrollDelta = delta / scrollSpeedFactor
     // Check for rubberbanding
-    if delta < 0 {
+    if scrollDelta < 0 {
       if let scrollableView = scrollableView , contentOffset.y + scrollableView.frame.size.height > contentSize.height && scrollableView.frame.size.height < contentSize.height {
         // Only if the content is big enough
         return false

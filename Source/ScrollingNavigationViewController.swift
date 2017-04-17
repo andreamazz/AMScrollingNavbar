@@ -3,7 +3,7 @@ import UIKit
 /**
  A custom `UIViewController` that implements the base configuration.
  */
-open class ScrollingNavigationViewController: UIViewController, UIScrollViewDelegate {
+open class ScrollingNavigationViewController: UIViewController, UIScrollViewDelegate, UINavigationControllerDelegate {
 
   // MARK: - ScrollView config
 

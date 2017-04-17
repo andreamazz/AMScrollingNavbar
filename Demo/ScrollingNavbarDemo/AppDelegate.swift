@@ -11,11 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+  var window: UIWindow?
 
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-    }
+  func applicationDidFinishLaunching(_ application: UIApplication) {
+    UINavigationBar.appearance().tintColor = .white
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+  }
 
 }

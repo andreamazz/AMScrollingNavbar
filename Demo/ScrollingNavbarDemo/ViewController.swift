@@ -11,19 +11,19 @@ import AMScrollingNavbar
 
 class ViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        title = "Sampler"
+    title = "Sampler"
 
-        tableView.tableFooterView = UIView()
-    }
+    tableView.tableFooterView = UIView()
+  }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
 
-        navigationController?.navigationBar.barTintColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1)
-    }
+    navigationController?.navigationBar.barTintColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1)
+  }
 
 }
 
