@@ -30,7 +30,7 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
     super.viewDidAppear(animated)
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
-      navigationController.followScrollView(tableView, delay: 50.0, followers: [toolbar])
+      navigationController.followScrollView(tableView, delay: 0.0, followers: [toolbar])
       navigationController.scrollingNavbarDelegate = self
     }
   }

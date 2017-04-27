@@ -147,14 +147,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  public func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1, ignoreDelay: Bool = false) {
+  public func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .collapsed {
       gestureRecognizer?.isEnabled = false
       let animations = {
         self.lastContentOffset = 0;
-//        self.delayDistance = -self.fullNavbarHeight
         self.scrollWithDelta(-self.fullNavbarHeight, ignoreDelay: true)
         visibleViewController.view.setNeedsLayout()
         if self.navigationBar.isTranslucent {
@@ -279,9 +278,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     var scrollDelta = delta
     let frame = navigationBar.frame
 
-//    print("frame \(frame)")
-//    print("delta \(delta)")
-
     // View scrolling up, hide the navbar
     if scrollDelta > 0 {
       // Update the delay
@@ -330,8 +326,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         scrollDelta = frame.origin.y - statusBarHeight
       }
 
-      print(frame.origin.y, scrollDelta, statusBarHeight)
-
       // Detect when the bar is completely expanded
       if frame.origin.y >= statusBarHeight {
         state = .expanded
@@ -340,9 +334,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         state = .scrolling
       }
     }
-
-//    print("scroll delta: \(scrollDelta)")
-//    print("delay: \(delayDistance)")
 
     updateSizing(scrollDelta)
     updateNavbarAlpha()
@@ -359,13 +350,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     var frame = navigationBar.frame
 
-    print(frame)
-
     // Move the navigation bar
     frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
     navigationBar.frame = frame
-
-    print(frame)
 
     // Resize the view if the navigation bar is not translucent
     if !navigationBar.isTranslucent {
