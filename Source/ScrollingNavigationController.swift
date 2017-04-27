@@ -266,10 +266,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         // Only if the content is big enough
         return false
       }
-    } else {
-      if contentOffset.y < 0 {
-        return false
-      }
     }
     return true
   }
