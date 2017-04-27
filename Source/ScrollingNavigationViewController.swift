@@ -25,7 +25,6 @@ open class ScrollingNavigationViewController: UIViewController, UIScrollViewDele
     super.viewWillDisappear(animated)
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
-      //use func`viewDidDisappear`, below func `stopFollowingScrollView` never been executed
       navigationController.stopFollowingScrollView()
     }
   }

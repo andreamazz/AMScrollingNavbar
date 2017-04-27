@@ -147,22 +147,29 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  public func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  public func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1, ignoreDelay: Bool = false) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .collapsed {
       gestureRecognizer?.isEnabled = false
-      self.state = .scrolling
-      UIView.animate(withDuration: animated ? duration : 0.0, animations: {
+      let animations = {
         self.lastContentOffset = 0;
-        self.delayDistance = -self.fullNavbarHeight
-        self.scrollWithDelta(-self.fullNavbarHeight)
+//        self.delayDistance = -self.fullNavbarHeight
+        self.scrollWithDelta(-self.fullNavbarHeight, ignoreDelay: true)
         visibleViewController.view.setNeedsLayout()
         if self.navigationBar.isTranslucent {
           let currentOffset = self.contentOffset
           self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
         }
-      }) { _ in
+      }
+      if animated {
+        self.state = .scrolling
+        UIView.animate(withDuration: duration, animations: animations) { _ in
+          self.state = .expanded
+          self.gestureRecognizer?.isEnabled = true
+        }
+      } else {
+        animations()
         self.state = .expanded
         self.gestureRecognizer?.isEnabled = true
       }
@@ -178,7 +185,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   public func stopFollowingScrollView(showingNavbar: Bool = true) {
     if showingNavbar {
-      showNavbar(animated: false)
+      showNavbar(animated: true, ignoreDelay: true)
     }
     if let gesture = gestureRecognizer {
       scrollableView?.removeGestureRecognizer(gesture)
@@ -199,7 +206,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if gesture.state != .failed {
       if let superview = scrollableView?.superview {
         let translation = gesture.translation(in: superview)
-        let delta = lastContentOffset - translation.y
+        let delta = (lastContentOffset - translation.y) / scrollSpeedFactor
         lastContentOffset = translation.y
 
         if shouldScrollWithDelta(delta) {
@@ -253,7 +260,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Scrolling functions
 
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
-    let scrollDelta = delta / scrollSpeedFactor
+    let scrollDelta = delta
     // Check for rubberbanding
     if scrollDelta < 0 {
       if let scrollableView = scrollableView , contentOffset.y + scrollableView.frame.size.height > contentSize.height && scrollableView.frame.size.height < contentSize.height {
@@ -268,18 +275,23 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     return true
   }
 
-  private func scrollWithDelta(_ delta: CGFloat) {
-    var scrollDelta = delta / scrollSpeedFactor
+  private func scrollWithDelta(_ delta: CGFloat, ignoreDelay: Bool = false) {
+    var scrollDelta = delta
     let frame = navigationBar.frame
+
+//    print("frame \(frame)")
+//    print("delta \(delta)")
 
     // View scrolling up, hide the navbar
     if scrollDelta > 0 {
       // Update the delay
-      delayDistance -= scrollDelta
+      if !ignoreDelay {
+        delayDistance -= scrollDelta
 
-      // Skip if the delay is not over yet
-      if delayDistance > 0 {
-        return
+        // Skip if the delay is not over yet
+        if delayDistance > 0 {
+          return
+        }
       }
 
       // No need to scroll if the content fits
@@ -304,17 +316,21 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     if scrollDelta < 0 {
       // Update the delay
-      delayDistance += scrollDelta
+      if !ignoreDelay {
+        delayDistance += scrollDelta
 
-      // Skip if the delay is not over yet
-      if delayDistance > 0 && maxDelay < contentOffset.y {
-        return
+        // Skip if the delay is not over yet
+        if delayDistance > 0 && maxDelay < contentOffset.y {
+          return
+        }
       }
 
       // Compute the bar position
       if frame.origin.y - scrollDelta > statusBarHeight {
         scrollDelta = frame.origin.y - statusBarHeight
       }
+
+      print(frame.origin.y, scrollDelta, statusBarHeight)
 
       // Detect when the bar is completely expanded
       if frame.origin.y >= statusBarHeight {
@@ -324,6 +340,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         state = .scrolling
       }
     }
+
+//    print("scroll delta: \(scrollDelta)")
+//    print("delay: \(delayDistance)")
 
     updateSizing(scrollDelta)
     updateNavbarAlpha()
@@ -340,9 +359,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     var frame = navigationBar.frame
 
+    print(frame)
+
     // Move the navigation bar
     frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
     navigationBar.frame = frame
+
+    print(frame)
 
     // Resize the view if the navigation bar is not translucent
     if !navigationBar.isTranslucent {
