@@ -184,7 +184,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   public func stopFollowingScrollView(showingNavbar: Bool = true) {
     if showingNavbar {
-      showNavbar(animated: true, ignoreDelay: true)
+      showNavbar(animated: true)
     }
     if let gesture = gestureRecognizer {
       scrollableView?.removeGestureRecognizer(gesture)
