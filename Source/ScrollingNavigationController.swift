@@ -121,7 +121,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  public func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  open func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .expanded {
@@ -147,7 +147,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  public func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .collapsed {
@@ -182,7 +182,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    
    - parameter showingNavbar: If true the navbar is show, otherwise it remains in its current state. Defaults to `true`
    */
-  public func stopFollowingScrollView(showingNavbar: Bool = true) {
+  open func stopFollowingScrollView(showingNavbar: Bool = true) {
     if showingNavbar {
       showNavbar(animated: true)
     }
@@ -446,14 +446,14 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   /**
    UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
    */
-  public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+  open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
     return true
   }
 
   /**
    UIGestureRecognizerDelegate function. Only scrolls the navigation bar with the content when `scrollingEnabled` is true
    */
-  public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+  open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
     return scrollingEnabled
   }
 
