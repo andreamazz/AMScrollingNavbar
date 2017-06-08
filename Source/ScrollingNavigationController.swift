@@ -375,17 +375,18 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     let frame = navigationBar.frame
     var duration = TimeInterval(0)
     var delta = CGFloat(0.0)
-    let distance = delta / (frame.size.height / 2)
 
     // Scroll back down
     let threshold = statusBarHeight - (frame.size.height / 2)
     if navigationBar.frame.origin.y >= threshold {
       delta = frame.origin.y - statusBarHeight
+      let distance = delta / (frame.size.height / 2)
       duration = TimeInterval(abs(distance * 0.2))
       state = .expanded
     } else {
       // Scroll up
       delta = frame.origin.y + deltaLimit
+      let distance = delta / (frame.size.height / 2)
       duration = TimeInterval(abs(distance * 0.2))
       state = .collapsed
     }
