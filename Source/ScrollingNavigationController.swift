@@ -345,7 +345,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     updateFollowers(scrollDelta)
   }
 
-    var sourceTabBar:UITabBar?
+    var sourceTabBar: UITabBar?
     private func updateFollowers(_ delta: CGFloat) {
         followers.forEach {
             guard let tabBar = $0 as? UITabBar
@@ -367,9 +367,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   private func updateSizing(_ delta: CGFloat) {
     guard let topViewController = self.topViewController else { return }
-   
+
     var frame = navigationBar.frame
-   
+
     // Move the navigation bar
     frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
     navigationBar.frame = frame
