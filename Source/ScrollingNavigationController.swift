@@ -111,14 +111,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
-    
+
     //Added to save if tabbar state because it's important to know if tab bar is translucent since if it is not, will be changed during transition
-    if let tab = followers.first(where: { (v) -> Bool in
-        if v is UITabBar { return true }
-        else { return false }
+    if let tab = followers.first(where: { (view) -> Bool in
+        if view is UITabBar { return true } else { return false }
     }) as? UITabBar {
-        self._originalTabBar = UITabBar(frame: tab.frame)
-        self._originalTabBar?.isTranslucent = tab.isTranslucent
+        self.sourceTabBar = UITabBar(frame: tab.frame)
+        self.sourceTabBar?.isTranslucent = tab.isTranslucent
     }
     self.followers = followers
     self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
@@ -346,7 +345,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     updateFollowers(scrollDelta)
   }
 
-    var _originalTabBar:UITabBar?
+    var sourceTabBar:UITabBar?
     private func updateFollowers(_ delta: CGFloat) {
         followers.forEach {
             guard let tabBar = $0 as? UITabBar
@@ -356,9 +355,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
             }
             tabBar.isTranslucent = true
             tabBar.frame.origin.y += delta * 1.5
-            
+
             //We take back the bar to it's original state if it is in its original position
-            if let originalTabBar = _originalTabBar {
+            if let originalTabBar = sourceTabBar {
                 if originalTabBar.frame.origin.y == tabBar.frame.origin.y {
                     tabBar.isTranslucent = originalTabBar.isTranslucent
                 }
@@ -368,9 +367,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   private func updateSizing(_ delta: CGFloat) {
     guard let topViewController = self.topViewController else { return }
-
+   
     var frame = navigationBar.frame
-
+   
     // Move the navigation bar
     frame.origin = CGPoint(x: frame.origin.x, y: frame.origin.y - delta)
     navigationBar.frame = frame
