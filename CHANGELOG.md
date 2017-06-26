@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
+- `3.4.x` Releases - [3.4.0](#340)  
 - `3.3.x` Releases - [3.3.0](#330) | [3.3.1](#331) | [3.3.2](#332) | [3.3.3](#333) | [3.3.4](#334)  
 - `3.2.x` Releases - [3.2.0](#320)
 - `3.1.x` Releases - [3.1.0](#310)
@@ -12,6 +13,10 @@ All notable changes to this project will be documented in this file.
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [3.4.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/3.4.0)
+
+- Add ability to move the TabBar (#258)
 
 ## [3.3.4](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/3.3.4)
 
