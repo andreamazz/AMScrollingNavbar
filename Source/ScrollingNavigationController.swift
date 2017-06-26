@@ -13,7 +13,6 @@ import UIKit
    Called when the state of the navigation bar is about to change
    */
   @objc optional func scrollingNavigationController(_ controller: ScrollingNavigationController, willChangeState state: NavigationBarState)
-
 }
 
 /**
@@ -79,6 +78,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open var followers: [UIView] = []
 
   open fileprivate(set) var gestureRecognizer: UIPanGestureRecognizer?
+  fileprivate var sourceTabBar: UITabBar?
   var delayDistance: CGFloat = 0
   var maxDelay: CGFloat = 0
   var scrollableView: UIView?
@@ -112,12 +112,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
 
-    //Added to save if tabbar state because it's important to know if tab bar is translucent since if it is not, will be changed during transition
-    if let tab = followers.first(where: { (view) -> Bool in
-        if view is UITabBar { return true } else { return false }
-    }) as? UITabBar {
-        self.sourceTabBar = UITabBar(frame: tab.frame)
-        self.sourceTabBar?.isTranslucent = tab.isTranslucent
+    // Save TabBar state (the state is changed during the transition and restored on compeltion)
+    if let tab = followers.first(where: { $0 is UITabBar }) as? UITabBar {
+      self.sourceTabBar = UITabBar(frame: tab.frame)
+      self.sourceTabBar?.isTranslucent = tab.isTranslucent
     }
     self.followers = followers
     self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
@@ -187,7 +185,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   /**
    Stop observing the view and reset the navigation bar
-   
+
    - parameter showingNavbar: If true the navbar is show, otherwise it remains in its current state. Defaults to `true`
    */
   open func stopFollowingScrollView(showingNavbar: Bool = true) {
@@ -345,25 +343,21 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     updateFollowers(scrollDelta)
   }
 
-    var sourceTabBar: UITabBar?
-    private func updateFollowers(_ delta: CGFloat) {
-        followers.forEach {
-            guard let tabBar = $0 as? UITabBar
-                else {
-                    $0.transform = $0.transform.translatedBy(x: 0, y: -delta)
-                    return
-            }
-            tabBar.isTranslucent = true
-            tabBar.frame.origin.y += delta * 1.5
+  private func updateFollowers(_ delta: CGFloat) {
+    followers.forEach {
+      guard let tabBar = $0 as? UITabBar else {
+        $0.transform = $0.transform.translatedBy(x: 0, y: -delta)
+        return
+      }
+      tabBar.isTranslucent = true
+      tabBar.frame.origin.y += delta * 1.5
 
-            //We take back the bar to it's original state if it is in its original position
-            if let originalTabBar = sourceTabBar {
-                if originalTabBar.frame.origin.y == tabBar.frame.origin.y {
-                    tabBar.isTranslucent = originalTabBar.isTranslucent
-                }
-            }
-        }
+      // Set the bar to its original state if it's in its original position
+      if let originalTabBar = sourceTabBar, originalTabBar.frame.origin.y == tabBar.frame.origin.y {
+        tabBar.isTranslucent = originalTabBar.isTranslucent
+      }
     }
+  }
 
   private func updateSizing(_ delta: CGFloat) {
     guard let topViewController = self.topViewController else { return }
@@ -421,7 +415,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateSizing(delta)
       self.updateFollowers(delta)
       self.updateNavbarAlpha()
-      }, completion: nil)
+    }, completion: nil)
   }
 
   private func updateNavbarAlpha() {
@@ -481,9 +475,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
     return scrollingEnabled
   }
-
+  
   deinit {
     NotificationCenter.default.removeObserver(self)
   }
-
+  
 }
