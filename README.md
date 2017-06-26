@@ -102,6 +102,14 @@ if let navigationController = navigationController as? ScrollingNavigationContro
 }
 ```
 
+## Scrolling the TabBar
+You can also pass a `UITabBar` in the `followers` array:
+```swift
+if let navigationController = navigationController as? ScrollingNavigationController {
+    navigationController.followScrollView(tableView, delay: 50.0, followers: [tabBarController.tabBar])
+}
+```
+
 
 ## ScrollingNavigationControllerDelegate
 You can set a delegate to receive a call when the state of the navigation bar changes:
