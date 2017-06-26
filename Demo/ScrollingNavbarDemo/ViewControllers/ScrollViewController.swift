@@ -21,6 +21,8 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
     // navigationItem.prompt = "Prompt"
 
     navigationController?.navigationBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
+    tabBarController?.tabBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
+    tabBarController?.tabBar.tintColor = .white
 
     scrollView.backgroundColor = UIColor(red:0.13, green:0.5, blue:0.73, alpha:1)
 
@@ -58,7 +60,11 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
     navigationController?.navigationBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
-      navigationController.followScrollView(scrollView, delay: 0.0, scrollSpeedFactor: 2)
+      if let tabBarController = tabBarController {
+        navigationController.followScrollView(scrollView, delay: 0, scrollSpeedFactor: 2, followers: [tabBarController.tabBar])
+      } else {
+        navigationController.followScrollView(scrollView, delay: 0.0, scrollSpeedFactor: 2)
+      }
       navigationController.scrollingNavbarDelegate = self
       navigationController.expandOnActive = false
     }

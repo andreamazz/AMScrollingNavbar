@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8DR-mA-2ri">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8DR-mA-2ri">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,6 +65,7 @@
         <!--View Controller-->
         <scene sceneID="RYr-fr-9I6">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pse-eD-YLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="XdI-xt-KSq" customClass="ViewController" customModule="ScrollingNavbarDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oAR-et-LnE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -78,7 +78,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z0e-AJ-b6q" id="l4w-st-A99">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScrollView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6js-Eb-YdK">
@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PGy-v4-EuK" id="TZH-n6-ih4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TableView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vla-cj-iTM">
@@ -130,7 +130,7 @@
                                         <rect key="frame" x="0.0" y="200" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jWs-VD-nem" id="3Ja-CF-bbf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WebView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjF-5u-mpt">
@@ -156,7 +156,7 @@
                                         <rect key="frame" x="0.0" y="300" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X5t-MF-ozU" id="MT5-EC-9UL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CollectionView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfV-fX-VJ4">
@@ -178,6 +178,32 @@
                                             <segue destination="vrT-AV-HzV" kind="show" id="97m-9N-yGa"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="QhN-uQ-Y7X">
+                                        <rect key="frame" x="0.0" y="400" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QhN-uQ-Y7X" id="nNl-99-fRW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TabBar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTv-iY-QXS">
+                                                    <rect key="frame" x="8" y="8" width="359" height="83.5"/>
+                                                    <color key="backgroundColor" red="0.98000001910000001" green="0.98000001910000001" blue="0.98000001910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mTv-iY-QXS" firstAttribute="top" secondItem="nNl-99-fRW" secondAttribute="topMargin" id="2Qa-De-d6V"/>
+                                                <constraint firstItem="mTv-iY-QXS" firstAttribute="trailing" secondItem="nNl-99-fRW" secondAttribute="trailingMargin" id="EZd-9V-coY"/>
+                                                <constraint firstItem="mTv-iY-QXS" firstAttribute="leading" secondItem="nNl-99-fRW" secondAttribute="leadingMargin" id="Wto-PU-eFe"/>
+                                                <constraint firstItem="mTv-iY-QXS" firstAttribute="bottom" secondItem="nNl-99-fRW" secondAttribute="bottomMargin" id="l9t-Oh-caV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="kVm-6D-4hD" kind="show" id="kSV-7T-Qx1"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -188,7 +214,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="VfA-Bq-PO2"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pse-eD-YLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1220.625" y="373.94366197183098"/>
         </scene>
@@ -310,7 +335,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="O2a-fR-Fq9"/>
                                     <barButtonItem style="plain" id="AZt-Kd-oDi">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="0XN-Th-jG2">
-                                            <rect key="frame" x="127" y="8" width="121" height="29"/>
+                                            <rect key="frame" x="127" y="7.5" width="121" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="First"/>
@@ -379,6 +404,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZS5-66-AAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2032.5" y="1158.8028169014083"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="Zhu-aW-PbP">
+            <objects>
+                <viewController id="PCS-Pp-VA3" customClass="ScrollViewController" customModule="ScrollingNavbarDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lKM-ld-Ckv"/>
+                        <viewControllerLayoutGuide type="bottom" id="LPs-Uu-XNj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="48r-Rb-OTF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNE-5F-Cdl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.72549019609999998" green="0.90980392160000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RNE-5F-Cdl" firstAttribute="top" secondItem="48r-Rb-OTF" secondAttribute="top" id="ImF-DI-Wrg"/>
+                            <constraint firstAttribute="trailing" secondItem="RNE-5F-Cdl" secondAttribute="trailing" id="KQY-kt-ogH"/>
+                            <constraint firstAttribute="bottom" secondItem="RNE-5F-Cdl" secondAttribute="bottom" id="VNd-Ch-dLQ"/>
+                            <constraint firstItem="RNE-5F-Cdl" firstAttribute="leading" secondItem="48r-Rb-OTF" secondAttribute="leading" id="wfD-kx-bUb"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="Nye-4K-LYX"/>
+                    <connections>
+                        <outlet property="scrollView" destination="RNE-5F-Cdl" id="v9a-pN-MTn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSw-yh-vUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2872.8000000000002" y="1894.9025487256374"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="BGA-y9-jvV">
+            <objects>
+                <viewController id="iss-1H-JDv" customClass="ScrollViewController" customModule="ScrollingNavbarDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CfD-F9-qF8"/>
+                        <viewControllerLayoutGuide type="bottom" id="hqF-Rz-AcI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N2h-Zx-Fe0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIo-L8-tDK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.72549019609999998" green="0.90980392160000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cIo-L8-tDK" firstAttribute="top" secondItem="N2h-Zx-Fe0" secondAttribute="top" id="2dP-24-L5g"/>
+                            <constraint firstAttribute="trailing" secondItem="cIo-L8-tDK" secondAttribute="trailing" id="A6g-9W-252"/>
+                            <constraint firstItem="cIo-L8-tDK" firstAttribute="leading" secondItem="N2h-Zx-Fe0" secondAttribute="leading" id="JnV-RQ-pBT"/>
+                            <constraint firstAttribute="bottom" secondItem="cIo-L8-tDK" secondAttribute="bottom" id="N14-4D-svX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="kPu-bt-npK"/>
+                    <connections>
+                        <outlet property="scrollView" destination="cIo-L8-tDK" id="Ywj-IB-0nl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3o5-K5-cCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2872.8000000000002" y="1137.481259370315"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Dee-dU-Vam">
+            <objects>
+                <tabBarController id="kVm-6D-4hD" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Gf3-9I-vSA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="iss-1H-JDv" kind="relationship" relationship="viewControllers" id="W1A-wJ-YMl"/>
+                        <segue destination="PCS-Pp-VA3" kind="relationship" relationship="viewControllers" id="gzs-eC-nb2"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oQV-pH-Nu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2031" y="1895"/>
         </scene>
     </scenes>
 </document>
