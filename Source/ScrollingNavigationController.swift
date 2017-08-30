@@ -463,6 +463,15 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - UIGestureRecognizerDelegate
 
   /**
+   UIGestureRecognizerDelegate function. Begin scrolling only if the direction is vertical (prevents conflicts with horizontal scroll views)
+   */
+  open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    guard let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer else { return true }
+    let velocity = gestureRecognizer.velocity(in: gestureRecognizer.view)
+    return fabs(velocity.y) > fabs(velocity.x)
+  }
+
+  /**
    UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
    */
   open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
