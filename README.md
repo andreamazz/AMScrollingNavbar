@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/andreamazz/AMScrollingNavbar.svg)](https://travis-ci.org/andreamazz/AMScrollingNavbar)
 [![codecov.io](https://codecov.io/github/andreamazz/AMScrollingNavbar/coverage.svg?branch=master)](https://codecov.io/github/andreamazz/AMScrollingNavbar?branch=master)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Swift 3](https://img.shields.io/badge/swift-3-orange.svg)
+![Swift 4](https://img.shields.io/badge/swift-4-orange.svg)
 [![Join the chat at https://gitter.im/andreamazz/AMScrollingNavbar](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andreamazz/AMScrollingNavbar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=46FNZD4PDVNRU)
 
