@@ -21,10 +21,11 @@ scrolling of an observed content view
 
 ### Versioning notes
 
-Version `2.x` is written as a subclass of `UINavigationController`, in Swift.  
-Version `2.0.0` introduce Swift 2.0 syntax.
-Version `3.0.0` introduce Swift 3.0 syntax.
-Version `4.0.0` introduce Swift 4.0 syntax.
+- Version `2.x` is written as a subclass of `UINavigationController`, in Swift.  
+- Version `2.0.0` introduce Swift 2.0 syntax.
+- Version `3.0.0` introduce Swift 3.0 syntax.
+- Version `4.0.0` introduce Swift 4.0 syntax.
+
 If you are looking for the category implementation in Objective-C, make sure to checkout version `1.x` and prior, although the `2.x` is recomended.
 
 # Screenshot
