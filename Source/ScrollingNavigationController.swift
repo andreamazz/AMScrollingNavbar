@@ -96,7 +96,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
    - parameter followers: An array of `UIView`s that will follow the navbar
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, followers: [UIView] = []) {
+  @objc open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, followers: [UIView] = []) {
     self.scrollableView = scrollableView
 
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
@@ -127,7 +127,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  open func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  @objc open func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .expanded {
@@ -153,7 +153,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  @objc open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .collapsed {
@@ -188,7 +188,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
    - parameter showingNavbar: If true the navbar is show, otherwise it remains in its current state. Defaults to `true`
    */
-  open func stopFollowingScrollView(showingNavbar: Bool = true) {
+  @objc open func stopFollowingScrollView(showingNavbar: Bool = true) {
     if showingNavbar {
       showNavbar(animated: true)
     }
