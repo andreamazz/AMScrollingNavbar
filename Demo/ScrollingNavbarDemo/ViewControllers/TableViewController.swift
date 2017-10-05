@@ -18,7 +18,7 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
     super.viewDidLoad()
 
     title = "TableView"
-    tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+    tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 100, right: 0)
     toolbar.barTintColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
     toolbar.tintColor = .white
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
