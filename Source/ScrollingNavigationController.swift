@@ -447,9 +447,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     func setAlphaOfSubViews(view: UIView, alpha: CGFloat) {
       view.alpha = alpha
-      view.subviews.forEach{
-        setAlphaOfSubViews(view: $0, alpha: alpha)
-      }
+      view.subviews.forEach { setAlphaOfSubViews(view: $0, alpha: alpha) }
     }
     
     navigationBar.subviews
