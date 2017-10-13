@@ -441,11 +441,20 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       return className == "UINavigationButton" ||
         className == "UINavigationItemView" ||
         className == "UIImageView" ||
-        className == "UISegmentedControl"
+        className == "UISegmentedControl" ||
+        className == "UINavigationBarContentView"
     }
+    
+    func setAlphaOfSubViews(view: UIView, alpha: CGFloat) {
+      view.alpha = alpha
+      view.subviews.forEach{
+        setAlphaOfSubViews(view: $0, alpha: alpha)
+      }
+    }
+    
     navigationBar.subviews
       .filter(shouldHideView)
-      .forEach { $0.alpha = alpha }
+      .forEach {setAlphaOfSubViews(view: $0, alpha: alpha) }
 
     // Hide the left items
     navigationItem.leftBarButtonItem?.customView?.alpha = alpha
