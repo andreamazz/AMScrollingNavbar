@@ -17,7 +17,12 @@ extension ScrollingNavigationController {
   }
 
   var statusBarHeight: CGFloat {
-    return UIApplication.shared.statusBarFrame.size.height
+    return UIApplication.shared.statusBarFrame.size.height - extendedStatusBarDifference
+  }
+
+  // Extended status call changes the bounds of the presented view
+  var extendedStatusBarDifference: CGFloat {
+    return abs(view.bounds.height - UIScreen.main.bounds.height)
   }
 
   var tabBarOffset: CGFloat {
