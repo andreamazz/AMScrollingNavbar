@@ -30,6 +30,7 @@ import UIKit
  A custom `UINavigationController` that enables the scrolling of the navigation bar alongside the
  scrolling of an observed content view
  */
+@objcMembers
 open class ScrollingNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
   /**
