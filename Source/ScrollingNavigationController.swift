@@ -30,6 +30,7 @@ import UIKit
  A custom `UINavigationController` that enables the scrolling of the navigation bar alongside the
  scrolling of an observed content view
  */
+@objcMembers
 open class ScrollingNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
   /**
@@ -96,7 +97,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
    - parameter followers: An array of `UIView`s that will follow the navbar
    */
-  @objc open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, followers: [UIView] = []) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, followers: [UIView] = []) {
     self.scrollableView = scrollableView
 
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
@@ -127,7 +128,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  @objc open func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  open func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .expanded {
@@ -153,7 +154,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
-  @objc open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     if state == .collapsed {
@@ -188,7 +189,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
    - parameter showingNavbar: If true the navbar is show, otherwise it remains in its current state. Defaults to `true`
    */
-  @objc open func stopFollowingScrollView(showingNavbar: Bool = true) {
+  open func stopFollowingScrollView(showingNavbar: Bool = true) {
     if showingNavbar {
       showNavbar(animated: true)
     }
@@ -207,7 +208,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   // MARK: - Gesture recognizer
 
-  @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+  func handlePan(_ gesture: UIPanGestureRecognizer) {
     if gesture.state != .failed {
       if let superview = scrollableView?.superview {
         let translation = gesture.translation(in: superview)
@@ -228,7 +229,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   // MARK: - Rotation handler
 
-  @objc func didRotate(_ notification: Notification) {
+  func didRotate(_ notification: Notification) {
     showNavbar()
   }
 
@@ -243,7 +244,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   // MARK: - Notification handler
 
-  @objc func didBecomeActive(_ notification: Notification) {
+  func didBecomeActive(_ notification: Notification) {
     if expandOnActive {
       showNavbar(animated: false)
     } else {
@@ -253,7 +254,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
   }
 
-  @objc func willResignActive(_ notification: Notification) {
+  func willResignActive(_ notification: Notification) {
     previousState = state
   }
 
