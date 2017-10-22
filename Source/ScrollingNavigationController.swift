@@ -27,6 +27,18 @@ import UIKit
 }
 
 /**
+ The direction of scrolling that the navigation bar should be collapsed.
+ The raw value determines the sign of content offset depending of collapse direction.
+ 
+ - scrollUp: scrolling up direction
+ - scrollDown: scrolling down direction
+ */
+@objc public enum NavigationBarCollapseDirection: Int {
+  case scrollUp = -1
+  case scrollDown = 1
+}
+
+/**
  A custom `UINavigationController` that enables the scrolling of the navigation bar alongside the
  scrolling of an observed content view
  */
@@ -85,6 +97,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   var scrollableView: UIView?
   var lastContentOffset = CGFloat(0.0)
   var scrollSpeedFactor: CGFloat = 1
+  var collapseDirectionFactor: CGFloat = 1 // Used to determine the sign of content offset depending of collapse direction
   var previousState: NavigationBarState = .expanded // Used to mark the state before the app goes in background
 
   /**
@@ -95,9 +108,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter scrollableView: The view with the scrolling content that will be observed
    - parameter delay: The delay expressed in points that determines the scrolling resistance. Defaults to `0`
    - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
+   - parameter collapseDirection : The direction of scrolling that the navigation bar should be collapsed
    - parameter followers: An array of `UIView`s that will follow the navbar
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, followers: [UIView] = []) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, followers: [UIView] = []) {
     self.scrollableView = scrollableView
 
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
@@ -120,6 +134,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
     self.followers = followers
     self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
+    self.collapseDirectionFactor = CGFloat(collapseDirection.rawValue)
   }
 
   /**
@@ -212,7 +227,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if gesture.state != .failed {
       if let superview = scrollableView?.superview {
         let translation = gesture.translation(in: superview)
-        let delta = (lastContentOffset - translation.y) / scrollSpeedFactor
+        let delta = collapseDirectionFactor * (lastContentOffset - translation.y) / scrollSpeedFactor
         lastContentOffset = translation.y
 
         if shouldScrollWithDelta(delta) {
