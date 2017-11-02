@@ -443,7 +443,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         className == "UINavigationItemView" ||
         className == "UIImageView" ||
         className == "UISegmentedControl" ||
-        className == "UINavigationBarContentView"
+        className == "UINavigationBarContentView" ||
+        className == "UINavigationBarLargeTitleView"
     }
 
     func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {
