@@ -439,12 +439,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     // Hide all possible button items and navigation items
     func shouldHideView(_ view: UIView) -> Bool {
       let className = view.classForCoder.description().replacingOccurrences(of: "_", with: "")
-      return className == "UINavigationButton" ||
-        className == "UINavigationItemView" ||
-        className == "UIImageView" ||
-        className == "UISegmentedControl" ||
-        className == "UINavigationBarContentView" ||
-        className == "UINavigationBarLargeTitleView"
+      var viewNames = ["UINavigationButton", "UINavigationItemView", "UIImageView", "UISegmentedControl"]
+      if #available(iOS 11.0, *) {
+        viewNames.append(navigationBar.prefersLargeTitles ? "UINavigationBarLargeTitleView" : "UINavigationBarContentView")
+      } else {
+        viewNames.append("UINavigationBarContentView")
+      }
+      return viewNames.contains(className)
     }
 
     func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {

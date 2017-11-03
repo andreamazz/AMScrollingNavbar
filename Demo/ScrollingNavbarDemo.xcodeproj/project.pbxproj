@@ -16,6 +16,7 @@
 		652BE2DB1B62805C00DE75C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2DA1B62805C00DE75C7 /* Images.xcassets */; };
 		652BE2DE1B62805C00DE75C7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652BE2DC1B62805C00DE75C7 /* LaunchScreen.xib */; };
 		652BE2EA1B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652BE2E91B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift */; };
+		658AE0C71FAC7C2500A9B188 /* LargeTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658AE0C61FAC7C2500A9B188 /* LargeTitleViewController.swift */; };
 		658FA1721B836D9C00EB32A4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */; };
 		658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1771B837C6100EB32A4 /* TableViewController.swift */; };
 		658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1791B8386EB00EB32A4 /* WebViewController.swift */; };
@@ -48,6 +49,7 @@
 		652BE2E31B62805D00DE75C7 /* ScrollingNavbarDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrollingNavbarDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		652BE2E81B62805D00DE75C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652BE2E91B62805D00DE75C7 /* ScrollingNavbarDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingNavbarDemoTests.swift; sourceTree = "<group>"; };
+		658AE0C61FAC7C2500A9B188 /* LargeTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTitleViewController.swift; sourceTree = "<group>"; };
 		658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		658FA1771B837C6100EB32A4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		658FA1791B8386EB00EB32A4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				658FA1771B837C6100EB32A4 /* TableViewController.swift */,
 				658FA1791B8386EB00EB32A4 /* WebViewController.swift */,
 				652AA8421C80468A00FDC96F /* CollectionViewController.swift */,
+				658AE0C61FAC7C2500A9B188 /* LargeTitleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				652AA8411C80460400FDC96F /* CollectionViewCell.swift in Sources */,
 				652BE2D41B62805C00DE75C7 /* AppDelegate.swift in Sources */,
 				652AA8431C80468A00FDC96F /* CollectionViewController.swift in Sources */,
+				658AE0C71FAC7C2500A9B188 /* LargeTitleViewController.swift in Sources */,
 				658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */,
 				658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */,
 			);
@@ -537,7 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H72GR44F4M;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -557,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H72GR44F4M;
 				INFOPLIST_FILE = ScrollingNavbarDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
