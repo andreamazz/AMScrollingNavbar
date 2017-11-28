@@ -420,7 +420,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
 
   private func updateNavbarAlpha() {
-    guard let navigationItem = visibleViewController?.navigationItem else { return }
+    guard let navigationItem = topViewController?.navigationItem else { return }
 
     let frame = navigationBar.frame
 
