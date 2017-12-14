@@ -13,10 +13,6 @@
 A custom UINavigationController that enables the scrolling of the navigation bar alongside the
 scrolling of an observed content view  
 
-<a target="_blank" rel="nofollow" href="https://app.codesponsor.io/link/9Jjp1jzKpTgCg7fq5tVzNmnV/andreamazz/AMScrollingNavbar">
-  <img alt="Sponsor" width="888" height="68" src="https://app.codesponsor.io/embed/9Jjp1jzKpTgCg7fq5tVzNmnV/andreamazz/AMScrollingNavbar.svg" />
-</a>
-
 <p align="center">
   <a href='https://appetize.io/app/31qahv9v4477ja36k8dn93wr8m' alt='Live demo'>
     <img width="150" height="75" src="assets/demo-button.png"/>
