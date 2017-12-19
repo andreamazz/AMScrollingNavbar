@@ -17,7 +17,12 @@ extension ScrollingNavigationController {
   }
   
   var statusBarHeight: CGFloat {
-    return UIApplication.shared.statusBarFrame.size.height - extendedStatusBarDifference
+    var statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+    if #available(iOS 11.0, *) {
+      // Account for the notch when the status bar is hidden
+      statusBarHeight = max(UIApplication.shared.statusBarFrame.size.height, UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0)
+    }
+    return statusBarHeight - extendedStatusBarDifference
   }
   
   // Extended status call changes the bounds of the presented view
