@@ -103,6 +103,7 @@ if let navigationController = navigationController as? ScrollingNavigationContro
     navigationController.followScrollView(tableView, delay: 50.0, followers: [toolbar])
 }
 ```
+Note that when navigating away from the controller the followers might keep the scroll offset. Refer to [Handling navigation](https://github.com/andreamazz/AMScrollingNavbar#handling-navigation) for proper setup.  
 
 ## Scrolling the TabBar
 You can also pass a `UITabBar` in the `followers` array:
