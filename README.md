@@ -140,7 +140,7 @@ func scrollingNavigationController(_ controller: ScrollingNavigationController, 
 If the view controller with the scroll view pushes new controllers, you should call `showNavbar(animated:)` in your `viewWillDisappear(animated:)`:
 ```swift
 override func viewWillDisappear(_ animated: Bool) {
-  super.viewWillDisappear(animated)
+    super.viewWillDisappear(animated)
     if let navigationController = navigationController as? ScrollingNavigationController {
       navigationController.showNavbar(animated: true)
     }
