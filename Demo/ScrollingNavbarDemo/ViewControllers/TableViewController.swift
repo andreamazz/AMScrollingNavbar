@@ -46,6 +46,10 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
     cell.textLabel?.text = "Row \((indexPath as NSIndexPath).row + 1)"
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return "Header"
+  }
 
 }
 

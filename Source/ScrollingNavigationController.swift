@@ -4,14 +4,18 @@ import UIKit
  Scrolling Navigation Bar delegate protocol
  */
 @objc public protocol ScrollingNavigationControllerDelegate: NSObjectProtocol {
-  /**
-   Called when the state of the navigation bar changes
-   */
+  /// Called when the state of the navigation bar changes
+  ///
+  /// - Parameters:
+  ///   - controller: the ScrollingNavigationController
+  ///   - state: the new state
   @objc optional func scrollingNavigationController(_ controller: ScrollingNavigationController, didChangeState state: NavigationBarState)
-
-  /**
-   Called when the state of the navigation bar is about to change
-   */
+  
+  /// Called when the state of the navigation bar is about to change
+  ///
+  /// - Parameters:
+  ///   - controller: the ScrollingNavigationController
+  ///   - state: the new state
   @objc optional func scrollingNavigationController(_ controller: ScrollingNavigationController, willChangeState state: NavigationBarState)
 }
 
@@ -342,6 +346,12 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     updateNavbarAlpha()
     restoreContentOffset(scrollDelta)
     updateFollowers(scrollDelta)
+    
+    // Adjust the top inset (useful when a table view has floating headers, see issue #219
+    if let contentInset = scrollView()?.contentInset, let scrollInset = scrollView()?.scrollIndicatorInsets {
+      scrollView()?.contentInset = UIEdgeInsets(top: contentInset.top - scrollDelta, left: 0, bottom: 0, right: 0)
+      scrollView()?.scrollIndicatorInsets = UIEdgeInsets(top: scrollInset.top - scrollDelta, left: 0, bottom: 0, right: 0)
+    }
   }
 
   private func updateFollowers(_ delta: CGFloat) {
