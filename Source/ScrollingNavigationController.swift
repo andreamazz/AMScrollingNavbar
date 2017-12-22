@@ -228,18 +228,22 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Gesture recognizer
 
   func handlePan(_ gesture: UIPanGestureRecognizer) {
-    if gesture.state != .failed {
-      if let superview = scrollableView?.superview {
-        let translation = gesture.translation(in: superview)
-        let delta = collapseDirectionFactor * (lastContentOffset - translation.y) / scrollSpeedFactor
+    if let superview = scrollableView?.superview {
+      let translation = gesture.translation(in: superview)
+      let delta = (lastContentOffset - translation.y) / scrollSpeedFactor
+      if (!checkSearchController(delta)){
         lastContentOffset = translation.y
-
+        return
+      }
+      
+      if gesture.state != .failed {
+        lastContentOffset = translation.y
         if shouldScrollWithDelta(delta) {
           scrollWithDelta(delta)
         }
       }
     }
-
+    
     if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .failed {
       checkForPartialScroll()
       lastContentOffset = 0
@@ -493,6 +497,17 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     // Hide the right items
     navigationItem.rightBarButtonItem?.customView?.alpha = alpha
     navigationItem.rightBarButtonItems?.forEach { $0.customView?.alpha = alpha }
+  }
+  
+  private func checkSearchController(_ delta: CGFloat) -> Bool {
+    if #available(iOS 11.0, *) {
+      if let searchController = topViewController?.navigationItem.searchController, delta > 0 {
+        if searchController.searchBar.frame.height != 0 {
+          return false
+        }
+      }
+    }
+    return true
   }
 
   // MARK: - UIGestureRecognizerDelegate
