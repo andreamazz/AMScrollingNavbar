@@ -439,7 +439,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
 
     delayDistance = maxDelay
-
+    
     UIView.animate(withDuration: duration, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
       self.updateSizing(delta)
       self.updateFollowers(delta)
