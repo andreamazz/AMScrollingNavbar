@@ -50,7 +50,7 @@ github "andreamazz/AMScrollingNavbar"
 
 ## Usage
 
-Make sure to use a subclass of `ScrollingNavigationController` for your `UINavigationController`. Either set the class of your `UINavigationController` in your storyboard, or create programmatically a `ScrollingNavigationController` instance in your code.
+Make sure to use `ScrollingNavigationController` instead of the standard `UINavigationController`. Either set the class of your `UINavigationController` in your storyboard, or create programmatically a `ScrollingNavigationController` instance in your code.
 
 Use `followScrollView(_: delay:)` to start following the scrolling of a scrollable view (e.g.: a `UIScrollView` or `UITableView`).
 #### Swift
