@@ -32,7 +32,7 @@ extension ScrollingNavigationController {
   
   var tabBarOffset: CGFloat {
     // Only account for the tab bar if a tab bar controller is present and the bar is not translucent
-    if let tabBarController = tabBarController {
+    if let tabBarController = tabBarController, !(topViewController?.hidesBottomBarWhenPushed ?? false) {
       return tabBarController.tabBar.isTranslucent ? 0 : tabBarController.tabBar.frame.height
     }
     return 0
