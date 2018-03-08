@@ -383,7 +383,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         return
       }
       tabBar.isTranslucent = true
-      tabBar.frame.origin.y += delta * 1.5
+      tabBar.frame.origin.y += delta * (tabBar.frame.height / navigationBar.frame.height)
 
       // Set the bar to its original state if it's in its original position
       if let originalTabBar = sourceTabBar, originalTabBar.frame.origin.y == tabBar.frame.origin.y {
