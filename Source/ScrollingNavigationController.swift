@@ -463,6 +463,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     // Hide all the possible titles
     navigationItem.titleView?.alpha = alpha
     navigationBar.tintColor = navigationBar.tintColor.withAlphaComponent(alpha)
+    navigationItem.leftBarButtonItem?.tintColor = navigationItem.leftBarButtonItem?.tintColor?.withAlphaComponent(alpha)
+    navigationItem.rightBarButtonItem?.tintColor = navigationItem.rightBarButtonItem?.tintColor?.withAlphaComponent(alpha)
+    navigationItem.leftBarButtonItems?.forEach { $0.tintColor = $0.tintColor?.withAlphaComponent(alpha) }
+    navigationItem.rightBarButtonItems?.forEach { $0.tintColor = $0.tintColor?.withAlphaComponent(alpha) }
     if let titleColor = navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] as? UIColor {
       navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] = titleColor.withAlphaComponent(alpha)
     } else {
