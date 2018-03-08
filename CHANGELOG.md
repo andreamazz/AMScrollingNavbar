@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
-- `4.2.x` Releases - [4.2.0](#420) | [4.2.1](#421) | [4.2.2](#422)  
+- `4.2.x` Releases - [4.2.0](#420) | [4.2.1](#421) | [4.2.2](#422) | [4.2.3](#423)  
 - `4.1.x` Releases - [4.1.0](#410)  
 - `4.0.x` Releases - [4.0.0](#400) | [4.0.1](#401) | [4.0.2](#402) | [4.0.3](#403) | [4.0.4](#404) | [4.0.5](#405)  
 - `3.4.x` Releases - [3.4.0](#340) | [3.4.1](#341)  
@@ -16,6 +16,10 @@ All notable changes to this project will be documented in this file.
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [4.2.3](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.2.3)
+
+- Merged #304  
 
 ## [4.2.2](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/4.2.2)
 
