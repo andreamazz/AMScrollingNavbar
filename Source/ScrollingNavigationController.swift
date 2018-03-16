@@ -186,30 +186,31 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
-    if state == .collapsed {
-      gestureRecognizer?.isEnabled = false
-      let animations = {
-        self.lastContentOffset = 0;
-        self.scrollWithDelta(-self.fullNavbarHeight, ignoreDelay: true)
-        visibleViewController.view.setNeedsLayout()
-        if self.navigationBar.isTranslucent {
-          let currentOffset = self.contentOffset
-          self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
-        }
+    guard state == .collapsed else {
+      updateNavbarAlpha()
+      return
+    }
+
+    gestureRecognizer?.isEnabled = false
+    let animations = {
+      self.lastContentOffset = 0;
+      self.scrollWithDelta(-self.fullNavbarHeight, ignoreDelay: true)
+      visibleViewController.view.setNeedsLayout()
+      if self.navigationBar.isTranslucent {
+        let currentOffset = self.contentOffset
+        self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y - self.navbarHeight)
       }
-      if animated {
-        self.state = .scrolling
-        UIView.animate(withDuration: duration, animations: animations) { _ in
-          self.state = .expanded
-          self.gestureRecognizer?.isEnabled = true
-        }
-      } else {
-        animations()
+    }
+    if animated {
+      state = .scrolling
+      UIView.animate(withDuration: duration, animations: animations) { _ in
         self.state = .expanded
         self.gestureRecognizer?.isEnabled = true
       }
     } else {
-      updateNavbarAlpha()
+      animations()
+      state = .expanded
+      gestureRecognizer?.isEnabled = true
     }
   }
 
