@@ -244,7 +244,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if let superview = scrollableView?.superview {
       let translation = gesture.translation(in: superview)
       let delta = (lastContentOffset - translation.y) / scrollSpeedFactor
-      if (!checkSearchController(delta)){
+      
+      if !checkSearchController(delta) {
         lastContentOffset = translation.y
         return
       }
