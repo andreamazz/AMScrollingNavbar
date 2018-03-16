@@ -93,9 +93,20 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    An array of `UIView`s that will follow the navbar
    */
   open var followers: [UIView] = []
+  
+  /// Stores some metadata of a UITabBar if one is passed in the followers array
+  internal struct TabBarMock {
+    var isTranslucent: Bool = false
+    var origin: CGPoint = .zero
+    
+    init(origin: CGPoint, translucent: Bool) {
+      self.origin = origin
+      self.isTranslucent = translucent
+    }
+  }
 
   open fileprivate(set) var gestureRecognizer: UIPanGestureRecognizer?
-  fileprivate var sourceTabBar: UITabBar?
+  fileprivate var sourceTabBar: TabBarMock?
   var delayDistance: CGFloat = 0
   var maxDelay: CGFloat = 0
   var scrollableView: UIView?
@@ -133,8 +144,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     // Save TabBar state (the state is changed during the transition and restored on compeltion)
     if let tab = followers.first(where: { $0 is UITabBar }) as? UITabBar {
-      self.sourceTabBar = UITabBar(frame: tab.frame)
-      self.sourceTabBar?.isTranslucent = tab.isTranslucent
+      self.sourceTabBar = TabBarMock(origin: CGPoint(x: tab.frame.origin.x, y: CGFloat(round(tab.frame.origin.y))), translucent: tab.isTranslucent)
     }
     self.followers = followers
     self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
@@ -386,7 +396,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       tabBar.frame.origin.y += delta * (tabBar.frame.height / navigationBar.frame.height)
 
       // Set the bar to its original state if it's in its original position
-      if let originalTabBar = sourceTabBar, originalTabBar.frame.origin.y == tabBar.frame.origin.y {
+      if let originalTabBar = sourceTabBar, originalTabBar.origin.y == round(tabBar.frame.origin.y){
         tabBar.isTranslucent = originalTabBar.isTranslucent
       }
     }
