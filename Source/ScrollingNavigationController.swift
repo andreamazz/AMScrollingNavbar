@@ -107,6 +107,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   open fileprivate(set) var gestureRecognizer: UIPanGestureRecognizer?
   fileprivate var sourceTabBar: TabBarMock?
+  fileprivate var previousOrientation: UIDeviceOrientation = UIDevice.current.orientation
   var delayDistance: CGFloat = 0
   var maxDelay: CGFloat = 0
   var scrollableView: UIView?
@@ -134,6 +135,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     gestureRecognizer?.delegate = self
     scrollableView.addGestureRecognizer(gestureRecognizer!)
 
+    previousOrientation = UIDevice.current.orientation
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.willResignActive(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -264,7 +266,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Rotation handler
 
   func didRotate(_ notification: Notification) {
-    showNavbar()
+    let newOrientation = UIDevice.current.orientation
+    if (previousOrientation.isPortrait && newOrientation.isLandscape) || (previousOrientation.isLandscape && newOrientation.isPortrait) {
+      showNavbar()
+    }
+    previousOrientation = newOrientation
   }
 
   /**
