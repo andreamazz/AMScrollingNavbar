@@ -162,20 +162,31 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open func hideNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
-    if state == .expanded {
-      self.state = .scrolling
-      UIView.animate(withDuration: animated ? duration : 0, animations: { () -> Void in
-        self.scrollWithDelta(self.fullNavbarHeight)
-        visibleViewController.view.setNeedsLayout()
-        if self.navigationBar.isTranslucent {
-          let currentOffset = self.contentOffset
-          self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight)
-        }
-      }) { _ in
+    guard state == .expanded else {
+      updateNavbarAlpha()
+      return
+    }
+
+    gestureRecognizer?.isEnabled = false
+    let animations = {
+      self.scrollWithDelta(self.fullNavbarHeight, ignoreDelay: true)
+      visibleViewController.view.setNeedsLayout()
+      if self.navigationBar.isTranslucent {
+        let currentOffset = self.contentOffset
+        self.scrollView()?.contentOffset = CGPoint(x: currentOffset.x, y: currentOffset.y + self.navbarHeight)
+      }
+    }
+
+    if animated {
+      state = .scrolling
+      UIView.animate(withDuration: duration, animations: animations) { _ in
         self.state = .collapsed
+        self.gestureRecognizer?.isEnabled = true
       }
     } else {
-      updateNavbarAlpha()
+      animations()
+      state = .collapsed
+      gestureRecognizer?.isEnabled = true
     }
   }
 
