@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8DR-mA-2ri">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8DR-mA-2ri">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -327,22 +326,43 @@
                                     <outlet property="delegate" destination="vrT-AV-HzV" id="qCh-7Z-sAy"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzF-ga-ICa">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Footer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ui-vC-XuS">
+                                        <rect key="frame" x="145.5" y="18" width="84" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87058823529411766" green="0.30588235294117649" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="5ui-vC-XuS" firstAttribute="centerY" secondItem="XzF-ga-ICa" secondAttribute="centerY" id="2tj-VG-x9E"/>
+                                    <constraint firstItem="5ui-vC-XuS" firstAttribute="centerX" secondItem="XzF-ga-ICa" secondAttribute="centerX" id="FlN-6o-584"/>
+                                    <constraint firstAttribute="height" constant="50" id="QjH-xD-JgT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XzF-ga-ICa" secondAttribute="trailing" id="HWg-4m-cdh"/>
                             <constraint firstItem="viV-Z3-Q3V" firstAttribute="top" secondItem="U6b-Kw-4W2" secondAttribute="bottom" id="IFP-1e-9XG"/>
                             <constraint firstAttribute="trailing" secondItem="U6b-Kw-4W2" secondAttribute="trailing" id="NK7-RI-Sqp"/>
                             <constraint firstItem="U6b-Kw-4W2" firstAttribute="top" secondItem="VMv-o8-2YB" secondAttribute="top" id="Qh5-JF-Zld"/>
+                            <constraint firstItem="viV-Z3-Q3V" firstAttribute="top" secondItem="XzF-ga-ICa" secondAttribute="bottom" id="jhx-w6-7Fh"/>
+                            <constraint firstItem="XzF-ga-ICa" firstAttribute="leading" secondItem="VMv-o8-2YB" secondAttribute="leading" id="nOy-74-op2"/>
                             <constraint firstItem="U6b-Kw-4W2" firstAttribute="leading" secondItem="VMv-o8-2YB" secondAttribute="leading" id="v5I-gz-rEG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="U6b-Kw-4W2" id="DCC-dr-Bts"/>
+                        <outlet property="customFooter" destination="XzF-ga-ICa" id="m06-JG-HqQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2b-cr-qio" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220" y="1137"/>
+            <point key="canvasLocation" x="1220" y="1136.5817091454273"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="BJq-ZJ-j0e">

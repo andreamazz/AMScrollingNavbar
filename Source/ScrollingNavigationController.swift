@@ -43,6 +43,32 @@ import UIKit
 }
 
 /**
+ The direction of scrolling that a followe should follow when the navbar is collapsing.
+ The raw value determines the sign of content offset depending of collapse direction.
+ 
+ - scrollUp: scrolling up direction
+ - scrollDown: scrolling down direction
+ */
+@objc public enum NavigationBarFollowerCollapseDirection: Int {
+  case scrollUp = -1
+  case scrollDown = 1
+}
+
+/**
+ Wraps a view that follows the navigation bar, providing the direction that the view should follow
+ */
+@objcMembers
+open class NavigationBarFollower {
+  public weak var view: UIView?
+  public var direction = NavigationBarFollowerCollapseDirection.scrollUp
+  
+  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp) {
+    self.view = view
+    self.direction = direction
+  }
+}
+
+/**
  A custom `UINavigationController` that enables the scrolling of the navigation bar alongside the
  scrolling of an observed content view
  */
@@ -90,9 +116,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open weak var scrollingNavbarDelegate: ScrollingNavigationControllerDelegate?
 
   /**
-   An array of `UIView`s that will follow the navbar
+   An array of `NavigationBarFollower`s that will follow the navbar
    */
-  open var followers: [UIView] = []
+  open var followers: [NavigationBarFollower] = []
   
   /// Stores some metadata of a UITabBar if one is passed in the followers array
   internal struct TabBarMock {
@@ -125,9 +151,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter delay: The delay expressed in points that determines the scrolling resistance. Defaults to `0`
    - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
    - parameter collapseDirection : The direction of scrolling that the navigation bar should be collapsed
-   - parameter followers: An array of `UIView`s that will follow the navbar
+   - parameter followers: An array of `NavigationBarFollower`s that will follow the navbar. The wrapper holds the direction that the view will follow
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, followers: [UIView] = []) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, followers: [NavigationBarFollower] = []) {
     self.scrollableView = scrollableView
 
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
@@ -145,7 +171,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     scrollingEnabled = true
 
     // Save TabBar state (the state is changed during the transition and restored on compeltion)
-    if let tab = followers.first(where: { $0 is UITabBar }) as? UITabBar {
+    if let tab = followers.map({ $0.view }).first(where: { $0 is UITabBar }) as? UITabBar {
       self.sourceTabBar = TabBarMock(origin: CGPoint(x: tab.frame.origin.x, y: CGFloat(round(tab.frame.origin.y))), translucent: tab.isTranslucent)
     }
     self.followers = followers
@@ -206,7 +232,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     gestureRecognizer?.isEnabled = false
     let animations = {
-      self.lastContentOffset = 0;
+      self.lastContentOffset = 0
       self.scrollWithDelta(-self.fullNavbarHeight, ignoreDelay: true)
       visibleViewController.view.setNeedsLayout()
       if self.navigationBar.isTranslucent {
@@ -407,15 +433,15 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   private func updateFollowers(_ delta: CGFloat) {
     followers.forEach {
-      guard let tabBar = $0 as? UITabBar else {
-        $0.transform = $0.transform.translatedBy(x: 0, y: -delta)
+      guard let tabBar = $0.view as? UITabBar else {
+        $0.view?.transform = $0.view?.transform.translatedBy(x: 0, y: CGFloat($0.direction.rawValue) * delta) ?? .identity
         return
       }
       tabBar.isTranslucent = true
       tabBar.frame.origin.y += delta * (tabBar.frame.height / navigationBar.frame.height)
 
       // Set the bar to its original state if it's in its original position
-      if let originalTabBar = sourceTabBar, originalTabBar.origin.y == round(tabBar.frame.origin.y){
+      if let originalTabBar = sourceTabBar, originalTabBar.origin.y == round(tabBar.frame.origin.y) {
         tabBar.isTranslucent = originalTabBar.isTranslucent
       }
     }

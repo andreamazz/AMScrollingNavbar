@@ -4,6 +4,7 @@ import AMScrollingNavbar
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
   @IBOutlet var collectionView: UICollectionView!
+  @IBOutlet var customFooter: UIView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,7 +27,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     super.viewDidAppear(animated)
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
-      navigationController.followScrollView(collectionView, delay: 50.0)
+      navigationController.followScrollView(collectionView, delay: 50.0, followers: [NavigationBarFollower(view: customFooter, direction: .scrollDown)])
     }
   }
 
