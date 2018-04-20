@@ -305,7 +305,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   func didRotate(_ notification: Notification) {
     let newOrientation = UIDevice.current.orientation
-    if (previousOrientation.isPortrait && newOrientation.isLandscape) || (previousOrientation.isLandscape && newOrientation.isPortrait) {
+    // Show the navbar if the orantation is the same (the app just got back from background) or if there is a switch between portrait and landscape (and vice versa)
+    if (previousOrientation == newOrientation) || (previousOrientation.isPortrait && newOrientation.isLandscape) || (previousOrientation.isLandscape && newOrientation.isPortrait) {
       showNavbar()
     }
     previousOrientation = newOrientation
