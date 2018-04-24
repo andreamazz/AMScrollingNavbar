@@ -435,7 +435,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   private func updateFollowers(_ delta: CGFloat) {
     followers.forEach {
       guard let tabBar = $0.view as? UITabBar else {
-        $0.view?.transform = $0.view?.transform.translatedBy(x: 0, y: CGFloat($0.direction.rawValue) * delta) ?? .identity
+        $0.view?.transform = $0.view?.transform.translatedBy(x: 0, y: CGFloat($0.direction.rawValue) * delta * (($0.view?.frame.height ?? 0) / navigationBar.frame.height)) ?? .identity
         return
       }
       tabBar.isTranslucent = true

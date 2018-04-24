@@ -327,10 +327,10 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzF-ga-ICa">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Footer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ui-vC-XuS">
-                                        <rect key="frame" x="145.5" y="18" width="84" height="14.5"/>
+                                        <rect key="frame" x="145.5" y="23" width="84" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -340,7 +340,7 @@
                                 <constraints>
                                     <constraint firstItem="5ui-vC-XuS" firstAttribute="centerY" secondItem="XzF-ga-ICa" secondAttribute="centerY" id="2tj-VG-x9E"/>
                                     <constraint firstItem="5ui-vC-XuS" firstAttribute="centerX" secondItem="XzF-ga-ICa" secondAttribute="centerX" id="FlN-6o-584"/>
-                                    <constraint firstAttribute="height" constant="50" id="QjH-xD-JgT"/>
+                                    <constraint firstAttribute="height" constant="60" id="QjH-xD-JgT"/>
                                 </constraints>
                             </view>
                         </subviews>
