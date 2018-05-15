@@ -119,12 +119,18 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    An array of `NavigationBarFollower`s that will follow the navbar
    */
   open var followers: [NavigationBarFollower] = []
-  
+
+  /**
+   An flag for update content inset.
+   Defaults to `true`
+   */
+  open var shouldUpdateContentInset = true
+
   /// Stores some metadata of a UITabBar if one is passed in the followers array
   internal struct TabBarMock {
     var isTranslucent: Bool = false
     var origin: CGPoint = .zero
-    
+
     init(origin: CGPoint, translucent: Bool) {
       self.origin = origin
       self.isTranslucent = translucent
@@ -426,7 +432,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   /// Adjust the top inset (useful when a table view has floating headers, see issue #219
   private func updateContentInset(_ delta: CGFloat) {
-    if let contentInset = scrollView()?.contentInset, let scrollInset = scrollView()?.scrollIndicatorInsets {
+    if self.shouldUpdateContentInset, let contentInset = scrollView()?.contentInset, let scrollInset = scrollView()?.scrollIndicatorInsets {
       scrollView()?.contentInset = UIEdgeInsets(top: contentInset.top - delta, left: contentInset.left, bottom: contentInset.bottom, right: contentInset.right)
       scrollView()?.scrollIndicatorInsets = UIEdgeInsets(top: scrollInset.top - delta, left: scrollInset.left, bottom: scrollInset.bottom, right: scrollInset.right)
     }
