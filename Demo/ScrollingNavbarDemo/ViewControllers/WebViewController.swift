@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import WebKit
 import AMScrollingNavbar
 
 class WebViewController: ScrollingNavigationViewController, UIWebViewDelegate {
 
-  @IBOutlet weak var webView: UIWebView!
+  @IBOutlet weak var webView: WKWebView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,7 +24,11 @@ class WebViewController: ScrollingNavigationViewController, UIWebViewDelegate {
     navigationController?.navigationBar.barTintColor = UIColor(red:0.2, green:0.28, blue:0.37, alpha:1)
 
     // Load some content
-    webView.loadHTMLString("<html><body style='background-color:#34495e; color:white; font-family:Heiti SC, sans-serif'><h2>There's an old joke - um... two elderly women are at a Catskill mountain resort, and one of 'em says:<br/><br/> 'Boy, the food at this place is really terrible.'<br/><br/> The other one says: <br/><br/>'Yeah, I know; and such small portions.'<br/><br/> Well, that's essentially how I feel about life - full of loneliness, and misery, and suffering, and unhappiness, and it's all over much too quickly.<br/><br/> The... the other important joke, for me, is one that's usually attributed to Groucho Marx, but I think it appears originally in Freud's 'Wit and Its Relation to the Unconscious,' and it goes like this - I'm paraphrasing <br/><br/> 'I would never want to belong to any club that would have someone like me for a member.' <br/><br/> That's the key joke of my adult life, in terms of my relationships with women.</h2><i>Woody Allen</i></body></html>", baseURL: nil)
+    webView.load(URLRequest(url: URL(string: "http://www.reddit.com")!))
+    
+    // Or try with some local content:
+//    let url = Bundle.main.url(forResource: "index", withExtension: "html")!
+//    webView.loadFileURL(url, allowingReadAccessTo: url)
 
     // Enable the scrollToTop
     webView.scrollView.delegate = self
