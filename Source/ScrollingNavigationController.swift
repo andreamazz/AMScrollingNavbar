@@ -165,6 +165,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.willResignActive(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.windowDidBecomeVisible(_:)), name: NSNotification.Name.UIWindowDidBecomeVisible, object: nil)
 
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
@@ -299,6 +300,12 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       checkForPartialScroll()
       lastContentOffset = 0
     }
+  }
+  
+  // MARK: - Fullscreen handling
+
+  func windowDidBecomeVisible(_ notification: Notification) {
+    showNavbar()
   }
 
   // MARK: - Rotation handler
