@@ -121,7 +121,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open var followers: [NavigationBarFollower] = []
 
   /**
-   An flag for update content inset.
+   Determines if the top content inset should be updated with the navbar's delta movement. This should be enabled when dealing with table views with floating headers.
+   It can however cause issues in certain configurations. If the issues arise, set this to false
+   
    Defaults to `true`
    */
   open var shouldUpdateContentInset = true
