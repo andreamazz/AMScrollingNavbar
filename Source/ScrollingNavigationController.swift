@@ -119,6 +119,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    An array of `NavigationBarFollower`s that will follow the navbar
    */
   open var followers: [NavigationBarFollower] = []
+  
+  /**
+   An array of `String`s with the class names of the UINavigationBar's subviews to keep visible when hiding the navbar
+   */
+  open var hideExclusions: [String] = []
 
   /**
    Determines if the top content inset should be updated with the navbar's delta movement. This should be enabled when dealing with table views with floating headers.
@@ -546,19 +551,21 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     // Hide all possible button items and navigation items
     func shouldHideView(_ view: UIView) -> Bool {
-      let className = view.classForCoder.description().replacingOccurrences(of: "_", with: "")
       var viewNames = ["UINavigationButton", "UINavigationItemView", "UIImageView", "UISegmentedControl"]
       if #available(iOS 11.0, *) {
         viewNames.append(navigationBar.prefersLargeTitles ? "UINavigationBarLargeTitleView" : "UINavigationBarContentView")
       } else {
         viewNames.append("UINavigationBarContentView")
       }
-      return viewNames.contains(className)
+      return viewNames.contains(view.className)
     }
 
     func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {
-      view.alpha = alpha
-      view.subviews.forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
+      
+      if !hideExclusions.contains(view.className) {
+        view.alpha = alpha
+        view.subviews.forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
+      }
     }
 
     navigationBar.subviews
@@ -614,4 +621,12 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     NotificationCenter.default.removeObserver(self)
   }
   
+}
+
+private extension UIView {
+  var className: String {
+    get {
+      return self.classForCoder.description().replacingOccurrences(of: "_", with: "")
+    }
+  }
 }
