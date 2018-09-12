@@ -21,6 +21,7 @@
 		658FA1721B836D9C00EB32A4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */; };
 		658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1771B837C6100EB32A4 /* TableViewController.swift */; };
 		658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FA1791B8386EB00EB32A4 /* WebViewController.swift */; };
+		65E5DFE821490DD7008BF7ED /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5DFE721490DD7008BF7ED /* TestViewController.swift */; };
 		D9240E5EF587B34FF333320F /* Pods_ScrollingNavbarDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99C3A504E979DBB401763E0 /* Pods_ScrollingNavbarDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		658FA1711B836D9C00EB32A4 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		658FA1771B837C6100EB32A4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		658FA1791B8386EB00EB32A4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		65E5DFE721490DD7008BF7ED /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		77FCB6AA06C22CA3F9E35B04 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		CB6FF01647A43FEABE04BE8C /* Pods_ScrollingNavbarDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99C3A504E979DBB401763E0 /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				658FA1791B8386EB00EB32A4 /* WebViewController.swift */,
 				652AA8421C80468A00FDC96F /* CollectionViewController.swift */,
 				658AE0C61FAC7C2500A9B188 /* LargeTitleViewController.swift */,
+				65E5DFE721490DD7008BF7ED /* TestViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				652AA8431C80468A00FDC96F /* CollectionViewController.swift in Sources */,
 				658AE0C71FAC7C2500A9B188 /* LargeTitleViewController.swift in Sources */,
 				658FA17A1B8386EB00EB32A4 /* WebViewController.swift in Sources */,
+				65E5DFE821490DD7008BF7ED /* TestViewController.swift in Sources */,
 				658FA1781B837C6100EB32A4 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

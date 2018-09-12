@@ -97,7 +97,7 @@
         <!--View Controller-->
         <scene sceneID="RYr-fr-9I6">
             <objects>
-                <tableViewController id="XdI-xt-KSq" customClass="ViewController" customModule="ScrollingNavbarDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ViewController" id="XdI-xt-KSq" customClass="ViewController" customModule="ScrollingNavbarDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oAR-et-LnE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,6 +446,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ozp-w6-dSI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2001" y="374"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="T80-kE-BFv">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="edW-ed-vpb" customClass="TestViewController" customModule="ScrollingNavbarDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Lq-rQ-YDA"/>
+                        <viewControllerLayoutGuide type="bottom" id="hdj-Dq-WSh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ef4-kM-iXL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsw-3h-r3j">
+                                <rect key="frame" x="160" y="318" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismiss" destination="edW-ed-vpb" eventType="touchUpInside" id="fb0-8D-pIO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing modal controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3p-Hk-xNN">
+                                <rect key="frame" x="95" y="220" width="185" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L3p-Hk-xNN" firstAttribute="centerX" secondItem="ef4-kM-iXL" secondAttribute="centerX" id="GK4-bh-tjb"/>
+                            <constraint firstItem="bsw-3h-r3j" firstAttribute="centerY" secondItem="ef4-kM-iXL" secondAttribute="centerY" id="Ni7-Py-lYn"/>
+                            <constraint firstItem="L3p-Hk-xNN" firstAttribute="top" secondItem="9Lq-rQ-YDA" secondAttribute="bottom" constant="200" id="TdE-0x-AA9"/>
+                            <constraint firstItem="bsw-3h-r3j" firstAttribute="centerX" secondItem="ef4-kM-iXL" secondAttribute="centerX" id="zBC-6N-dbX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ssi-wh-MOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2873" y="374"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="Dy6-y9-nIj">

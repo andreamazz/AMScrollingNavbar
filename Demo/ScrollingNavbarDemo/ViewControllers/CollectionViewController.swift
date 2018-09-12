@@ -30,8 +30,22 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
       navigationController.followScrollView(collectionView, delay: 50.0, followers: [NavigationBarFollower(view: customFooter, direction: .scrollDown)])
     }
   }
+  
+  override open func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    if let navigationController = self.navigationController as? ScrollingNavigationController {
+      navigationController.stopFollowingScrollView()
+    }
+  }
 
   // MARK: - Collection view data source
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let mainViewController = storyBoard.instantiateViewController(withIdentifier: "TestViewController")
+    self.present(mainViewController, animated: true, completion: nil)
+  }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 100

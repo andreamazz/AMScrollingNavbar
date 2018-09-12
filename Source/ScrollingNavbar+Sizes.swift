@@ -61,7 +61,7 @@ extension ScrollingNavigationController {
     return CGSize(width: scrollView.contentSize.width, height: scrollView.contentSize.height + verticalInset)
   }
   
-  var deltaLimit: CGFloat {
+  var navbarFullHeight: CGFloat {
     return navbarHeight - statusBarHeight
   }
 }
