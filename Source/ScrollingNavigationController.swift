@@ -126,6 +126,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open var shouldUpdateContentInset = true
 
+  /// Holds the percentage of the navigation bar that is hidde. At 0 the navigation bar is fully visible, at 1 fully hidden. CGFloat with values from 0 to 1
+  open var percentage: CGFloat {
+    get {
+      return (navigationBar.frame.origin.y - statusBarHeight) / (-navbarFullHeight - statusBarHeight)
+    }
+  }
+  
   /// Stores some metadata of a UITabBar if one is passed in the followers array
   internal struct TabBarMock {
     var isTranslucent: Bool = false
@@ -147,11 +154,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   var scrollSpeedFactor: CGFloat = 1
   var collapseDirectionFactor: CGFloat = 1 // Used to determine the sign of content offset depending of collapse direction
   var previousState: NavigationBarState = .expanded // Used to mark the state before the app goes in background
-  fileprivate var percentage: CGFloat {
-    get {
-      return (navigationBar.frame.origin.y - statusBarHeight) / (-navbarFullHeight - statusBarHeight)
-    }
-  }
+  
   /**
    Start scrolling
 
@@ -458,7 +461,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   private func updateFollowers() {
     followers.forEach {
       guard let tabBar = $0.view as? UITabBar else {
-        $0.view?.transform = CGAffineTransform(translationX: 0, y: CGFloat($0.direction.rawValue) * percentage * ($0.view?.frame.height ?? 0))
+        let height = $0.view?.frame.height ?? 0
+        var safeArea: CGFloat = 0
+        if #available(iOS 11.0, *) {
+          // Account for the safe area for footers and toolbars at the bottom of the screen
+          safeArea = ($0.direction == .scrollDown) ? (topViewController?.view.safeAreaInsets.bottom ?? 0) : 0
+        }
+        $0.view?.transform = CGAffineTransform(translationX: 0, y: CGFloat($0.direction.rawValue) * percentage * (height + safeArea))
         return
       }
       tabBar.isTranslucent = true
