@@ -242,7 +242,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter duration: Optional animation duration. Defaults to 0.1
    */
   open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
-    print("show")
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
 
     guard state == .collapsed else {
@@ -463,7 +462,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         return
       }
       tabBar.isTranslucent = true
-      tabBar.frame.origin.y = percentage * (tabBar.frame.height / navigationBar.frame.height)
+      tabBar.transform = CGAffineTransform(translationX: 0, y: percentage * tabBar.frame.height)
 
       // Set the bar to its original state if it's in its original position
       if let originalTabBar = sourceTabBar, originalTabBar.origin.y == round(tabBar.frame.origin.y) {
