@@ -467,7 +467,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
           // Account for the safe area for footers and toolbars at the bottom of the screen
           safeArea = ($0.direction == .scrollDown) ? (topViewController?.view.safeAreaInsets.bottom ?? 0) : 0
         }
-        $0.view?.transform = CGAffineTransform(translationX: 0, y: CGFloat($0.direction.rawValue) * percentage * (height + safeArea))
+        switch $0.direction {
+        case .scrollDown:
+          $0.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea))
+        case .scrollUp:
+          $0.view?.transform = CGAffineTransform(translationX: 0, y: -(statusBarHeight - navigationBar.frame.origin.y))
+        }
+        
         return
       }
       tabBar.isTranslucent = true

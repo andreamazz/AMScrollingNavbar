@@ -101,6 +101,11 @@
       "idiom" : "ipad",
       "filename" : "AMScrollingNavbar-167.png",
       "scale" : "2x"
+    },
+    {
+      "idiom" : "ios-marketing",
+      "size" : "1024x1024",
+      "scale" : "1x"
     }
   ],
   "info" : {
