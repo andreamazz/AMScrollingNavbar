@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.platform      = :ios, '8.0'
   s.source_files  = 'Source', '*.{swift}'
   s.requires_arc  = true
-  s.swift_version = '4.0'
+  s.swift_version = '4.2'
   s.social_media_url = 'https://twitter.com/theandreamazz'
 end

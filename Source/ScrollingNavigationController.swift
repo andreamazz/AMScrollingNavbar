@@ -186,10 +186,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     scrollableView.addGestureRecognizer(gestureRecognizer!)
 
     previousOrientation = UIDevice.current.orientation
-    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.willResignActive(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.windowDidBecomeVisible(_:)), name: NSNotification.Name.UIWindowDidBecomeVisible, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.willResignActive(_:)), name: UIApplication.willResignActiveNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.didRotate(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ScrollingNavigationController.windowDidBecomeVisible(_:)), name: UIWindow.didBecomeVisibleNotification, object: nil)
 
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
@@ -290,8 +290,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     scrollingEnabled = false
 
     let center = NotificationCenter.default
-    center.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-    center.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    center.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+    center.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
   }
 
   // MARK: - Gesture recognizer
@@ -538,7 +538,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     delayDistance = maxDelay
     
-    UIView.animate(withDuration: duration, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+    UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
       self.updateSizing(delta)
       self.updateFollowers()
       self.updateNavbarAlpha()
@@ -561,10 +561,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     navigationItem.rightBarButtonItem?.tintColor = navigationItem.rightBarButtonItem?.tintColor?.withAlphaComponent(alpha)
     navigationItem.leftBarButtonItems?.forEach { $0.tintColor = $0.tintColor?.withAlphaComponent(alpha) }
     navigationItem.rightBarButtonItems?.forEach { $0.tintColor = $0.tintColor?.withAlphaComponent(alpha) }
-    if let titleColor = navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] as? UIColor {
-      navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] = titleColor.withAlphaComponent(alpha)
+    if let titleColor = navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] as? UIColor {
+      navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = titleColor.withAlphaComponent(alpha)
     } else {
-      navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] = UIColor.black.withAlphaComponent(alpha)
+      navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = UIColor.black.withAlphaComponent(alpha)
     }
 
     // Hide all possible button items and navigation items
@@ -616,7 +616,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     guard let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer else { return true }
     let velocity = gestureRecognizer.velocity(in: gestureRecognizer.view)
-    return fabs(velocity.y) > fabs(velocity.x)
+    return abs(velocity.y) > abs(velocity.x)
   }
 
   /**
