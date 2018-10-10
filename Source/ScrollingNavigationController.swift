@@ -58,7 +58,7 @@ import UIKit
  Wraps a view that follows the navigation bar, providing the direction that the view should follow
  */
 @objcMembers
-open class NavigationBarFollower {
+open class NavigationBarFollower: NSObject {
   public weak var view: UIView?
   public var direction = NavigationBarFollowerCollapseDirection.scrollUp
   

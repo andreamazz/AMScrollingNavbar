@@ -70,7 +70,7 @@ override func viewWillAppear(_ animated: Bool) {
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [(ScrollingNavigationController *)self.navigationController followScrollView:self.tableView delay:50.0f];
+    [(ScrollingNavigationController *)self.navigationController followScrollView:self.tableView delay:0 scrollSpeedFactor:1 collapseDirection:NavigationBarCollapseDirectionScrollDown followers:nil];
 }
 ```
 
