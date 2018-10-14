@@ -440,7 +440,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     updateNavbarAlpha()
     restoreContentOffset(scrollDelta)
     updateFollowers()
-    updateContentInset(scrollDelta)
+//    updateContentInset(scrollDelta)
     
     let newState = state
     if newState != previousState {
@@ -542,7 +542,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateSizing(delta)
       self.updateFollowers()
       self.updateNavbarAlpha()
-      self.updateContentInset(delta)
+//      self.updateContentInset(delta)
     }, completion: nil)
   }
 
