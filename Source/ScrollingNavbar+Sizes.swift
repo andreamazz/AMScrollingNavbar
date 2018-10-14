@@ -22,7 +22,7 @@ extension ScrollingNavigationController {
       // Account for the notch when the status bar is hidden
       statusBarHeight = max(UIApplication.shared.statusBarFrame.size.height, UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0)
     }
-    return statusBarHeight - extendedStatusBarDifference
+    return max(statusBarHeight - extendedStatusBarDifference,0)
   }
   
   // Extended status call changes the bounds of the presented view
