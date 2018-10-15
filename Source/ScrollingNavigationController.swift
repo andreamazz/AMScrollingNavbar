@@ -567,7 +567,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       let blackAlpha = UIColor.black.withAlphaComponent(alpha)
       if navigationBar.titleTextAttributes == nil {
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: blackAlpha]
-      }else{
+      } else {
         navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = blackAlpha
       }
     }
