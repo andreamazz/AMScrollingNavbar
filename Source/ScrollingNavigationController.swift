@@ -564,7 +564,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if let titleColor = navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] as? UIColor {
       navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = titleColor.withAlphaComponent(alpha)
     } else {
-      navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = UIColor.black.withAlphaComponent(alpha)
+      if navigationBar.titleTextAttributes == nil {
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(alpha)]
+      }else{
+        navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = UIColor.black.withAlphaComponent(alpha)
+      }
     }
 
     // Hide all possible button items and navigation items
@@ -581,9 +585,14 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {
       if let label = view as? UILabel {
+        label.textColor = label.textColor.withAlphaComponent(alpha)
+      }else if let label = view as? UITextField {
         label.textColor = label.textColor?.withAlphaComponent(alpha)
+      }else if view.classForCoder == NSClassFromString("_UINavigationBarContentView") {
+        // do nothing
+      }else{
+        view.alpha = alpha
       }
-      view.alpha = alpha
       view.subviews.forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
     }
 
