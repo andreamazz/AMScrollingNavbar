@@ -581,7 +581,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
     func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {
       if let label = view as? UILabel {
-        label.textColor = (view as! UILabel).textColor?.withAlphaComponent(alpha)
+        label.textColor = label.textColor?.withAlphaComponent(alpha)
       }
       view.alpha = alpha
       view.subviews.forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
@@ -591,7 +591,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       .filter(shouldHideView)
       .forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
     navigationBar.layoutSubviews()
-    
+
     // Hide the left items
     navigationItem.leftBarButtonItem?.customView?.alpha = alpha
     navigationItem.leftBarButtonItems?.forEach { $0.customView?.alpha = alpha }
