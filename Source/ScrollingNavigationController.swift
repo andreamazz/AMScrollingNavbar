@@ -590,7 +590,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     navigationBar.subviews
       .filter(shouldHideView)
       .forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
-    
     navigationBar.layoutSubviews()
     
     // Hide the left items
