@@ -372,7 +372,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
     let scrollDelta = delta
     // Do not hide to early
-    if contentOffset.y < (-fullNavbarHeight + scrollDelta) {
+    if contentOffset.y < ((navigationBar.isTranslucent ? -fullNavbarHeight : 0) + scrollDelta) {
       return false
     }
     // Check for rubberbanding
