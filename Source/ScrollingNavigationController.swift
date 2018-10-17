@@ -371,7 +371,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
     let scrollDelta = delta
-    // Do not hide to early
+    // Do not hide too early
     if contentOffset.y < ((navigationBar.isTranslucent ? -fullNavbarHeight : 0) + scrollDelta) {
       return false
     }
