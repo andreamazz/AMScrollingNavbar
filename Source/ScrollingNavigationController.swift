@@ -183,6 +183,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ScrollingNavigationController.handlePan(_:)))
     gestureRecognizer?.maximumNumberOfTouches = 1
     gestureRecognizer?.delegate = self
+    gestureRecognizer?.cancelsTouchesInView = false
     scrollableView.addGestureRecognizer(gestureRecognizer!)
 
     previousOrientation = UIDevice.current.orientation
@@ -297,6 +298,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Gesture recognizer
 
   func handlePan(_ gesture: UIPanGestureRecognizer) {
+    if let tableView = scrollableView as? UITableView, tableView.isEditing {
+      return
+    }
     if let superview = scrollableView?.superview {
       let translation = gesture.translation(in: superview)
       let delta = (lastContentOffset - translation.y) / scrollSpeedFactor
