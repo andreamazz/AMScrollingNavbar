@@ -371,6 +371,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
 
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
     let scrollDelta = delta
+    // Do not hide too early
+    if contentOffset.y < ((navigationBar.isTranslucent ? -fullNavbarHeight : 0) + scrollDelta) {
+      return false
+    }
     // Check for rubberbanding
     if scrollDelta < 0 {
       if let scrollableView = scrollableView , contentOffset.y + scrollableView.frame.size.height > contentSize.height && scrollableView.frame.size.height < contentSize.height {
@@ -564,7 +568,12 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if let titleColor = navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] as? UIColor {
       navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = titleColor.withAlphaComponent(alpha)
     } else {
-      navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = UIColor.black.withAlphaComponent(alpha)
+      let blackAlpha = UIColor.black.withAlphaComponent(alpha)
+      if navigationBar.titleTextAttributes == nil {
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: blackAlpha]
+      } else {
+        navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = blackAlpha
+      }
     }
 
     // Hide all possible button items and navigation items
@@ -580,7 +589,15 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
 
     func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {
-      view.alpha = alpha
+      if let label = view as? UILabel {
+        label.textColor = label.textColor.withAlphaComponent(alpha)
+      } else if let label = view as? UITextField {
+        label.textColor = label.textColor?.withAlphaComponent(alpha)
+      } else if view.classForCoder == NSClassFromString("_UINavigationBarContentView") {
+        // do nothing
+      } else {
+        view.alpha = alpha
+      }
       view.subviews.forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
     }
 
