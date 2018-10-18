@@ -126,6 +126,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open var shouldUpdateContentInset = true
 
+  /**
+   Determines if the navigation bar should scroll while following a UITableView that is in edit mode.
+   
+   Defaults to `false`
+   */
+  open var shouldScrollWhenTableviewIsEditing = false
+  
   /// Holds the percentage of the navigation bar that is hidde. At 0 the navigation bar is fully visible, at 1 fully hidden. CGFloat with values from 0 to 1
   open var percentage: CGFloat {
     get {
@@ -298,7 +305,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Gesture recognizer
 
   func handlePan(_ gesture: UIPanGestureRecognizer) {
-    if let tableView = scrollableView as? UITableView, tableView.isEditing {
+    if let tableView = scrollableView as? UITableView, !shouldScrollWhenTableviewIsEditing && tableView.isEditing {
       return
     }
     if let superview = scrollableView?.superview {
