@@ -558,7 +558,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateFollowers()
       self.updateNavbarAlpha()
       self.updateContentInset(delta)
-    }, completion: nil)
+    }, completion:{ (_) in
+      self.navigationBar.isUserInteractionEnabled = true
+      self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
+    })
   }
 
   private func updateNavbarAlpha() {
