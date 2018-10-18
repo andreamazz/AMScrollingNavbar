@@ -559,7 +559,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateNavbarAlpha()
       self.updateContentInset(delta)
     }, completion: {(_) in
-      self.navigationBar.isUserInteractionEnabled = true
+      self.navigationBar.isUserInteractionEnabled = (self.state == .expanded)
       self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
     })
   }
