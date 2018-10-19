@@ -140,7 +140,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open var shouldPrefersStatusBarHidden = false
   
-  override open var prefersStatusBarHidden: Bool{
+  override open var prefersStatusBarHidden: Bool {
     return self.shouldPrefersStatusBarHidden
   }
   
