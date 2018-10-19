@@ -132,13 +132,14 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    Defaults to `false`
    */
   open var shouldScrollWhenTableviewIsEditing = false
+  
   /**
-   You can hide UIStatusBar at this UIViewController
+   Determines whether the UIStatusBar should be shown in the UINavigationController.
    
    Defaults to `false`
    */
   open var shouldPrefersStatusBarHidden = false
- /// Set UIStatusBar to Hidden
+
   override open var prefersStatusBarHidden: Bool {
     return self.shouldPrefersStatusBarHidden
   }
@@ -323,7 +324,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Gesture recognizer
 
   func handlePan(_ gesture: UIPanGestureRecognizer) {
-    if let tableView = scrollableView as? UITableView, !shouldScrollWhenTableviewIsEditing && tableView.isEditing {
+    if let tableView = scrollableView as? UITableView, !shouldScrollWhenTableViewIsEditing && tableView.isEditing {
       return
     }
     if let superview = scrollableView?.superview {
@@ -576,7 +577,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateFollowers()
       self.updateNavbarAlpha()
       self.updateContentInset(delta)
-    }, completion: {(_) in
+    }, completion: { _ in
       self.navigationBar.isUserInteractionEnabled = (self.state == .expanded)
       self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
     })
