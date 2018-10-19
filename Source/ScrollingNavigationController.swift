@@ -133,7 +133,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open var shouldScrollWhenTableviewIsEditing = false
  /**
-   You can hide UIStatusbar at this UIViewController
+   You can hide UIStatusBar at this UIViewController
    
    Defaults to `false`
    */
