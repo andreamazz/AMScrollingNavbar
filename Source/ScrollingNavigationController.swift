@@ -248,7 +248,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
 
     if animated {
-      UIView.animate(withDuration: duration, delay: 0, animations: animations, completion: {(_) in
+      UIView.animate(withDuration: duration, delay: 0, animations: animations, completion: { _ in
         self.gestureRecognizer?.isEnabled = true
         self.navigationBar.isUserInteractionEnabled = false
         self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
@@ -286,7 +286,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       }
     }
     if animated {
-      UIView.animate(withDuration: duration, delay: 0, animations: animations, completion: {(_) in
+      UIView.animate(withDuration: duration, delay: 0, animations: animations, completion: { _ in
         self.gestureRecognizer?.isEnabled = true
         self.navigationBar.isUserInteractionEnabled = true
         self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
