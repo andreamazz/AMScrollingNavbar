@@ -132,6 +132,17 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    Defaults to `false`
    */
   open var shouldScrollWhenTableViewIsEditing = false
+ 
+  /**
+   Determines whether the UIStatusBar should be shown in the UINavigationController.
+   
+   Defaults to `false`
+   */
+  open var shouldPrefersStatusBarHidden = false
+  
+  override open var prefersStatusBarHidden: Bool {
+    return self.shouldPrefersStatusBarHidden
+  }
   
   /// Holds the percentage of the navigation bar that is hidde. At 0 the navigation bar is fully visible, at 1 fully hidden. CGFloat with values from 0 to 1
   open var percentage: CGFloat {
