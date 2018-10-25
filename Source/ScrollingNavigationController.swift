@@ -175,7 +175,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    */
   open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, followers: [NavigationBarFollower] = []) {
     guard self.scrollableView == nil else {
-      // Restore previous state. UIKit restores the navbar to its full height on view changes (e.g. during a modal preentation), so we need to restore the status once UIKit is done
+      // Restore previous state. UIKit restores the navbar to its full height on view changes (e.g. during a modal presentation), so we need to restore the status once UIKit is done
       switch previousState {
       case .collapsed:
         hideNavbar(animated: false)
