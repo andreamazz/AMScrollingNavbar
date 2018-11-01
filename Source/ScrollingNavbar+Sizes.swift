@@ -33,7 +33,6 @@ extension ScrollingNavigationController {
       appHeight = superView.bounds.height
       nextView = superView.superview
     }
-    
     return abs(appHeight - (UIApplication.shared.delegate?.window??.frame.size.height ?? UIScreen.main.bounds.height))
   }
   
