@@ -140,6 +140,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
   }
   
+  /// the additional distance that the navigation bar can move up after reaching the top of the screen. Defaults to 0
+  open var additionalOffset: CGFloat = 0
+
   /// Stores some metadata of a UITabBar if one is passed in the followers array
   internal struct TabBarMock {
     var isTranslucent: Bool = false
@@ -171,9 +174,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter delay: The delay expressed in points that determines the scrolling resistance. Defaults to `0`
    - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
    - parameter collapseDirection : The direction of scrolling that the navigation bar should be collapsed
+   - parameter additionalOffset : The additional distance that the navigation bar can move up after reaching the top of the screen. Defaults to 0
    - parameter followers: An array of `NavigationBarFollower`s that will follow the navbar. The wrapper holds the direction that the view will follow
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, followers: [NavigationBarFollower] = []) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, additionalOffset: CGFloat = 0, followers: [NavigationBarFollower] = []) {
     guard self.scrollableView == nil else {
       // Restore previous state. UIKit restores the navbar to its full height on view changes (e.g. during a modal presentation), so we need to restore the status once UIKit is done
       switch previousState {
@@ -202,6 +206,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     maxDelay = CGFloat(delay)
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
+    self.additionalOffset = additionalOffset
 
     // Save TabBar state (the state is changed during the transition and restored on compeltion)
     if let tab = followers.map({ $0.view }).first(where: { $0 is UITabBar }) as? UITabBar {
@@ -535,18 +540,19 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     let frame = navigationBar.frame
     var duration = TimeInterval(0)
     var delta = CGFloat(0.0)
+	let navBarHeightWithOffset = frame.size.height + additionalOffset
 
     // Scroll back down
-    let threshold = statusBarHeight - (frame.size.height / 2)
+    let threshold = statusBarHeight - (navBarHeightWithOffset / 2)
     if navigationBar.frame.origin.y >= threshold {
       delta = frame.origin.y - statusBarHeight
-      let distance = delta / (frame.size.height / 2)
+      let distance = delta / (navBarHeightWithOffset / 2)
       duration = TimeInterval(abs(distance * 0.2))
       scrollingNavbarDelegate?.scrollingNavigationController?(self, willChangeState: state)
     } else {
       // Scroll up
       delta = frame.origin.y + navbarFullHeight
-      let distance = delta / (frame.size.height / 2)
+      let distance = delta / (navBarHeightWithOffset / 2)
       duration = TimeInterval(abs(distance * 0.2))
       scrollingNavbarDelegate?.scrollingNavigationController?(self, willChangeState: state)
     }

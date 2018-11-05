@@ -62,6 +62,6 @@ extension ScrollingNavigationController {
   }
   
   var navbarFullHeight: CGFloat {
-    return navbarHeight - statusBarHeight
+    return navbarHeight - statusBarHeight + additionalOffset
   }
 }
