@@ -107,6 +107,10 @@ if let navigationController = navigationController as? ScrollingNavigationContro
 
 Note that when navigating away from the controller the followers might keep the scroll offset. Refer to [Handling navigation](https://github.com/andreamazz/AMScrollingNavbar#handling-navigation) for proper setup.  
 
+## Additional scroll
+
+If you want to furhter scroll the navigation bar out of the way, you can use the optional parameter `additionalOffset` in the `followScrollView` call.
+
 ## Scrolling the TabBar
 You can also pass a `UITabBar` in the `followers` array:
 ```swift
