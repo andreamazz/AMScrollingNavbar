@@ -17,6 +17,15 @@ import UIKit
   ///   - controller: the ScrollingNavigationController
   ///   - state: the new state
   @objc optional func scrollingNavigationController(_ controller: ScrollingNavigationController, willChangeState state: NavigationBarState)
+  /// Called when the navigation bar position changed
+  ///
+  /// - Parameters:
+  ///   - controller: the ScrollingNavigationController
+  ///   - offset: changes amount
+  ///   - state: the new state
+  @objc optional func scrollingNavigationController(_ controller: ScrollingNavigationController,
+                                                    didUpdateOffset offset: CGFloat,
+                                                    forChangeState state: NavigationBarState)
 }
 
 /**
@@ -475,6 +484,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if self.shouldUpdateContentInset, let contentInset = scrollView()?.contentInset, let scrollInset = scrollView()?.scrollIndicatorInsets {
       scrollView()?.contentInset = UIEdgeInsets(top: contentInset.top - delta, left: contentInset.left, bottom: contentInset.bottom, right: contentInset.right)
       scrollView()?.scrollIndicatorInsets = UIEdgeInsets(top: scrollInset.top - delta, left: scrollInset.left, bottom: scrollInset.bottom, right: scrollInset.right)
+      scrollingNavbarDelegate?.scrollingNavigationController?(self, didUpdateOffset: contentInset.top - delta, forChangeState: state)
     }
   }
 
