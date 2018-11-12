@@ -24,7 +24,7 @@ class WebViewController: ScrollingNavigationViewController, UIWebViewDelegate {
     navigationController?.navigationBar.barTintColor = UIColor(red:0.2, green:0.28, blue:0.37, alpha:1)
 
     // Load some content
-    webView.load(URLRequest(url: URL(string: "http://www.reddit.com")!))
+    webView.load(URLRequest(url: URL(string: "https://www.fancypixel.it")!))
     
     // Or try with some local content:
 //    let url = Bundle.main.url(forResource: "index", withExtension: "html")!
