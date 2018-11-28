@@ -59,12 +59,19 @@ import UIKit
  */
 @objcMembers
 open class NavigationBarFollower: NSObject {
+  /// The view that will follow the scrolling
   public weak var view: UIView?
+  
+  /// The direction to follow
   public var direction = NavigationBarFollowerCollapseDirection.scrollUp
   
-  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp) {
+  /// An offset to keep part of the view visible (positive value) or to further shove it out of the way (negative values)
+  public var offset = CGFloat(0)
+  
+  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp, offset: CGFloat = 0) {
     self.view = view
     self.direction = direction
+    self.offset = offset
   }
 }
 
@@ -489,7 +496,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         }
         switch $0.direction {
         case .scrollDown:
-          $0.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea))
+          $0.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea + $0.offset))
         case .scrollUp:
           $0.view?.transform = CGAffineTransform(translationX: 0, y: -(statusBarHeight - navigationBar.frame.origin.y))
         }
