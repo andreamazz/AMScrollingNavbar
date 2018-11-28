@@ -61,7 +61,7 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
 
     if let navigationController = self.navigationController as? ScrollingNavigationController {
       if let tabBarController = tabBarController {
-        navigationController.followScrollView(scrollView, delay: 0, scrollSpeedFactor: 2, followers: [NavigationBarFollower(view: tabBarController.tabBar, direction: .scrollDown, offset: 10)])
+        navigationController.followScrollView(scrollView, delay: 0, scrollSpeedFactor: 2, followers: [NavigationBarFollower(view: tabBarController.tabBar, direction: .scrollDown, offset: 50)])
       } else {
         navigationController.followScrollView(scrollView, delay: 0.0, scrollSpeedFactor: 2)
       }

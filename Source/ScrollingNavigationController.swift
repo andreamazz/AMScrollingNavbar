@@ -496,7 +496,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         }
         switch $0.direction {
         case .scrollDown:
-          $0.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea + $0.offset))
+          $0.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea - $0.offset))
         case .scrollUp:
           $0.view?.transform = CGAffineTransform(translationX: 0, y: -(statusBarHeight - navigationBar.frame.origin.y))
         }
@@ -504,7 +504,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         return
       }
       tabBar.isTranslucent = true
-      tabBar.transform = CGAffineTransform(translationX: 0, y: percentage * tabBar.frame.height)
+      tabBar.transform = CGAffineTransform(translationX: 0, y: percentage * (tabBar.frame.height - $0.offset))
 
       // Set the bar to its original state if it's in its original position
       if let originalTabBar = sourceTabBar, originalTabBar.origin.y == round(tabBar.frame.origin.y) {
