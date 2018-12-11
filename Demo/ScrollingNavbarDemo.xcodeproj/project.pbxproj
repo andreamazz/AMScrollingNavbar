@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3EAC714EF2EE931D67218238 /* Pods_ScrollingNavbarDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6FF01647A43FEABE04BE8C /* Pods_ScrollingNavbarDemoTests.framework */; };
+		6510E9BB21BFD300009DFC4A /* DisappearingHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6510E9BA21BFD300009DFC4A /* DisappearingHeaderViewController.swift */; };
 		65299CB120EBB0F40034C209 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 65299CB020EBB0F40034C209 /* index.html */; };
 		652AA8411C80460400FDC96F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AA8401C80460400FDC96F /* CollectionViewCell.swift */; };
 		652AA8431C80468A00FDC96F /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AA8421C80468A00FDC96F /* CollectionViewController.swift */; };
@@ -39,6 +40,7 @@
 		1E6B1D01D640F0DDFA6A7BC6 /* Pods-ScrollingNavbarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.release.xcconfig"; sourceTree = "<group>"; };
 		2E73B5E68EC0D0B60A270B2B /* Pods-ScrollingNavbarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		419E4C1BCB2040931AB9295F /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScrollingNavbarDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6510E9BA21BFD300009DFC4A /* DisappearingHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingHeaderViewController.swift; sourceTree = "<group>"; };
 		65299CB020EBB0F40034C209 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		652AA8401C80460400FDC96F /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		652AA8421C80468A00FDC96F /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				652AA8421C80468A00FDC96F /* CollectionViewController.swift */,
 				658AE0C61FAC7C2500A9B188 /* LargeTitleViewController.swift */,
 				65E5DFE721490DD7008BF7ED /* TestViewController.swift */,
+				6510E9BA21BFD300009DFC4A /* DisappearingHeaderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6510E9BB21BFD300009DFC4A /* DisappearingHeaderViewController.swift in Sources */,
 				652BE2D61B62805C00DE75C7 /* ViewController.swift in Sources */,
 				658FA1721B836D9C00EB32A4 /* ScrollViewController.swift in Sources */,
 				652AA8411C80460400FDC96F /* CollectionViewCell.swift in Sources */,

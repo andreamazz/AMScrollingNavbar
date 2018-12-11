@@ -161,6 +161,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
   }
 
+  open weak var disappearingHeader: UIView?
+  
   open fileprivate(set) var gestureRecognizer: UIPanGestureRecognizer?
   fileprivate var sourceTabBar: TabBarMock?
   fileprivate var previousOrientation: UIDeviceOrientation = UIDevice.current.orientation
@@ -184,7 +186,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter additionalOffset : The additional distance that the navigation bar can move up after reaching the top of the screen. Defaults to 0
    - parameter followers: An array of `NavigationBarFollower`s that will follow the navbar. The wrapper holds the direction that the view will follow
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, additionalOffset: CGFloat = 0, followers: [NavigationBarFollower] = []) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, additionalOffset: CGFloat = 0, followers: [NavigationBarFollower] = [], disappearingHeader: UIView? = nil) {
     guard self.scrollableView == nil else {
       // Restore previous state. UIKit restores the navbar to its full height on view changes (e.g. during a modal presentation), so we need to restore the status once UIKit is done
       switch previousState {
@@ -222,6 +224,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     self.followers = followers
     self.scrollSpeedFactor = CGFloat(scrollSpeedFactor)
     self.collapseDirectionFactor = CGFloat(collapseDirection.rawValue)
+    self.disappearingHeader = disappearingHeader
   }
 
   /**
@@ -320,6 +323,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if let tableView = scrollableView as? UITableView, !shouldScrollWhenTableViewIsEditing && tableView.isEditing {
       return
     }
+    print("pan")
     if let superview = scrollableView?.superview {
       let translation = gesture.translation(in: superview)
       let delta = (lastContentOffset - translation.y) / scrollSpeedFactor
