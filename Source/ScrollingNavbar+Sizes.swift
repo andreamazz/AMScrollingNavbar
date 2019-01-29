@@ -38,27 +38,24 @@ extension ScrollingNavigationController {
     return 0
   }
   
-  func scrollView() -> UIScrollView? {
+  var followedScrollView: UIScrollView {
     if let webView = self.scrollableView as? UIWebView {
       return webView.scrollView
     } else if let wkWebView = self.scrollableView as? WKWebView {
       return wkWebView.scrollView
-    } else {
-      return scrollableView as? UIScrollView
+    } else if let scrollView = scrollableView as? UIScrollView {
+      return scrollView
     }
+    fatalError("Make sure to follow a compatible scroll view")
   }
   
   var contentOffset: CGPoint {
-    return scrollView()?.contentOffset ?? CGPoint.zero
+    return followedScrollView.contentOffset
   }
   
   var contentSize: CGSize {
-    guard let scrollView = scrollView() else {
-      return CGSize.zero
-    }
-    
-    let verticalInset = scrollView.contentInset.top + scrollView.contentInset.bottom
-    return CGSize(width: scrollView.contentSize.width, height: scrollView.contentSize.height + verticalInset)
+    let verticalInset = followedScrollView.contentInset.top + followedScrollView.contentInset.bottom
+    return CGSize(width: followedScrollView.contentSize.width, height: followedScrollView.contentSize.height + verticalInset)
   }
   
   var navbarFullHeight: CGFloat {

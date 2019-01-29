@@ -1,5 +1,5 @@
 PODS:
-  - AMScrollingNavbar (5.0.4)
+  - AMScrollingNavbar (5.2.0)
 
 DEPENDENCIES:
   - AMScrollingNavbar (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AMScrollingNavbar: 85f694557595138626cdcf4a2103411d1928bb2a
+  AMScrollingNavbar: c8871d436e412d17c4ad6caa3e069bc688568c5d
 
 PODFILE CHECKSUM: 0f0a96dab8d2652fa45ba1e24893191416c0d5a7
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

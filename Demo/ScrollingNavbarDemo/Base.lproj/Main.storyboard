@@ -313,15 +313,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-7O-5lm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="GKQ-CJ-295"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MQ1-xp-7h2">
-                                <rect key="frame" x="0.0" y="144" width="375" height="523"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="vA4-Cv-mZu">
@@ -338,16 +331,23 @@
                                     <outlet property="delegate" destination="hno-FR-NRP" id="NPr-TK-6zX"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-7O-5lm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="GKQ-CJ-295"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IZQ-YZ-dIl" firstAttribute="top" secondItem="MQ1-xp-7h2" secondAttribute="bottom" id="J72-7d-dSE"/>
+                            <constraint firstItem="IZQ-YZ-dIl" firstAttribute="top" secondItem="MQ1-xp-7h2" secondAttribute="bottom" id="7eX-Qw-aOQ"/>
                             <constraint firstItem="gfE-7O-5lm" firstAttribute="top" secondItem="caR-Qn-43h" secondAttribute="bottom" id="LEI-WU-iiT"/>
-                            <constraint firstAttribute="trailing" secondItem="MQ1-xp-7h2" secondAttribute="trailing" id="WQj-hC-o2O"/>
-                            <constraint firstItem="MQ1-xp-7h2" firstAttribute="top" secondItem="gfE-7O-5lm" secondAttribute="bottom" id="Y3M-U7-0FP"/>
+                            <constraint firstItem="MQ1-xp-7h2" firstAttribute="top" secondItem="H9Y-Bp-C7s" secondAttribute="top" id="PYO-m4-r99"/>
+                            <constraint firstAttribute="trailing" secondItem="MQ1-xp-7h2" secondAttribute="trailing" id="dyL-n9-RMn"/>
                             <constraint firstAttribute="trailing" secondItem="gfE-7O-5lm" secondAttribute="trailing" id="gXB-Ys-dBH"/>
                             <constraint firstItem="gfE-7O-5lm" firstAttribute="leading" secondItem="H9Y-Bp-C7s" secondAttribute="leading" id="haZ-HJ-CY3"/>
-                            <constraint firstItem="MQ1-xp-7h2" firstAttribute="leading" secondItem="H9Y-Bp-C7s" secondAttribute="leading" id="pbk-k4-fKG"/>
+                            <constraint firstItem="MQ1-xp-7h2" firstAttribute="leading" secondItem="H9Y-Bp-C7s" secondAttribute="leading" id="w8R-qi-Lbj"/>
                         </constraints>
                     </view>
                     <connections>

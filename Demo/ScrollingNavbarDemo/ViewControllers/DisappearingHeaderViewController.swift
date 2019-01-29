@@ -1,18 +1,21 @@
 import UIKit
 import AMScrollingNavbar
 
-class DisappearingHeaderViewController: UIViewController {
+class DisappearingHeaderViewController: ScrollingNavigationViewController {
   @IBOutlet var disappearingHeader: UIView!
   @IBOutlet var tableView: UITableView!
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    tableView.contentInset.top = disappearingHeader.frame.height
+  }
+  
   // Enable the navbar scrolling
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
-    print("here")
     if let navigationController = self.navigationController as? ScrollingNavigationController {
-      print("there")
-      navigationController.followScrollView(tableView)
+      navigationController.followScrollView(tableView, floatingHeader: disappearingHeader)
     }
   }
 }

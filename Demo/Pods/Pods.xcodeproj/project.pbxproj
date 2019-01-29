@@ -7,33 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F090D8496A58547B2BC53E51D3FE108 /* Pods-ScrollingNavbarDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCD59785AF202C30CD9A16D3FEEB709 /* Pods-ScrollingNavbarDemoTests-dummy.m */; };
-		762F5E4E168978585ABE7EFD3F1F8660 /* Pods-ScrollingNavbarDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8B3BFE85AF651A65E2CC331430E3A1 /* Pods-ScrollingNavbarDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		845851E9B86F87F9183224A05BAE197C /* ScrollingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24597B74C970678AC93F27BBB914DD19 /* ScrollingNavigationController.swift */; };
-		97ED6F1AA5A07ACEDF982802FEEF45A1 /* AMScrollingNavbar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DEC747959DCFA8E832165FB841CA10 /* AMScrollingNavbar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFC78A9EFCAA827B42C87A1141CB600A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		D66952E2B42275117EFCAC8AEBCCCE39 /* ScrollingNavbar+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0426DB4BF950345DFD1E948EA93EC /* ScrollingNavbar+Sizes.swift */; };
-		DCD8E5823F87D82D7CCECB8CC4A6A629 /* Pods-ScrollingNavbarDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB89785BAE7430AE7EF62DC0CBFDA77 /* Pods-ScrollingNavbarDemo-dummy.m */; };
-		DF166A82DF58512DB0908330B037E29E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		EB548D73CCEADAB1269324E3F97C1356 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		F40A2DB8664546D157EF374976225384 /* ScrollingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD49E498274B2BC5F9BAD26B90BA98 /* ScrollingNavigationViewController.swift */; };
-		F89EEB37E919F207C3F6350D0EC6A23B /* AMScrollingNavbar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D723941CE0AA217390E60020166CDD3 /* AMScrollingNavbar-dummy.m */; };
-		FED2D16AA427D9F973C1F1EA1040C2CD /* Pods-ScrollingNavbarDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A9A7E49DEC689A3B8D6CDC8F484203 /* Pods-ScrollingNavbarDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EE6744F3F70F4919C96843BCF23EDBA /* ScrollingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD49E498274B2BC5F9BAD26B90BA98 /* ScrollingNavigationViewController.swift */; };
+		236FC12F1019C191CE48D9734874520D /* AMScrollingNavbar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DEC747959DCFA8E832165FB841CA10 /* AMScrollingNavbar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36D29AF68EFF07B2DF7EA8340027B045 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		6387BF946ADFC2BDFE311630F5EF91F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		80F81CCB56068296F2E4AFD03A589147 /* Pods-ScrollingNavbarDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A9A7E49DEC689A3B8D6CDC8F484203 /* Pods-ScrollingNavbarDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		85437A2AB1BA85F19E0681A6736F0C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		8780E7C615BDE60A6F7259F17DAA8263 /* Pods-ScrollingNavbarDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB89785BAE7430AE7EF62DC0CBFDA77 /* Pods-ScrollingNavbarDemo-dummy.m */; };
+		9AED2003B6F7D4F68C7B904EC9616535 /* Pods-ScrollingNavbarDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCD59785AF202C30CD9A16D3FEEB709 /* Pods-ScrollingNavbarDemoTests-dummy.m */; };
+		A6DE263E71F83233218ADC4BCBC61051 /* AMScrollingNavbar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D723941CE0AA217390E60020166CDD3 /* AMScrollingNavbar-dummy.m */; };
+		BC04863D2FB8A521F65BC8A7A456D10D /* ScrollingNavbar+Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0426DB4BF950345DFD1E948EA93EC /* ScrollingNavbar+Sizes.swift */; };
+		CD954A347CE5433CA4493D7F1AAF111E /* ScrollingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24597B74C970678AC93F27BBB914DD19 /* ScrollingNavigationController.swift */; };
+		E09BB5615650F968C7105B6CA1EB7240 /* Pods-ScrollingNavbarDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8B3BFE85AF651A65E2CC331430E3A1 /* Pods-ScrollingNavbarDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		75950181F23D1484D31313C8091BBD86 /* PBXContainerItemProxy */ = {
+		65624B1EA9F76BE09040E3CC3DBF0085 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B7BEF22A2D2E5C2E4174836475BC47B;
+			remoteGlobalIDString = 3F6D9E4DCB1FF94DB937778C8B29B4F3;
 			remoteInfo = AMScrollingNavbar;
 		};
-		C65C9601DE987BF8CD4F6D4AE4B20FC2 /* PBXContainerItemProxy */ = {
+		C8283A51483D0A9F444ABB6B39BDEFE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B7BEF22A2D2E5C2E4174836475BC47B;
+			remoteGlobalIDString = 3F6D9E4DCB1FF94DB937778C8B29B4F3;
 			remoteInfo = AMScrollingNavbar;
 		};
 /* End PBXContainerItemProxy section */
@@ -42,10 +42,10 @@
 		02D5D90CF906E4D2EB0F0A20AEE477B8 /* Pods-ScrollingNavbarDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ScrollingNavbarDemo.modulemap"; sourceTree = "<group>"; };
 		05DEC747959DCFA8E832165FB841CA10 /* AMScrollingNavbar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMScrollingNavbar-umbrella.h"; sourceTree = "<group>"; };
 		064FF18ECF3973CFD54F2DA3789DD25D /* Pods-ScrollingNavbarDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ScrollingNavbarDemo-acknowledgements.plist"; sourceTree = "<group>"; };
-		162D43D9779D0BC1615284FF263A8A90 /* Pods_ScrollingNavbarDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ScrollingNavbarDemoTests.framework; path = "Pods-ScrollingNavbarDemoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		162D43D9779D0BC1615284FF263A8A90 /* Pods_ScrollingNavbarDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24597B74C970678AC93F27BBB914DD19 /* ScrollingNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingNavigationController.swift; path = Source/ScrollingNavigationController.swift; sourceTree = "<group>"; };
 		247D7DB35DF31EE983312504B0225321 /* AMScrollingNavbar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AMScrollingNavbar-prefix.pch"; sourceTree = "<group>"; };
-		2DBED90E9BBE8167439F044F7C10AEE8 /* AMScrollingNavbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AMScrollingNavbar.framework; path = AMScrollingNavbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBED90E9BBE8167439F044F7C10AEE8 /* AMScrollingNavbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AMScrollingNavbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		358E993D5FA5EE4FC3137A8C0AF5B524 /* Pods-ScrollingNavbarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ScrollingNavbarDemo.release.xcconfig"; sourceTree = "<group>"; };
 		3BBD7C4C53994F9281C1A925EC978F43 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46E37C9510DB3AC08E25958FB40833A8 /* Pods-ScrollingNavbarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ScrollingNavbarDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -53,25 +53,25 @@
 		5193B76EDA3B10656F4C1B0F10AC9086 /* Pods-ScrollingNavbarDemoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ScrollingNavbarDemoTests-resources.sh"; sourceTree = "<group>"; };
 		5DB89785BAE7430AE7EF62DC0CBFDA77 /* Pods-ScrollingNavbarDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ScrollingNavbarDemo-dummy.m"; sourceTree = "<group>"; };
 		62107AC8CEAC80C6E380B5E848045D3D /* Pods-ScrollingNavbarDemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ScrollingNavbarDemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6CB8D672E4E7AECFDF3BA2A57D0A6F6F /* AMScrollingNavbar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AMScrollingNavbar.modulemap; sourceTree = "<group>"; };
 		6D723941CE0AA217390E60020166CDD3 /* AMScrollingNavbar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AMScrollingNavbar-dummy.m"; sourceTree = "<group>"; };
 		6E722F7D17452704CBA810E230AED320 /* Pods-ScrollingNavbarDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ScrollingNavbarDemo-frameworks.sh"; sourceTree = "<group>"; };
-		78802784FC0591422C6BFF4096EEDDAE /* AMScrollingNavbar.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = AMScrollingNavbar.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		7F6E062218CBD40C7DB2B23B48551F9B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		78802784FC0591422C6BFF4096EEDDAE /* AMScrollingNavbar.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = AMScrollingNavbar.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7F6E062218CBD40C7DB2B23B48551F9B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		828EB48E133305ADA76637A11ABA46A7 /* Pods-ScrollingNavbarDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ScrollingNavbarDemo-resources.sh"; sourceTree = "<group>"; };
 		85B25CA5DB6F1D30836EC8BECDC6CAFD /* AMScrollingNavbar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AMScrollingNavbar.xcconfig; sourceTree = "<group>"; };
 		86A9A7E49DEC689A3B8D6CDC8F484203 /* Pods-ScrollingNavbarDemoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ScrollingNavbarDemoTests-umbrella.h"; sourceTree = "<group>"; };
 		8A8B3BFE85AF651A65E2CC331430E3A1 /* Pods-ScrollingNavbarDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ScrollingNavbarDemo-umbrella.h"; sourceTree = "<group>"; };
 		92F0426DB4BF950345DFD1E948EA93EC /* ScrollingNavbar+Sizes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ScrollingNavbar+Sizes.swift"; path = "Source/ScrollingNavbar+Sizes.swift"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B50C896E0D11F740F971469F3841C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9B50C896E0D11F740F971469F3841C74 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9C2F06E672126A5ED70E7BF6EB74CBEC /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ScrollingNavbarDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7187F852E34A3807309BC772FFEF417 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A92F303EE6DE5EE3F23F9B52B2266259 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADCD49E498274B2BC5F9BAD26B90BA98 /* ScrollingNavigationViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingNavigationViewController.swift; path = Source/ScrollingNavigationViewController.swift; sourceTree = "<group>"; };
 		AFCD59785AF202C30CD9A16D3FEEB709 /* Pods-ScrollingNavbarDemoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ScrollingNavbarDemoTests-dummy.m"; sourceTree = "<group>"; };
-		BDA2866733E65165B3D95E2B086F15C9 /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ScrollingNavbarDemo.framework; path = "Pods-ScrollingNavbarDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDA2866733E65165B3D95E2B086F15C9 /* Pods_ScrollingNavbarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrollingNavbarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D950C48E77C1954DC5E84A03563A78B8 /* Pods-ScrollingNavbarDemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ScrollingNavbarDemoTests.modulemap"; sourceTree = "<group>"; };
 		DA9729ED74152F060469965C3302A798 /* Pods-ScrollingNavbarDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ScrollingNavbarDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E5E84E5C3094983EB94B6AD57CE6C6A4 /* Pods-ScrollingNavbarDemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ScrollingNavbarDemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -79,27 +79,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7FC7DA4455DE724CEE912A07B7489AE5 /* Frameworks */ = {
+		09D05175CD4026ED103EAEA709D728B7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF166A82DF58512DB0908330B037E29E /* Foundation.framework in Frameworks */,
+				85437A2AB1BA85F19E0681A6736F0C57 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A438AA20632DDE533E6FCE9B7298F77F /* Frameworks */ = {
+		99B873ED2353D17BF42633236CAB1535 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB548D73CCEADAB1269324E3F97C1356 /* Foundation.framework in Frameworks */,
+				6387BF946ADFC2BDFE311630F5EF91F9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F323E63D076675D1111966D6BA27561B /* Frameworks */ = {
+		EDE31FC044875096359822DDCA0B37FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFC78A9EFCAA827B42C87A1141CB600A /* Foundation.framework in Frameworks */,
+				36D29AF68EFF07B2DF7EA8340027B045 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +151,14 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
+		44D5347904CF754D6785B84253F2574A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		570F61423DA450BDDB21E24CB9453758 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,17 +199,9 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				44D5347904CF754D6785B84253F2574A /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		DFEA356EC589FDF9F80544188D927EE1 /* Targets Support Files */ = {
@@ -236,58 +236,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		57B4F65B1E366E4C81FB3708E31C8B56 /* Headers */ = {
+		3EC5C266D23C9D810AD90CB15C580E5A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				762F5E4E168978585ABE7EFD3F1F8660 /* Pods-ScrollingNavbarDemo-umbrella.h in Headers */,
+				E09BB5615650F968C7105B6CA1EB7240 /* Pods-ScrollingNavbarDemo-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		581001FD91024E74AC68E3F70F4F05FB /* Headers */ = {
+		9A8AD2DB5BDAE29BE0B43E24BDF9A4B5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FED2D16AA427D9F973C1F1EA1040C2CD /* Pods-ScrollingNavbarDemoTests-umbrella.h in Headers */,
+				80F81CCB56068296F2E4AFD03A589147 /* Pods-ScrollingNavbarDemoTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A39AD5A1075C68996806AE28E03E308D /* Headers */ = {
+		E534850C0372B64A2EA81EA58F7261E0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97ED6F1AA5A07ACEDF982802FEEF45A1 /* AMScrollingNavbar-umbrella.h in Headers */,
+				236FC12F1019C191CE48D9734874520D /* AMScrollingNavbar-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		15B81D234C79B9E39E79CE0779B6FB8A /* Pods-ScrollingNavbarDemo */ = {
+		3F6D9E4DCB1FF94DB937778C8B29B4F3 /* AMScrollingNavbar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C116BAFB1A67F9DEBC196370BCC632CA /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemo" */;
+			buildConfigurationList = CE8A867C3F9E66CDBFBBFEAD227A8396 /* Build configuration list for PBXNativeTarget "AMScrollingNavbar" */;
 			buildPhases = (
-				14C1842985D84EF69762001F2DDB23E8 /* Sources */,
-				A438AA20632DDE533E6FCE9B7298F77F /* Frameworks */,
-				57B4F65B1E366E4C81FB3708E31C8B56 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				79C3FD8B5F64B9A27D70017872B23046 /* PBXTargetDependency */,
-			);
-			name = "Pods-ScrollingNavbarDemo";
-			productName = "Pods-ScrollingNavbarDemo";
-			productReference = BDA2866733E65165B3D95E2B086F15C9 /* Pods_ScrollingNavbarDemo.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9B7BEF22A2D2E5C2E4174836475BC47B /* AMScrollingNavbar */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 15E22F6BCE2C9FC1198908DD7D373B8B /* Build configuration list for PBXNativeTarget "AMScrollingNavbar" */;
-			buildPhases = (
-				8A3E68FC8E1A904E7A52C769E5A6035B /* Sources */,
-				7FC7DA4455DE724CEE912A07B7489AE5 /* Frameworks */,
-				A39AD5A1075C68996806AE28E03E308D /* Headers */,
+				E534850C0372B64A2EA81EA58F7261E0 /* Headers */,
+				1BF1605AE209CBCE789A56D26923E150 /* Sources */,
+				99B873ED2353D17BF42633236CAB1535 /* Frameworks */,
+				15DFD4835564CDD3EE26AB9833F9B0BD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -298,22 +281,42 @@
 			productReference = 2DBED90E9BBE8167439F044F7C10AEE8 /* AMScrollingNavbar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CC5620F993DA27162CFCCB0AF811127A /* Pods-ScrollingNavbarDemoTests */ = {
+		88E38D9A807FF2BFBCD38E3900EF65DC /* Pods-ScrollingNavbarDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5E1CA35E90D8A63867B54944D6B438DB /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemoTests" */;
+			buildConfigurationList = DF43A402EB7439C321D948F2E3B5692B /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemoTests" */;
 			buildPhases = (
-				9FB6588B33AE3573E248BCDA82DEECA6 /* Sources */,
-				F323E63D076675D1111966D6BA27561B /* Frameworks */,
-				581001FD91024E74AC68E3F70F4F05FB /* Headers */,
+				9A8AD2DB5BDAE29BE0B43E24BDF9A4B5 /* Headers */,
+				8AD06AFCDBF26320DA074BFD0BF535B4 /* Sources */,
+				09D05175CD4026ED103EAEA709D728B7 /* Frameworks */,
+				96D224B6E29004EE0B161416CCCCADBB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AD762F29F3763976ADE7418372204A9C /* PBXTargetDependency */,
+				A50017B22FB3965EBAC22E05D078ECEC /* PBXTargetDependency */,
 			);
 			name = "Pods-ScrollingNavbarDemoTests";
 			productName = "Pods-ScrollingNavbarDemoTests";
 			productReference = 162D43D9779D0BC1615284FF263A8A90 /* Pods_ScrollingNavbarDemoTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A5F038CCB776D348555AE0E6C50537A2 /* Pods-ScrollingNavbarDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 254F1B93EC6E8535AF51951651685ACE /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemo" */;
+			buildPhases = (
+				3EC5C266D23C9D810AD90CB15C580E5A /* Headers */,
+				C47CFA3C69D5257DF129D7FF5DE1728C /* Sources */,
+				EDE31FC044875096359822DDCA0B37FB /* Frameworks */,
+				BF3347D64394251ABB49DA15B625F176 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10DFAB4AC1076F0563AEDA14189C9E30 /* PBXTargetDependency */,
+			);
+			name = "Pods-ScrollingNavbarDemo";
+			productName = "Pods-ScrollingNavbarDemo";
+			productReference = BDA2866733E65165B3D95E2B086F15C9 /* Pods_ScrollingNavbarDemo.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -337,60 +340,244 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B7BEF22A2D2E5C2E4174836475BC47B /* AMScrollingNavbar */,
-				15B81D234C79B9E39E79CE0779B6FB8A /* Pods-ScrollingNavbarDemo */,
-				CC5620F993DA27162CFCCB0AF811127A /* Pods-ScrollingNavbarDemoTests */,
+				3F6D9E4DCB1FF94DB937778C8B29B4F3 /* AMScrollingNavbar */,
+				A5F038CCB776D348555AE0E6C50537A2 /* Pods-ScrollingNavbarDemo */,
+				88E38D9A807FF2BFBCD38E3900EF65DC /* Pods-ScrollingNavbarDemoTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		15DFD4835564CDD3EE26AB9833F9B0BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96D224B6E29004EE0B161416CCCCADBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF3347D64394251ABB49DA15B625F176 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		14C1842985D84EF69762001F2DDB23E8 /* Sources */ = {
+		1BF1605AE209CBCE789A56D26923E150 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCD8E5823F87D82D7CCECB8CC4A6A629 /* Pods-ScrollingNavbarDemo-dummy.m in Sources */,
+				A6DE263E71F83233218ADC4BCBC61051 /* AMScrollingNavbar-dummy.m in Sources */,
+				BC04863D2FB8A521F65BC8A7A456D10D /* ScrollingNavbar+Sizes.swift in Sources */,
+				CD954A347CE5433CA4493D7F1AAF111E /* ScrollingNavigationController.swift in Sources */,
+				1EE6744F3F70F4919C96843BCF23EDBA /* ScrollingNavigationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A3E68FC8E1A904E7A52C769E5A6035B /* Sources */ = {
+		8AD06AFCDBF26320DA074BFD0BF535B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F89EEB37E919F207C3F6350D0EC6A23B /* AMScrollingNavbar-dummy.m in Sources */,
-				D66952E2B42275117EFCAC8AEBCCCE39 /* ScrollingNavbar+Sizes.swift in Sources */,
-				845851E9B86F87F9183224A05BAE197C /* ScrollingNavigationController.swift in Sources */,
-				F40A2DB8664546D157EF374976225384 /* ScrollingNavigationViewController.swift in Sources */,
+				9AED2003B6F7D4F68C7B904EC9616535 /* Pods-ScrollingNavbarDemoTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FB6588B33AE3573E248BCDA82DEECA6 /* Sources */ = {
+		C47CFA3C69D5257DF129D7FF5DE1728C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F090D8496A58547B2BC53E51D3FE108 /* Pods-ScrollingNavbarDemoTests-dummy.m in Sources */,
+				8780E7C615BDE60A6F7259F17DAA8263 /* Pods-ScrollingNavbarDemo-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		79C3FD8B5F64B9A27D70017872B23046 /* PBXTargetDependency */ = {
+		10DFAB4AC1076F0563AEDA14189C9E30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AMScrollingNavbar;
-			target = 9B7BEF22A2D2E5C2E4174836475BC47B /* AMScrollingNavbar */;
-			targetProxy = 75950181F23D1484D31313C8091BBD86 /* PBXContainerItemProxy */;
+			target = 3F6D9E4DCB1FF94DB937778C8B29B4F3 /* AMScrollingNavbar */;
+			targetProxy = C8283A51483D0A9F444ABB6B39BDEFE3 /* PBXContainerItemProxy */;
 		};
-		AD762F29F3763976ADE7418372204A9C /* PBXTargetDependency */ = {
+		A50017B22FB3965EBAC22E05D078ECEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AMScrollingNavbar;
-			target = 9B7BEF22A2D2E5C2E4174836475BC47B /* AMScrollingNavbar */;
-			targetProxy = C65C9601DE987BF8CD4F6D4AE4B20FC2 /* PBXContainerItemProxy */;
+			target = 3F6D9E4DCB1FF94DB937778C8B29B4F3 /* AMScrollingNavbar */;
+			targetProxy = 65624B1EA9F76BE09040E3CC3DBF0085 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1EE19F5DD95931924296F637BF18BD8F /* Debug */ = {
+		3670A1A214B3919A4F36682B8E13B0B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85B25CA5DB6F1D30836EC8BECDC6CAFD /* AMScrollingNavbar.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AMScrollingNavbar/AMScrollingNavbar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AMScrollingNavbar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AMScrollingNavbar/AMScrollingNavbar.modulemap";
+				PRODUCT_MODULE_NAME = AMScrollingNavbar;
+				PRODUCT_NAME = AMScrollingNavbar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		40E02CADE7E5432FA9DB1AD1D29864AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46E37C9510DB3AC08E25958FB40833A8 /* Pods-ScrollingNavbarDemo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		85B95B1234E227C814CCC2C7902D0916 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		98E26DFC039806A9A257F267263FF6D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50C25758BC1215AEB517A62861B48A31 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ScrollingNavbarDemoTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A73625DEBD810B78234FA1958C191C8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -444,154 +631,19 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		32399654202C61EE1931BCC0DB248767 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85B25CA5DB6F1D30836EC8BECDC6CAFD /* AMScrollingNavbar.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AMScrollingNavbar/AMScrollingNavbar-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AMScrollingNavbar/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AMScrollingNavbar/AMScrollingNavbar.modulemap";
-				PRODUCT_MODULE_NAME = AMScrollingNavbar;
-				PRODUCT_NAME = AMScrollingNavbar;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		40E3FA23322A4A752DC2CF468CBD8ECC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 358E993D5FA5EE4FC3137A8C0AF5B524 /* Pods-ScrollingNavbarDemo.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6728D8DCCFC3F28AD469949D3B5CA49E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50C25758BC1215AEB517A62861B48A31 /* Pods-ScrollingNavbarDemoTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ScrollingNavbarDemoTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ScrollingNavbarDemoTests/Pods-ScrollingNavbarDemoTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7B422A90ACEC13506B1DFF6E48D9761A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46E37C9510DB3AC08E25958FB40833A8 /* Pods-ScrollingNavbarDemo.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D42EFC3281B24DD084AAD92000645B54 /* Debug */ = {
+		BF22726BF96C2FCCBCE3FA6CEC5DA83D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C2F06E672126A5ED70E7BF6EB74CBEC /* Pods-ScrollingNavbarDemoTests.debug.xcconfig */;
 			buildSettings = {
@@ -618,15 +670,47 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		E8AA5397688BD1A19B3902A3B6353DC9 /* Debug */ = {
+		E4C71704D8674BE46F65FC6780F427AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 358E993D5FA5EE4FC3137A8C0AF5B524 /* Pods-ScrollingNavbarDemo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ScrollingNavbarDemo/Pods-ScrollingNavbarDemo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F9BF98B163ECC82E4630E4749C8A6BB6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 85B25CA5DB6F1D30836EC8BECDC6CAFD /* AMScrollingNavbar.xcconfig */;
 			buildSettings = {
@@ -650,80 +734,22 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F4568DEE257655D290C2B9CEAB37C934 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		15E22F6BCE2C9FC1198908DD7D373B8B /* Build configuration list for PBXNativeTarget "AMScrollingNavbar" */ = {
+		254F1B93EC6E8535AF51951651685ACE /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E8AA5397688BD1A19B3902A3B6353DC9 /* Debug */,
-				32399654202C61EE1931BCC0DB248767 /* Release */,
+				40E02CADE7E5432FA9DB1AD1D29864AD /* Debug */,
+				E4C71704D8674BE46F65FC6780F427AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -731,26 +757,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EE19F5DD95931924296F637BF18BD8F /* Debug */,
-				F4568DEE257655D290C2B9CEAB37C934 /* Release */,
+				A73625DEBD810B78234FA1958C191C8C /* Debug */,
+				85B95B1234E227C814CCC2C7902D0916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5E1CA35E90D8A63867B54944D6B438DB /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemoTests" */ = {
+		CE8A867C3F9E66CDBFBBFEAD227A8396 /* Build configuration list for PBXNativeTarget "AMScrollingNavbar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D42EFC3281B24DD084AAD92000645B54 /* Debug */,
-				6728D8DCCFC3F28AD469949D3B5CA49E /* Release */,
+				3670A1A214B3919A4F36682B8E13B0B3 /* Debug */,
+				F9BF98B163ECC82E4630E4749C8A6BB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C116BAFB1A67F9DEBC196370BCC632CA /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemo" */ = {
+		DF43A402EB7439C321D948F2E3B5692B /* Build configuration list for PBXNativeTarget "Pods-ScrollingNavbarDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7B422A90ACEC13506B1DFF6E48D9761A /* Debug */,
-				40E3FA23322A4A752DC2CF468CBD8ECC /* Release */,
+				BF22726BF96C2FCCBCE3FA6CEC5DA83D /* Debug */,
+				98E26DFC039806A9A257F267263FF6D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
