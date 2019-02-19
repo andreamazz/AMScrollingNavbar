@@ -506,7 +506,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     func shouldHideView(_ view: UIView) -> Bool {
       let className = view.classForCoder.description().replacingOccurrences(of: "_", with: "")
       var viewNames = ["UINavigationButton", "UINavigationItemView", "UIImageView", "UISegmentedControl"]
-      if #available(iOS 11.0, *) {
+      if #available(iOS 11.0, *), navigationBar.responds(to: #selector(getter: UINavigationBar.prefersLargeTitles)) {
         viewNames.append(navigationBar.prefersLargeTitles ? "UINavigationBarLargeTitleView" : "UINavigationBarContentView")
       } else {
         viewNames.append("UINavigationBarContentView")
@@ -533,7 +533,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
   
   private func checkSearchController(_ delta: CGFloat) -> Bool {
-    if #available(iOS 11.0, *) {
+    if #available(iOS 11.0, *), topViewController?.navigationItem.responds(to: #selector(getter: UINavigationItem.searchController)) == true {
       if let searchController = topViewController?.navigationItem.searchController, delta > 0 {
         if searchController.searchBar.frame.height != 0 {
           return false
