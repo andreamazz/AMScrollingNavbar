@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMScrollingNavbar` adheres to [Semantic Versioning](http://semver.org/).
 
+- `5.3.x` Releases - [5.3.0](#530)  
 - `5.2.x` Releases - [5.2.0](#520)  
 - `5.1.x` Releases - [5.1.0](#510) | [5.1.1](#511)  
 - `5.0.x` Releases - [5.0.0](#500) | [5.0.1](#501) | [5.0.2](#502) | [5.0.3](#503) | [5.0.4](#504)  
@@ -20,6 +21,10 @@ All notable changes to this project will be documented in this file.
 - `1.5.x` Releases - [1.5](#15) | [1.5.1](#151)
 
 ---
+
+## [5.3.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/5.3.0)
+
+- Merge #365 
 
 ## [5.2.0](https://github.com/andreamazz/AMScrollingNavbar/releases/tag/5.2.0)
 
