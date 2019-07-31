@@ -617,35 +617,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       }
     }
 
-    // Hide all possible button items and navigation items
-    func shouldHideView(_ view: UIView) -> Bool {
-      let className = view.classForCoder.description().replacingOccurrences(of: "_", with: "")
-      var viewNames = ["UINavigationButton", "UINavigationItemView", "UIImageView", "UISegmentedControl"]
-      if #available(iOS 11.0, *) {
-        viewNames.append(navigationBar.prefersLargeTitles ? "UINavigationBarLargeTitleView" : "UINavigationBarContentView")
-      } else {
-        viewNames.append("UINavigationBarContentView")
-      }
-      return viewNames.contains(className)
-    }
-
-    func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {
-      if let label = view as? UILabel {
-        label.textColor = label.textColor.withAlphaComponent(alpha)
-      } else if let label = view as? UITextField {
-        label.textColor = label.textColor?.withAlphaComponent(alpha)
-      } else if view.classForCoder == NSClassFromString("_UINavigationBarContentView") {
-        // do nothing
-      } else {
-        view.alpha = alpha
-      }
-      view.subviews.forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
-    }
-
-    navigationBar.subviews
-      .filter(shouldHideView)
-      .forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
-
     // Hide the left items
     navigationItem.leftBarButtonItem?.customView?.alpha = alpha
     navigationItem.leftBarButtonItems?.forEach { $0.customView?.alpha = alpha }
