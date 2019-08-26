@@ -14,7 +14,7 @@ A custom UINavigationController that enables the scrolling of the navigation bar
 scrolling of an observed content view  
 
 <p align="center">
-  <a href='https://appetize.io/app/31qahv9v4477ja36k8dn93wr8m' alt='Live demo'>
+  <a href='https://appetize.io/app/0u5wbe5vfputft397xktrk1hb8?device=iphonexs&scale=75&orientation=portrait&osVersion=12.4' alt='Live demo'>
     <img width="150" height="75" src="assets/demo-button.png"/>
   </a>
 </p>
