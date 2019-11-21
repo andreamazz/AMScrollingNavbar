@@ -45,6 +45,7 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     cell.textLabel?.text = "Row \((indexPath as NSIndexPath).row + 1)"
+    cell.backgroundColor = .lightGray
     return cell
   }
   
