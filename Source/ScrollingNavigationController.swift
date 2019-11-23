@@ -112,6 +112,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   open var expandOnActive = true
   
   /**
+   Determines if the navbar should expand once the application becomes visible after entering background
+   Defaults to `true`
+   */
+  open var expandOnVisible = true
+  /**
    Determines if the navbar scrolling is enabled.
    Defaults to `true`
    */
@@ -356,7 +361,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   // MARK: - Fullscreen handling
   
   func windowDidBecomeVisible(_ notification: Notification) {
-    showNavbar()
+    if expandOnVisible {
+      showNavbar(animated: false)
+    } else {
+      if previousState == .collapsed {
+        hideNavbar(animated: false)
+      }
+    }
   }
   
   // MARK: - Rotation handler
