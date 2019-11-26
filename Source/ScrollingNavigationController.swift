@@ -290,10 +290,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     gestureRecognizer?.isEnabled = false
     
     let completion = {
-      if self.isTopViewControllerExtendedUnderNavigationBar {
-        self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight), animated: true)
-      } else {
-        self.scrollView()?.setContentOffset(.zero, animated: true)
+      if scrollToTop {
+        let followersHeight = self.followers.compactMap { $0.view?.frame.height }.reduce(0, +)
+        if self.isTopViewControllerExtendedUnderNavigationBar {
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersHeight), animated: true)
+        } else {
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersHeight), animated: true)
+        }
       }
     }
     
