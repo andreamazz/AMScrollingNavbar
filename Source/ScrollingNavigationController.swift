@@ -510,19 +510,22 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
   
   private func updateFollowers() {
-    followers.forEach {
-      guard let tabBar = $0.view as? UITabBar else {
-        let height = $0.view?.frame.height ?? 0
+    followers.forEach { follower in
+      defer {
+        follower.view?.layoutIfNeeded()
+      }
+      guard let tabBar = follower.view as? UITabBar else {
+        let height = follower.view?.frame.height ?? 0
         var safeArea: CGFloat = 0
         if #available(iOS 11.0, *) {
           // Account for the safe area for footers and toolbars at the bottom of the screen
-          safeArea = ($0.direction == .scrollDown) ? (topViewController?.view.safeAreaInsets.bottom ?? 0) : 0
+          safeArea = (follower.direction == .scrollDown) ? (topViewController?.view.safeAreaInsets.bottom ?? 0) : 0
         }
-        switch $0.direction {
+        switch follower.direction {
         case .scrollDown:
-          $0.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea))
+          follower.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea))
         case .scrollUp:
-          $0.view?.transform = CGAffineTransform(translationX: 0, y: -(statusBarHeight - navigationBar.frame.origin.y))
+          follower.view?.transform = CGAffineTransform(translationX: 0, y: -(statusBarHeight - navigationBar.frame.origin.y))
         }
         
         return
