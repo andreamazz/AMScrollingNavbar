@@ -157,7 +157,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   /// the additional distance that the navigation bar can move up after reaching the top of the screen. Defaults to 0
   open var additionalOffset: CGFloat = 0
  
-   /// the additional scroll distance that scroll to top function should go to.  Defaults to 0
+  /// the additional scroll distance that scroll to top function should go to.  Defaults to 0
   open var additionalScrollToTopOffset: CGFloat = 0
   
   /// Stores some metadata of a UITabBar if one is passed in the followers array
@@ -294,7 +294,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     let completion = {
       if scrollToTop {
-        let followersHeight = self.followers.filter { $0.direction == .scrollUp }.compactMap { $0.view?.frame.height }.reduce(0, +) + self.additionalScrollToTopOffset
+        var followersHeight = self.followers.filter { $0.direction == .scrollUp }.compactMap { $0.view?.frame.height }.reduce(0, +)
+        followersHeight += self.additionalScrollToTopOffset
         if self.isTopViewControllerExtendedUnderNavigationBar {
           self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersHeight), animated: true)
         } else {
