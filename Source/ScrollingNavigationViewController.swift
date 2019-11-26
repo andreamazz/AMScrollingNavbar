@@ -30,11 +30,11 @@ open class ScrollingNavigationViewController: UIViewController, UIScrollViewDele
   }
 
   /**
-   Calls `showNavbar()` when a `scrollToTop` is requested
+   Calls `showNavbar()` with the `scrollToTop` parameter to `true` when a scroll to top is requested
    */
   open func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
     if let navigationController = self.navigationController as? ScrollingNavigationController {
-      navigationController.showNavbar(animated: true)
+      navigationController.showNavbar(animated: true, scrollToTop: true)
     }
     return true
   }

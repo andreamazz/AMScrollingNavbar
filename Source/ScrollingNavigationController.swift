@@ -179,13 +179,12 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   var collapseDirectionFactor: CGFloat = 1 // Used to determine the sign of content offset depending of collapse direction
   var previousState: NavigationBarState = .expanded // Used to mark the state before the app goes in background
   
-  private var isTopViewControllerExtendedUnderNavigationBar: Bool {
+  public var isTopViewControllerExtendedUnderNavigationBar: Bool {
     guard let topViewController = topViewController, topViewController.edgesForExtendedLayout.contains(.top) else {
       return false
     }
     
     return topViewController.extendedLayoutIncludesOpaqueBars || navigationBar.isTranslucent
-    
   }
   
   /**
@@ -279,15 +278,25 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
+   - parameter scrollToTop: Optional boolean to scroll also the scroll view to the top. Defaults to false
    */
-  open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1) {
+  open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1, scrollToTop: Bool = false) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
     
     guard state == .collapsed else {
       return
     }
-    
+        
     gestureRecognizer?.isEnabled = false
+    
+    let completion = {
+      if self.isTopViewControllerExtendedUnderNavigationBar {
+        self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight), animated: true)
+      } else {
+        self.scrollView()?.setContentOffset(.zero, animated: true)
+      }
+    }
+    
     let animations = {
       self.lastContentOffset = 0
       self.scrollWithDelta(-self.fullNavbarHeight, ignoreDelay: true)
@@ -300,9 +309,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     if animated {
       UIView.animate(withDuration: duration, animations: animations) { _ in
         self.gestureRecognizer?.isEnabled = true
+        completion()
       }
     } else {
       animations()
+      completion()
       gestureRecognizer?.isEnabled = true
     }
   }
