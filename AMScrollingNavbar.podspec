@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "AMScrollingNavbar"
-  s.version       = "5.5.1"
+  s.version       = "5.5.2"
   s.summary       = "A custom UINavigationController that enables the scrolling of the navigation bar alongside the scrolling of an observed content view"
   s.description   = <<-DESC
                      A custom UINavigationController that enables the scrolling of the
@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.platform      = :ios, '8.0'
   s.source_files  = 'Source', '*.{swift}'
   s.requires_arc  = true
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
   s.social_media_url = 'https://twitter.com/theandreamazz'
 end
