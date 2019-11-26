@@ -551,8 +551,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       let navBarY = frame.origin.y + frame.size.height
       frame = topViewController.view.frame
       frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
-      frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
+      frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - navBarY - tabBarOffset)
       topViewController.view.frame = frame
+      topViewController.view.layoutIfNeeded()
     }
   }
   
