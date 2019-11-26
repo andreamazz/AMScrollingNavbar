@@ -362,7 +362,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   
   func windowDidBecomeVisible(_ notification: Notification) {
     if expandOnVisible {
-      showNavbar(animated: false)
+      showNavbar()
     } else {
       if previousState == .collapsed {
         hideNavbar(animated: false)
