@@ -526,7 +526,20 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     }
   }
   
-  private func updateSizing(_ delta: CGFloat) {
+  private func updateViewHeight(_ delta: CGFloat) {
+    guard let topViewController = self.topViewController else { return }
+    
+    var frame = navigationBar.frame
+    
+    if !isTopViewControllerExtendedUnderNavigationBar {
+      let navBarY = frame.origin.y + frame.size.height
+      frame = topViewController.view.frame
+      frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
+      topViewController.view.frame = frame
+    }
+  }
+  
+  private func updateSizing(_ delta: CGFloat, updateViewHeight: Bool = true) {
     guard let topViewController = self.topViewController else { return }
     
     var frame = navigationBar.frame
@@ -540,7 +553,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       let navBarY = frame.origin.y + frame.size.height
       frame = topViewController.view.frame
       frame.origin = CGPoint(x: frame.origin.x, y: navBarY)
-      frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
+      if updateViewHeight {
+        frame.size = CGSize(width: frame.size.width, height: view.frame.size.height - (navBarY) - tabBarOffset)
+      }
       topViewController.view.frame = frame
     }
   }
@@ -577,8 +592,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     delayDistance = maxDelay
     
+    updateViewHeight(delta)
+    
     UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
-      self.updateSizing(delta)
+      self.updateSizing(delta, updateViewHeight: false)
       self.updateFollowers()
       self.updateNavbarAlpha()
       self.updateContentInset(delta)
