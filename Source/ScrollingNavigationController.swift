@@ -550,7 +550,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
             
             switch index {
             case 0:
-              follower.view?.transform = CGAffineTransform(translationX: 0, y: min(y, 0))
+              follower.view?.transform = CGAffineTransform(translationX: 0, y: max(y, 0))
             default:
               let previousFollowers = self.followers[0..<index]
               // Do not go less than the first non sticky follower Height
