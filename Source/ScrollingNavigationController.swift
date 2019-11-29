@@ -547,7 +547,6 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         case .scrollUp:
           let y = -(statusBarHeight - navigationBar.frame.origin.y)
           if follower.isSticky {
-            
             switch index {
             case 0:
               follower.view?.transform = CGAffineTransform(translationX: 0, y: max(y, 0))
@@ -555,8 +554,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
               let previousFollowers = self.followers[0..<index]
               // Do not go less than the first non sticky follower Height
               let previousStickyFollowersHeight = previousFollowers.filter{ !$0.isSticky }.compactMap { $0.view?.frame.height }.reduce(0, +)
-              let sticky_y = max(y, -previousStickyFollowersHeight)
-              follower.view?.transform = CGAffineTransform(translationX: 0, y: sticky_y)
+              let stickyY = max(y, -previousStickyFollowersHeight)
+              follower.view?.transform = CGAffineTransform(translationX: 0, y: stickyY)
             }
           } else {
             follower.view?.transform = CGAffineTransform(translationX: 0, y: y)
