@@ -70,10 +70,12 @@ import UIKit
 open class NavigationBarFollower: NSObject {
   public weak var view: UIView?
   public var direction = NavigationBarFollowerCollapseDirection.scrollUp
-  
-  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp) {
+ public var isSticky: Bool = false
+ 
+  public init(view: UIView, isSticky: Bool = false, direction: NavigationBarFollowerCollapseDirection = .scrollUp) {
     self.view = view
     self.direction = direction
+    self.isSticky = isSticky
   }
 }
 
@@ -528,7 +530,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
   
   private func updateFollowers() {
-    followers.forEach { follower in
+    followers.enumerated().forEach { index, follower in
       defer {
         follower.view?.layoutIfNeeded()
       }
@@ -543,7 +545,22 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         case .scrollDown:
           follower.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea))
         case .scrollUp:
-          follower.view?.transform = CGAffineTransform(translationX: 0, y: -(statusBarHeight - navigationBar.frame.origin.y))
+          let y = -(statusBarHeight - navigationBar.frame.origin.y)
+          if follower.isSticky {
+            
+            switch index {
+            case 0:
+              follower.view?.transform = CGAffineTransform(translationX: 0, y: min(y, 0))
+            default:
+              let previousFollowers = self.followers[0..<index]
+              // Do not go less than the first non sticky follower Height
+              let previousStickyFollowersHeight = previousFollowers.filter{ !$0.isSticky }.compactMap { $0.view?.frame.height }.reduce(0, +)
+              let sticky_y = max(y, -previousStickyFollowersHeight)
+              follower.view?.transform = CGAffineTransform(translationX: 0, y: sticky_y)
+            }
+          } else {
+            follower.view?.transform = CGAffineTransform(translationX: 0, y: y)
+          }
         }
         
         return
