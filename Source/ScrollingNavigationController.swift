@@ -294,12 +294,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     let completion = {
       if scrollToTop {
-        var followersHeight = self.followers.filter { $0.direction == .scrollUp }.compactMap { $0.view?.frame.height }.reduce(0, +)
-        followersHeight += self.additionalScrollToTopOffset
+        let followersFinalHeight = self.followersHeight + self.additionalScrollToTopOffset
         if self.isTopViewControllerExtendedUnderNavigationBar {
-          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersHeight), animated: true)
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersFinalHeight), animated: true)
         } else {
-          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersHeight), animated: true)
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersFinalHeight), animated: true)
         }
       }
     }
@@ -434,7 +433,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
     let scrollDelta = delta
     // Do not hide too early
-    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : 0) + scrollDelta) {
+    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : followersHeight) + scrollDelta) {
       return false
     }
     // Check for rubberbanding
