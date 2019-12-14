@@ -435,7 +435,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
     let scrollDelta = delta
     // Do not hide too early
-    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : followersHeight) + scrollDelta) {
+    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : -followersHeight) + scrollDelta) {
       return false
     }
     // Check for rubberbanding
@@ -520,6 +520,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   /// Adjust the top inset (useful when a table view has floating headers, see issue #219
   private func updateContentInset(_ delta: CGFloat) {
     if self.shouldUpdateContentInset, let contentInset = scrollView()?.contentInset, let scrollInset = scrollView()?.scrollIndicatorInsets {
+      
       scrollView()?.contentInset = UIEdgeInsets(top: contentInset.top - delta, left: contentInset.left, bottom: contentInset.bottom, right: contentInset.right)
       scrollView()?.scrollIndicatorInsets = UIEdgeInsets(top: scrollInset.top - delta, left: scrollInset.left, bottom: scrollInset.bottom, right: scrollInset.right)
       scrollingNavbarDelegate?.scrollingNavigationController?(self,
@@ -630,6 +631,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateFollowers()
       self.updateNavbarAlpha()
       self.updateContentInset(delta)
+      self.scrollingNavbarDelegate?.scrollingNavigationController?(self, willChangeState: self.state)
     }, completion: { _ in
       self.navigationBar.isUserInteractionEnabled = (self.state == .expanded)
       self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
