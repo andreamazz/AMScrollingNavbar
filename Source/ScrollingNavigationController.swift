@@ -65,15 +65,20 @@ import UIKit
 
 /**
  Wraps a view that follows the navigation bar, providing the direction that the view should follow
+ 
+ - changeAlphaWhileCollapsing: update the follower's view alpha while the navigation bar collapses.
  */
 @objcMembers
 open class NavigationBarFollower: NSObject {
   public weak var view: UIView?
   public var direction = NavigationBarFollowerCollapseDirection.scrollUp
+  public var changeAlphaWhileCollapsing = false
   
-  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp) {
+  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp,
+              changeAlphaWhileCollapsing: Bool = false) {
     self.view = view
     self.direction = direction
+    self.changeAlphaWhileCollapsing = changeAlphaWhileCollapsing
   }
 }
 
@@ -676,6 +681,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     navigationBar.subviews
       .filter(shouldHideView)
       .forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
+    
+    //Update followers alpha
+    followers.filter { $0.changeAlphaWhileCollapsing }.forEach { $0.view?.alpha = alpha }
     
     // Hide the left items
     navigationItem.leftBarButtonItem?.customView?.alpha = alpha
