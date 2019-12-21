@@ -68,4 +68,8 @@ extension ScrollingNavigationController {
   var navbarFullHeight: CGFloat {
     return navbarHeight - statusBarHeight + additionalOffset
   }
+  
+  var followersHeight: CGFloat {
+      return self.followers.filter { $0.direction == .scrollUp }.compactMap { $0.view?.frame.height }.reduce(0, +)
+  }
 }

@@ -73,12 +73,13 @@ open class NavigationBarFollower: NSObject {
   public weak var view: UIView?
   public var direction = NavigationBarFollowerCollapseDirection.scrollUp
   public var changeAlphaWhileCollapsing = false
-  
-  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp,
+  public var isSticky: Bool = false
+  public init(view: UIView, isSticky: Bool = false, direction: NavigationBarFollowerCollapseDirection = .scrollUp,
               changeAlphaWhileCollapsing: Bool = false) {
     self.view = view
     self.direction = direction
     self.changeAlphaWhileCollapsing = changeAlphaWhileCollapsing
+    self.isSticky = isSticky
   }
 }
 
@@ -299,12 +300,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     let completion = {
       if scrollToTop {
-        var followersHeight = self.followers.filter { $0.direction == .scrollUp }.compactMap { $0.view?.frame.height }.reduce(0, +)
-        followersHeight += self.additionalScrollToTopOffset
+        let followersFinalHeight = self.followersHeight + self.additionalScrollToTopOffset
         if self.isTopViewControllerExtendedUnderNavigationBar {
-          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersHeight), animated: true)
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersFinalHeight), animated: true)
         } else {
-          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersHeight), animated: true)
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersFinalHeight), animated: true)
         }
       }
     }
@@ -439,7 +439,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
     let scrollDelta = delta
     // Do not hide too early
-    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : 0) + scrollDelta) {
+    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : -followersHeight) + scrollDelta) {
       return false
     }
     // Check for rubberbanding
@@ -524,6 +524,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   /// Adjust the top inset (useful when a table view has floating headers, see issue #219
   private func updateContentInset(_ delta: CGFloat) {
     if self.shouldUpdateContentInset, let contentInset = scrollView()?.contentInset, let scrollInset = scrollView()?.scrollIndicatorInsets {
+      
       scrollView()?.contentInset = UIEdgeInsets(top: contentInset.top - delta, left: contentInset.left, bottom: contentInset.bottom, right: contentInset.right)
       scrollView()?.scrollIndicatorInsets = UIEdgeInsets(top: scrollInset.top - delta, left: scrollInset.left, bottom: scrollInset.bottom, right: scrollInset.right)
       scrollingNavbarDelegate?.scrollingNavigationController?(self,
@@ -533,7 +534,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   }
   
   private func updateFollowers() {
-    followers.forEach { follower in
+    followers.enumerated().forEach { index, follower in
       defer {
         follower.view?.layoutIfNeeded()
       }
@@ -548,7 +549,21 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
         case .scrollDown:
           follower.view?.transform = CGAffineTransform(translationX: 0, y: percentage * (height + safeArea))
         case .scrollUp:
-          follower.view?.transform = CGAffineTransform(translationX: 0, y: -(statusBarHeight - navigationBar.frame.origin.y))
+          let y = -(statusBarHeight - navigationBar.frame.origin.y)
+          if follower.isSticky {
+            switch index {
+            case 0:
+              follower.view?.transform = CGAffineTransform(translationX: 0, y: max(y, 0))
+            default:
+              let previousFollowers = self.followers[0..<index]
+              // Do not go less than the first non sticky follower Height
+              let previousStickyFollowersHeight = previousFollowers.filter{ !$0.isSticky }.compactMap { $0.view?.frame.height }.reduce(0, +)
+              let stickyY = max(y, -previousStickyFollowersHeight)
+              follower.view?.transform = CGAffineTransform(translationX: 0, y: stickyY)
+            }
+          } else {
+            follower.view?.transform = CGAffineTransform(translationX: 0, y: y)
+          }
         }
         
         return
@@ -620,6 +635,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateFollowers()
       self.updateNavbarAlpha()
       self.updateContentInset(delta)
+      self.scrollingNavbarDelegate?.scrollingNavigationController?(self, willChangeState: self.state)
     }, completion: { _ in
       self.navigationBar.isUserInteractionEnabled = (self.state == .expanded)
       self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
