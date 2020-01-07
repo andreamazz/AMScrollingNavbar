@@ -65,15 +65,20 @@ import UIKit
 
 /**
  Wraps a view that follows the navigation bar, providing the direction that the view should follow
+ 
+ - changeAlphaWhileCollapsing: update the follower's view alpha while the navigation bar collapses.
  */
 @objcMembers
 open class NavigationBarFollower: NSObject {
   public weak var view: UIView?
   public var direction = NavigationBarFollowerCollapseDirection.scrollUp
+  public var changeAlphaWhileCollapsing = false
   
-  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp) {
+  public init(view: UIView, direction: NavigationBarFollowerCollapseDirection = .scrollUp,
+              changeAlphaWhileCollapsing: Bool = false) {
     self.view = view
     self.direction = direction
+    self.changeAlphaWhileCollapsing = changeAlphaWhileCollapsing
   }
 }
 
@@ -294,12 +299,11 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     let completion = {
       if scrollToTop {
-        var followersHeight = self.followers.filter { $0.direction == .scrollUp }.compactMap { $0.view?.frame.height }.reduce(0, +)
-        followersHeight += self.additionalScrollToTopOffset
+        let followersFinalHeight = self.followersHeight + self.additionalScrollToTopOffset
         if self.isTopViewControllerExtendedUnderNavigationBar {
-          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersHeight), animated: true)
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -self.fullNavbarHeight - followersFinalHeight), animated: true)
         } else {
-          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersHeight), animated: true)
+          self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersFinalHeight), animated: true)
         }
       }
     }
@@ -434,7 +438,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   private func shouldScrollWithDelta(_ delta: CGFloat) -> Bool {
     let scrollDelta = delta
     // Do not hide too early
-    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : 0) + scrollDelta) {
+    if contentOffset.y < ((isTopViewControllerExtendedUnderNavigationBar ? -fullNavbarHeight : -followersHeight) + scrollDelta) {
       return false
     }
     // Check for rubberbanding
@@ -519,6 +523,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   /// Adjust the top inset (useful when a table view has floating headers, see issue #219
   private func updateContentInset(_ delta: CGFloat) {
     if self.shouldUpdateContentInset, let contentInset = scrollView()?.contentInset, let scrollInset = scrollView()?.scrollIndicatorInsets {
+      
       scrollView()?.contentInset = UIEdgeInsets(top: contentInset.top - delta, left: contentInset.left, bottom: contentInset.bottom, right: contentInset.right)
       scrollView()?.scrollIndicatorInsets = UIEdgeInsets(top: scrollInset.top - delta, left: scrollInset.left, bottom: scrollInset.bottom, right: scrollInset.right)
       scrollingNavbarDelegate?.scrollingNavigationController?(self,
@@ -615,6 +620,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       self.updateFollowers()
       self.updateNavbarAlpha()
       self.updateContentInset(delta)
+      self.scrollingNavbarDelegate?.scrollingNavigationController?(self, willChangeState: self.state)
     }, completion: { _ in
       self.navigationBar.isUserInteractionEnabled = (self.state == .expanded)
       self.scrollingNavbarDelegate?.scrollingNavigationController?(self, didChangeState: self.state)
@@ -675,6 +681,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     navigationBar.subviews
       .filter(shouldHideView)
       .forEach { setAlphaOfSubviews(view: $0, alpha: alpha) }
+    
+    //Update followers alpha
+    followers.filter { $0.changeAlphaWhileCollapsing }.forEach { $0.view?.alpha = alpha }
     
     // Hide the left items
     navigationItem.leftBarButtonItem?.customView?.alpha = alpha
