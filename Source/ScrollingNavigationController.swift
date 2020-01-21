@@ -287,8 +287,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter animated: If true the scrolling is animated. Defaults to `true`
    - parameter duration: Optional animation duration. Defaults to 0.1
    - parameter scrollToTop: Optional boolean to scroll also the scroll view to the top. Defaults to false
+   - parameter completion: Optional completion block called when the navbar is shown
    */
-  open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1, scrollToTop: Bool = false) {
+  open func showNavbar(animated: Bool = true, duration: TimeInterval = 0.1, scrollToTop: Bool = false, completion showNavCompletion: (() -> Void)? = nil) {
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
     
     guard state == .collapsed else {
@@ -306,6 +307,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
           self.scrollView()?.setContentOffset(CGPoint(x: 0, y: -followersFinalHeight), animated: true)
         }
       }
+      showNavCompletion?()
     }
     
     let animations = {
