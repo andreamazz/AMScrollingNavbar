@@ -13,6 +13,8 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var toolbar: UIToolbar!
+  
+  var data: [Int] = Array(0...100)
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,16 +37,26 @@ class TableViewController: ScrollingNavigationViewController, UITableViewDelegat
       navigationController.scrollingNavbarDelegate = self
     }
   }
+  
+  @IBAction func segmentChange() {
+    if let navigationController = self.navigationController as? ScrollingNavigationController {
+      navigationController.showNavbar(animated: true, duration: 0.2, scrollToTop: true) {
+        let last = self.data.last ?? 0
+        self.data = Array(last...last + 100)
+        self.tableView.reloadData()
+      }
+    }
+  }
 
   // MARK: - UITableView data source
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 100
+    return data.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    cell.textLabel?.text = "Row \((indexPath as NSIndexPath).row + 1)"
+    cell.textLabel?.text = "Row \(data[indexPath.row])"
     return cell
   }
   
