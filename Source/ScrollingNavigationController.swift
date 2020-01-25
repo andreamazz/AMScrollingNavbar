@@ -293,6 +293,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     guard let _ = self.scrollableView, let visibleViewController = self.visibleViewController else { return }
     
     guard state == .collapsed else {
+      self.updateNavbarAlpha()
       return
     }
         
