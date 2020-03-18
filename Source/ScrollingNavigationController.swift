@@ -387,6 +387,16 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   
   func windowDidBecomeVisible(_ notification: Notification) {
     if expandOnVisible {
+      let senderTypeStr = "\(type(of: notification.object as AnyObject))"
+      // Ugh...had to hardcode the class name. Is there a better way ?
+      guard senderTypeStr != "UIRemoteKeyboardWindow" else {
+        // We are dealing with UIAlert or a Keyboard popping up: UIKit will automatically dim the content of the nav bar.
+        // We should not call showNavBar(), because
+        // 1. It serves no purpose here
+        // 2. If were to call, the dimming applied by UIKit would be made permanent via showNavBar()/updateNavbarAlpha()
+        // .....navigationBar.tintColor = navigationBar.tintColor.withAlphaComponent(alpha)
+        return
+      }
       showNavbar()
     } else {
       if previousState == .collapsed {
