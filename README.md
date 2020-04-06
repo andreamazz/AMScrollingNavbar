@@ -174,6 +174,16 @@ controller.followScrollView(view, delay: 0, scrollSpeedFactor: 2)
 
 Check out the sample project for more details.
 
+## Changing UINavigationBar.tintColor
+AMScrollingNavBar maintains its own copy of the UINavigationBar's `tintColor` property. You need to notify the AMScrollingNavBar of a tint change by calling `navBarTintUpdated()`:
+
+```swift
+navigationBar.tintColor = UIColor.red
+controller.navBarTintUpdated()
+```
+
+Check out the sample project for more details.
+
 # Author
 [Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me.
 
