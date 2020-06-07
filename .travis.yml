@@ -1,4 +1,4 @@
-osx_image: xcode11.0
+osx_image: xcode11.5
 sudo: required
 language: objective-c
 before_install:
