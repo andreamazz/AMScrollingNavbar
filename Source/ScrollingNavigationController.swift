@@ -679,9 +679,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     
     func setAlphaOfSubviews(view: UIView, alpha: CGFloat) {
       if let label = view as? UILabel {
-        label.textColor = label.textColor.withAlphaComponent(alpha)
+        label.textColor = label.textColor == .clear ? .clear : label.textColor.withAlphaComponent(alpha)
       } else if let label = view as? UITextField {
-        label.textColor = label.textColor?.withAlphaComponent(alpha)
+        label.textColor = label.textColor == .clear ? .clear : label.textColor?.withAlphaComponent(alpha)
       } else if view.classForCoder == NSClassFromString("_UINavigationBarContentView") {
         // do nothing
       } else {
