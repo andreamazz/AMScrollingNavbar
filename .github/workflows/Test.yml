@@ -12,9 +12,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      uses: sersoft-gmbh/xcodebuild-action@v1
-      with:
-        workspace: Demo/ScrollingNavbarDemo.xcworkspace
-        scheme: ScrollingNavbarDemo
-        destination: platform=iOS
-        action: test
+      - uses: sersoft-gmbh/xcodebuild-action@v1
+        with:
+          workspace: ./Demo/ScrollingNavbarDemo.xcworkspace
+          scheme: ScrollingNavbarDemo
+          destination: platform=iOS
+          action: test
