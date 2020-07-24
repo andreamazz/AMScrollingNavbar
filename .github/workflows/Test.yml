@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Select Xcode 11
-      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+      run: sudo xcode-select -switch /Applications/Xcode_11.6.app
     - name: Run tests
-      run: xcodebuild -workspace Demo/ScrollingNavbarDemo.xcworkspace -scheme ScrollingNavbarDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.5' test
+      run: xcodebuild -workspace Demo/ScrollingNavbarDemo.xcworkspace -scheme ScrollingNavbarDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.6' test
