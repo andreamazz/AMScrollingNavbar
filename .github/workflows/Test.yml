@@ -12,9 +12,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: sersoft-gmbh/xcodebuild-action@v1
-        with:
-          workspace: Demo/ScrollingNavbarDemo.xcworkspace
-          scheme: ScrollingNavbarDemo
-          destination: platform=iOS
-          action: test
+    - uses: actions/checkout@v1
+    - name: Select Xcode 11
+      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+    - name: Run tests
+      run: xcodebuild -workspace Demo/ScrollingNavbarDemo.xcworkspace -scheme ScrollingNavbarDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.5' test
