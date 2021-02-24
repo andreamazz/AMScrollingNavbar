@@ -187,6 +187,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
   var scrollSpeedFactor: CGFloat = 1
   var collapseDirectionFactor: CGFloat = 1 // Used to determine the sign of content offset depending of collapse direction
   var previousState: NavigationBarState = .expanded // Used to mark the state before the app goes in background
+  var scrollSearchBar: Bool = false
   
   public var isTopViewControllerExtendedUnderNavigationBar: Bool {
     guard let topViewController = topViewController, topViewController.edgesForExtendedLayout.contains(.top) else {
@@ -206,9 +207,10 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    - parameter scrollSpeedFactor : This factor determines the speed of the scrolling content toward the navigation bar animation
    - parameter collapseDirection : The direction of scrolling that the navigation bar should be collapsed
    - parameter additionalOffset : The additional distance that the navigation bar can move up after reaching the top of the screen. Defaults to 0
+   - parameter scrollSearchBar : Determines whether or not the navigation bar should scroll when the search bar is visible. Defaults to false
    - parameter followers: An array of `NavigationBarFollower`s that will follow the navbar. The wrapper holds the direction that the view will follow
    */
-  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, additionalOffset: CGFloat = 0, followers: [NavigationBarFollower] = []) {
+  open func followScrollView(_ scrollableView: UIView, delay: Double = 0, scrollSpeedFactor: Double = 1, collapseDirection: NavigationBarCollapseDirection = .scrollDown, additionalOffset: CGFloat = 0, scrollSearchBar: Bool = false, followers: [NavigationBarFollower] = []) {
     savedNavBarTintColor = navigationBar.tintColor
     guard self.scrollableView == nil else {
       // Restore previous state. UIKit restores the navbar to its full height on view changes (e.g. during a modal presentation), so we need to restore the status once UIKit is done
@@ -239,6 +241,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     delayDistance = CGFloat(delay)
     scrollingEnabled = true
     self.additionalOffset = additionalOffset
+    self.scrollSearchBar = scrollSearchBar
     
     // Save TabBar state (the state is changed during the transition and restored on compeltion)
     if let tab = followers.map({ $0.view }).first(where: { $0 is UITabBar }) as? UITabBar {
@@ -373,7 +376,7 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
       let translation = gesture.translation(in: superview)
       let delta = (lastContentOffset - translation.y) / scrollSpeedFactor
       
-      if !checkSearchController(delta) {
+      if !scrollSearchBar, !checkSearchController(delta) {
         lastContentOffset = translation.y
         return
       }
@@ -665,6 +668,9 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     navigationItem.rightBarButtonItem?.tintColor = navigationItem.rightBarButtonItem?.tintColor?.withAlphaComponent(alpha)
     navigationItem.leftBarButtonItems?.forEach { $0.tintColor = $0.tintColor?.withAlphaComponent(alpha) }
     navigationItem.rightBarButtonItems?.forEach { $0.tintColor = $0.tintColor?.withAlphaComponent(alpha) }
+    if #available(iOS 11.0, *) {
+      navigationItem.searchController?.searchBar.alpha = alpha
+    }
     if let titleColor = navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] as? UIColor {
       navigationBar.titleTextAttributes?[NSAttributedString.Key.foregroundColor] = titleColor.withAlphaComponent(alpha)
     } else {
