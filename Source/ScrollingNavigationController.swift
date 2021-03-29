@@ -740,7 +740,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    UIGestureRecognizerDelegate function. Begin scrolling only if the direction is vertical (prevents conflicts with horizontal scroll views)
    */
   open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-    guard let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer else { return true }
+    // Default system behavior returns `true`
+    guard gestureRecognizer == self.gestureRecognizer, let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer else { return true }
     let velocity = gestureRecognizer.velocity(in: gestureRecognizer.view)
     return abs(velocity.y) > abs(velocity.x)
   }
@@ -749,6 +750,8 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    UIGestureRecognizerDelegate function. Enables the scrolling of both the content and the navigation bar
    */
   open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    // Default system behavior returns `false`
+    guard [gestureRecognizer, otherGestureRecognizer].contains(self.gestureRecognizer) else { return false }
     return true
   }
   
@@ -756,11 +759,13 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
    UIGestureRecognizerDelegate function. Only scrolls the navigation bar with the content when `scrollingEnabled` is true
    */
   open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    // Default system behavior returns `true`
+    guard gestureRecognizer == self.gestureRecognizer else { return true }
     return scrollingEnabled
   }
   
   deinit {
     NotificationCenter.default.removeObserver(self)
   }
-  
+
 }
