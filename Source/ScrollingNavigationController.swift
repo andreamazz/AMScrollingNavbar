@@ -648,15 +648,16 @@ open class ScrollingNavigationController: UINavigationController, UIGestureRecog
     // Change the alpha channel of every item on the navbr
     let alpha = 1 - percentage
     
-    // Hide all the possible tgit push origin masteritles (See #398)
+    // Hide all the possible titles (See #398)
     if #available(iOS 13.0, *) {
       if let color = navigationBar.scrollEdgeAppearance?.titleTextAttributes [NSAttributedString.Key.foregroundColor] as? UIColor {
         navigationBar.scrollEdgeAppearance?.titleTextAttributes [NSAttributedString.Key.foregroundColor] = color.withAlphaComponent(alpha)
       }
 
-      if let color = navigationBar.standardAppearance.titleTextAttributes [NSAttributedString.Key.foregroundColor] as? UIColor {
-        navigationBar.standardAppearance.titleTextAttributes [NSAttributedString.Key.foregroundColor] = color.withAlphaComponent(alpha)
-      }
+      // NOTE: this breaks the tintColor, it's disabled for the time being
+//      if let color = navigationBar.standardAppearance.titleTextAttributes [NSAttributedString.Key.foregroundColor] as? UIColor {
+//        navigationBar.standardAppearance.titleTextAttributes [NSAttributedString.Key.foregroundColor] = color.withAlphaComponent(alpha)
+//      }
       
       if let color = navigationBar.compactAppearance?.titleTextAttributes [NSAttributedString.Key.foregroundColor] as? UIColor {
         navigationBar.compactAppearance?.titleTextAttributes [NSAttributedString.Key.foregroundColor] = color.withAlphaComponent(alpha)
