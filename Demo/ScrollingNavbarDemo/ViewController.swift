@@ -22,7 +22,12 @@ class ViewController: UITableViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    navigationController?.navigationBar.barTintColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1)
+    if #available(iOS 13.0, *) {
+      navigationController?.navigationBar.standardAppearance.backgroundColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1)
+      navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+    } else {
+      navigationController?.navigationBar.barTintColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1)
+    }
   }
 
 }

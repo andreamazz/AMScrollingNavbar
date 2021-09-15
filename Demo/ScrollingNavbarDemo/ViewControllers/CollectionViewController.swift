@@ -11,7 +11,12 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
 
     title = "CollectionView"
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-    navigationController?.navigationBar.barTintColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
+    if #available(iOS 13.0, *) {
+      navigationController?.navigationBar.standardAppearance.backgroundColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
+      navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+    } else {
+      navigationController?.navigationBar.barTintColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
+    }
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.minimumInteritemSpacing = 1;
     flowLayout.minimumLineSpacing = 1;

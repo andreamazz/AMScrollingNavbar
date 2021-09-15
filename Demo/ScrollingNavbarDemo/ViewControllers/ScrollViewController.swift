@@ -20,7 +20,13 @@ class ScrollViewController: ScrollingNavigationViewController, ScrollingNavigati
 
     // navigationItem.prompt = "Prompt"
 
-    navigationController?.navigationBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
+    if #available(iOS 13.0, *) {
+      navigationController?.navigationBar.standardAppearance.backgroundColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
+      navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+    } else {
+      navigationController?.navigationBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
+    }
+
     tabBarController?.tabBar.barTintColor = UIColor(red:0.17, green:0.59, blue:0.87, alpha:1)
     tabBarController?.tabBar.tintColor = .white
 

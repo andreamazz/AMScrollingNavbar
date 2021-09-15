@@ -21,7 +21,13 @@ class WebViewController: ScrollingNavigationViewController, UIWebViewDelegate {
 
     view.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.32, alpha:1)
     webView.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.32, alpha:1)
-    navigationController?.navigationBar.barTintColor = UIColor(red:0.2, green:0.28, blue:0.37, alpha:1)
+
+    if #available(iOS 13.0, *) {
+      navigationController?.navigationBar.standardAppearance.backgroundColor = UIColor(red:0.2, green:0.28, blue:0.37, alpha:1)
+      navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+    } else {
+      navigationController?.navigationBar.barTintColor = UIColor(red:0.2, green:0.28, blue:0.37, alpha:1)
+    }
 
     // Load some content
     webView.load(URLRequest(url: URL(string: "https://www.fancypixel.it")!))

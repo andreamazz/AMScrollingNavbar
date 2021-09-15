@@ -14,10 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func applicationDidFinishLaunching(_ application: UIApplication) {
-    UINavigationBar.appearance().tintColor = .white
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-    UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-//    UINavigationBar.appearance().isTranslucent = false
+    if #available(iOS 13.0, *) {
+      let appearance = UINavigationBarAppearance()
+      appearance.buttonAppearance.normal.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+      appearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+      appearance.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+      UINavigationBar.appearance().standardAppearance = appearance
+      UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBar.appearance().standardAppearance
+    } else {
+      UINavigationBar.appearance().tintColor = .white
+      UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+      UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    }
   }
-
 }
